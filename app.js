@@ -709,6 +709,9 @@ document.addEventListener("DOMContentLoaded", async () => {
           reportContainer.innerHTML = `
 
           <div class="report-document">
+          <div class="report-banner">
+            HRTECHIFY ADVISORY REPORT
+          </div>  
 
             <div class="report-watermark">
               © HRTECHIFY
