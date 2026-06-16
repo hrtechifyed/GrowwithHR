@@ -1,9 +1,7 @@
 document.addEventListener(
 "DOMContentLoaded",
 async () => {
-console.log(
-  "GrowItWithHR V6 Engine Initializing..."
-);
+console.log("VERSION TEST 999");
 
 try {
 
