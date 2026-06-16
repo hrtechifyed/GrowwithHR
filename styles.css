@@ -237,6 +237,21 @@ text-align:center;
 box-shadow:0 2px 8px rgba(0,0,0,0.05);
 }
 
+.trust-card{
+text-decoration:none;
+color:#222;
+font-weight:600;
+transition:0.2s;
+cursor:pointer;
+}
+
+.trust-card:hover{
+transform:translateY(-3px);
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
+color:#c84b2f;
+}
+
+
 .verified{
 text-align:center;
 font-size:18px;
