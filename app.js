@@ -1,7 +1,9 @@
 document.addEventListener(
 "DOMContentLoaded",
 async () => {
-console.log("VERSION TEST 999");
+console.log(
+  "GrowItWithHR V6 Engine Initializing..."
+);
 
 try {
 
@@ -43,31 +45,25 @@ try {
 
   }
 
-console.log("updates");
-const updatesData =
-  await updatesResponse.json();
-console.log("updates OK");
+  const updatesData =
+    await updatesResponse.json();
 
-console.log("states");
-const statesData =
-  await statesResponse.json();
-console.log("states OK");
+  const statesData =
+    await statesResponse.json();
 
-console.log("entities");
-const entityData =
-  await entitiesResponse.json();
-console.log("entities OK");
+  const entityData =
+    await entitiesResponse.json();
 
-console.log("industries");
-const industriesData =
-  await industriesResponse.json();
-console.log("industries OK");
+  const industriesData =
+    await industriesResponse.json();
 
-console.log("engine");
-const engineData =
-  await engineResponse.json();
-console.log("engine OK");
-  
+  const engineData =
+    await engineResponse.json();
+
+  console.log(
+    "GrowItWithHR V6 Engine Loaded Successfully"
+  );
+
   /* ==========================================
      DOM REFERENCES
   ========================================== */
