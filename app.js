@@ -336,22 +336,29 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           <ul>
           <li>
-          https://labour.gov.in
-          </li>
+            <a href="https://labour.gov.in" target="_blank">
+            Ministry of Labour & Employment
+            </a>
+        </li>
+
+        <li>
+            <a href="https://epfindia.gov.in" target="_blank">
+            Provident Fund
+            </a>
+        </li>
 
           <li>
-          https://www.epfindia.gov.in
+            <a href="https://esic.gov.in" target="_blank">
+            ESIC
+            </a>
           </li>
-
+          
           <li>
-          https://www.esic.gov.in
+            <a href="https://indiacode.nic.in" target="_blank">
+            IndiaCode
+            </a>
           </li>
-
-          <li>
-          https://www.indiacode.nic.in
-          </li>
-          </ul>
-
+          
           <p>
           <strong>
           Last Verified:
