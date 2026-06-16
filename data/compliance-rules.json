@@ -1,1 +1,33 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-06-22",
+
+  "scoring": {
+    "baseScore": 50,
+    "maxScore": 100,
+    "note": "Illustrative beta score only. Not a legal or compliance assessment."
+  },
+
+  "employeeThresholds": [
+    {
+      "range": "1-9",
+      "stage": "Founding Stage",
+      "score": 55
+    },
+    {
+      "range": "10-19",
+      "stage": "Early Growth",
+      "score": 60
+    },
+    {
+      "range": "20-49",
+      "stage": "Scaling",
+      "score": 70
+    },
+    {
+      "range": "50-99",
+      "stage": "Structured Growth",
+      "score": 75
+    },
+   
 
