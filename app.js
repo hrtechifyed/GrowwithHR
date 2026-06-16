@@ -3,21 +3,34 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
 
     // =====================================
-    // LOAD UPDATES
+    // LOAD ALL DATA FILES
     // =====================================
 
-    const updatesResponse =
-      await fetch("./data/updates.json");
+    const [
+      updatesResponse,
+      statesResponse,
+      entitiesResponse,
+      industriesResponse,
+      engineResponse
+    ] = await Promise.all([
+      fetch("./data/updates.json"),
+      fetch("./data/states.json"),
+      fetch("./data/entity-types.json"),
+      fetch("./data/industries.json"),
+      fetch("./data/compliance-engine.json")
+    ]);
 
     const updatesData =
       await updatesResponse.json();
 
-    // =====================================
-    // LOAD COMPLIANCE ENGINE
-    // =====================================
+    const statesData =
+      await statesResponse.json();
 
-    const engineResponse =
-      await fetch("./data/compliance-engine.json");
+    const entityData =
+      await entitiesResponse.json();
+
+    const industriesData =
+      await industriesResponse.json();
 
     const engineData =
       await engineResponse.json();
@@ -26,11 +39,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     // LAST VERIFIED
     // =====================================
 
-    const trustVerified =
+    const lastVerified =
       document.getElementById("lastVerified");
 
-    if (trustVerified) {
-      trustVerified.innerText =
+    if (lastVerified) {
+      lastVerified.innerText =
         `Last Verified: ${updatesData.lastVerified}`;
     }
 
@@ -58,12 +71,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       updatesData.recentUpdates.forEach(update => {
 
-        const updateCard =
+        const card =
           document.createElement("div");
 
-        updateCard.className = "alert-item";
+        card.className =
+          "alert-item";
 
-        updateCard.innerHTML = `
+        card.innerHTML = `
           <strong>${update.title}</strong>
           <br>
           Source: ${update.source}
@@ -71,21 +85,15 @@ document.addEventListener("DOMContentLoaded", async () => {
           Date: ${update.date}
         `;
 
-        updatesContainer.appendChild(updateCard);
+        updatesContainer.appendChild(card);
 
       });
 
     }
 
     // =====================================
-    // LOAD STATES
+    // POPULATE STATES
     // =====================================
-
-    const statesResponse =
-      await fetch("./data/states.json");
-
-    const statesData =
-      await statesResponse.json();
 
     const stateSelect =
       document.getElementById("stateSelect");
@@ -112,14 +120,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // =====================================
-    // LOAD ENTITY TYPES
+    // POPULATE ENTITY TYPES
     // =====================================
-
-    const entityResponse =
-      await fetch("./data/entity-types.json");
-
-    const entityData =
-      await entityResponse.json();
 
     const entitySelect =
       document.getElementById("entitySelect");
@@ -147,31 +149,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // =====================================
-    // LOAD INDUSTRIES
+    // POPULATE INDUSTRIES
     // =====================================
-
-    const industryResponse =
-      await fetch("./data/industries.json");
-
-    const industryData =
-      await industryResponse.json();
 
     const industrySelect =
       document.getElementById("industrySelect");
 
     if (industrySelect) {
 
-      industryData.industries.forEach(industry => {
+      industriesData.industries.forEach(
+        industry => {
 
-        const option =
-          document.createElement("option");
+          const option =
+            document.createElement("option");
 
-        option.value = industry.name;
-        option.textContent = industry.name;
+          option.value =
+            industry.name;
 
-        industrySelect.appendChild(option);
+          option.textContent =
+            industry.name;
 
-      });
+          industrySelect.appendChild(
+            option
+          );
+
+        }
+      );
 
     }
 
@@ -179,9 +182,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     // EMPLOYEE BAND HELPER
     // =====================================
 
-    function getEmployeeNumber(employeeBand) {
+    function getEmployeeCountValue(
+      band
+    ) {
 
-      const mapping = {
+      const bands = {
+
         "1-5": 5,
         "6-9": 9,
         "10-19": 19,
@@ -196,9 +202,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         "25000-49999": 49999,
         "50000-99999": 99999,
         "100000+": 100000
+
       };
 
-      return mapping[employeeBand] || 0;
+      return bands[band] || 0;
 
     }
 
@@ -207,7 +214,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     // =====================================
 
     const generateButton =
-      document.getElementById("generateReport");
+      document.getElementById(
+        "generateReport"
+      );
 
     if (generateButton) {
 
@@ -216,19 +225,29 @@ document.addEventListener("DOMContentLoaded", async () => {
         () => {
 
           const state =
-            document.getElementById("stateSelect").value;
+            document.getElementById(
+              "stateSelect"
+            ).value;
 
           const entity =
-            document.getElementById("entitySelect").value;
+            document.getElementById(
+              "entitySelect"
+            ).value;
 
           const industry =
-            document.getElementById("industrySelect").value;
+            document.getElementById(
+              "industrySelect"
+            ).value;
 
-          const employeeCount =
-            document.getElementById("employeeCount").value;
+          const employeeBand =
+            document.getElementById(
+              "employeeCount"
+            ).value;
 
           const reportContainer =
-            document.getElementById("reportContainer");
+            document.getElementById(
+              "reportContainer"
+            );
 
           if (
             !state ||
@@ -238,7 +257,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             reportContainer.innerHTML = `
               <div class="alert-item">
-                Please select State, Entity Type and Industry.
+                Please complete all selections before generating a report.
               </div>
             `;
 
@@ -246,12 +265,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           }
 
-          const employeeNumber =
-            getEmployeeNumber(employeeCount);
+          const employeeCount =
+            getEmployeeCountValue(
+              employeeBand
+            );
 
           let mandatory = [];
           let recommended = [];
-          let futureReadiness = [];
+          let future = [];
 
           // ==========================
           // STATE RULES
@@ -263,7 +284,11 @@ document.addEventListener("DOMContentLoaded", async () => {
           ) {
 
             mandatory.push(
-              ...engineData.stateRules[state].mandatory
+              ...(
+                engineData.stateRules[
+                  state
+                ].mandatory || []
+              )
             );
 
           }
@@ -278,19 +303,17 @@ document.addEventListener("DOMContentLoaded", async () => {
           ) {
 
             const entityRule =
-              engineData.entityRules[entity];
+              engineData.entityRules[
+                entity
+              ];
 
-            if (entityRule.mandatory) {
-              mandatory.push(
-                ...entityRule.mandatory
-              );
-            }
+            mandatory.push(
+              ...(entityRule.mandatory || [])
+            );
 
-            if (entityRule.recommended) {
-              recommended.push(
-                ...entityRule.recommended
-              );
-            }
+            recommended.push(
+              ...(entityRule.recommended || [])
+            );
 
           }
 
@@ -300,54 +323,46 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           if (
             engineData.industryRules &&
-            engineData.industryRules[industry]
+            engineData.industryRules[
+              industry
+            ]
           ) {
 
             recommended.push(
-              ...engineData.industryRules[industry]
-                .recommended
+              ...(
+                engineData.industryRules[
+                  industry
+                ].recommended || []
+              )
             );
 
           }
 
           // ==========================
-          // EMPLOYEE THRESHOLD RULES
+          // EMPLOYEE THRESHOLDS
           // ==========================
 
           Object.keys(
-            engineData.employeeThresholdRules
+            engineData.employeeThresholdRules || {}
           ).forEach(threshold => {
 
             if (
-              employeeNumber >=
+              employeeCount >=
               parseInt(threshold)
             ) {
 
-              const thresholdRule =
-                engineData
-                .employeeThresholdRules[
+              const rule =
+                engineData.employeeThresholdRules[
                   threshold
                 ];
 
-              if (
-                thresholdRule.mandatory
-              ) {
+              mandatory.push(
+                ...(rule.mandatory || [])
+              );
 
-                mandatory.push(
-                  ...thresholdRule.mandatory
-                );
-
-              }
-
-              if (
-                thresholdRule.recommended
-              ) {
-
-                recommended.push(
-                  ...thresholdRule.recommended
-                );
-
-              }
+              recommended.push(
+                ...(rule.recommended || [])
+              );
 
             }
 
@@ -357,24 +372,31 @@ document.addEventListener("DOMContentLoaded", async () => {
           // FUTURE READINESS
           // ==========================
 
-          Object.keys(
+          if (
             engineData.futureReadiness
-          ).forEach(threshold => {
+          ) {
 
-            if (
-              employeeNumber >=
-              parseInt(threshold)
-            ) {
+            Object.keys(
+              engineData.futureReadiness
+            ).forEach(threshold => {
 
-              futureReadiness.push(
-                ...engineData.futureReadiness[
-                  threshold
-                ]
-              );
+              if (
+                employeeCount >=
+                parseInt(threshold)
+              ) {
 
-            }
+                future.push(
+                  ...engineData
+                    .futureReadiness[
+                      threshold
+                    ]
+                );
 
-          });
+              }
+
+            });
+
+          }
 
           // ==========================
           // REMOVE DUPLICATES
@@ -386,56 +408,74 @@ document.addEventListener("DOMContentLoaded", async () => {
           recommended =
             [...new Set(recommended)];
 
-          futureReadiness =
-            [...new Set(futureReadiness)];
+          future =
+            [...new Set(future)];
 
           // ==========================
-          // BUILD SOURCES
+          // EMPTY FALLBACKS
+          // ==========================
+
+          if (
+            mandatory.length === 0
+          ) {
+
+            mandatory.push(
+              "No mandatory rules currently configured."
+            );
+
+          }
+
+          if (
+            recommended.length === 0
+          ) {
+
+            recommended.push(
+              "No recommendations currently configured."
+            );
+
+          }
+
+          if (
+            future.length === 0
+          ) {
+
+            future.push(
+              "Continue monitoring compliance requirements as the organisation grows."
+            );
+
+          }
+
+          // ==========================
+          // SOURCES
           // ==========================
 
           let sourceHTML = "";
 
-          engineData.sources.forEach(source => {
+          if (
+            engineData.sources
+          ) {
 
-            sourceHTML += `
-            <li>
-              <a
-                href="${source.url}"
-                target="_blank">
-                ${source.name}
-              </a>
-            </li>
-            `;
+            engineData.sources.forEach(
+              source => {
 
-          });
+                sourceHTML += `
+                <li>
+                  <a
+                    href="${source.url}"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    ${source.name}
+                  </a>
+                </li>
+                `;
 
-          // ==========================
-          // BUILD LISTS
-          // ==========================
+              }
+            );
 
-          const mandatoryHTML =
-            mandatory
-              .map(item =>
-                `<li>✓ ${item}</li>`
-              )
-              .join("");
-
-          const recommendedHTML =
-            recommended
-              .map(item =>
-                `<li>✓ ${item}</li>`
-              )
-              .join("");
-
-          const futureHTML =
-            futureReadiness
-              .map(item =>
-                `<li>✓ ${item}</li>`
-              )
-              .join("");
+          }
 
           // ==========================
-          // REPORT
+          // REPORT OUTPUT
           // ==========================
 
           reportContainer.innerHTML = `
@@ -452,11 +492,11 @@ document.addEventListener("DOMContentLoaded", async () => {
               <div>
 
                 <h2>
-                GrowItWithHR Compliance Advisory Report
+                GrowItWithHR Advisory Report
                 </h2>
 
                 <p>
-                Generated On:
+                Generated:
                 ${new Date().toLocaleDateString()}
                 </p>
 
@@ -466,9 +506,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             <hr>
 
-            <h3>
-            Company Profile
-            </h3>
+            <h3>Organisation Profile</h3>
 
             <p>
             <strong>State:</strong>
@@ -487,27 +525,31 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             <p>
             <strong>Employee Count:</strong>
-            ${employeeCount}
+            ${employeeBand}
             </p>
 
             <div class="report-highlight">
 
               <h3>
-              Immediate Priorities (0–30 Days)
+              Immediate Priorities
               </h3>
 
               <ul>
-              ${mandatoryHTML}
+              ${mandatory.map(item =>
+                `<li>✓ ${item}</li>`
+              ).join("")}
               </ul>
 
             </div>
 
             <h3>
-            Near-Term Priorities (30–90 Days)
+            Near-Term HR Priorities
             </h3>
 
             <ul>
-            ${recommendedHTML}
+            ${recommended.map(item =>
+              `<li>✓ ${item}</li>`
+            ).join("")}
             </ul>
 
             <h3>
@@ -515,7 +557,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             </h3>
 
             <ul>
-            ${futureHTML}
+            ${future.map(item =>
+              `<li>✓ ${item}</li>`
+            ).join("")}
             </ul>
 
             <h3>
@@ -547,7 +591,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           `;
 
         }
-
       );
 
     }
@@ -555,11 +598,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (error) {
 
     console.error(
-      "GrowItWithHR Engine Error",
+      "GrowItWithHR Engine Error:",
       error
     );
 
   }
 
 });
-
