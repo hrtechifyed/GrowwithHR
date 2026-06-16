@@ -4,23 +4,29 @@
     "Ministry of Labour",
     "EPFO",
     "ESIC",
-    "India Code"
+    "India Code",
+    "State Labour Departments"
   ],
   "recentUpdates": [
     {
       "date": "2026-06-22",
       "source": "EPFO",
-      "title": "Compliance review completed"
+      "title": "EPFO compliance review completed"
     },
     {
       "date": "2026-06-22",
       "source": "ESIC",
-      "title": "Compliance review completed"
+      "title": "ESIC compliance review completed"
     },
     {
       "date": "2026-06-22",
       "source": "Ministry of Labour",
-      "title": "Compliance review completed"
+      "title": "Labour compliance review completed"
+    },
+    {
+      "date": "2026-06-22",
+      "source": "India Code",
+      "title": "Statutory reference validation completed"
     }
   ]
 }
