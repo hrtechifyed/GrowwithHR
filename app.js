@@ -2,9 +2,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
 
-    // -------------------------
-    // Load Updates
-    // -------------------------
+    // =========================================
+    // LOAD UPDATES
+    // =========================================
 
     const updatesResponse =
       await fetch("./data/updates.json");
@@ -59,9 +59,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     }
 
-    // -------------------------
-    // Load States
-    // -------------------------
+    // =========================================
+    // LOAD STATES
+    // =========================================
 
     const statesResponse =
       await fetch("./data/states.json");
@@ -74,18 +74,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (stateSelect) {
 
-      const allLocations = [
+      const locations = [
         ...statesData.states,
         ...statesData.unionTerritories
       ];
 
-      allLocations.forEach(state => {
+      locations.forEach(location => {
 
         const option =
           document.createElement("option");
 
-        option.value = state;
-        option.textContent = state;
+        option.value = location;
+        option.textContent = location;
 
         stateSelect.appendChild(option);
 
@@ -93,9 +93,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     }
 
-    // -------------------------
-    // Load Entity Types
-    // -------------------------
+    // =========================================
+    // LOAD ENTITY TYPES
+    // =========================================
 
     const entityResponse =
       await fetch("./data/entity-types.json");
@@ -128,9 +128,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     }
 
-    // -------------------------
-    // Load Industries
-    // -------------------------
+    // =========================================
+    // LOAD INDUSTRIES
+    // =========================================
 
     const industryResponse =
       await fetch("./data/industries.json");
@@ -157,9 +157,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     }
 
-    // -------------------------
-    // Generate Assessment
-    // -------------------------
+    // =========================================
+    // GENERATE REPORT
+    // =========================================
 
     const generateButton =
       document.getElementById("generateReport");
@@ -184,6 +184,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           const reportContainer =
             document.getElementById("reportContainer");
+
+          if (
+            !state ||
+            !entity ||
+            !industry
+          ) {
+
+            reportContainer.innerHTML = `
+              <div class="alert-item">
+              Please select State, Entity Type and Industry.
+              </div>
+            `;
+
+            return;
+
+          }
 
           let score = 72;
           let risk = "Medium";
@@ -214,7 +230,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           if (
             employeeCount === "250-499" ||
             employeeCount === "500-999" ||
-            employeeCount === "1000-4999"
+            employeeCount === "1000-4999" ||
+            employeeCount === "5000-9999" ||
+            employeeCount === "10000-24999" ||
+            employeeCount === "25000-49999" ||
+            employeeCount === "50000-99999" ||
+            employeeCount === "100000+"
           ) {
 
             score = 84;
@@ -227,144 +248,126 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           <div class="example-card">
 
-          <h2>Compliance Assessment Report</h2>
+          <div class="report-header">
+
+          <img
+          src="assets/hrtechify-logo.png"
+          alt="HRTechify Logo"
+          class="report-logo">
+
+          <div>
+
+          <h2>
+          GrowItWithHR Assessment Report
+          </h2>
 
           <p>
-          <strong>State:</strong> ${state}
+          Generated On:
+          ${new Date().toLocaleDateString()}
           </p>
 
-          <p>
-          <strong>Entity Type:</strong> ${entity}
-          </p>
+          </div>
 
-          <p>
-          <strong>Industry:</strong> ${industry}
-          </p>
-
-          <p>
-          <strong>Employee Count:</strong> ${employeeCount}
-          </p>
+          </div>
 
           <hr>
 
-          <h3>
+          <p><strong>State:</strong> ${state}</p>
+          <p><strong>Entity Type:</strong> ${entity}</p>
+          <p><strong>Industry:</strong> ${industry}</p>
+          <p><strong>Employee Count:</strong> ${employeeCount}</p>
+
+          <div class="score-box">
+
+          <h2>${score}/100</h2>
+
+          <p>
           Compliance Readiness Score
-          </h3>
-
-          <p>
-          <strong>${score}/100</strong>
           </p>
 
-          <p>
-          Beta Score –
-          illustrative only.
-          </p>
+          <div class="risk-badge">
+          ${risk} Risk
+          </div>
 
-          <h3>
-          Risk Rating
-          </h3>
+          </div>
 
-          <p>
-          ${risk}
-          </p>
+          <h3>Growth Stage</h3>
 
-          <h3>
-          Growth Stage
-          </h3>
+          <p>${stage}</p>
+
+          <div class="report-highlight">
+
+          <h3>Executive Summary</h3>
 
           <p>
-          ${stage}
+          Based on the selected profile, the organisation appears to be in a growth phase requiring structured compliance governance, workforce planning and people operations maturity.
           </p>
 
-          <h3>
-          Executive Summary
-          </h3>
+          </div>
 
-          <p>
-          Based on the selected profile,
-          the organisation appears to be in
-          a growth phase requiring structured
-          compliance governance and people
-          operations planning.
-          </p>
-
-          <h3>
-          Mandatory Compliance Actions
-          </h3>
+          <h3>Mandatory Compliance Actions</h3>
 
           <ul>
-          <li>✓ Shops & Establishments Review</li>
-          <li>✓ Employment Documentation Review</li>
-          <li>✓ Payroll Compliance Review</li>
-          <li>✓ POSH Compliance Assessment</li>
+            <li>✓ Shops & Establishments Review</li>
+            <li>✓ Employment Documentation Review</li>
+            <li>✓ Payroll Compliance Review</li>
+            <li>✓ POSH Compliance Assessment</li>
           </ul>
 
-          <h3>
-          Recommended HR Actions
-          </h3>
+          <h3>Recommended HR Actions</h3>
 
           <ul>
+            <li>🔴 Employee Handbook (0–30 Days)</li>
+            <li>🟠 Performance Framework (30–90 Days)</li>
+            <li>🟡 Manager Capability Program (60–180 Days)</li>
+            <li>🟢 Workforce Planning Framework (90–365 Days)</li>
+          </ul>
+
+          <h3>Official Sources</h3>
+
+          <ul>
+
           <li>
-          Priority 1:
-          Employee Handbook
-          (0-30 Days)
+          <a href="https://labour.gov.in" target="_blank">
+          Ministry of Labour & Employment
+          </a>
           </li>
 
           <li>
-          Priority 2:
-          Performance Framework
-          (30-90 Days)
+          <a href="https://www.epfindia.gov.in" target="_blank">
+          Employees' Provident Fund Organisation (EPFO)
+          </a>
           </li>
 
           <li>
-          Priority 3:
-          Manager Capability Program
-          (60-180 Days)
+          <a href="https://www.esic.gov.in" target="_blank">
+          Employees' State Insurance Corporation (ESIC)
+          </a>
           </li>
 
           <li>
-          Priority 4:
-          Workforce Planning
-          (90-365 Days)
+          <a href="https://www.indiacode.nic.in" target="_blank">
+          India Code
+          </a>
           </li>
 
           </ul>
 
-          <h3>
-          Sources
-          </h3>
-
-          <ul>
-          <li>
-            <a href="https://labour.gov.in" target="_blank">
-            Ministry of Labour & Employment
-            </a>
-        </li>
-
-        <li>
-            <a href="https://epfindia.gov.in" target="_blank">
-            Provident Fund
-            </a>
-        </li>
-
-          <li>
-            <a href="https://esic.gov.in" target="_blank">
-            ESIC
-            </a>
-          </li>
-          
-          <li>
-            <a href="https://indiacode.nic.in" target="_blank">
-            IndiaCode
-            </a>
-          </li>
-          
           <p>
-          <strong>
-          Last Verified:
-          </strong>
+          <strong>Last Verified:</strong>
           ${updatesData.lastVerified}
           </p>
+
+          <p>
+          <strong>Disclaimer:</strong>
+          This assessment is for informational purposes only and should not be considered legal advice.
+          </p>
+
+          <button
+          class="primary-btn print-btn"
+          onclick="window.print()">
+          Print / Save PDF
+          </button>
 
           </div>
 
@@ -378,8 +381,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   } catch (error) {
 
-    console.error(error);
+    console.error(
+      "Assessment Engine Error",
+      error
+    );
 
   }
 
 });
+
