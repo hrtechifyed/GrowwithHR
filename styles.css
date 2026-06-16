@@ -375,7 +375,7 @@ margin-top:50px;
 
 .report-document{
 
-background:#ffffff;
+background:#000000;
 
 border-radius:24px;
 
@@ -408,7 +408,7 @@ top:50%;
 left:50%;
 
 transform:
-translate(-50%,-50%)
+translate(-10%,-10%)
 rotate(-35deg);
 
 font-size:90px;
