@@ -227,6 +227,19 @@
       ]
     },
 
+
+        "Semiconductor": {
+      "recommended": [
+        "Shift Workforce Governance",
+        "Engineering Talent Retention Strategy",
+        "Information Security Policy",
+        "Workforce Planning Framework",
+        "Safety Compliance Program",
+        "Contractor Governance Framework",
+        "Payroll Compliance Review"
+      ]
+    },
+    
     "Consulting & Professional Services": {
       "recommended": [
         "Employment Contracts",
