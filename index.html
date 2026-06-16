@@ -134,33 +134,72 @@ Growing companies struggle to understand when to introduce policies, systems and
 
 </section>
 
-<section
-id="tool"
-class="tool">
+<section id="tool" class="tool">
 
 <div class="container">
 
-<h2>Interactive Compliance Navigator</h2>
+<h2>Compliance Readiness Assessment</h2>
 
 <p>
-GrowItWithHR is evolving into a compliance and people operations intelligence platform for Indian businesses.
+Generate an initial compliance and HR advisory snapshot for your organisation.
 </p>
 
-<div class="placeholder">
+<div class="assessment-form">
 
-Coming Soon
+<div class="form-group">
+<label>State / Union Territory</label>
+<select id="stateSelect">
+<option value="">Select</option>
+</select>
+</div>
 
-<br><br>
+<div class="form-group">
+<label>Entity Type</label>
+<select id="entitySelect">
+<option value="">Select</option>
+</select>
+</div>
 
-Dynamic compliance recommendations based on:
+<div class="form-group">
+<label>Industry</label>
+<select id="industrySelect">
+<option value="">Select</option>
+</select>
+</div>
 
-<ul>
-<li>State</li>
-<li>Industry</li>
-<li>Entity Type</li>
-<li>Employee Count</li>
-</ul>
+<div class="form-group">
+<label>Employee Count</label>
 
+<select id="employeeCount">
+<option>1-5</option>
+<option>6-9</option>
+<option>10-19</option>
+<option>20-49</option>
+<option>50-99</option>
+<option>100-249</option>
+<option>250-499</option>
+<option>500-999</option>
+<option>1000-4999</option>
+<option>5000-9999</option>
+<option>10000-24999</option>
+<option>25000-49999</option>
+<option>50000-99999</option>
+<option>100000+</option>
+</select>
+
+</div>
+
+<button
+id="generateReport"
+class="primary-btn">
+Generate Assessment
+</button>
+
+</div>
+
+<div
+id="reportContainer"
+class="report-container">
 </div>
 
 </div>
