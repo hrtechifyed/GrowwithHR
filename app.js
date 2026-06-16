@@ -754,18 +754,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             <div class="score-grid">
 
-              <div class="score-card">
-
-                <div class="score-number">
-                  ${score}
-                </div>
-
-                <div class="score-text">
-                  Compliance Readiness Score
-                </div>
-
-              </div>
-
+             
               <div class="score-card">
 
                 <div class="score-number">
