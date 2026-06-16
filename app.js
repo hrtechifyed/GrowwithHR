@@ -45,20 +45,15 @@ try {
 
   }
 
-  const updatesData =
-    await updatesResponse.json();
+ const updatesText =
+  await updatesResponse.text();
 
-  const statesData =
-    await statesResponse.json();
+console.log(
+  "UPDATES RAW:",
+  updatesText
+);
 
-  const entityData =
-    await entitiesResponse.json();
-
-  const industriesData =
-    await industriesResponse.json();
-
-  const engineData =
-    await engineResponse.json();
+return;
 
   console.log(
     "GrowItWithHR V6 Engine Loaded Successfully"
