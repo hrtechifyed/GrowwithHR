@@ -240,9 +240,17 @@ try {
 
           <h3>
 
-            ${update.title}
+<a
+href="${update.url}"
+target="_blank"
+rel="noopener noreferrer"
+class="update-link">
 
-          </h3>
+${update.title}
+
+</a>
+
+</h3>
 
           <p>
 
