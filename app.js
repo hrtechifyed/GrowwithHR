@@ -1,910 +1,863 @@
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener(
+"DOMContentLoaded",
+async () => {
+console.log(
+  "GrowItWithHR V6 Engine Initializing..."
+);
 
-  try {
+try {
 
-    // =====================================
-    // LOAD DATA FILES
-    // =====================================
+  /* ==========================================
+     LOAD JSON FILES
+  ========================================== */
 
-    const [
-      updatesResponse,
-      statesResponse,
-      entitiesResponse,
-      industriesResponse,
-      engineResponse
-    ] = await Promise.all([
-      fetch("./data/updates.json"),
-      fetch("./data/states.json"),
-      fetch("./data/entity-types.json"),
-      fetch("./data/industries.json"),
-      fetch("./data/compliance-engine.json")
-    ]);
+  const [
+    updatesResponse,
+    statesResponse,
+    entitiesResponse,
+    industriesResponse,
+    engineResponse
+  ] = await Promise.all([
 
-    if (
-      !updatesResponse.ok ||
-      !statesResponse.ok ||
-      !entitiesResponse.ok ||
-      !industriesResponse.ok ||
-      !engineResponse.ok
-    ) {
-      throw new Error(
-        "One or more JSON files failed to load."
-      );
-    }
+    fetch("./data/updates.json"),
 
-    const updatesData =
-      await updatesResponse.json();
+    fetch("./data/states.json"),
 
-    const statesData =
-      await statesResponse.json();
+    fetch("./data/entity-types.json"),
 
-    const entityData =
-      await entitiesResponse.json();
+    fetch("./data/industries.json"),
 
-    const industriesData =
-      await industriesResponse.json();
+    fetch("./data/compliance-engine.json")
 
-    const engineData =
-      await engineResponse.json();
+  ]);
 
-    console.log(
-      "GrowItWithHR Engine Loaded Successfully"
+  if (
+    !updatesResponse.ok ||
+    !statesResponse.ok ||
+    !entitiesResponse.ok ||
+    !industriesResponse.ok ||
+    !engineResponse.ok
+  ) {
+
+    throw new Error(
+      "One or more data files failed to load."
     );
 
-    // =====================================
-    // UPDATE LAST VERIFIED
-    // =====================================
+  }
 
-    const lastVerified =
-      document.getElementById(
-        "lastVerified"
-      );
+  const updatesData =
+    await updatesResponse.json();
 
-    if (lastVerified) {
+  const statesData =
+    await statesResponse.json();
 
-      lastVerified.innerText =
-        `Last Verified: ${updatesData.lastVerified}`;
+  const entityData =
+    await entitiesResponse.json();
 
-    }
+  const industriesData =
+    await industriesResponse.json();
 
-    const exampleVerified =
-      document.getElementById(
-        "exampleVerified"
-      );
+  const engineData =
+    await engineResponse.json();
 
-    if (exampleVerified) {
+  console.log(
+    "GrowItWithHR V6 Engine Loaded Successfully"
+  );
 
-      exampleVerified.innerText =
-        `Last Verified: ${updatesData.lastVerified}`;
+  /* ==========================================
+     DOM REFERENCES
+  ========================================== */
 
-    }
+  const stateSelect =
+    document.getElementById(
+      "stateSelect"
+    );
 
-    // =====================================
-    // RECENT UPDATES
-    // =====================================
+  const entitySelect =
+    document.getElementById(
+      "entitySelect"
+    );
 
-    const updatesContainer =
-      document.getElementById(
-        "updatesContainer"
-      );
+  const industrySelect =
+    document.getElementById(
+      "industrySelect"
+    );
 
-    if (
-      updatesContainer &&
-      updatesData.recentUpdates
-    ) {
+  const employeeCountSelect =
+    document.getElementById(
+      "employeeCount"
+    );
 
-      updatesContainer.innerHTML = "";
+  const generateButton =
+    document.getElementById(
+      "generateReport"
+    );
 
-      updatesData.recentUpdates.forEach(
-        update => {
+  const reportContainer =
+    document.getElementById(
+      "reportContainer"
+    );
 
-          const card =
-            document.createElement("div");
+  const updatesContainer =
+    document.getElementById(
+      "updatesContainer"
+    );
 
-          card.className =
-            "alert-item";
+  /* ==========================================
+     POPULATE STATES
+  ========================================== */
 
-          card.innerHTML = `
-            <strong>${update.title}</strong>
-            <br>
-            Source: ${update.source}
-            <br>
-            Date: ${update.date}
-          `;
+  if (stateSelect) {
 
-          updatesContainer.appendChild(
-            card
+    const locations = [
+
+      ...statesData.states,
+
+      ...statesData.unionTerritories
+
+    ];
+
+    locations.forEach(
+      location => {
+
+        const option =
+          document.createElement(
+            "option"
           );
 
-        }
-      );
+        option.value =
+          location;
 
-    }
+        option.textContent =
+          location;
 
-    // =====================================
-    // POPULATE STATES
-    // =====================================
-
-    const stateSelect =
-      document.getElementById(
-        "stateSelect"
-      );
-
-    if (stateSelect) {
-
-      const locations = [
-
-        ...(statesData.states || []),
-
-        ...(statesData.unionTerritories || [])
-
-      ];
-
-      locations.forEach(
-        location => {
-
-          const option =
-            document.createElement(
-              "option"
-            );
-
-          option.value =
-            location;
-
-          option.textContent =
-            location;
-
-          stateSelect.appendChild(
-            option
-          );
-
-        }
-      );
-
-    }
-
-    // =====================================
-    // POPULATE ENTITY TYPES
-    // =====================================
-
-    const entitySelect =
-      document.getElementById(
-        "entitySelect"
-      );
-
-    if (entitySelect) {
-
-      const entities = [
-
-        ...(entityData.businessEntities || []),
-
-        ...(entityData.nonProfitEntities || []),
-
-        ...(entityData.specialCategories || [])
-
-      ];
-
-      entities.forEach(
-        entity => {
-
-          const option =
-            document.createElement(
-              "option"
-            );
-
-          option.value =
-            entity.name;
-
-          option.textContent =
-            entity.name;
-
-          entitySelect.appendChild(
-            option
-          );
-
-        }
-      );
-
-    }
-
-    // =====================================
-    // POPULATE INDUSTRIES
-    // =====================================
-
-    const industrySelect =
-      document.getElementById(
-        "industrySelect"
-      );
-
-    if (industrySelect) {
-
-      industriesData.industries.forEach(
-        industry => {
-
-          const option =
-            document.createElement(
-              "option"
-            );
-
-          option.value =
-            industry.name;
-
-          option.textContent =
-            industry.name;
-
-          industrySelect.appendChild(
-            option
-          );
-
-        }
-      );
-
-    }
-
-    // =====================================
-    // EMPLOYEE BAND HELPER
-    // =====================================
-
-    function getEmployeeCountValue(
-      band
-    ) {
-
-      const bands = {
-
-        "1-5": 5,
-        "6-9": 9,
-        "10-19": 19,
-        "20-49": 49,
-        "50-99": 99,
-        "100-249": 249,
-        "250-499": 499,
-        "500-999": 999,
-        "1000-4999": 4999,
-        "5000-9999": 9999,
-        "10000-24999": 24999,
-        "25000-49999": 49999,
-        "50000-99999": 99999,
-        "100000+": 100000
-
-      };
-
-      return bands[band] || 0;
-
-    }
-
-    // =====================================
-    // REPORT ID GENERATOR
-    // =====================================
-
-    function generateReportId() {
-
-      const number =
-        Math.floor(
-          100000 +
-          Math.random() * 900000
+        stateSelect.appendChild(
+          option
         );
 
-      return `#HRTechify_${number}`;
-
-    }
-
-    // =====================================
-    // COMPLIANCE SCORE
-    // =====================================
-
-    function calculateScore(
-      mandatoryCount,
-      recommendedCount
-    ) {
-
-      let score = 50;
-
-      score +=
-        mandatoryCount * 5;
-
-      score +=
-        recommendedCount * 2;
-
-      if (score > 100) {
-        score = 100;
       }
+    );
 
-      return score;
+  }
 
-    }
+  /* ==========================================
+     POPULATE ENTITY TYPES
+  ========================================== */
 
-    // =====================================
-    // RISK LEVEL
-    // =====================================
+  if (entitySelect) {
 
-    function getRiskLevel(
-      score
-    ) {
+    const entities = [
 
-      if (score >= 85) {
+      ...entityData.businessEntities,
 
-        return {
-          label:"Low Risk",
-          className:"risk-low"
-        };
+      ...entityData.nonProfitEntities,
 
-      }
+      ...entityData.specialCategories
 
-      if (score >= 70) {
+    ];
 
-        return {
-          label:"Moderate Risk",
-          className:"risk-medium"
-        };
+    entities.forEach(
+      entity => {
 
-      }
-
-      return {
-        label:"High Risk",
-        className:"risk-high"
-      };
-
-    }
-
-    // =====================================
-    // EXECUTIVE SUMMARY
-    // =====================================
-
-    function generateSummary(
-      state,
-      entity,
-      industry,
-      employeeBand,
-      mandatoryCount,
-      recommendedCount
-    ) {
-
-      return `
-      Based on the selected profile,
-      the organisation operates as a
-      ${entity}
-      in
-      ${state}
-      within the
-      ${industry}
-      sector.
-
-      At the current workforce size of
-      ${employeeBand},
-      the assessment identified
-      ${mandatoryCount}
-      immediate compliance priorities
-      and
-      ${recommendedCount}
-      recommended HR governance actions.
-
-      Organisations at this stage
-      should focus on strengthening
-      compliance foundations,
-      workforce governance,
-      policy frameworks,
-      documentation controls
-      and future scalability.
-      `;
-
-    }
-
-    // =====================================
-    // PART 2 STARTS HERE
-    // =====================================
-    // =====================================
-    // GENERATE REPORT BUTTON
-    // =====================================
-
-    const generateButton =
-      document.getElementById(
-        "generateReport"
-      );
-
-    if (generateButton) {
-
-      generateButton.addEventListener(
-        "click",
-        () => {
-
-          const state =
-            document.getElementById(
-              "stateSelect"
-            ).value;
-
-          const entity =
-            document.getElementById(
-              "entitySelect"
-            ).value;
-
-          const industry =
-            document.getElementById(
-              "industrySelect"
-            ).value;
-
-          const employeeBand =
-            document.getElementById(
-              "employeeCount"
-            ).value;
-
-          const reportContainer =
-            document.getElementById(
-              "reportContainer"
-            );
-
-          // ==========================
-          // VALIDATION
-          // ==========================
-
-          if (
-            !state ||
-            !entity ||
-            !industry
-          ) {
-
-            reportContainer.innerHTML = `
-              <div class="alert-item">
-                Please complete all selections before generating a report.
-              </div>
-            `;
-
-            return;
-
-          }
-
-          const employeeCount =
-            getEmployeeCountValue(
-              employeeBand
-            );
-
-          let mandatory = [];
-          let recommended = [];
-          let future = [];
-
-          // ==========================
-          // STATE RULES
-          // ==========================
-
-          if (
-            engineData.stateRules &&
-            engineData.stateRules[state]
-          ) {
-
-            mandatory.push(
-              ...(
-                engineData.stateRules[state]
-                  .mandatory || []
-              )
-            );
-
-          }
-
-          // ==========================
-          // ENTITY RULES
-          // ==========================
-
-          if (
-            engineData.entityRules &&
-            engineData.entityRules[entity]
-          ) {
-
-            const entityRule =
-              engineData.entityRules[
-                entity
-              ];
-
-            mandatory.push(
-              ...(entityRule.mandatory || [])
-            );
-
-            recommended.push(
-              ...(entityRule.recommended || [])
-            );
-
-          }
-
-          // ==========================
-          // INDUSTRY RULES
-          // ==========================
-
-          if (
-            engineData.industryRules &&
-            engineData.industryRules[
-              industry
-            ]
-          ) {
-
-            recommended.push(
-              ...(
-                engineData.industryRules[
-                  industry
-                ].recommended || []
-              )
-            );
-
-          }
-
-          // ==========================
-          // EMPLOYEE THRESHOLDS
-          // ==========================
-
-          Object.keys(
-            engineData.employeeThresholdRules || {}
-          ).forEach(
-            threshold => {
-
-              if (
-                employeeCount >=
-                parseInt(threshold)
-              ) {
-
-                const rule =
-                  engineData
-                    .employeeThresholdRules[
-                      threshold
-                    ];
-
-                mandatory.push(
-                  ...(rule.mandatory || [])
-                );
-
-                recommended.push(
-                  ...(rule.recommended || [])
-                );
-
-              }
-
-            }
+        const option =
+          document.createElement(
+            "option"
           );
 
-          // ==========================
-          // FUTURE READINESS
-          // ==========================
+        option.value =
+          entity.name;
 
-          Object.keys(
-            engineData.futureReadiness || {}
-          ).forEach(
-            threshold => {
+        option.textContent =
+          entity.name;
 
-              if (
-                employeeCount >=
-                parseInt(threshold)
-              ) {
+        entitySelect.appendChild(
+          option
+        );
 
-                future.push(
-                  ...engineData.futureReadiness[
-                    threshold
-                  ]
-                );
+      }
+    );
 
-              }
+  }
 
-            }
+  /* ==========================================
+     POPULATE INDUSTRIES
+  ========================================== */
+
+  if (industrySelect) {
+
+    industriesData.industries.forEach(
+      industry => {
+
+        const option =
+          document.createElement(
+            "option"
           );
 
-          // ==========================
-          // REMOVE DUPLICATES
-          // ==========================
+        option.value =
+          industry.name;
 
-          mandatory =
-            [...new Set(mandatory)];
+        option.textContent =
+          industry.name;
 
-          recommended =
-            [...new Set(recommended)];
+        industrySelect.appendChild(
+          option
+        );
 
-          future =
-            [...new Set(future)];
+      }
+    );
 
-          // ==========================
-          // FALLBACKS
-          // ==========================
+  }
 
-          if (
-            mandatory.length === 0
-          ) {
+  /* ==========================================
+     LOAD COMPLIANCE UPDATES
+  ========================================== */
 
-            mandatory.push(
-              "No mandatory compliance obligations currently configured."
-            );
+  if (
+    updatesContainer &&
+    updatesData.recentUpdates
+  ) {
 
-          }
+    updatesContainer.innerHTML = "";
 
-          if (
-            recommended.length === 0
-          ) {
+    updatesData.recentUpdates.forEach(
+      update => {
 
-            recommended.push(
-              "No HR recommendations currently configured."
-            );
+        const card =
+          document.createElement(
+            "div"
+          );
 
-          }
+        card.className =
+          "update-card";
 
-          if (
-            future.length === 0
-          ) {
+        card.innerHTML = `
 
-            future.push(
-              "Continue reviewing governance requirements as the organisation grows."
-            );
+          <div class="update-date">
 
-          }
+            ${update.date}
 
-          // ==========================
-          // REPORT CALCULATIONS
-          // ==========================
+          </div>
 
-          const reportId =
-            generateReportId();
+          <h3>
 
-          const score =
-            calculateScore(
-              mandatory.length,
-              recommended.length
-            );
+            ${update.title}
 
-          const risk =
-            getRiskLevel(score);
+          </h3>
 
-          const summary =
-            generateSummary(
-              state,
-              entity,
-              industry,
-              employeeBand,
-              mandatory.length,
-              recommended.length
-            );
+          <p>
 
-          // ==========================
-          // SOURCE HTML
-          // ==========================
+            Source:
+            ${update.source}
 
-          let sourceHTML = "";
+          </p>
 
-          (engineData.sources || [])
-            .forEach(source => {
+        `;
 
-              sourceHTML += `
-                <li>
-                  <a
-                    href="${source.url}"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    ${source.name}
-                  </a>
-                </li>
-              `;
+        updatesContainer.appendChild(
+          card
+        );
 
-            });
+      }
+    );
 
-          // ==========================
-          // LIST HTML
-          // ==========================
+  }
 
-          const mandatoryHTML =
-            mandatory.map(
-              item =>
-                `<li>${item}</li>`
-            ).join("");
+  /* ==========================================
+     EMPLOYEE BAND HELPER
+  ========================================== */
 
-          const recommendedHTML =
-            recommended.map(
-              item =>
-                `<li>${item}</li>`
-            ).join("");
+  function getEmployeeCountValue(
+    band
+  ) {
 
-          const futureHTML =
-            future.map(
-              item =>
-                `<li>${item}</li>`
-            ).join("");
+    const bands = {
 
-          // =====================================
-          // PART 3 STARTS HERE
-          // =====================================
-          // =====================================
-          // RENDER REPORT
-          // =====================================
+      "1-5":5,
+      "6-9":9,
+      "10-19":19,
+      "20-49":49,
+      "50-99":99,
+      "100-249":249,
+      "250-499":499,
+      "500-999":999,
+      "1000-4999":4999,
+      "5000-9999":9999,
+      "10000-24999":24999,
+      "25000-49999":49999,
+      "50000-99999":99999,
+      "100000+":100000
+
+    };
+
+    return (
+      bands[band] || 0
+    );
+
+  }
+  /* ==========================================
+     GENERATE REPORT
+  ========================================== */
+
+  if (generateButton) {
+
+    generateButton.addEventListener(
+      "click",
+      () => {
+
+        const state =
+          stateSelect.value;
+
+        const entity =
+          entitySelect.value;
+
+        const industry =
+          industrySelect.value;
+
+        const employeeBand =
+          employeeCountSelect.value;
+
+        if (
+          !state ||
+          !entity ||
+          !industry
+        ) {
 
           reportContainer.innerHTML = `
 
-          <div class="report-document">
+          <div class="report-error">
+
+            Please complete all selections
+            before generating a report.
+
+          </div>
+
+          `;
+
+          return;
+
+        }
+
+        const employeeCount =
+          getEmployeeCountValue(
+            employeeBand
+          );
+
+        let mandatory = [];
+
+        let recommended = [];
+
+        let future = [];
+
+        /* ==========================================
+           STATE RULES
+        ========================================== */
+
+        if (
+          engineData.stateRules &&
+          engineData.stateRules[state]
+        ) {
+
+          mandatory.push(
+
+            ...(
+              engineData
+                .stateRules[state]
+                .mandatory || []
+            )
+
+          );
+
+        }
+
+        /* ==========================================
+           ENTITY RULES
+        ========================================== */
+
+        if (
+          engineData.entityRules &&
+          engineData.entityRules[
+            entity
+          ]
+        ) {
+
+          const entityRule =
+
+            engineData
+              .entityRules[
+                entity
+              ];
+
+          mandatory.push(
+
+            ...(
+              entityRule.mandatory || []
+            )
+
+          );
+
+          recommended.push(
+
+            ...(
+              entityRule.recommended || []
+            )
+
+          );
+
+        }
+
+        /* ==========================================
+           INDUSTRY RULES
+        ========================================== */
+
+        if (
+          engineData.industryRules &&
+          engineData.industryRules[
+            industry
+          ]
+        ) {
+
+          recommended.push(
+
+            ...(
+              engineData
+                .industryRules[
+                  industry
+                ]
+                .recommended || []
+            )
+
+          );
+
+        }
+
+        /* ==========================================
+           EMPLOYEE THRESHOLDS
+        ========================================== */
+
+        Object.keys(
+
+          engineData
+            .employeeThresholdRules || {}
+
+        ).forEach(
+          threshold => {
+
+            if (
+
+              employeeCount >=
+              parseInt(
+                threshold
+              )
+
+            ) {
+
+              const rule =
+
+                engineData
+                  .employeeThresholdRules[
+                    threshold
+                  ];
+
+              mandatory.push(
+
+                ...(
+                  rule.mandatory || []
+                )
+
+              );
+
+              recommended.push(
+
+                ...(
+                  rule.recommended || []
+                )
+
+              );
+
+            }
+
+          }
+        );
+
+        /* ==========================================
+           FUTURE READINESS
+        ========================================== */
+
+        Object.keys(
+
+          engineData
+            .futureReadiness || {}
+
+        ).forEach(
+          threshold => {
+
+            if (
+
+              employeeCount >=
+              parseInt(
+                threshold
+              )
+
+            ) {
+
+              future.push(
+
+                ...engineData
+                  .futureReadiness[
+                    threshold
+                  ]
+
+              );
+
+            }
+
+          }
+        );
+
+        /* ==========================================
+           REMOVE DUPLICATES
+        ========================================== */
+
+        mandatory =
+          [
+            ...new Set(
+              mandatory
+            )
+          ];
+
+        recommended =
+          [
+            ...new Set(
+              recommended
+            )
+          ];
+
+        future =
+          [
+            ...new Set(
+              future
+            )
+          ];
+
+        /* ==========================================
+           FALLBACKS
+        ========================================== */
+
+        if (
+          mandatory.length === 0
+        ) {
+
+          mandatory.push(
+
+            "No immediate mandatory requirements currently configured."
+
+          );
+
+        }
+
+        if (
+          recommended.length === 0
+        ) {
+
+          recommended.push(
+
+            "No recommendations currently configured."
+
+          );
+
+        }
+
+        if (
+          future.length === 0
+        ) {
+
+          future.push(
+
+            "Continue monitoring workforce growth and compliance obligations."
+
+          );
+
+        }
+
+        /* ==========================================
+           REPORT DATA OBJECT
+        ========================================== */
+
+        const reportData = {
+
+          generatedDate:
+
+            new Date()
+              .toLocaleDateString(),
+
+          state,
+
+          entity,
+
+          industry,
+
+          employeeBand,
+
+          mandatory,
+
+          recommended,
+
+          future,
+
+          sources:
+
+            engineData.sources || [],
+
+          disclaimer:
+
+            engineData.disclaimer || ""
+
+        };
+        /* ==========================================
+           BUILD SOURCES
+        ========================================== */
+
+        let sourcesHTML = "";
+
+        reportData.sources.forEach(
+          source => {
+
+            sourcesHTML += `
+
+            <li>
+
+              <a
+              href="${source.url}"
+              target="_blank"
+              rel="noopener noreferrer">
+
+                ${source.name}
+
+              </a>
+
+            </li>
+
+            `;
+
+          }
+        );
+
+        /* ==========================================
+           BUILD REPORT
+        ========================================== */
+
+        reportContainer.innerHTML = `
+
+        <div class="report-document">
+
+          <div class="report-header">
+
+            <div class="report-brand">
+
+              <img
+              src="assets/hrtechify-logo.png"
+              alt="HRTechify Logo"
+              class="report-logo">
+
+              <div>
+
+                <div class="report-title">
+
+                  GrowItWithHR
+
+                </div>
+
+                <div class="report-subtitle">
+
+                  Executive HR Advisory Report
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="report-meta">
+
+              Generated:
+              ${reportData.generatedDate}
+
+            </div>
+
+          </div>
+
           <div class="report-banner">
-            HRTECHIFY ADVISORY REPORT
-          </div>  
 
-            <div class="report-watermark">
-              © HRTECHIFY
-            </div>
+            HR Compliance & Workforce Governance Advisory
 
-            <div class="report-top">
+          </div>
 
-              <div class="report-brand">
+          <div class="profile-grid">
 
-                <img
-                  src="assets/hrtechify-logo.png"
-                  alt="HRTechify"
-                  class="report-logo">
+            <div class="profile-card">
 
-                <div>
-
-                  <div class="report-subtitle">
-                    HRTECHIFY ADVISORY ENGINE
-                  </div>
-
-                  <div class="report-title">
-                    GrowItWithHR Advisory Report
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="report-id-box">
-
-                <div class="report-id">
-                  ${reportId}
-                </div>
-
-                <div class="report-date">
-                  Generated:
-                  ${new Date().toLocaleDateString()}
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="score-grid">
-
-             
-              <div class="score-card">
-
-                <div class="score-number">
-                  ${mandatory.length}
-                </div>
-
-                <div class="score-text">
-                  Immediate Priorities
-                </div>
-
-              </div>
-
-              <div class="score-card">
-
-                <div class="score-number">
-                  ${recommended.length}
-                </div>
-
-                <div class="score-text">
-                  Recommended Actions
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="executive-summary">
-
-              <h3>
-                Executive Summary
-              </h3>
-
-              <p>
-                ${summary}
-              </p>
-
-              <span class="report-tag">
-                ${risk.label}
+              <span>
+              State / UT
               </span>
 
-            </div>
-
-            <div class="report-section">
-
-              <h3>
-                Organisation Profile
-              </h3>
-
-              <table class="profile-table">
-
-                <tr>
-                  <td>State / UT</td>
-                  <td>${state}</td>
-                </tr>
-
-                <tr>
-                  <td>Entity Type</td>
-                  <td>${entity}</td>
-                </tr>
-
-                <tr>
-                  <td>Industry</td>
-                  <td>${industry}</td>
-                </tr>
-
-                <tr>
-                  <td>Employee Count</td>
-                  <td>${employeeBand}</td>
-                </tr>
-
-              </table>
+              <strong>
+              ${reportData.state}
+              </strong>
 
             </div>
 
-            <div class="report-section">
+            <div class="profile-card">
 
-              <h3>
-                Immediate Priorities
-              </h3>
+              <span>
+              Entity Type
+              </span>
 
-              <ul class="report-list">
-                ${mandatoryHTML}
-              </ul>
-
-            </div>
-
-            <div class="report-section">
-
-              <h3>
-                Recommended HR Actions
-              </h3>
-
-              <ul class="report-list">
-                ${recommendedHTML}
-              </ul>
+              <strong>
+              ${reportData.entity}
+              </strong>
 
             </div>
 
-            <div class="report-section">
+            <div class="profile-card">
 
-              <h3>
-                Growth & Future Readiness
-              </h3>
+              <span>
+              Industry
+              </span>
 
-              <ul class="report-list">
-                ${futureHTML}
-              </ul>
-
-            </div>
-
-            <div class="report-section">
-
-              <h3>
-                Official Sources
-              </h3>
-
-              <ul class="report-list">
-                ${sourceHTML}
-              </ul>
+              <strong>
+              ${reportData.industry}
+              </strong>
 
             </div>
 
-            <div class="report-divider"></div>
+            <div class="profile-card">
 
-            <div class="report-disclaimer">
+              <span>
+              Employee Count
+              </span>
 
-              <strong>Last Verified:</strong>
-              ${updatesData.lastVerified}
-
-              <br><br>
-
-              <strong>Disclaimer:</strong>
-
-              ${engineData.disclaimer}
+              <strong>
+              ${reportData.employeeBand}
+              </strong>
 
             </div>
 
-            <div class="report-footer">
-              © 2026 HRTechify |
-              GrowItWithHR Advisory Engine
-                <div class="report-end">
-                  END OF REPORT
-                </div>
-            </div>        
+          </div>
+
+          <div class="report-section">
+
+            <h3>
+
+              Immediate Priorities
+
+            </h3>
+
+            <ul class="report-list">
+
+              ${reportData.mandatory
+                .map(
+                  item => `
+                  <li>
+                  ✓ ${item}
+                  </li>
+                  `
+                )
+                .join("")}
+
+            </ul>
+
+          </div>
+
+          <div class="report-section">
+
+            <h3>
+
+              Recommended Actions
+
+            </h3>
+
+            <ul class="report-list">
+
+              ${reportData.recommended
+                .map(
+                  item => `
+                  <li>
+                  ✓ ${item}
+                  </li>
+                  `
+                )
+                .join("")}
+
+            </ul>
+
+          </div>
+
+          <div class="report-section">
+
+            <h3>
+
+              Future Readiness
+
+            </h3>
+
+            <ul class="report-list">
+
+              ${reportData.future
+                .map(
+                  item => `
+                  <li>
+                  ✓ ${item}
+                  </li>
+                  `
+                )
+                .join("")}
+
+            </ul>
+
+          </div>
+
+          <div class="report-section">
+
+            <h3>
+
+              Official Sources
+
+            </h3>
+
+            <ul class="sources-list">
+
+              ${sourcesHTML}
+
+            </ul>
+
+          </div>
+
+          <div class="report-disclaimer">
+
+            <strong>
+            Disclaimer:
+            </strong>
+
+            ${reportData.disclaimer}
+
+          </div>
+
+          <div class="report-footer">
+
+            Last Updated:
+            ${engineData.lastUpdated || "N/A"}
+
+            <br><br>
+
+            HRTechify | GrowItWithHR
+
+          </div>
+
+          <div class="report-actions">
+
             <button
-              class="primary-btn print-btn"
-              onclick="window.print()">
+            class="primary-btn print-btn"
+            onclick="window.print()">
 
               Print / Save PDF
 
@@ -912,36 +865,53 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           </div>
 
-          `;
+        </div>
+
+        `;
+
+        reportContainer.scrollIntoView({
+
+          behavior:"smooth",
+
+          block:"start"
 
         });
 
-    }
-
-  } catch (error) {
-
-    console.error(
-      "GrowItWithHR Engine Error:",
-      error
+      }
     );
-
-    const reportContainer =
-      document.getElementById(
-        "reportContainer"
-      );
-
-    if (reportContainer) {
-
-      reportContainer.innerHTML = `
-        <div class="alert-item">
-          Error loading compliance engine.
-          <br>
-          ${error.message}
-        </div>
-      `;
-
-    }
 
   }
 
-});
+} catch(error) {
+
+  console.error(
+    "GrowItWithHR V6 Error:",
+    error
+  );
+
+  const reportContainer =
+    document.getElementById(
+      "reportContainer"
+    );
+
+  if(reportContainer){
+
+    reportContainer.innerHTML = `
+
+    <div class="report-error">
+
+      Unable to load advisory engine.
+
+      Please verify all data files
+      are available and correctly deployed.
+
+    </div>
+
+    `;
+
+  }
+
+}
+
+}
+);
