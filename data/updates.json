@@ -11,22 +11,26 @@
     {
       "date": "2026-06-22",
       "source": "EPFO",
-      "title": "EPFO compliance review completed"
+      "title": "EPFO",
+      "url": "https://www.epfindia.gov.in      
     },
     {
       "date": "2026-06-22",
       "source": "ESIC",
-      "title": "ESIC compliance review completed"
+      "title": "ESIC",
+      "url": "https://www.esic.gov.in"
     },
     {
       "date": "2026-06-22",
-      "source": "Ministry of Labour",
-      "title": "Labour compliance review completed"
+      "source": "Ministry of Labour & Employment",
+      "title": "Ministry of Labour & Employment",
+      "url": "https://labour.gov.in"
     },
     {
       "date": "2026-06-22",
       "source": "India Code",
-      "title": "Statutory reference validation completed"
+      "title": "India Code",
+      "url": "https://www.indiacode.nic.in/"
     }
   ]
 }
