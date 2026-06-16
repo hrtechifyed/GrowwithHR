@@ -1,7 +1,29 @@
-{
+/* ==========================================
+   HRTECHIFY | GROWITWITHHR
+   COMPLETE STYLESHEET
+========================================== */
+
+*{
 margin:0;
 padding:0;
 box-sizing:border-box;
+}
+
+:root{
+
+--primary:#ff7a00;
+--secondary:#ff3c00;
+
+--dark:#111111;
+--dark-card:#1b1b1b;
+
+--light:#ffffff;
+
+--background:#f4f5f7;
+
+--text:#222222;
+--muted:#666666;
+
 }
 
 html{
@@ -10,8 +32,8 @@ scroll-behavior:smooth;
 
 body{
 font-family:Arial,sans-serif;
-background:#f7f6f3;
-color:#222;
+background:var(--background);
+color:var(--text);
 line-height:1.6;
 }
 
@@ -21,7 +43,9 @@ margin:auto;
 padding:60px 20px;
 }
 
-/* NAVIGATION */
+/* ==========================================
+   NAVBAR
+========================================== */
 
 .navbar{
 position:sticky;
@@ -29,6 +53,7 @@ top:0;
 background:white;
 border-bottom:1px solid #e5e5e5;
 z-index:1000;
+backdrop-filter:blur(10px);
 }
 
 .nav-container{
@@ -53,12 +78,12 @@ height:auto;
 
 .brand-name{
 font-size:18px;
-font-weight:bold;
+font-weight:700;
 }
 
 .product-name{
 font-size:13px;
-color:#666;
+color:var(--muted);
 }
 
 .nav-links{
@@ -68,27 +93,35 @@ gap:24px;
 
 .nav-links a{
 text-decoration:none;
-color:#222;
+color:var(--text);
 font-weight:600;
+transition:0.25s;
 }
 
 .nav-links a:hover{
-color:#c84b2f;
+color:var(--primary);
 }
 
-/* HERO */
+/* ==========================================
+   HERO
+========================================== */
 
 .hero{
-background:#111;
+background:
+linear-gradient(
+135deg,
+#0f0f0f,
+#1d1d1d
+);
 color:white;
-padding:90px 0;
+padding:100px 0;
 }
 
 .hero-layout{
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:40px;
+gap:60px;
 }
 
 .hero-copy{
@@ -96,14 +129,14 @@ flex:1;
 }
 
 .eyebrow{
-color:#c84b2f;
-font-weight:bold;
+color:var(--primary);
+font-weight:700;
 letter-spacing:1px;
 margin-bottom:15px;
 }
 
 .hero h1{
-font-size:56px;
+font-size:58px;
 line-height:1.1;
 margin-bottom:20px;
 }
@@ -115,7 +148,8 @@ margin-bottom:20px;
 
 .hero-description{
 font-size:18px;
-max-width:650px;
+max-width:700px;
+opacity:0.9;
 }
 
 .hero-logo-wrapper{
@@ -129,30 +163,55 @@ align-items:center;
 width:280px;
 max-width:100%;
 height:auto;
+filter:
+drop-shadow(
+0 0 25px rgba(255,122,0,0.35)
+);
 }
 
-/* BUTTON */
+/* ==========================================
+   BUTTONS
+========================================== */
 
 .primary-btn{
 display:inline-block;
-margin-top:25px;
 padding:14px 28px;
-background:#c84b2f;
+margin-top:25px;
+
+background:
+linear-gradient(
+135deg,
+var(--primary),
+var(--secondary)
+);
+
 color:white;
 text-decoration:none;
-border-radius:8px;
 font-weight:bold;
-transition:0.2s;
+
+border:none;
+border-radius:10px;
+
+cursor:pointer;
+
+box-shadow:
+0 8px 25px rgba(255,122,0,0.35);
+
+transition:all 0.25s ease;
 }
 
 .primary-btn:hover{
-opacity:0.9;
+transform:translateY(-2px);
+box-shadow:
+0 12px 30px rgba(255,122,0,0.45);
 }
 
-/* SECTION HEADINGS */
+/* ==========================================
+   HEADINGS
+========================================== */
 
 section h2{
-font-size:36px;
+font-size:44px;
 margin-bottom:25px;
 text-align:center;
 }
@@ -161,117 +220,299 @@ section p{
 margin-bottom:15px;
 }
 
-/* PROBLEM */
+/* ==========================================
+   PROBLEM
+========================================== */
 
 .problem-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+grid-template-columns:
+repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
 }
 
 .problem-card{
 background:white;
-padding:25px;
-border-radius:12px;
-box-shadow:0 2px 8px rgba(0,0,0,0.05);
+padding:30px;
+border-radius:16px;
+
+box-shadow:
+0 6px 20px rgba(0,0,0,0.06);
+
+transition:0.25s;
+}
+
+.problem-card:hover{
+transform:translateY(-5px);
 }
 
 .problem-card h3{
 margin-bottom:12px;
 }
 
-/* TOOL */
+/* ==========================================
+   ASSESSMENT SECTION
+========================================== */
 
-.placeholder{
-background:white;
-padding:50px;
-border:2px dashed #d9d9d9;
-border-radius:12px;
-text-align:center;
-margin-top:20px;
+.tool{
+background:
+linear-gradient(
+180deg,
+#111111,
+#1b1b1b
+);
+color:white;
 }
 
-.placeholder ul{
-margin-top:20px;
-list-style:none;
+.tool h2{
+color:white;
 }
 
-.placeholder li{
-margin:8px 0;
+.tool p{
+color:#dddddd;
 }
 
-/* EXAMPLE */
+.assessment-form{
+background:#222222;
+
+padding:35px;
+
+border-radius:18px;
+
+border:1px solid #333;
+
+box-shadow:
+0 10px 40px rgba(0,0,0,0.25);
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+
+gap:20px;
+
+margin-top:30px;
+}
+
+.form-group{
+display:flex;
+flex-direction:column;
+}
+
+.form-group label{
+font-weight:700;
+margin-bottom:8px;
+color:white;
+}
+
+.form-group select{
+padding:14px;
+
+background:#111;
+
+color:white;
+
+border:1px solid #444;
+
+border-radius:10px;
+
+font-size:15px;
+}
+
+.form-group select:focus{
+outline:none;
+
+border-color:var(--primary);
+
+box-shadow:
+0 0 0 3px rgba(255,122,0,0.2);
+}
+
+/* ==========================================
+   REPORT
+========================================== */
+
+.report-container{
+margin-top:40px;
+}
 
 .example-card{
 background:white;
-padding:30px;
-border-radius:12px;
-box-shadow:0 2px 8px rgba(0,0,0,0.05);
-max-width:800px;
-margin:auto;
+padding:35px;
+border-radius:18px;
+
+box-shadow:
+0 8px 25px rgba(0,0,0,0.08);
 }
 
-.example-card h3{
-margin-top:20px;
-margin-bottom:10px;
+.report-header{
+display:flex;
+align-items:center;
+gap:20px;
+margin-bottom:20px;
 }
+
+.report-logo{
+width:90px;
+height:auto;
+}
+
+.score-box{
+
+background:
+linear-gradient(
+135deg,
+var(--primary),
+var(--secondary)
+);
+
+color:white;
+
+padding:30px;
+
+border-radius:18px;
+
+text-align:center;
+
+margin:25px 0;
+
+box-shadow:
+0 10px 30px rgba(255,122,0,0.35);
+
+}
+
+.score-box h2{
+font-size:64px;
+margin:0;
+color:white;
+}
+
+.risk-badge{
+
+display:inline-block;
+
+padding:10px 18px;
+
+border-radius:999px;
+
+background:white;
+
+color:#111;
+
+font-weight:bold;
+
+margin-top:15px;
+
+}
+
+.report-highlight{
+
+background:#fff7f0;
+
+padding:20px;
+
+border-left:5px solid var(--primary);
+
+border-radius:10px;
+
+margin:20px 0;
+
+}
+
+.print-btn{
+background:#111;
+}
+
+/* ==========================================
+   EXAMPLE
+========================================== */
 
 .example-card ul{
 padding-left:20px;
-margin-bottom:15px;
 }
 
-/* TRUST */
+.example-card li{
+margin-bottom:8px;
+}
+
+/* ==========================================
+   UPDATES
+========================================== */
+
+.alert-item{
+
+background:white;
+
+padding:20px;
+
+border-left:5px solid var(--primary);
+
+border-radius:10px;
+
+margin-bottom:15px;
+
+box-shadow:
+0 4px 15px rgba(0,0,0,0.05);
+
+}
+
+/* ==========================================
+   TRUST
+========================================== */
 
 .trust-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
 gap:20px;
 }
 
 .trust-card{
-background:white;
-padding:25px;
-border-radius:12px;
-text-align:center;
-box-shadow:0 2px 8px rgba(0,0,0,0.05);
-}
 
-.trust-card{
+background:white;
+
+padding:30px;
+
+border-radius:16px;
+
+text-align:center;
+
 text-decoration:none;
-color:#222;
+
+color:var(--text);
+
 font-weight:600;
-transition:0.2s;
-cursor:pointer;
+
+box-shadow:
+0 6px 20px rgba(0,0,0,0.05);
+
+transition:all 0.25s ease;
+
 }
 
 .trust-card:hover{
-transform:translateY(-3px);
-box-shadow:0 6px 20px rgba(0,0,0,0.08);
-color:#c84b2f;
-}
 
+transform:translateY(-5px);
+
+color:var(--primary);
+
+box-shadow:
+0 10px 25px rgba(0,0,0,0.08);
+
+}
 
 .verified{
 text-align:center;
-font-size:18px;
-font-weight:bold;
 margin-top:30px;
-color:#c84b2f;
+font-weight:bold;
+color:var(--primary);
 }
 
-/* UPDATES */
-
-.alert-item{
-background:white;
-padding:20px;
-border-left:5px solid #c84b2f;
-margin-bottom:15px;
-border-radius:8px;
-box-shadow:0 2px 8px rgba(0,0,0,0.05);
-}
-
-/* FOUNDER */
+/* ==========================================
+   FOUNDER
+========================================== */
 
 .founder{
 background:white;
@@ -283,7 +524,9 @@ margin-left:auto;
 margin-right:auto;
 }
 
-/* CONTACT */
+/* ==========================================
+   CONTACT
+========================================== */
 
 .contact{
 text-align:center;
@@ -292,10 +535,12 @@ text-align:center;
 .email-display{
 margin-top:20px;
 font-size:20px;
-font-weight:bold;
+font-weight:700;
 }
 
-/* FOOTER */
+/* ==========================================
+   FOOTER
+========================================== */
 
 .footer{
 background:#111;
@@ -305,7 +550,9 @@ padding:30px 0;
 margin-top:40px;
 }
 
-/* MOBILE */
+/* ==========================================
+   MOBILE
+========================================== */
 
 @media(max-width:900px){
 
@@ -315,7 +562,7 @@ text-align:center;
 }
 
 .hero h1{
-font-size:40px;
+font-size:42px;
 }
 
 .hero-subtitle{
@@ -337,16 +584,25 @@ justify-content:center;
 gap:12px;
 }
 
+.report-header{
+flex-direction:column;
+text-align:center;
+}
+
 }
 
 @media(max-width:600px){
 
+.container{
+padding:40px 15px;
+}
+
 .hero{
-padding:60px 0;
+padding:70px 0;
 }
 
 .hero h1{
-font-size:32px;
+font-size:34px;
 }
 
 .hero-subtitle{
@@ -354,222 +610,23 @@ font-size:18px;
 }
 
 section h2{
-font-size:28px;
-}
-
-.container{
-padding:40px 15px;
-}
-
-.nav-logo{
-width:45px;
-}
-  
-/* ==========================================
-   GROWITWITHHR V4 ASSESSMENT ENGINE
-========================================== */
-
-.assessment-form{
-background:#ffffff;
-padding:30px;
-border-radius:12px;
-box-shadow:0 2px 10px rgba(0,0,0,0.08);
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-margin-top:30px;
-}
-
-.form-group{
-display:flex;
-flex-direction:column;
-}
-
-.form-group label{
-font-weight:700;
-margin-bottom:8px;
-color:#222;
-}
-
-.form-group select{
-padding:12px;
-border:1px solid #ddd;
-border-radius:8px;
-font-size:15px;
-background:#fff;
-cursor:pointer;
-}
-
-.form-group select:focus{
-outline:none;
-border-color:#c84b2f;
-box-shadow:0 0 0 3px rgba(200,75,47,0.15);
-}
-
-.assessment-form .primary-btn{
-align-self:end;
-margin-top:0;
-height:48px;
-}
-
-.report-container{
-margin-top:40px;
-}
-
-.report-container .example-card{
-max-width:100%;
-position:relative;
-overflow:hidden;
-}
-
-.report-container .example-card::before{
-content:"HRTECHIFY";
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%) rotate(-30deg);
-font-size:90px;
-font-weight:900;
-color:rgba(0,0,0,0.03);
-pointer-events:none;
-z-index:0;
-}
-
-.report-container .example-card > *{
-position:relative;
-z-index:1;
-}
-
-.report-container h2{
-text-align:left;
-margin-bottom:20px;
-}
-
-.report-container h3{
-margin-top:25px;
-margin-bottom:10px;
-color:#c84b2f;
-}
-
-.report-container ul{
-padding-left:20px;
-}
-
-.report-container li{
-margin-bottom:10px;
-}
-
-.score-box{
-background:#111;
-color:#fff;
-padding:30px;
-border-radius:12px;
-margin:25px 0;
-text-align:center;
+font-size:30px;
 }
 
 .score-box h2{
-font-size:56px;
-margin:0;
-color:#fff;
+font-size:48px;
 }
-
-.score-box p{
-margin-top:8px;
-margin-bottom:0;
-}
-
-.risk-badge{
-display:inline-block;
-padding:8px 18px;
-border-radius:999px;
-font-weight:700;
-margin-top:15px;
-background:#f4f4f4;
-color:#222;
-}
-
-.print-btn{
-margin-top:25px;
-background:#111;
-}
-
-.print-btn:hover{
-opacity:0.9;
-}
-
-.report-container hr{
-margin:25px 0;
-border:none;
-border-top:1px solid #e5e5e5;
-}
-
-.report-container a{
-color:#c84b2f;
-text-decoration:none;
-}
-
-.report-container a:hover{
-text-decoration:underline;
-}
-
-/* REPORT SECTIONS */
-
-.report-section{
-margin-top:30px;
-padding-top:20px;
-border-top:1px solid #ececec;
-}
-
-.report-highlight{
-background:#f9f9f9;
-padding:18px;
-border-left:5px solid #c84b2f;
-border-radius:8px;
-margin-top:15px;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
 
 .assessment-form{
 grid-template-columns:1fr;
 }
 
-.report-container .example-card::before{
-font-size:50px;
+.nav-logo{
+width:45px;
 }
 
-.score-box h2{
-font-size:42px;
+.report-logo{
+width:70px;
 }
 
-}
-
-@media print{
-
-.navbar,
-.contact,
-.footer,
-.primary-btn{
-display:none;
-}
-
-body{
-background:white;
-}
-
-.report-container .example-card{
-box-shadow:none;
-}
-
-.report-container .example-card::before{
-content:"HRTECHIFY";
-font-size:120px;
-color:rgba(0,0,0,0.04);
-}
-
-}
-  
 }
