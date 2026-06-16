@@ -1434,3 +1434,521 @@ transform:translateY(0);
 }
 
 }
+/* ==========================================
+   TABLET RESPONSIVE
+========================================== */
+
+@media(max-width:992px){
+
+.container{
+
+padding:70px 24px;
+
+}
+
+.hero-grid{
+
+grid-template-columns:1fr;
+
+gap:40px;
+
+text-align:center;
+
+}
+
+.hero-content{
+
+max-width:800px;
+
+margin:auto;
+
+}
+
+.hero h1{
+
+font-size:52px;
+
+}
+
+.hero-description{
+
+margin-left:auto;
+margin-right:auto;
+
+}
+
+.hero-actions{
+
+justify-content:center;
+
+}
+
+.nav-container{
+
+flex-direction:column;
+
+gap:18px;
+
+}
+
+.nav-links{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:18px;
+
+}
+
+.report-header{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.report-brand{
+
+flex-direction:column;
+
+}
+
+.report-meta{
+
+text-align:center;
+
+}
+
+.founder-card,
+.contact-card{
+
+padding:40px;
+
+}
+
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
+
+@media(max-width:768px){
+
+.container{
+
+padding:60px 18px;
+
+}
+
+h2{
+
+font-size:34px;
+
+}
+
+.section-heading{
+
+margin-bottom:40px;
+
+}
+
+.section-heading p{
+
+font-size:17px;
+
+}
+
+.hero{
+
+padding:70px 0;
+
+}
+
+.hero h1{
+
+font-size:38px;
+
+line-height:1.15;
+
+}
+
+.hero-description{
+
+font-size:18px;
+
+}
+
+.hero-showcase{
+
+grid-template-columns:1fr;
+
+}
+
+.assessment-form{
+
+grid-template-columns:1fr;
+
+padding:25px;
+
+}
+
+.preview-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.value-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.updates-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.profile-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.contact-card{
+
+padding:35px 25px;
+
+}
+
+.founder-card{
+
+padding:35px 25px;
+
+}
+
+.report-document{
+
+padding:25px;
+
+border-radius:20px;
+
+}
+
+.report-title{
+
+font-size:24px;
+
+}
+
+.report-subtitle{
+
+font-size:13px;
+
+}
+
+.report-banner{
+
+font-size:14px;
+
+padding:15px;
+
+}
+
+.report-section h3{
+
+font-size:22px;
+
+}
+
+.profile-card strong{
+
+font-size:16px;
+
+}
+
+.nav-logo{
+
+width:45px;
+
+}
+
+.footer-logo{
+
+width:50px;
+
+}
+
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media(max-width:480px){
+
+.hero h1{
+
+font-size:32px;
+
+}
+
+.hero-description{
+
+font-size:16px;
+
+}
+
+.primary-btn{
+
+width:100%;
+
+}
+
+.report-document{
+
+padding:18px;
+
+}
+
+.profile-card{
+
+padding:18px;
+
+}
+
+.report-list li{
+
+padding:14px;
+
+}
+
+}
+
+/* ==========================================
+   ULTRAWIDE MONITORS
+========================================== */
+
+@media(min-width:1800px){
+
+.container{
+
+max-width:1600px;
+
+}
+
+.hero h1{
+
+font-size:84px;
+
+}
+
+.hero-description{
+
+font-size:26px;
+
+}
+
+}
+
+/* ==========================================
+   PRINT / PDF
+========================================== */
+
+@media print{
+
+.navbar,
+.hero,
+.preview-section,
+.value-section,
+.updates-section,
+.founder-section,
+.contact-section,
+.footer,
+.print-btn{
+
+display:none !important;
+
+}
+
+body{
+
+background:white !important;
+
+color:black !important;
+
+}
+
+.report-container{
+
+margin:0;
+
+padding:0;
+
+}
+
+.report-document{
+
+background:white !important;
+
+color:black !important;
+
+border:none !important;
+
+box-shadow:none !important;
+
+padding:0 !important;
+
+margin:0 !important;
+
+width:100%;
+
+}
+
+.report-header{
+
+border-bottom:
+1px solid #ddd;
+
+}
+
+.report-banner{
+
+background:#eeeeee !important;
+
+color:black !important;
+
+}
+
+.profile-card{
+
+background:white !important;
+
+border:
+1px solid #ddd !important;
+
+}
+
+.profile-card strong{
+
+color:black !important;
+
+}
+
+.report-list li{
+
+background:white !important;
+
+border:
+1px solid #ddd !important;
+
+color:black !important;
+
+}
+
+.report-section h3{
+
+color:black !important;
+
+}
+
+.report-disclaimer{
+
+background:white !important;
+
+border:
+1px solid #ddd !important;
+
+color:black !important;
+
+}
+
+.report-footer{
+
+color:black !important;
+
+}
+
+a{
+
+color:black !important;
+
+text-decoration:none !important;
+
+}
+
+}
+
+/* ==========================================
+   PDF PAGE SETTINGS
+========================================== */
+
+@page{
+
+size:A4;
+
+margin:12mm;
+
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+:focus-visible{
+
+outline:
+3px solid rgba(255,122,0,.45);
+
+outline-offset:2px;
+
+}
+
+/* ==========================================
+   IMAGE RESPONSIVENESS
+========================================== */
+
+img{
+
+max-width:100%;
+
+height:auto;
+
+}
+
+/* ==========================================
+   BUTTON IMPROVEMENTS
+========================================== */
+
+.primary-btn{
+
+min-height:54px;
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+/* ==========================================
+   SMOOTH CARD HOVER
+========================================== */
+
+.preview-card,
+.value-card,
+.showcase-card,
+.update-card,
+.profile-card{
+
+will-change:transform;
+
+}
+
+/* ==========================================
+   END OF STYLES.CSS V6
+========================================== */
