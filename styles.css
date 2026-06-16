@@ -982,7 +982,7 @@ font-weight:900;
 
 letter-spacing:6px;
 
-color:rgba(0,0,0,.012);
+color:rgba(255,122,0,.035);
 
 .score-card{
 break-inside:avoid;
@@ -1361,36 +1361,95 @@ margin-top:20px;
 
 }
 /* ==========================================
-   DARK THEME OVERRIDES
+   HRTECHIFY PREMIUM DARK THEME V6
 ========================================== */
 
 body{
-background:#0d1117 !important;
+background:#0f172a !important;
 color:#f8fafc !important;
 }
 
-.navbar,
+/* Main site cards */
+
 .problem-card,
 .trust-card,
 .alert-item,
-.founder,
 .example-card,
-.report-document,
-.score-card,
-.profile-card,
-.report-section,
-.executive-summary{
+.founder,
+.assessment-form{
+
 background:#111827 !important;
-color:#f8fafc !important;
+border:1px solid #334155 !important;
+
 }
+
+/* Navigation */
+
+.navbar{
+
+background:
+rgba(15,23,42,.95) !important;
+
+border-bottom:
+1px solid #334155 !important;
+
+}
+
+/* Hero */
+
+.hero{
+
+background:
+linear-gradient(
+135deg,
+#0f172a,
+#111827
+) !important;
+
+}
+
+/* Report */
 
 .report-document{
-border:1px solid #334155 !important;
+
+background:#0f172a !important;
+
+border:2px solid #ff7a00 !important;
+
+box-shadow:
+0 30px 80px rgba(0,0,0,.55);
+
 }
 
-h1,h2,h3,h4,h5,h6{
-color:#ffffff !important;
+/* Report Banner */
+
+.report-banner{
+
+background:
+linear-gradient(
+135deg,
+#ff7a00,
+#ff3c00
+);
+
+color:white !important;
+
 }
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+
+color:#ff7a00 !important;
+
+}
+
+/* Body Text */
 
 p,
 li,
@@ -1398,43 +1457,184 @@ td,
 th,
 span,
 label{
-color:#e5e7eb !important;
+
+color:#f8fafc !important;
+
 }
 
-.profile-table{
+/* Executive Summary */
+
+.executive-summary{
+
 background:#111827 !important;
+
+border-left:
+5px solid #ff7a00 !important;
+
+color:#f8fafc !important;
+
+}
+
+/* KPI Cards */
+
+.score-card{
+
+background:#111827 !important;
+
+border:
+1px solid #334155 !important;
+
+border-radius:18px;
+
+}
+
+.score-card h4{
+
+color:#94a3b8 !important;
+
+}
+
+.score-number{
+
+color:#ff7a00 !important;
+
+font-size:54px;
+
+font-weight:800;
+
+}
+
+.score-text{
+
+color:#cbd5e1 !important;
+
+}
+
+/* Profile Table */
+
+.profile-table{
+
+background:#111827 !important;
+
 }
 
 .profile-table td{
+
 background:#111827 !important;
+
+border:
+1px solid #334155 !important;
+
 color:#f8fafc !important;
-border:1px solid #334155 !important;
+
 }
 
 .profile-table td:first-child{
+
 background:#1f2937 !important;
+
 color:#ff7a00 !important;
+
 font-weight:700;
+
 }
 
-.report-highlight,
-.executive-summary{
+/* Section Headers */
+
+.report-section h3{
+
+color:#ff7a00 !important;
+
+border-bottom:
+1px solid #334155 !important;
+
+padding-bottom:12px;
+
+}
+
+/* Priority Cards */
+
+.report-list li{
+
 background:#1f2937 !important;
-border-left:5px solid #ff7a00 !important;
+
+color:#f8fafc !important;
+
+border-left:
+5px solid #ff7a00 !important;
+
+border-radius:12px;
+
+padding:18px;
+
+font-size:15px;
+
 }
 
-.report-watermark{
-color:rgba(255,255,255,.03) !important;
+/* Future Cards */
+
+.future-card{
+
+background:#111827 !important;
+
+border:
+1px solid #334155 !important;
+
 }
+
+.future-card h4{
+
+color:#ff7a00 !important;
+
+}
+
+/* Disclaimer */
+
+.report-disclaimer{
+
+background:#1f2937 !important;
+
+border:
+1px solid #334155 !important;
+
+color:#e2e8f0 !important;
+
+}
+
+/* Footer */
 
 .footer{
+
 background:#020617 !important;
+
 }
 
-a{
-color:#ff7a00;
-}   
+.report-footer{
 
-/* ==========================================
-   END OF V5
-========================================== */
+border-top:
+1px solid #334155 !important;
+
+color:#94a3b8 !important;
+
+}
+
+/* Watermark */
+
+.report-watermark{
+color:
+rgba(255,122,0,.035) !important;
+}
+
+/* Links */
+
+a{
+
+color:#ff7a00 !important;
+
+}
+
+a:hover{
+
+color:#ffb366 !important;
+
+}
