@@ -45,25 +45,31 @@ try {
 
   }
 
-  const updatesData =
-    await updatesResponse.json();
+console.log("updates");
+const updatesData =
+  await updatesResponse.json();
+console.log("updates OK");
 
-  const statesData =
-    await statesResponse.json();
+console.log("states");
+const statesData =
+  await statesResponse.json();
+console.log("states OK");
 
-  const entityData =
-    await entitiesResponse.json();
+console.log("entities");
+const entityData =
+  await entitiesResponse.json();
+console.log("entities OK");
 
-  const industriesData =
-    await industriesResponse.json();
+console.log("industries");
+const industriesData =
+  await industriesResponse.json();
+console.log("industries OK");
 
-  const engineData =
-    await engineResponse.json();
-
-  console.log(
-    "GrowItWithHR V6 Engine Loaded Successfully"
-  );
-
+console.log("engine");
+const engineData =
+  await engineResponse.json();
+console.log("engine OK");
+  
   /* ==========================================
      DOM REFERENCES
   ========================================== */
