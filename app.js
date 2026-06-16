@@ -20,21 +20,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       fetch("./data/compliance-engine.json")
     ]);
 
-    const updatesData =
-      await updatesResponse.json();
+   console.log("UPDATES URL:", updatesResponse.url);
+console.log("STATES URL:", statesResponse.url);
+console.log("ENTITIES URL:", entitiesResponse.url);
+console.log("INDUSTRIES URL:", industriesResponse.url);
+console.log("ENGINE URL:", engineResponse.url);
 
-    const statesData =
-      await statesResponse.json();
+console.log("UPDATES TEXT:", await updatesResponse.text());
+console.log("STATES TEXT:", await statesResponse.text());
+console.log("ENTITIES TEXT:", await entitiesResponse.text());
+console.log("INDUSTRIES TEXT:", await industriesResponse.text());
+console.log("ENGINE TEXT:", await engineResponse.text());
 
-    const entityData =
-      await entitiesResponse.json();
-
-    const industriesData =
-      await industriesResponse.json();
-
-    const engineData =
-      await engineResponse.json();
-
+return;
     // =====================================
     // LAST VERIFIED
     // =====================================
