@@ -133,6 +133,19 @@
       ]
     },
     {
+    "id": "semiconductor",
+    "name": "Semiconductor",
+    "riskLevel": "High",
+    "recommendedFocus": [
+      "Workforce Planning",
+      "Shift Workforce Governance",
+      "Engineering Talent Retention",
+      "Safety Compliance",
+      "Contractor Governance",
+      "Information Security"
+    ]
+  },
+    {
       "id": "other",
       "name": "Other",
       "riskLevel": "Medium",
