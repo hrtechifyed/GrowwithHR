@@ -45,16 +45,24 @@ try {
 
   }
 
- const updatesText =
-  await updatesResponse.text();
+ const updatesData =
+  JSON.parse(
+    await updatesResponse.text()
+  );
 
 console.log(
-  "UPDATES RAW:",
-  updatesText
+  "updates OK"
+);
+
+const statesText =
+  await statesResponse.text();
+
+console.log(
+  "STATES RAW:",
+  statesText
 );
 
 return;
-
   console.log(
     "GrowItWithHR V6 Engine Loaded Successfully"
   );
