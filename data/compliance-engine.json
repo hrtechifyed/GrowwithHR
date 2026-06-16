@@ -1,0 +1,109 @@
+```json
+{
+  "employeeThresholdRules": {
+
+    "10": {
+      "mandatory": [
+        "POSH Policy",
+        "POSH Awareness Training"
+      ]
+    },
+
+    "20": {
+      "recommended": [
+        "Employee Handbook",
+        "Leave Policy",
+        "Attendance Policy"
+      ]
+    },
+
+    "50": {
+      "mandatory": [
+        "Formal HR Policies",
+        "Performance Management Framework"
+      ]
+    },
+
+    "100": {
+      "recommended": [
+        "HRIS Implementation",
+        "Workforce Analytics",
+        "Internal Compliance Reviews"
+      ]
+    }
+
+  },
+
+  "entityRules": {
+
+    "Private Limited Company": {
+      "mandatory": [
+        "Employment Agreements",
+        "Statutory Employee Records",
+        "Payroll Compliance Review"
+      ]
+    },
+
+    "Limited Liability Partnership (LLP)": {
+      "mandatory": [
+        "Employment Agreements",
+        "Payroll Compliance Review"
+      ]
+    },
+
+    "Proprietorship": {
+      "mandatory": [
+        "Employment Records",
+        "Basic HR Documentation"
+      ]
+    }
+  },
+
+  "stateRules": {
+
+    "Karnataka": {
+      "mandatory": [
+        "Karnataka Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ]
+    },
+
+    "Maharashtra": {
+      "mandatory": [
+        "Maharashtra Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ]
+    },
+
+    "Tamil Nadu": {
+      "mandatory": [
+        "Tamil Nadu Shops & Establishments Compliance"
+      ]
+    }
+  },
+
+  "industryRules": {
+
+    "Technology": {
+      "recommended": [
+        "Remote Work Policy",
+        "Information Security Policy"
+      ]
+    },
+
+    "Manufacturing": {
+      "recommended": [
+        "Safety Policy",
+        "Shift Management Framework"
+      ]
+    },
+
+    "Healthcare": {
+      "recommended": [
+        "Clinical Workforce Governance",
+        "Employee Health Compliance"
+      ]
+    }
+  }
+}
+```
