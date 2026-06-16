@@ -13,29 +13,25 @@ box-sizing:border-box;
 
 --primary:#ff7a00;
 --primary-dark:#e56d00;
+
 --secondary:#ff3c00;
 
 --dark:#0d1117;
---dark-card:#161b22;
+--dark-card:#111827;
 
---light:#ffffff;
+--light:#f8fafc;
 
 --background:#0d1117;
 
---text:#f3f4f6;
---muted:#9ca3af;
+--text:#f8fafc;
+--muted:#cbd5e1;
 
 --success:#22c55e;
---warning:#f59e0b;
---danger:#ef4444;
 
---border:#2d333b;
+--border:#334155;
 
 --shadow:
-0 15px 40px rgba(0,0,0,.35);
-
---report-shadow:
-0 25px 70px rgba(0,0,0,.45);
+0 15px 40px rgba(0,0,0,.45);
 
 }
 /* ==========================================
@@ -1364,6 +1360,80 @@ margin-top:20px;
 }
 
 }
+/* ==========================================
+   DARK THEME OVERRIDES
+========================================== */
+
+body{
+background:#0d1117 !important;
+color:#f8fafc !important;
+}
+
+.navbar,
+.problem-card,
+.trust-card,
+.alert-item,
+.founder,
+.example-card,
+.report-document,
+.score-card,
+.profile-card,
+.report-section,
+.executive-summary{
+background:#111827 !important;
+color:#f8fafc !important;
+}
+
+.report-document{
+border:1px solid #334155 !important;
+}
+
+h1,h2,h3,h4,h5,h6{
+color:#ffffff !important;
+}
+
+p,
+li,
+td,
+th,
+span,
+label{
+color:#e5e7eb !important;
+}
+
+.profile-table{
+background:#111827 !important;
+}
+
+.profile-table td{
+background:#111827 !important;
+color:#f8fafc !important;
+border:1px solid #334155 !important;
+}
+
+.profile-table td:first-child{
+background:#1f2937 !important;
+color:#ff7a00 !important;
+font-weight:700;
+}
+
+.report-highlight,
+.executive-summary{
+background:#1f2937 !important;
+border-left:5px solid #ff7a00 !important;
+}
+
+.report-watermark{
+color:rgba(255,255,255,.03) !important;
+}
+
+.footer{
+background:#020617 !important;
+}
+
+a{
+color:#ff7a00;
+}   
 
 /* ==========================================
    END OF V5
