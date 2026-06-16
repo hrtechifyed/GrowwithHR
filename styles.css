@@ -696,7 +696,7 @@ border-radius:16px;
 
 .profile-table tr:nth-child(even){
 
-background:#fafafa;
+background:#000000;
 
 }
 
@@ -711,7 +711,7 @@ border:
 
 .profile-table{
 
-background:white;
+background:black;
 
 position:relative;
 
