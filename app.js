@@ -60,9 +60,25 @@ try {
   const engineData =
     await engineResponse.json();
 
+/* ==========================================
+     Debug
+  ========================================== */
+
+  console.log("states loaded", statesData);
+
+console.log("entities loaded", entityData);
+
+console.log("industries loaded", industriesData);
+
+console.log("engine loaded", engineData);
+/* ==========================================
+     Debug
+  ========================================== */
   console.log(
     "GrowItWithHR V6 Engine Loaded Successfully"
   );
+
+  
 
   /* ==========================================
      DOM REFERENCES
@@ -106,7 +122,20 @@ try {
   /* ==========================================
      POPULATE STATES
   ========================================== */
+  /* ==========================================
+     Debug 2
+  ========================================== */
 
+console.log("stateSelect", stateSelect);
+
+console.log("entitySelect", entitySelect);
+
+console.log("industrySelect", industrySelect);
+  /* ==========================================
+     Debug 2
+  ========================================== */
+
+  
   if (stateSelect) {
 
     const locations = [
