@@ -1,10 +1,9 @@
-
+```json
 {
   "version": "1.0",
   "lastUpdated": "2026-06-22",
 
   "employeeThresholdRules": {
-
     "10": {
       "mandatory": [
         "POSH Policy",
@@ -34,155 +33,153 @@
         "Internal Compliance Reviews"
       ]
     }
-
   },
 
-"entityRules": {
+  "entityRules": {
 
-  "Private Limited Company": {
-    "mandatory": [
-      "Employment Agreements",
-      "Statutory Employee Records",
-      "Payroll Compliance Review"
-    ]
+    "Private Limited Company": {
+      "mandatory": [
+        "Employment Agreements",
+        "Statutory Employee Records",
+        "Payroll Compliance Review"
+      ]
+    },
+
+    "Limited Liability Partnership (LLP)": {
+      "mandatory": [
+        "Employment Agreements",
+        "Payroll Compliance Review"
+      ]
+    },
+
+    "Proprietorship": {
+      "mandatory": [
+        "Employment Records",
+        "Basic HR Documentation"
+      ]
+    },
+
+    "Partnership Firm": {
+      "mandatory": [
+        "Employment Records",
+        "Payroll Compliance Review"
+      ]
+    },
+
+    "One Person Company (OPC)": {
+      "mandatory": [
+        "Employment Agreements",
+        "Employment Records"
+      ]
+    },
+
+    "Public Limited Company (Unlisted)": {
+      "mandatory": [
+        "Employment Agreements",
+        "Payroll Compliance Review",
+        "Statutory Employee Records"
+      ]
+    },
+
+    "Public Limited Company (Listed)": {
+      "mandatory": [
+        "Employment Agreements",
+        "Payroll Compliance Review",
+        "Statutory Employee Records",
+        "Formal HR Governance Framework"
+      ]
+    },
+
+    "Section 8 Company": {
+      "mandatory": [
+        "Employment Agreements",
+        "Employee Records",
+        "Board Approved HR Policies"
+      ],
+      "recommended": [
+        "Volunteer Governance Framework",
+        "Safeguarding Policy",
+        "Employee Handbook"
+      ]
+    },
+
+    "Trust": {
+      "mandatory": [
+        "Employment Records",
+        "Payroll Documentation",
+        "Basic HR Policies"
+      ],
+      "recommended": [
+        "Volunteer Management Framework",
+        "Code of Conduct"
+      ]
+    },
+
+    "Society": {
+      "mandatory": [
+        "Employment Records",
+        "Payroll Compliance Review",
+        "HR Documentation"
+      ],
+      "recommended": [
+        "Employee Handbook",
+        "Volunteer Governance"
+      ]
+    },
+
+    "NGO": {
+      "mandatory": [
+        "Employment Records",
+        "Employment Agreements",
+        "Payroll Documentation"
+      ],
+      "recommended": [
+        "Volunteer Governance Framework",
+        "Field Workforce Policy",
+        "Safeguarding Policy"
+      ]
+    },
+
+    "DPIIT Recognized Startup": {
+      "mandatory": [
+        "Employment Agreements",
+        "Employee Records",
+        "Foundational HR Policies"
+      ],
+      "recommended": [
+        "Employee Handbook",
+        "Performance Framework",
+        "Workforce Planning",
+        "Manager Capability Development"
+      ]
+    },
+
+    "Government Entity": {
+      "mandatory": [
+        "Service Rules Compliance",
+        "Employee Records",
+        "HR Governance Framework"
+      ],
+      "recommended": [
+        "Training Framework",
+        "Workforce Planning",
+        "Performance Governance"
+      ]
+    },
+
+    "Educational Institution": {
+      "mandatory": [
+        "Faculty Contracts",
+        "Employee Records",
+        "POSH Compliance"
+      ],
+      "recommended": [
+        "Background Verification",
+        "Academic Workforce Planning",
+        "Policy Framework"
+      ]
+    }
   },
-
-  "Limited Liability Partnership (LLP)": {
-    "mandatory": [
-      "Employment Agreements",
-      "Payroll Compliance Review"
-    ]
-  },
-
-  "Proprietorship": {
-    "mandatory": [
-      "Employment Records",
-      "Basic HR Documentation"
-    ]
-  },
-
-  "Partnership Firm": {
-    "mandatory": [
-      "Employment Records",
-      "Payroll Compliance Review"
-    ]
-  },
-
-  "One Person Company (OPC)": {
-    "mandatory": [
-      "Employment Agreements",
-      "Employment Records"
-    ]
-  },
-
-  "Public Limited Company (Unlisted)": {
-    "mandatory": [
-      "Employment Agreements",
-      "Payroll Compliance Review",
-      "Statutory Employee Records"
-    ]
-  },
-
-  "Public Limited Company (Listed)": {
-    "mandatory": [
-      "Employment Agreements",
-      "Payroll Compliance Review",
-      "Statutory Employee Records",
-      "Formal HR Governance Framework"
-    ]
-  },
-
-  "Section 8 Company": {
-    "mandatory": [
-      "Employment Agreements",
-      "Employee Records",
-      "Board Approved HR Policies"
-    ],
-    "recommended": [
-      "Volunteer Governance Framework",
-      "Safeguarding Policy",
-      "Employee Handbook"
-    ]
-  },
-
-  "Trust": {
-    "mandatory": [
-      "Employment Records",
-      "Payroll Documentation",
-      "Basic HR Policies"
-    ],
-    "recommended": [
-      "Volunteer Management Framework",
-      "Code of Conduct"
-    ]
-  },
-
-  "Society": {
-    "mandatory": [
-      "Employment Records",
-      "Payroll Compliance Review",
-      "HR Documentation"
-    ],
-    "recommended": [
-      "Employee Handbook",
-      "Volunteer Governance"
-    ]
-  },
-
-  "NGO": {
-    "mandatory": [
-      "Employment Records",
-      "Employment Agreements",
-      "Payroll Documentation"
-    ],
-    "recommended": [
-      "Volunteer Governance Framework",
-      "Field Workforce Policy",
-      "Safeguarding Policy"
-    ]
-  },
-
-  "DPIIT Recognized Startup": {
-    "mandatory": [
-      "Employment Agreements",
-      "Employee Records",
-      "Foundational HR Policies"
-    ],
-    "recommended": [
-      "Employee Handbook",
-      "Performance Framework",
-      "Workforce Planning",
-      "Manager Capability Development"
-    ]
-  },
-
-  "Government Entity": {
-    "mandatory": [
-      "Service Rules Compliance",
-      "Employee Records",
-      "HR Governance Framework"
-    ],
-    "recommended": [
-      "Training Framework",
-      "Workforce Planning",
-      "Performance Governance"
-    ]
-  },
-
-  "Educational Institution": {
-    "mandatory": [
-      "Faculty Contracts",
-      "Employee Records",
-      "POSH Compliance"
-    ],
-    "recommended": [
-      "Background Verification",
-      "Academic Workforce Planning",
-      "Policy Framework"
-    ]
-  }
-
-},
 
   "stateRules": {
 
@@ -218,7 +215,6 @@
         "Professional Tax Compliance"
       ]
     }
-
   },
 
   "industryRules": {
@@ -339,7 +335,6 @@
         "Workforce Planning"
       ]
     }
-
   },
 
   "futureReadiness": {
@@ -361,34 +356,27 @@
       "Talent management framework",
       "Organisation design review"
     ]
-
   },
 
   "sources": [
-
     {
       "name": "Ministry of Labour & Employment",
       "url": "https://labour.gov.in"
     },
-
     {
       "name": "Employees' Provident Fund Organisation (EPFO)",
       "url": "https://www.epfindia.gov.in"
     },
-
     {
       "name": "Employees' State Insurance Corporation (ESIC)",
       "url": "https://www.esic.gov.in"
     },
-
     {
       "name": "India Code",
       "url": "https://www.indiacode.nic.in"
     }
-
   ],
 
   "disclaimer": "This report is intended for informational purposes only and should not be considered legal, regulatory or HR advice. Users should obtain professional review before acting on compliance obligations."
-
 }
-
+```
