@@ -133,38 +133,120 @@
 
   "industryRules": {
 
-    "Technology": {
+    "Information Technology / SaaS": {
       "recommended": [
         "Remote Work Policy",
-        "Information Security Policy"
+        "Information Security Policy",
+        "Performance Management Framework",
+        "Employee Handbook"
+      ]
+    },
+
+    "Consulting & Professional Services": {
+      "recommended": [
+        "Employment Contracts",
+        "Client Confidentiality Framework",
+        "Performance Management Framework",
+        "Workforce Planning Process"
       ]
     },
 
     "Manufacturing": {
       "recommended": [
         "Safety Policy",
-        "Shift Management Framework"
-      ]
-    },
-
-    "Healthcare": {
-      "recommended": [
-        "Clinical Workforce Governance",
-        "Employee Health Compliance"
+        "Shift Management Framework",
+        "Contract Labour Governance",
+        "Industrial Relations Framework"
       ]
     },
 
     "Retail": {
       "recommended": [
         "Shift Scheduling Framework",
-        "Attendance Monitoring Process"
+        "Attendance Monitoring Process",
+        "POSH Compliance Review",
+        "Payroll Governance"
+      ]
+    },
+
+    "Healthcare": {
+      "recommended": [
+        "Clinical Workforce Governance",
+        "Employee Health Compliance",
+        "Patient Data Confidentiality",
+        "Compliance Monitoring"
+      ]
+    },
+
+    "Education": {
+      "recommended": [
+        "Faculty Contracts",
+        "POSH Compliance Framework",
+        "Background Verification Process",
+        "Policy Governance"
       ]
     },
 
     "Financial Services": {
       "recommended": [
         "Code of Conduct",
-        "Information Security Policy"
+        "Information Security Policy",
+        "Audit Readiness",
+        "Regulatory Compliance Monitoring"
+      ]
+    },
+
+    "Logistics & Transportation": {
+      "recommended": [
+        "Contract Labour Governance",
+        "Shift Management Framework",
+        "Safety Governance",
+        "Payroll Compliance Review"
+      ]
+    },
+
+    "Construction": {
+      "recommended": [
+        "Worker Safety Framework",
+        "Contract Labour Compliance",
+        "Site Compliance Monitoring",
+        "Statutory Registration Reviews"
+      ]
+    },
+
+    "Hospitality": {
+      "recommended": [
+        "Shift Workforce Governance",
+        "Attendance Controls",
+        "POSH Compliance",
+        "Payroll Governance"
+      ]
+    },
+
+    "E-Commerce": {
+      "recommended": [
+        "Warehouse Workforce Compliance",
+        "Contractor Governance",
+        "Performance Management",
+        "Payroll Governance"
+      ]
+    },
+
+    "Startup": {
+      "recommended": [
+        "Foundational HR Compliance",
+        "Employee Handbook",
+        "Workforce Planning",
+        "Manager Capability Building"
+      ]
+    },
+
+    "Other": {
+      "recommended": [
+        "HR Governance",
+        "Policy Framework",
+        "Compliance Monitoring",
+        "Workforce Planning"
       ]
     }
 
