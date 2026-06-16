@@ -1,5 +1,8 @@
-```json
+
 {
+  "version": "1.0",
+  "lastUpdated": "2026-06-22",
+
   "employeeThresholdRules": {
 
     "10": {
@@ -56,7 +59,39 @@
         "Employment Records",
         "Basic HR Documentation"
       ]
+    },
+
+    "Partnership Firm": {
+      "mandatory": [
+        "Employment Records",
+        "Payroll Compliance Review"
+      ]
+    },
+
+    "One Person Company (OPC)": {
+      "mandatory": [
+        "Employment Agreements",
+        "Employment Records"
+      ]
+    },
+
+    "Public Limited Company (Unlisted)": {
+      "mandatory": [
+        "Employment Agreements",
+        "Payroll Compliance Review",
+        "Statutory Employee Records"
+      ]
+    },
+
+    "Public Limited Company (Listed)": {
+      "mandatory": [
+        "Employment Agreements",
+        "Payroll Compliance Review",
+        "Statutory Employee Records",
+        "Formal HR Governance Framework"
+      ]
     }
+
   },
 
   "stateRules": {
@@ -79,7 +114,21 @@
       "mandatory": [
         "Tamil Nadu Shops & Establishments Compliance"
       ]
+    },
+
+    "Delhi": {
+      "mandatory": [
+        "Delhi Shops & Establishments Compliance"
+      ]
+    },
+
+    "Telangana": {
+      "mandatory": [
+        "Telangana Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ]
     }
+
   },
 
   "industryRules": {
@@ -103,7 +152,71 @@
         "Clinical Workforce Governance",
         "Employee Health Compliance"
       ]
+    },
+
+    "Retail": {
+      "recommended": [
+        "Shift Scheduling Framework",
+        "Attendance Monitoring Process"
+      ]
+    },
+
+    "Financial Services": {
+      "recommended": [
+        "Code of Conduct",
+        "Information Security Policy"
+      ]
     }
-  }
+
+  },
+
+  "futureReadiness": {
+
+    "50": [
+      "Formal grievance process",
+      "Structured onboarding",
+      "Manager training"
+    ],
+
+    "100": [
+      "HRIS implementation",
+      "Workforce analytics",
+      "Leadership development"
+    ],
+
+    "250": [
+      "Internal compliance audits",
+      "Talent management framework",
+      "Organisation design review"
+    ]
+
+  },
+
+  "sources": [
+
+    {
+      "name": "Ministry of Labour & Employment",
+      "url": "https://labour.gov.in"
+    },
+
+    {
+      "name": "Employees' Provident Fund Organisation (EPFO)",
+      "url": "https://www.epfindia.gov.in"
+    },
+
+    {
+      "name": "Employees' State Insurance Corporation (ESIC)",
+      "url": "https://www.esic.gov.in"
+    },
+
+    {
+      "name": "India Code",
+      "url": "https://www.indiacode.nic.in"
+    }
+
+  ],
+
+  "disclaimer": "This report is intended for informational purposes only and should not be considered legal, regulatory or HR advice. Users should obtain professional review before acting on compliance obligations."
+
 }
-```
+
