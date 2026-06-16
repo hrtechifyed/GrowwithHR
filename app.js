@@ -896,12 +896,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
 
             <div class="report-footer">
-
               © 2026 HRTechify |
               GrowItWithHR Advisory Engine
-
-            </div>
-
+                <div class="report-end">
+                  END OF REPORT
+                </div>
+            </div>        
             <button
               class="primary-btn print-btn"
               onclick="window.print()">
