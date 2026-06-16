@@ -281,19 +281,15 @@ View Profile
 <h2>Request a Demo</h2>
 
 <form>
-
-<input type="text" placeholder="Your Name">
-
-<input type="email" placeholder="Email Address">
-
-<input type="text" placeholder="Company Name">
-
-<textarea placeholder="Tell us about your company"></textarea>
-
-<button type="submit">
-Request Demo
-</button>
-
+<form
+name="demo-request"
+method="POST"
+data-netlify="true">
+<input
+type="hidden"
+name="form-name"
+value="demo-request">
+</input> 
 </form>
 
 </div>
