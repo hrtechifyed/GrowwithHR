@@ -34,7 +34,6 @@ const industriesData =
 const engineData =
   await engineResponse.json();
 
-return;
     // =====================================
     // LAST VERIFIED
     // =====================================
@@ -588,7 +587,7 @@ return;
 
           </div>
 
-          ;
+          `;
 
         }
       );
