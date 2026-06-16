@@ -1,0 +1,3309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GrowItWithHR — HR Guidance for Your Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --paper: #f5f2ec;
+    --cream: #ede9e0;
+    --accent: #c84b2f;
+    --gold: #d4a843;
+    --sage: #4a7c59;
+    --steel: #3d5a73;
+    --muted: #7a7368;
+    --border: #d6d0c4;
+    --card-bg: #faf8f4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── GRAIN OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.5;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--accent);
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+  }
+
+  .logo span { color: var(--accent); }
+
+  nav { display: flex; gap: 28px; }
+
+  nav a {
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+
+  nav a:hover { opacity: 1; color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 32px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(200,75,47,0.18) 0%, transparent 70%);
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    opacity: 0.72;
+    max-width: 560px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+  }
+
+  /* ─── MAIN CONFIG PANEL ─── */
+  .config-bar {
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 32px;
+    position: sticky;
+    top: 57px;
+    z-index: 90;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .config-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .config-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .config-group label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  .config-group select,
+  .config-group input {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    background: white;
+    color: var(--ink);
+    cursor: pointer;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7368' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+  }
+
+  .config-group input[type=range] {
+    background: none;
+    background-image: none;
+    padding: 6px 0;
+    border: none;
+    cursor: pointer;
+    accent-color: var(--accent);
+  }
+
+  /* ─── SIZE BLOCK SELECTOR ─── */
+  .size-group { flex: 2; min-width: 220px; }
+
+  .size-blocks {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  /* Each block always shows its own color — not just on hover */
+  .size-block {
+    flex: 1;
+    min-width: 62px;
+    padding: 10px 6px 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    border: 2.5px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    line-height: 1.3;
+  }
+
+  /* Always-visible bottom accent bar */
+  .size-block::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    border-radius: 0 0 6px 6px;
+    transition: height 0.18s ease;
+  }
+
+  .size-block:hover::after  { height: 6px; }
+  .size-block.active::after { height: 100%; opacity: 0.12; border-radius: 6px; }
+
+  /* Block 1 — Sage green */
+  .size-block:nth-child(1) {
+    background: #edf7f0; color: #2e6b45; border-color: #7bc99a;
+  }
+  .size-block:nth-child(1)::after { background: #2e6b45; }
+  .size-block:nth-child(1).active {
+    background: #2e6b45; color: #fff; border-color: #2e6b45;
+    box-shadow: 0 3px 12px rgba(46,107,69,0.4);
+  }
+
+  /* Block 2 — Steel blue */
+  .size-block:nth-child(2) {
+    background: #e8f0fb; color: #2a4d6e; border-color: #7aadd4;
+  }
+  .size-block:nth-child(2)::after { background: #2a4d6e; }
+  .size-block:nth-child(2).active {
+    background: #2a4d6e; color: #fff; border-color: #2a4d6e;
+    box-shadow: 0 3px 12px rgba(42,77,110,0.4);
+  }
+
+  /* Block 3 — Amber gold */
+  .size-block:nth-child(3) {
+    background: #fff8e1; color: #7d5700; border-color: #f0b429;
+  }
+  .size-block:nth-child(3)::after { background: #d4a843; }
+  .size-block:nth-child(3).active {
+    background: #d4a843; color: #fff; border-color: #d4a843;
+    box-shadow: 0 3px 12px rgba(212,168,67,0.45);
+  }
+
+  /* Block 4 — Burnt orange */
+  .size-block:nth-child(4) {
+    background: #fff3e0; color: #8c3d00; border-color: #f57c00;
+  }
+  .size-block:nth-child(4)::after { background: #e65c00; }
+  .size-block:nth-child(4).active {
+    background: #e65c00; color: #fff; border-color: #e65c00;
+    box-shadow: 0 3px 12px rgba(230,92,0,0.4);
+  }
+
+  /* Block 5 — Deep crimson */
+  .size-block:nth-child(5) {
+    background: #fce4ec; color: #7b002e; border-color: #e91e63;
+  }
+  .size-block:nth-child(5)::after { background: #c2185b; }
+  .size-block:nth-child(5).active {
+    background: #c2185b; color: #fff; border-color: #c2185b;
+    box-shadow: 0 3px 12px rgba(194,24,91,0.4);
+  }
+
+  /* Block 6 — Purple */
+  .size-block:nth-child(6) {
+    background: #ede7f6; color: #4a0072; border-color: #9c27b0;
+  }
+  .size-block:nth-child(6)::after { background: #6a1b9a; }
+  .size-block:nth-child(6).active {
+    background: #6a1b9a; color: #fff; border-color: #6a1b9a;
+    box-shadow: 0 3px 12px rgba(106,27,154,0.4);
+  }
+
+  /* Block 7 — Teal */
+  .size-block:nth-child(7) {
+    background: #e0f7fa; color: #004d57; border-color: #00acc1;
+  }
+  .size-block:nth-child(7)::after { background: #00838f; }
+  .size-block:nth-child(7).active {
+    background: #00838f; color: #fff; border-color: #00838f;
+    box-shadow: 0 3px 12px rgba(0,131,143,0.4);
+  }
+
+  /* Block 8 — Dark red */
+  .size-block:nth-child(8) {
+    background: #fbe9e7; color: #7f1a0a; border-color: #e64a19;
+  }
+  .size-block:nth-child(8)::after { background: #bf360c; }
+  .size-block:nth-child(8).active {
+    background: #bf360c; color: #fff; border-color: #bf360c;
+    box-shadow: 0 3px 12px rgba(191,54,12,0.45);
+  }
+
+  /* Hover: darken border + slight lift */
+  .size-block:not(.active):hover {
+    transform: translateY(-2px);
+    filter: brightness(0.95);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+
+  /* Active shared: lift + bold border */
+  .size-block.active {
+    transform: translateY(-3px) scale(1.02);
+    font-weight: 700;
+    font-size: 11px;
+  }
+
+  .config-group select:focus,
+  .config-group input:focus { outline: none; border-color: var(--accent); }
+
+  .headcount-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 48px;
+    display: inline-block;
+  }
+
+  .generate-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: background 0.2s, transform 0.1s;
+    white-space: nowrap;
+  }
+
+  .generate-btn:hover { background: #a83a21; }
+  .generate-btn:active { transform: scale(0.98); }
+
+  /* ─── CONFIG TWO-ROW LAYOUT ─── */
+  .config-inner { flex-direction: column; gap: 14px; }
+
+  .config-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .config-row-bottom {
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    align-items: center;
+  }
+
+  /* ─── TOGGLE PILLS ─── */
+  .toggle-group { flex: 1; min-width: 200px; }
+
+  .toggle-pills {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .toggle-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 40px;
+    border: 1.5px solid var(--border);
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+  }
+
+  .toggle-pill .tpill-icon { font-size: 14px; line-height: 1; }
+
+  .toggle-pill:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+    background: var(--cream);
+  }
+
+  /* Listing status pill colours */
+  #listingToggle .toggle-pill[data-value="unlisted"].active  { background: var(--steel);  border-color: var(--steel);  color: white; }
+  #listingToggle .toggle-pill[data-value="listed"].active    { background: var(--sage);   border-color: var(--sage);   color: white; }
+  #listingToggle .toggle-pill[data-value="sme"].active       { background: var(--gold);   border-color: var(--gold);   color: var(--ink); }
+
+  /* Geography pill colours */
+  #geoToggle .toggle-pill[data-value="state"].active    { background: var(--accent);  border-color: var(--accent);  color: white; }
+  #geoToggle .toggle-pill[data-value="panindia"].active { background: #1a6b3c;        border-color: #1a6b3c;        color: white; }
+  #geoToggle .toggle-pill[data-value="global"].active   { background: #1a4a8b;        border-color: #1a4a8b;        color: white; }
+
+  /* active base state */
+  .toggle-pill.active { box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
+
+  /* ─── MAIN CONTENT ─── */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 32px;
+  }
+
+  /* ─── STATUS BANNER ─── */
+  .status-banner {
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-left: 5px solid;
+  }
+
+  .status-banner.phase-solo   { background: #edf7f0; border-color: #2e6b45; }
+  .status-banner.phase-small  { background: #e8f0fb; border-color: #2a4d6e; }
+  .status-banner.phase-mid    { background: #fff8e1; border-color: #d4a843; }
+  .status-banner.phase-large  { background: #fff3e0; border-color: #e65c00; }
+  .status-banner.phase-xlarge { background: #fce4ec; border-color: #c2185b; }
+  .status-banner.phase-corp   { background: #ede7f6; border-color: #6a1b9a; }
+  .status-banner.phase-giant  { background: #e0f7fa; border-color: #00838f; }
+  .status-banner.phase-mega   { background: #fbe9e7; border-color: #bf360c; }
+
+  .status-icon { font-size: 40px; flex-shrink: 0; }
+
+  .status-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .status-desc { font-size: 14px; color: var(--muted); }
+
+  /* ─── SECTIONS ─── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  section { margin-bottom: 52px; }
+
+  /* ─── CARD GRID ─── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-color: #b8b0a0;
+  }
+
+  .card-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  .badge-mandatory { background: #fde8e4; color: var(--accent); }
+  .badge-recommended { background: #e8f0fb; color: var(--steel); }
+  .badge-optional { background: #e8f5ec; color: var(--sage); }
+  .badge-warning { background: #fff3cd; color: #856404; }
+
+  .card h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .card .card-penalty {
+    margin-top: 10px;
+    padding: 8px 10px;
+    background: #fff5f4;
+    border-left: 3px solid var(--accent);
+    font-size: 12px;
+    color: #8b3020;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* ─── COMPLIANCE TABLE ─── */
+  .compliance-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .compliance-table th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .compliance-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .compliance-table tr:last-child td { border-bottom: none; }
+  .compliance-table tr:nth-child(even) td { background: rgba(0,0,0,0.015); }
+  .compliance-table tr:hover td { background: rgba(200,75,47,0.03); }
+
+  .dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+
+  .dot-red { background: var(--accent); }
+  .dot-blue { background: var(--steel); }
+  .dot-green { background: var(--sage); }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position: relative; padding-left: 32px; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 32px;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 4px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: var(--paper);
+  }
+
+  .timeline-item.active::before {
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(200,75,47,0.15);
+  }
+
+  .timeline-item h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .timeline-item .range-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .timeline-item p { font-size: 13px; color: var(--muted); }
+
+  /* ─── TAX TABLE ─── */
+  .tax-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  .tax-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tax-card h3 span {
+    font-size: 12px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .tax-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 13.5px;
+  }
+
+  .tax-row:last-child { border-bottom: none; }
+  .tax-row .label { color: var(--muted); }
+  .tax-row .value { font-weight: 600; font-family: 'DM Mono', monospace; font-size: 13px; }
+
+  /* ─── INDUSTRY PILLS ─── */
+  .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+
+  .pill {
+    padding: 7px 16px;
+    border-radius: 40px;
+    border: 1.5px solid var(--border);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: white;
+  }
+
+  .pill:hover, .pill.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  /* ─── ALERT BOX ─── */
+  .alert {
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .alert-warn { background: #fff8e1; border: 1px solid #ffe082; }
+  .alert-info { background: #e8f4fd; border: 1px solid #bee3f8; }
+  .alert-success { background: #e8f5e9; border: 1px solid #a5d6a7; }
+  .alert-error { background: #fde8e4; border: 1px solid #f5c6bc; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in { animation: fadeUp 0.5s ease both; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 32px;
+    font-size: 13px;
+    opacity: 0.85;
+  }
+
+  footer strong { color: var(--gold); }
+
+  /* ─── RESPONSIVE: LAPTOP (≤1100px) ─── */
+  @media(max-width: 1100px) {
+    .config-inner { gap: 14px; }
+    .config-group { min-width: 140px; }
+    main { padding: 40px 24px; }
+  }
+
+  /* ─── RESPONSIVE: TABLET (≤900px) ─── */
+  @media(max-width: 900px) {
+    nav { gap: 16px; }
+    nav a { font-size: 11px; }
+    .hero { padding: 56px 24px 44px; }
+    .hero-sub { font-size: 15px; }
+    .config-bar { padding: 20px 20px; top: 53px; }
+    .config-inner { gap: 12px; }
+    .config-row { gap: 12px; }
+    .config-group { min-width: 130px; }
+    .toggle-pill { font-size: 12px; padding: 7px 11px; }
+    .section-title { font-size: 22px; }
+    .card-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    .status-banner { padding: 20px 20px; }
+    .tax-card { padding: 18px; }
+  }
+
+  /* ─── RESPONSIVE: MOBILE (≤640px) ─── */
+  @media(max-width: 640px) {
+    /* Header: hide nav, compact logo */
+    nav { display: none; }
+    .header-inner { padding: 12px 16px; }
+    .logo { font-size: 18px; }
+
+    /* Hero: tighter */
+    .hero { padding: 40px 16px 32px; }
+    .hero-eyebrow { font-size: 9px; letter-spacing: 2px; }
+    .hero h1 { font-size: clamp(28px, 9vw, 42px); }
+    .hero-sub { font-size: 14px; margin-bottom: 0; }
+
+    /* Config bar: single column */
+    .config-bar {
+      padding: 14px 16px 16px;
+      top: 48px;
+      position: relative;
+    }
+    .config-inner { flex-direction: column; gap: 10px; align-items: stretch; }
+    .config-row { flex-direction: column; gap: 10px; align-items: stretch; }
+    .config-row-bottom { border-top: 1px solid var(--border); padding-top: 10px; }
+    .config-group { min-width: unset; width: 100%; }
+    .toggle-group { min-width: unset; width: 100%; }
+    .config-group select,
+    .config-group input[type=text] {
+      font-size: 16px;
+      padding: 11px 36px 11px 12px;
+    }
+    .toggle-pills { flex-wrap: wrap; gap: 6px; }
+    .toggle-pill { font-size: 12px; padding: 8px 12px; flex: 1; justify-content: center; min-width: 80px; }
+    .headcount-display { font-size: 22px; }
+    .generate-btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 15px;
+      margin-top: 4px;
+      border-radius: 8px;
+    }
+
+    /* size blocks on mobile */
+    .size-group { min-width: unset; }
+    .size-blocks { gap: 5px; }
+    .size-block { font-size: 10px; padding: 9px 4px; min-width: 38px; }
+
+    /* Main content */
+    main { padding: 20px 14px; }
+    section { margin-bottom: 36px; }
+
+    /* Status banner: stack vertically */
+    .status-banner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 16px 16px;
+      gap: 10px;
+      border-radius: 8px;
+      margin-bottom: 28px;
+    }
+    .status-icon { font-size: 32px; }
+    .status-title { font-size: 18px; }
+    .status-desc { font-size: 13px; }
+
+    /* Section headings */
+    .section-title { font-size: 20px; gap: 8px; flex-wrap: wrap; }
+    .section-title::after { display: none; }
+
+    /* Cards: single column */
+    .card-grid { grid-template-columns: 1fr; gap: 12px; }
+    .card { padding: 16px; }
+    .card h3 { font-size: 14px; }
+    .card p { font-size: 12.5px; }
+
+    /* Tax cards */
+    .tax-card { padding: 14px; }
+    .tax-card h3 { font-size: 14px; flex-direction: column; gap: 6px; align-items: flex-start; }
+    .tax-row { flex-direction: column; gap: 2px; padding: 10px 0; }
+    .tax-row .value { font-size: 12px; color: var(--ink); text-align: left; }
+
+    /* Timeline */
+    .timeline { padding-left: 24px; }
+    .timeline-item { margin-bottom: 24px; }
+    .timeline-item::before { left: -20px; width: 12px; height: 12px; }
+    .timeline-item h4 { font-size: 14px; }
+    .timeline-item p { font-size: 12.5px; }
+
+    /* Alerts */
+    .alert { padding: 12px 14px; font-size: 12.5px; }
+    .alert-icon { font-size: 16px; }
+
+    /* Footer */
+    footer { padding: 24px 16px; font-size: 12px; line-height: 1.8; }
+
+    /* Compliance table scrollable */
+    .compliance-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .compliance-table { min-width: 500px; }
+  }
+
+  /* ─── RESPONSIVE: TINY (≤380px) ─── */
+  @media(max-width: 380px) {
+    .hero h1 { font-size: 26px; }
+    .logo { font-size: 16px; }
+    .card { padding: 12px; }
+    .section-title { font-size: 18px; }
+    .toggle-pill { font-size: 11px; padding: 7px 8px; }
+  }
+
+  /* ─── HR SOLUTIONS TABS ─── */
+  .sol-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 24px; }
+  .sol-tab {
+    padding: 9px 18px;
+    border-radius: 6px;
+    border: 1.5px solid var(--border);
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .sol-tab:hover { border-color: var(--ink); color: var(--ink); background: var(--cream); }
+  .sol-tab.active { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
+
+  .sol-panel { display: none; animation: fadeUp 0.35s ease; }
+  .sol-panel.active { display: block; }
+
+  .sol-overview {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .sol-overview h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .sol-overview p  { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+  .sol-overview .sol-meta {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    padding-top: 14px; border-top: 1px solid var(--border);
+  }
+  .sol-meta-item { font-size: 12px; }
+  .sol-meta-item strong { display: block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+
+  .sol-steps { counter-reset: step; display: flex; flex-direction: column; gap: 12px; }
+  .sol-step {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: white; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px;
+    font-size: 13.5px; line-height: 1.6;
+  }
+  .sol-step-num {
+    counter-increment: step;
+    min-width: 28px; height: 28px;
+    background: var(--accent); color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .sol-step strong { color: var(--ink); }
+  .sol-step p { color: var(--muted); margin: 0; }
+
+  .sol-vendors {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .sol-vendor {
+    background: white; border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 14px;
+  }
+  .sol-vendor .vname { font-weight: 600; font-size: 13px; margin-bottom: 3px; }
+  .sol-vendor .vdesc { font-size: 12px; color: var(--muted); }
+  .sol-vendor .vprice { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--accent); margin-top: 4px; font-weight: 600; }
+
+  /* ─── HR EXPERTISE GRID ─── */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+  .expertise-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .expertise-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-color: #b8b0a0; }
+  .expertise-card-head {
+    padding: 16px 20px;
+    display: flex; align-items: flex-start; gap: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .expertise-icon { font-size: 28px; flex-shrink: 0; }
+  .expertise-card-head h3 { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+  .expertise-card-head .exp-when {
+    font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--muted); font-family: 'DM Mono', monospace;
+  }
+  .expertise-body { padding: 14px 20px; }
+  .expertise-body p { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 10px; }
+  .expertise-bullets { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .expertise-bullets li { font-size: 12.5px; color: var(--muted); padding-left: 14px; position: relative; }
+  .expertise-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 11px; top: 1px; }
+  .expertise-tag {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; padding: 2px 7px; border-radius: 4px; margin-top: 10px;
+  }
+  .exp-tag-strategic { background: #ede7f6; color: #6a1b9a; }
+  .exp-tag-operational { background: #e8f0fb; color: var(--steel); }
+  .exp-tag-specialist  { background: #fff3e0; color: #e65c00; }
+  .exp-tag-emerging    { background: #e8f5e9; color: var(--sage); }
+
+  /* ─── SCALE-UP SECTION ─── */
+  .scaleup-banner {
+    background: linear-gradient(135deg, var(--ink) 0%, #2a2520 100%);
+    color: var(--paper);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .scaleup-banner::before {
+    content: '→';
+    position: absolute; right: 28px; top: 50%; transform: translateY(-50%);
+    font-size: 80px; opacity: 0.06; font-family: 'Playfair Display', serif;
+  }
+  .scaleup-banner h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .scaleup-banner p  { font-size: 13.5px; opacity: 0.75; }
+  .scaleup-from-to {
+    display: flex; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap;
+  }
+  .scaleup-band {
+    padding: 8px 16px; border-radius: 6px;
+    font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 700;
+  }
+  .scaleup-band.current { background: rgba(255,255,255,0.12); color: var(--paper); }
+  .scaleup-band.next    { background: var(--accent); color: white; }
+  .scaleup-arrow { font-size: 20px; opacity: 0.6; }
+
+  .scaleup-checklist {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .scaleup-item {
+    background: white; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px;
+    border-left: 4px solid;
+    font-size: 13.5px;
+  }
+  .scaleup-item.cat-legal   { border-color: var(--accent); }
+  .scaleup-item.cat-hr      { border-color: var(--steel); }
+  .scaleup-item.cat-finance { border-color: var(--gold); }
+  .scaleup-item.cat-ops     { border-color: var(--sage); }
+  .scaleup-item.cat-tech    { border-color: #6a1b9a; }
+  .scaleup-item h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .scaleup-item p  { font-size: 12.5px; color: var(--muted); line-height: 1.6; margin: 0; }
+  .scaleup-cat {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+    margin-bottom: 6px; opacity: 0.6;
+  }
+
+  @media(max-width: 640px) {
+    .expertise-grid { grid-template-columns: 1fr; }
+    .scaleup-checklist { grid-template-columns: 1fr; }
+    .sol-vendors { grid-template-columns: 1fr 1fr; }
+    .scaleup-banner { padding: 20px 18px; }
+    .sol-tabs { gap: 5px; }
+    .sol-tab { font-size: 12px; padding: 8px 12px; }
+  }
+
+  /* ─── CHECKLIST ─── */
+  .checklist { list-style: none; }
+  .checklist li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .checklist li::before {
+    content: '○';
+    color: var(--accent);
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  /* ─── VALIDATION SECTION ─── */
+  .val-banner {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    background: #1a1814;
+    color: var(--paper);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 28px;
+    border-left: 5px solid var(--gold);
+  }
+  .val-banner-icon { font-size: 32px; flex-shrink: 0; }
+  .val-banner-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--gold); }
+  .val-banner p { font-size: 13.5px; line-height: 1.7; opacity: 0.88; }
+  .val-banner strong { color: #ffd580; }
+
+  .val-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .val-block {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .val-block-head {
+    padding: 16px 20px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .val-block-head h3 {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .val-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .val-tag-central { background: #fde8e4; color: var(--accent); }
+  .val-tag-state { background: #e8f0fb; color: var(--steel); }
+
+  .val-list { list-style: none; padding: 0; }
+  .val-list li {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .val-list li:last-child { border-bottom: none; }
+  .val-source-name { font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .val-source-desc { color: var(--muted); font-size: 12px; line-height: 1.5; margin-bottom: 6px; }
+  .val-link {
+    display: inline-block;
+    font-size: 11.5px;
+    font-family: 'DM Mono', monospace;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 2px 0;
+    border-bottom: 1px dashed var(--accent);
+    transition: opacity 0.2s;
+  }
+  .val-link:hover { opacity: 0.7; }
+
+  .val-howto {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .val-howto-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .val-steps { display: flex; flex-direction: column; gap: 14px; }
+  .val-step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+  .val-step-num {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .val-step a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent); }
+  .val-step strong { color: var(--ink); }
+
+  .val-freshness {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .val-freshness-row {
+    display: flex;
+    gap: 16px;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    align-items: flex-start;
+  }
+  .val-freshness-row:last-child { border-bottom: none; }
+  .val-freshness-label { font-weight: 600; flex-shrink: 0; min-width: 220px; color: var(--ink); }
+  .val-freshness-val { color: var(--muted); }
+
+  @media(max-width: 900px) {
+    .val-grid { grid-template-columns: 1fr; }
+    .val-freshness-label { min-width: 170px; }
+  }
+
+  @media(max-width: 640px) {
+    .val-banner { flex-direction: column; gap: 10px; padding: 16px; }
+    .val-block-head { padding: 12px 14px; }
+    .val-list li { padding: 10px 14px; }
+    .val-howto { padding: 16px; }
+    .val-freshness-row { flex-direction: column; gap: 4px; padding: 12px 14px; }
+    .val-freshness-label { min-width: unset; }
+    .val-step { font-size: 13px; }
+  }
+
+  /* ─── HR SOLUTIONS TABS ─── */
+  .sol-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .sol-tab {
+    padding: 9px 16px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.18s;
+    white-space: nowrap;
+  }
+  .sol-tab:hover { border-color: var(--ink); color: var(--ink); background: var(--cream); }
+  .sol-tab.active { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 600; }
+  .sol-panel { display: none; }
+  .sol-panel.active { display: block; animation: fadeUp 0.35s ease; }
+  .sol-panel-header {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 10px 10px 0 0;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .sol-panel-icon { font-size: 28px; }
+  .sol-panel-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; }
+  .sol-panel-subtitle { font-size: 13px; opacity: 0.7; margin-top: 3px; }
+  .sol-panel-body {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    padding: 24px;
+  }
+  .sol-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .sol-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    border-left: 4px solid;
+  }
+  .sol-card.phase-now   { border-left-color: var(--accent); }
+  .sol-card.phase-soon  { border-left-color: var(--gold); }
+  .sol-card.phase-later { border-left-color: var(--steel); }
+  .sol-card-phase { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+  .sol-card.phase-now   .sol-card-phase { color: var(--accent); }
+  .sol-card.phase-soon  .sol-card-phase { color: var(--gold); }
+  .sol-card.phase-later .sol-card-phase { color: var(--steel); }
+  .sol-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; line-height: 1.3; }
+  .sol-card p  { font-size: 12.5px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
+  .sol-tools { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+  .sol-tool { font-size: 11px; background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; color: var(--ink); font-weight: 500; }
+  .sol-cost { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--sage); font-weight: 600; margin-top: 6px; }
+
+  /* ─── HR EXPERTISE GRID ─── */
+  .expertise-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .exp-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: box-shadow 0.2s; }
+  .exp-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.09); }
+  .exp-card-head { padding: 16px 18px 14px; display: flex; align-items: flex-start; gap: 12px; border-bottom: 1px solid var(--border); }
+  .exp-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+  .exp-card-head h3 { font-size: 15px; font-weight: 700; margin-bottom: 3px; line-height: 1.2; }
+  .exp-when { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-family: 'DM Mono', monospace; }
+  .exp-when.ew-startup { color: var(--sage); }
+  .exp-when.ew-growing { color: var(--gold); }
+  .exp-when.ew-mid     { color: var(--accent); }
+  .exp-when.ew-large   { color: #6a1b9a; }
+  .exp-card-body { padding: 14px 18px 16px; }
+  .exp-card-body p { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 10px; }
+  .exp-skills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .exp-skill { font-size: 11px; padding: 3px 9px; border-radius: 20px; background: var(--cream); border: 1px solid var(--border); color: var(--ink); font-weight: 500; }
+  .exp-hire-note { font-size: 12px; background: #fff8f0; border: 1px solid #ffe0b2; border-radius: 6px; padding: 8px 10px; color: #7a4510; line-height: 1.55; }
+
+  /* ─── NEXT BRACKET / SCALE UP ─── */
+  .scaleup-banner {
+    background: linear-gradient(135deg, var(--ink) 0%, #1a2a3a 100%);
+    color: var(--paper);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .scaleup-banner::before {
+    content: '';
+    position: absolute;
+    right: -40px; top: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(200,75,47,0.15);
+  }
+  .scaleup-arrow { font-size: 40px; flex-shrink: 0; }
+  .scaleup-banner-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .scaleup-banner-sub { font-size: 13px; opacity: 0.75; }
+  .scaleup-sections { display: flex; flex-direction: column; gap: 12px; }
+  .scaleup-section { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .scaleup-section-head {
+    background: white;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .scaleup-section-head:hover { background: var(--cream); }
+  .scaleup-section-head-icon { font-size: 18px; flex-shrink: 0; }
+  .scaleup-section-head h4 { font-size: 14px; font-weight: 700; flex: 1; }
+  .sch-tag { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+  .sch-tag.critical  { background: #fde8e4; color: var(--accent); }
+  .sch-tag.important { background: #fff8e1; color: #856404; }
+  .sch-tag.strategic { background: #e8f0fb; color: var(--steel); }
+  .scaleup-chevron { font-size: 12px; color: var(--muted); transition: transform 0.2s; margin-left: auto; }
+  .scaleup-section.open .scaleup-chevron { transform: rotate(180deg); }
+  .scaleup-section-body { display: none; padding: 16px 20px; }
+  .scaleup-section.open .scaleup-section-body { display: block; animation: fadeUp 0.25s ease; }
+  .scaleup-checklist { list-style: none; }
+  .scaleup-checklist li {
+    font-size: 13.5px;
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--border);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    line-height: 1.55;
+  }
+  .scaleup-checklist li:last-child { border-bottom: none; }
+  .sci { flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+
+  @media(max-width: 640px) {
+    .sol-tabs { gap: 6px; }
+    .sol-tab { font-size: 12px; padding: 8px 12px; }
+    .sol-grid { grid-template-columns: 1fr; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .scaleup-banner { flex-direction: column; align-items: flex-start; gap: 12px; padding: 18px; }
+    .sol-panel-header { padding: 16px 18px; }
+    .sol-panel-body { padding: 16px; }
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--paper);
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ─── MOBILE NAV DRAWER ─── */
+  @media(max-width: 640px) {
+    .hamburger { display: flex; }
+    nav#mainNav {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 48px;
+      left: 0; right: 0;
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      z-index: 200;
+      gap: 0;
+    }
+    nav#mainNav.open {
+      max-height: 320px;
+      padding: 8px 0 12px;
+    }
+    nav#mainNav a {
+      padding: 13px 20px;
+      font-size: 13px;
+      opacity: 1;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      letter-spacing: 1px;
+    }
+    nav#mainNav a:last-child { border-bottom: none; }
+    nav#mainNav a:hover { background: rgba(255,255,255,0.06); color: var(--gold); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">GrowIt<span>WithHR</span></div>
+    <nav id="mainNav">
+      <a href="#compliance" onclick="closeNav()">Compliance</a>
+      <a href="#taxation" onclick="closeNav()">Taxation</a>
+      <a href="#growth" onclick="closeNav()">Growth</a>
+      <a href="#hrsolutions" onclick="closeNav()">HR Solutions</a>
+      <a href="#hrexpertise" onclick="closeNav()">HR Expertise</a>
+      <a href="#nextbracket" onclick="closeNav()">Scale Up</a>
+      <a href="#industry" onclick="closeNav()">By Industry</a>
+      <a href="#states" onclick="closeNav()">State Laws</a>
+      <a href="#validation" onclick="closeNav()">Verify</a>
+    </nav>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">An HR Guidance for the Company — By HRTechify</div>
+  <h1>Grow It <em>Right.</em><br/>Grow It With HR</h1>
+  <p class="hero-sub">Tell us where you are today. We'll tell you exactly what you must do, what you can defer, and when to hire your first HR person.</p>
+</div>
+
+<!-- CONFIG BAR -->
+<div class="config-bar">
+  <div class="config-inner">
+    <!-- Row 1: dropdowns + size blocks -->
+    <div class="config-row config-row-top">
+      <div class="config-group">
+        <label>Company Type</label>
+        <select id="companyType" onchange="updateGuide()">
+          <option value="tech">Tech / SaaS / Software</option>
+          <option value="manufacturing">Manufacturing / Factory</option>
+          <option value="retail">Retail / E-commerce</option>
+          <option value="services">Professional Services / Consulting</option>
+          <option value="food">Food & Beverage / Restaurant</option>
+          <option value="healthcare">Healthcare / Clinic</option>
+          <option value="construction">Construction / Real Estate</option>
+        </select>
+      </div>
+      <div class="config-group">
+        <label>State / UT</label>
+        <select id="stateSelect" onchange="updateGuide()">
+          <optgroup label="── Major States ──">
+            <option value="karnataka">Karnataka</option>
+            <option value="maharashtra">Maharashtra</option>
+            <option value="tamilnadu">Tamil Nadu</option>
+            <option value="telangana">Telangana</option>
+            <option value="gujarat">Gujarat</option>
+            <option value="up">Uttar Pradesh</option>
+            <option value="rajasthan">Rajasthan</option>
+            <option value="westbengal">West Bengal</option>
+            <option value="haryana">Haryana</option>
+            <option value="mp">Madhya Pradesh</option>
+            <option value="ap">Andhra Pradesh</option>
+            <option value="bihar">Bihar</option>
+            <option value="punjab">Punjab</option>
+            <option value="odisha">Odisha</option>
+            <option value="kerala">Kerala</option>
+            <option value="jharkhand">Jharkhand</option>
+            <option value="assam">Assam</option>
+            <option value="chhattisgarh">Chhattisgarh</option>
+            <option value="uttarakhand">Uttarakhand</option>
+            <option value="himachal">Himachal Pradesh</option>
+            <option value="goa">Goa</option>
+            <option value="tripura">Tripura</option>
+            <option value="meghalaya">Meghalaya</option>
+            <option value="manipur">Manipur</option>
+            <option value="nagaland">Nagaland</option>
+            <option value="arunachal">Arunachal Pradesh</option>
+            <option value="mizoram">Mizoram</option>
+            <option value="sikkim">Sikkim</option>
+          </optgroup>
+          <optgroup label="── Union Territories ──">
+            <option value="delhi">Delhi (NCT)</option>
+            <option value="chandigarh">Chandigarh</option>
+            <option value="puducherry">Puducherry</option>
+            <option value="jk">Jammu &amp; Kashmir</option>
+            <option value="ladakh">Ladakh</option>
+            <option value="andaman">Andaman &amp; Nicobar Islands</option>
+            <option value="lakshadweep">Lakshadweep</option>
+            <option value="dadra">Dadra, Nagar Haveli &amp; Daman Diu</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="config-group">
+        <label>Entity Type</label>
+        <select id="entityType" onchange="updateGuide()">
+          <option value="pvtltd">Private Limited (Pvt. Ltd.)</option>
+          <option value="llp">LLP</option>
+          <option value="proprietorship">Proprietorship</option>
+          <option value="opc">One Person Company (OPC)</option>
+          <option value="partnership">Partnership Firm</option>
+        </select>
+      </div>
+      <div class="config-group size-group">
+        <label>Employee Strength</label>
+        <div class="size-blocks" id="sizeBlocks">
+          <button class="size-block active" data-min="1"       data-max="9"       onclick="selectSizeBlock(this)">1–9</button>
+          <button class="size-block"        data-min="10"      data-max="99"      onclick="selectSizeBlock(this)">10–99</button>
+          <button class="size-block"        data-min="100"     data-max="999"     onclick="selectSizeBlock(this)">100–999</button>
+          <button class="size-block"        data-min="1000"    data-max="4999"    onclick="selectSizeBlock(this)">1K–4.9K</button>
+          <button class="size-block"        data-min="5000"    data-max="9999"    onclick="selectSizeBlock(this)">5K–9.9K</button>
+          <button class="size-block"        data-min="10000"   data-max="99999"   onclick="selectSizeBlock(this)">10K–99K</button>
+          <button class="size-block"        data-min="100000"  data-max="999999"  onclick="selectSizeBlock(this)">1L–9.9L</button>
+          <button class="size-block"        data-min="1000000" data-max="9999999" onclick="selectSizeBlock(this)">10L+</button>
+        </div>
+      </div>
+    </div>
+    <!-- Row 2: toggle fields + button -->
+    <div class="config-row config-row-bottom">
+      <div class="config-group toggle-group">
+        <label>Listing Status</label>
+        <div class="toggle-pills" id="listingToggle">
+          <button class="toggle-pill active" data-value="unlisted" onclick="selectToggle('listingToggle', this)">
+            <span class="tpill-icon">🔒</span> Unlisted
+          </button>
+          <button class="toggle-pill" data-value="listed" onclick="selectToggle('listingToggle', this)">
+            <span class="tpill-icon">📈</span> Listed (BSE / NSE)
+          </button>
+          <button class="toggle-pill" data-value="sme" onclick="selectToggle('listingToggle', this)">
+            <span class="tpill-icon">🏷️</span> SME Listed
+          </button>
+        </div>
+      </div>
+      <div class="config-group toggle-group">
+        <label>Geographic Presence</label>
+        <div class="toggle-pills" id="geoToggle">
+          <button class="toggle-pill active" data-value="state" onclick="selectToggle('geoToggle', this)">
+            <span class="tpill-icon">📍</span> State-Specific
+          </button>
+          <button class="toggle-pill" data-value="panindia" onclick="selectToggle('geoToggle', this)">
+            <span class="tpill-icon">🇮🇳</span> Pan India
+          </button>
+          <button class="toggle-pill" data-value="global" onclick="selectToggle('geoToggle', this)">
+            <span class="tpill-icon">🌐</span> Global
+          </button>
+        </div>
+      </div>
+      <button class="generate-btn" onclick="updateGuide(true)">Update My Guide →</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main id="mainContent">
+
+  <!-- STATUS BANNER -->
+  <div id="statusBanner" class="status-banner phase-solo fade-in">
+    <div class="status-icon">🌱</div>
+    <div>
+      <div class="status-title" id="statusTitle">Phase 1: Micro (1–9 people)</div>
+      <div class="status-desc" id="statusDesc">Stay lean. Do not hire HR. Use a CA and payroll software. · Unlisted Private Company · State-level Operations</div>
+    </div>
+  </div>
+
+  <!-- CONTEXT-SPECIFIC ALERTS (listing + geo) -->
+  <div id="contextAlerts" style="margin-bottom:32px"></div>
+
+  <!-- DAY 1 COMPLIANCE -->
+  <section id="compliance">
+    <div class="section-title">Day 1 Mandatory Compliance</div>
+    <p class="section-subtitle">Non-negotiable. These apply from the moment you register your company — regardless of headcount.</p>
+
+    <div id="mandatoryCards" class="card-grid">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- TAXATION -->
+  <section id="taxation">
+    <div class="section-title">Taxation & Statutory Filings</div>
+    <p class="section-subtitle">Your obligations as an employer — from GST to TDS to PF.</p>
+    <div id="taxContent"></div>
+  </section>
+
+  <!-- GROWTH TIMELINE -->
+  <section id="growth">
+    <div class="section-title">When to Hire &amp; What HR to Add</div>
+    <p class="section-subtitle">A roadmap from solo to 1M+ people — don't over-HR yourself early.</p>
+    <div id="timelineContent" class="timeline"></div>
+  </section>
+
+  <!-- HR SOLUTIONS -->
+  <section id="hrsolutions">
+    <div class="section-title">End-to-End HR Solutions</div>
+    <p class="section-subtitle">Choose what HR function you need to set up — we'll show you the full playbook, tools, and vendors for each.</p>
+    <div class="sol-tabs">
+      <button class="sol-tab active" onclick="showSolPanel('payroll')">💰 Payroll & Compliance</button>
+      <button class="sol-tab" onclick="showSolPanel('recruitment')">🎯 Talent Acquisition</button>
+      <button class="sol-tab" onclick="showSolPanel('onboarding')">🚪 Onboarding</button>
+      <button class="sol-tab" onclick="showSolPanel('performance')">📊 Performance Management</button>
+      <button class="sol-tab" onclick="showSolPanel('lnd')">📚 Learning & Development</button>
+      <button class="sol-tab" onclick="showSolPanel('engagement')">💬 Employee Engagement</button>
+      <button class="sol-tab" onclick="showSolPanel('hrops')">⚙️ HR Operations & HRIS</button>
+      <button class="sol-tab" onclick="showSolPanel('separation')">🚶 Separation & Exit</button>
+    </div>
+    <div id="solPanels">
+      <!-- populated by JS -->
+    </div>
+  </section>
+
+  <!-- HR EXPERTISE — NICHE AREAS -->
+  <section id="hrexpertise">
+    <div class="section-title">HR Specialisation &amp; Expertise Areas</div>
+    <p class="section-subtitle">Beyond generalist HR — niche disciplines that become critical as your organisation matures. Know when to hire a specialist vs. a generalist.</p>
+    <div id="expertiseGrid" class="expertise-grid">
+      <!-- populated by JS -->
+    </div>
+  </section>
+
+  <!-- SCALE UP — NEXT BRACKET -->
+  <section id="nextbracket">
+    <div class="section-title">What You Need to Scale to the Next Bracket</div>
+    <p class="section-subtitle" id="scaleupSubtitle">Based on your current employee strength, here's exactly what you need to do before moving to the next size bracket.</p>
+    <div id="scaleupContent">
+      <!-- populated by JS -->
+    </div>
+  </section>
+
+  <!-- STATE LAWS -->
+  <section id="states">
+    <div class="section-title">State-Specific Labour Laws</div>
+    <p class="section-subtitle" id="stateSubtitle">Showing laws for Karnataka</p>
+    <div id="stateContent"></div>
+  </section>
+
+  <!-- INDUSTRY SECTION -->
+  <section id="industry">
+    <div class="section-title">Industry-Specific HR Requirements</div>
+    <p class="section-subtitle">Different industries have unique compliance obligations beyond the standard framework.</p>
+    <div id="industryContent"></div>
+  </section>
+
+  <!-- VALIDATION & SOURCES -->
+  <section id="validation">
+    <div class="section-title">How to Validate These Recommendations</div>
+    <p class="section-subtitle">This guide is a structured starting point — not a legal opinion. Here's exactly how to verify every recommendation.</p>
+
+    <div class="val-banner">
+      <div class="val-banner-icon">⚖️</div>
+      <div>
+        <div class="val-banner-title">Important Disclaimer</div>
+        <p>Labour law rates (minimum wages, PT slabs, LWF amounts) are revised by state governments every 6–12 months. Central acts are amended by Parliament. The framework in this guide is accurate as of mid-2025 — but <strong>specific numbers must always be verified from official government portals before acting on them.</strong></p>
+      </div>
+    </div>
+
+    <div class="val-grid">
+
+      <div class="val-block">
+        <div class="val-block-head">
+          <span class="val-tag val-tag-central">Central Govt</span>
+          <h3>Central Acts &amp; Ministries</h3>
+        </div>
+        <ul class="val-list">
+          <li>
+            <div class="val-source-name">Ministry of Labour &amp; Employment</div>
+            <div class="val-source-desc">EPF, ESI, Minimum Wages, Factories Act, POSH, Gratuity — all central labour laws</div>
+            <a href="https://labour.gov.in" target="_blank" class="val-link">labour.gov.in ↗</a>
+          </li>
+          <li>
+            <div class="val-source-name">EPFO Official Portal</div>
+            <div class="val-source-desc">Current PF contribution rates, ECR filing, UAN portal, circulars</div>
+            <a href="https://www.epfindia.gov.in" target="_blank" class="val-link">epfindia.gov.in ↗</a>
+          </li>
+          <li>
+            <div class="val-source-name">ESIC Portal</div>
+            <div class="val-source-desc">ESI contribution rates, coverage threshold (₹21,000/month), employer registration</div>
+            <a href="https://www.esic.gov.in" target="_blank" class="val-link">esic.gov.in ↗</a>
+          </li>
+          <li>
+            <div class="val-source-name">MCA / ROC (Company Law)</div>
+            <div class="val-source-desc">Company registration, annual filings (AOC-4, MGT-7), director compliance</div>
+            <a href="https://www.mca.gov.in" target="_blank" class="val-link">mca.gov.in ↗</a>
+          </li>
+          <li>
+            <div class="val-source-name">Income Tax / TDS (IT Dept)</div>
+            <div class="val-source-desc">TDS rates, Form 24Q filing, Form 16, advance tax schedules</div>
+            <a href="https://www.incometax.gov.in" target="_blank" class="val-link">incometax.gov.in ↗</a>
+          </li>
+          <li>
+            <div class="val-source-name">GST Portal</div>
+            <div class="val-source-desc">GST registration, GSTR filing deadlines, HSN codes, e-way bills</div>
+            <a href="https://www.gst.gov.in" target="_blank" class="val-link">gst.gov.in ↗</a>
+          </li>
+          <li>
+            <div class="val-source-name">Shram Suvidha Portal</div>
+            <div class="val-source-desc">Unified labour compliance portal — register establishments, file returns for multiple acts</div>
+            <a href="https://shramsuvidha.gov.in" target="_blank" class="val-link">shramsuvidha.gov.in ↗</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="val-block">
+        <div class="val-block-head">
+          <span class="val-tag val-tag-state">State Govt</span>
+          <h3>State &amp; UT Labour Department Portals</h3>
+        </div>
+        <ul class="val-list">
+          <li><div class="val-source-name">Karnataka Labour Dept</div><div class="val-source-desc">PT slabs, Shops Act, minimum wages, LWF</div><a href="https://labour.karnataka.gov.in" target="_blank" class="val-link">labour.karnataka.gov.in ↗</a></li>
+          <li><div class="val-source-name">Maharashtra MahaShram</div><div class="val-source-desc">Shops Act 2017, PT challan, minimum wages (zone-wise), LWF</div><a href="https://mahakamgar.maharashtra.gov.in" target="_blank" class="val-link">mahakamgar.maharashtra.gov.in ↗</a></li>
+          <li><div class="val-source-name">Tamil Nadu Labour Dept</div><div class="val-source-desc">PT, minimum wages, Shops Act, LWF</div><a href="https://www.labour.tn.gov.in" target="_blank" class="val-link">labour.tn.gov.in ↗</a></li>
+          <li><div class="val-source-name">Telangana Labour Dept</div><div class="val-source-desc">PT slabs, Shops Act online, minimum wages IT/non-IT</div><a href="https://labour.telangana.gov.in" target="_blank" class="val-link">labour.telangana.gov.in ↗</a></li>
+          <li><div class="val-source-name">Gujarat Labour &amp; Employment</div><div class="val-source-desc">GIFT City, PT, Shops Act, factory licensing, minimum wages</div><a href="https://labour.gujarat.gov.in" target="_blank" class="val-link">labour.gujarat.gov.in ↗</a></li>
+          <li><div class="val-source-name">Uttar Pradesh Labour Dept</div><div class="val-source-desc">Shops Act, minimum wages, Shram Suvidha integration</div><a href="https://uplabour.gov.in" target="_blank" class="val-link">uplabour.gov.in ↗</a></li>
+          <li><div class="val-source-name">Rajasthan Labour Dept</div><div class="val-source-desc">Minimum wages, Shops Act, LWF, factory licensing</div><a href="https://labour.rajasthan.gov.in" target="_blank" class="val-link">labour.rajasthan.gov.in ↗</a></li>
+          <li><div class="val-source-name">West Bengal Labour Dept</div><div class="val-source-desc">PT slabs, minimum wages, Shops Act, LWF</div><a href="https://labour.wb.gov.in" target="_blank" class="val-link">labour.wb.gov.in ↗</a></li>
+          <li><div class="val-source-name">Haryana Labour Dept (Saral)</div><div class="val-source-desc">Shops Act online registration, minimum wages, LWF</div><a href="https://saralharyana.gov.in" target="_blank" class="val-link">saralharyana.gov.in ↗</a></li>
+          <li><div class="val-source-name">Madhya Pradesh Labour Dept</div><div class="val-source-desc">Minimum wages, Shops Act, factory compliance, LWF</div><a href="https://labour.mp.gov.in" target="_blank" class="val-link">labour.mp.gov.in ↗</a></li>
+          <li><div class="val-source-name">Andhra Pradesh Labour Dept</div><div class="val-source-desc">PT, minimum wages, Shops Act, factory compliance</div><a href="https://labour.ap.gov.in" target="_blank" class="val-link">labour.ap.gov.in ↗</a></li>
+          <li><div class="val-source-name">Bihar Labour Dept</div><div class="val-source-desc">Minimum wages, Shops Act, factory licensing</div><a href="https://labour.bih.nic.in" target="_blank" class="val-link">labour.bih.nic.in ↗</a></li>
+          <li><div class="val-source-name">Punjab Labour Dept</div><div class="val-source-desc">Minimum wages, Shops Act, LWF, factory compliance</div><a href="https://pblabour.gov.in" target="_blank" class="val-link">pblabour.gov.in ↗</a></li>
+          <li><div class="val-source-name">Odisha Labour Dept</div><div class="val-source-desc">PT, minimum wages, Shops Act, mining labour compliance</div><a href="https://labour.odisha.gov.in" target="_blank" class="val-link">labour.odisha.gov.in ↗</a></li>
+          <li><div class="val-source-name">Kerala Labour Dept</div><div class="val-source-desc">PT, minimum wages, Shops Act, LWF, union compliance</div><a href="https://labour.kerala.gov.in" target="_blank" class="val-link">labour.kerala.gov.in ↗</a></li>
+          <li><div class="val-source-name">Jharkhand Labour Dept</div><div class="val-source-desc">Minimum wages, factory licensing, mines compliance</div><a href="https://shramadhan.jharkhand.gov.in" target="_blank" class="val-link">shramadhan.jharkhand.gov.in ↗</a></li>
+          <li><div class="val-source-name">Assam Labour Dept</div><div class="val-source-desc">PT, minimum wages, plantation labour, Shops Act</div><a href="https://labour.assam.gov.in" target="_blank" class="val-link">labour.assam.gov.in ↗</a></li>
+          <li><div class="val-source-name">Chhattisgarh Labour Dept</div><div class="val-source-desc">Minimum wages, Shops Act, factory compliance, LWF</div><a href="https://cglabour.nic.in" target="_blank" class="val-link">cglabour.nic.in ↗</a></li>
+          <li><div class="val-source-name">Uttarakhand Labour Dept</div><div class="val-source-desc">Minimum wages, Shops Act, pharma factory compliance</div><a href="https://labour.uk.gov.in" target="_blank" class="val-link">labour.uk.gov.in ↗</a></li>
+          <li><div class="val-source-name">Himachal Pradesh Labour Dept</div><div class="val-source-desc">Minimum wages, Shops Act, factory licensing (BBN belt)</div><a href="https://himachal.nic.in/labour" target="_blank" class="val-link">himachal.nic.in/labour ↗</a></li>
+          <li><div class="val-source-name">Goa Labour Dept</div><div class="val-source-desc">PT, minimum wages, hospitality/tourism compliance</div><a href="https://labour.goa.gov.in" target="_blank" class="val-link">labour.goa.gov.in ↗</a></li>
+          <li><div class="val-source-name">Delhi Labour Dept</div><div class="val-source-desc">Delhi minimum wages (highest in India), Shops Act, no PT</div><a href="https://labourdelhi.gov.in" target="_blank" class="val-link">labourdelhi.gov.in ↗</a></li>
+          <li><div class="val-source-name">Puducherry Labour Dept</div><div class="val-source-desc">PT slabs, Shops Act, minimum wages, industrial compliance</div><a href="https://labour.py.gov.in" target="_blank" class="val-link">labour.py.gov.in ↗</a></li>
+          <li><div class="val-source-name">J&amp;K Labour Dept</div><div class="val-source-desc">Post-2019 central law applicability, minimum wages, Shops Act</div><a href="https://jklabourdept.nic.in" target="_blank" class="val-link">jklabourdept.nic.in ↗</a></li>
+          <li><div class="val-source-name">North East States (NE Portal)</div><div class="val-source-desc">NEIDS incentives, state labour portals for Assam, Meghalaya, Manipur, Nagaland, Arunachal, Mizoram, Tripura, Sikkim</div><a href="https://www.neids.gov.in" target="_blank" class="val-link">neids.gov.in ↗</a></li>
+          <li><div class="val-source-name">IndiaCode (Acts Repository)</div><div class="val-source-desc">Official repository of all central and state acts — read the actual law text</div><a href="https://www.indiacode.nic.in" target="_blank" class="val-link">indiacode.nic.in ↗</a></li>
+          <li><div class="val-source-name">e-Gazette of India</div><div class="val-source-desc">All central and state government notifications, amendments, and new regulations published here</div><a href="https://egazette.nic.in" target="_blank" class="val-link">egazette.nic.in ↗</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="val-howto">
+      <div class="val-howto-title">📋 How to Verify — Step by Step</div>
+      <div class="val-steps">
+        <div class="val-step">
+          <div class="val-step-num">1</div>
+          <div>
+            <strong>Central Acts (EPF, ESI, TDS)</strong> — Go directly to <a href="https://labour.gov.in" target="_blank">labour.gov.in</a> or <a href="https://epfindia.gov.in" target="_blank">epfindia.gov.in</a>. Check the latest circulars section. EPFO issues wage ceiling and contribution rate notifications via official circulars.
+          </div>
+        </div>
+        <div class="val-step">
+          <div class="val-step-num">2</div>
+          <div>
+            <strong>State Minimum Wages</strong> — Visit your state labour department portal. Look for "Minimum Wages Notification" — typically a PDF gazette notification. These are revised every April 1 or October 1.
+          </div>
+        </div>
+        <div class="val-step">
+          <div class="val-step-num">3</div>
+          <div>
+            <strong>Professional Tax Slabs</strong> — Search your state's finance department or labour department for "Professional Tax Rates [Year]". PT is amended via state Finance Acts, usually in the state budget (Feb–March annually).
+          </div>
+        </div>
+        <div class="val-step">
+          <div class="val-step-num">4</div>
+          <div>
+            <strong>Cross-check with a CA or CS</strong> — For anything involving penalties, filings, or registrations — always get sign-off from a Chartered Accountant (CA) or Company Secretary (CS). They subscribe to tax update services and will flag recent amendments.
+          </div>
+        </div>
+        <div class="val-step">
+          <div class="val-step-num">5</div>
+          <div>
+            <strong>Use Shram Suvidha for returns</strong> — <a href="https://shramsuvidha.gov.in" target="_blank">shramsuvidha.gov.in</a> consolidates returns for 6 central labour acts. Filing here is treated as compliance under those acts. The portal itself reflects current requirements.
+          </div>
+        </div>
+        <div class="val-step">
+          <div class="val-step-num">6</div>
+          <div>
+            <strong>Subscribe to official gazettes</strong> — Both Central (egazette.nic.in) and state gazettes publish all amendments. Set a Google Alert for "[Your State] labour law notification" to catch changes as they happen.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="val-freshness">
+      <div class="val-freshness-row">
+        <span class="val-freshness-label">📅 Guide Data Freshness</span>
+        <span class="val-freshness-val">Framework as of mid-2025 · Verify rates before use</span>
+      </div>
+      <div class="val-freshness-row">
+        <span class="val-freshness-label">🔄 What changes frequently</span>
+        <span class="val-freshness-val">Minimum wages (6–12mo) · PT slabs (yearly) · LWF rates (state budgets) · GST deadlines</span>
+      </div>
+      <div class="val-freshness-row">
+        <span class="val-freshness-label">✅ What is stable</span>
+        <span class="val-freshness-val">PF 12% rate · ESI 3.25%/0.75% · Core act thresholds (20 for PF, 10 for ESI/Gratuity)</span>
+      </div>
+      <div class="val-freshness-row">
+        <span class="val-freshness-label">⚠️ What requires a professional</span>
+        <span class="val-freshness-val">Penalties · Court interpretations · State-specific exemptions · ESOP tax · Contract drafting</span>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  <strong>GrowItWithHR</strong> by <strong>HRTechify</strong> — Educational guide only. Consult a CA, CS, or labour law attorney for your specific situation.<br/>
+  Data accurate as of mid-2025 · Always verify rates &amp; thresholds from official govt portals before acting.<br/>
+  <span style="opacity:0.5;font-size:11px">Central Acts referenced: Factories Act 1948 · EPF &amp; MP Act 1952 · ESI Act 1948 · Payment of Wages Act · Minimum Wages Act 1948 · Income Tax Act 1961 · POSH Act 2013</span>
+</footer>
+
+<script>
+const DATA = {
+
+  phases: [
+    { min: 1,       max: 9,       cls: 'phase-solo',   icon: '🌱', title: 'Phase 1 — Micro (1–9 employees)',           desc: 'Stay lean. Do not hire HR. Use a CA and payroll software. Understand your legal baseline from Day 1.' },
+    { min: 10,      max: 99,      cls: 'phase-small',  icon: '🚀', title: 'Phase 2 — Small (10–99 employees)',         desc: 'PF (20+) and ESI (10+) thresholds kick in. Consider a part-time HR consultant or outsource payroll.' },
+    { min: 100,     max: 999,     cls: 'phase-mid',    icon: '⚡', title: 'Phase 3 — Growing (100–999 employees)',     desc: 'Dedicated HR team essential. Full compliance framework, HRIS, structured policies, POSH enforcement.' },
+    { min: 1000,    max: 4999,    cls: 'phase-large',  icon: '🏢', title: 'Phase 4 — Mid-size (1K–4,999 employees)',   desc: 'Multi-layered HR org. HRBPs per function, Talent Acquisition team, L&D, Payroll ops, Compliance officer.' },
+    { min: 5000,    max: 9999,    cls: 'phase-xlarge', icon: '🏭', title: 'Phase 5 — Large (5K–9,999 employees)',      desc: 'Enterprise HR. COE (Centre of Excellence) model — Talent, Rewards, L&D, HR Ops, Employee Relations teams.' },
+    { min: 10000,   max: 99999,   cls: 'phase-corp',   icon: '🌐', title: 'Phase 6 — Enterprise (10K–99,999 employees)', desc: 'Group HR structure. Shared services model, HRMS like SAP/Workday, global mobility, Union/IR management.' },
+    { min: 100000,  max: 999999,  cls: 'phase-giant',  icon: '🌏', title: 'Phase 7 — Giant (1L–9,99,999 employees)',   desc: 'Federated HR model across BUs. Workforce analytics, AI-driven talent tools, global compliance COEs.' },
+    { min: 1000000, max: 99999999,cls: 'phase-mega',   icon: '🌍', title: 'Phase 8 — Mega (10,00,000+ employees)',     desc: 'Separate HR companies per vertical. Advanced workforce intelligence, political labour relations, Board-level CHRO.' },
+  ],
+
+  mandatoryCompliance: [
+    { badge: 'mandatory', title: 'Company/Entity Registration', desc: 'Your Pvt. Ltd., LLP, OPC, or Proprietorship must be registered with MCA/ROC before any employment. Director DIN and DSC required.', penalty: 'Fine up to ₹10,000/day for non-compliance.' },
+    { badge: 'mandatory', title: 'PAN & TAN Registration', desc: 'Permanent Account Number for the company and Tax Deduction Account Number (TAN) for deducting TDS on salaries and contractor payments.', penalty: 'Penalty ₹10,000 for not obtaining TAN.' },
+    { badge: 'mandatory', title: 'GST Registration (if applicable)', desc: 'Mandatory if turnover exceeds ₹20L (services) or ₹40L (goods). Tech SaaS crossing ₹20L must register. File GSTR-1, GSTR-3B monthly.', penalty: '100% of tax due or ₹10,000 min penalty.' },
+    { badge: 'mandatory', title: 'Shops & Establishments Registration', desc: 'Every state requires this within 30 days of starting business. Regulates working hours, leave, overtime. Must be displayed on premises.', penalty: 'Varies by state: ₹5,000–₹50,000.' },
+    { badge: 'mandatory', title: 'Professional Tax (PT) Registration', desc: 'Applicable in: Karnataka, Maharashtra, Tamil Nadu, West Bengal, Telangana, AP, MP. Employer must deduct from employee salary and deposit.', penalty: 'Interest + penalty up to 2x unpaid tax.' },
+    { badge: 'mandatory', title: 'Provident Fund (PF) — at 20 employees', desc: 'EPF & MP Act 1952. Once you hit 20 employees, registration within 30 days is mandatory. Employer contributes 12% of basic salary.', penalty: 'Damages 5–25% + interest 12% p.a.' },
+    { badge: 'mandatory', title: 'ESI (ESIC) — at 10 employees', desc: 'Employee State Insurance Act. Applicable for employees earning ≤₹21,000/month. Employer: 3.25%, Employee: 0.75%. Medical benefits.', penalty: 'Fine up to ₹5,000 + 12% interest.' },
+    { badge: 'mandatory', title: 'TDS on Salaries (Section 192)', desc: 'Deduct income tax at source on every salary payment based on employee\'s projected annual income. File quarterly TDS returns (Form 24Q).', penalty: '1.5% per month interest + 100% penalty.' },
+    { badge: 'mandatory', title: 'Form 16 to Employees', desc: 'Annual TDS certificate to all salaried employees by June 15. Required for filing their personal income tax returns.', penalty: '₹100/day delay, up to TDS amount.' },
+    { badge: 'mandatory', title: 'Gratuity Act — at 10 employees', desc: 'Payment of Gratuity Act 1972. Payable after 5 years of service: 15 days salary × years served. Max ₹20 lakh.', penalty: 'Imprisonment 6m–2y + fine for willful default.' },
+    { badge: 'mandatory', title: 'Minimum Wages Act', desc: 'Every state sets minimum wages by sector. You must pay AT LEAST the notified minimum wage. Rates revised every 6–12 months.', penalty: '₹500–₹1,000 fine + imprisonment up to 6 months.' },
+    { badge: 'mandatory', title: 'Labour Welfare Fund (LWF)', desc: 'Applicable in: Karnataka, Maharashtra, Delhi, Tamil Nadu, Gujarat, etc. Small monthly contribution per employee. State-specific rates.', penalty: 'State-specific fines + interest.' },
+    { badge: 'mandatory', title: 'Maternity Benefit Act — at 10 employees', desc: 'Maternity Benefit Act 1961 (amended 2017). Applies to establishments with 10+ employees. Entitles women employees to 26 weeks of paid maternity leave for first two children (12 weeks for third child onwards). Creche facility mandatory at 50+ employees. Work-from-home option to be mutually agreed post-maternity. Employer cannot terminate or reduce pay during maternity leave.', penalty: 'Imprisonment up to 1 year + fine up to ₹5,000 for wilful violation.' },
+  ],
+
+  taxation: {
+    heading: 'Complete Tax Obligations for Employers',
+    items: [
+      { section: 'Direct Tax', items: [
+        { label: 'TDS on Salary (Sec 192)', value: 'Per slab — monthly deduction', note: 'File 24Q quarterly' },
+        { label: 'TDS on Contract/Freelancer (Sec 194C)', value: '1% (individual) / 2% (others)', note: 'On payments >₹30,000 per contract or ₹1L aggregate' },
+        { label: 'TDS on Professional Fees (Sec 194J)', value: '10%', note: 'Lawyers, CAs, consultants' },
+        { label: 'TDS on Rent (Sec 194I)', value: '10% (plant) / 2% (land/building)', note: 'If rent >₹2.4L p.a.' },
+        { label: 'Advance Tax', value: 'Quarterly', note: 'Jun 15: 15% | Sep 15: 45% | Dec 15: 75% | Mar 15: 100%' },
+        { label: 'Corporate Income Tax', value: '22% (domestic) / 25% (new mfg)', note: 'Plus 10% surcharge if income >₹1Cr' },
+      ]},
+      { section: 'Payroll Statutory', items: [
+        { label: 'EPF Employer Share', value: '12% of Basic + DA', note: 'Employee also 12%. Admin charge 0.5%' },
+        { label: 'ESI Employer Share', value: '3.25% of gross wages', note: 'Employee pays 0.75%' },
+        { label: 'Professional Tax (Employer)', value: '₹2,400 p.a. (employer)', note: 'Varies by state' },
+        { label: 'Labour Welfare Fund', value: '₹20–₹75 per employee', note: 'Deducted Dec 31 / Jun 30 (state-specific)' },
+      ]},
+      { section: 'Indirect Tax', items: [
+        { label: 'GST Filing (GSTR-1)', value: 'Monthly / Quarterly', note: '11th of next month (monthly) or 13th (quarterly)' },
+        { label: 'GST Filing (GSTR-3B)', value: 'Monthly', note: '20th of next month (large), 22nd/24th (small)' },
+        { label: 'Annual GST Return (GSTR-9)', value: 'By Dec 31', note: 'For turnover >₹2 Crore' },
+      ]},
+      { section: 'Annual Filings (MCA)', items: [
+        { label: 'AOC-4 (Financial Statements)', value: 'Within 30 days of AGM', note: 'Typically by Oct 29' },
+        { label: 'MGT-7 (Annual Return)', value: 'Within 60 days of AGM', note: 'Typically by Nov 28' },
+        { label: 'DIR-3 KYC (Director KYC)', value: 'By Sept 30 annually', note: 'For all directors with DIN' },
+      ]},
+    ]
+  },
+
+  timeline: [
+    { range: '1–9 people', min: 1, max: 9, title: 'Just You / Micro Team', content: 'Focus 100% on product/market fit. Register the company, get a CA, open a current account. No HR needed. Comply with GST, TDS, and annual MCA filings yourself or via CA. Use basic offer letter templates.', hrAdvice: '🚫 Do NOT hire HR. A CA + payroll software (Razorpay Payroll / Greytip) is all you need.' },
+    { range: '10–99 people', min: 10, max: 99, title: 'Small Team', content: 'ESI kicks in at 10, PF at 20. You MUST have proper employment agreements, leave policies, and a basic employee handbook. Set up attendance tracking. A part-time HR consultant or HR outsourcing firm handles compliance. At 50+, hire 1 HR Executive.', hrAdvice: '⚡ Outsource payroll (₹500–₹2,000/employee/month). At 50+ hire 1 HR Executive.' },
+    { range: '100–999 people', min: 100, max: 999, title: 'Growing Organisation', content: 'Full HR team essential. Implement an HRIS (Keka, Darwinbox, greytHR). Structured onboarding, performance management, exit processes. POSH committee with external member. Labour inspector readiness audits. Contract Labour Act fully applies.', hrAdvice: '✅ HR Manager + 2–3 Executives + Payroll Specialist. Consider Darwinbox/Keka HRIS.' },
+    { range: '1,000–4,999 people', min: 1000, max: 4999, title: 'Mid-Size Company', content: 'Multi-layered HR org — HRBPs aligned to business functions, dedicated Talent Acquisition team, L&D (Learning & Development) function, Payroll & Compliance team. Annual HR audit mandatory. Structured career ladders and band-based compensation.', hrAdvice: '✅ 15–40 HR professionals. HRBP model. HRMS like SAP SuccessFactors or Workday.' },
+    { range: '5,000–9,999 people', min: 5000, max: 9999, title: 'Large Company', content: 'Enterprise HR structure. COE (Centre of Excellence) model — separate teams for Talent Management, Total Rewards, L&D, HR Operations, Employee Relations, and Analytics. Trade union engagement (if applicable). Complex labour law compliance across states.', hrAdvice: '✅ 50–80 HR headcount. CHRO reports to CEO. Dedicated IR (Industrial Relations) team.' },
+    { range: '10,000–99,999 people', min: 10000, max: 99999, title: 'Enterprise', content: 'Shared HR services model (HR SSC). Global mobility function if international presence. Advanced workforce planning and analytics. Separate compliance teams per geography/state. Collective bargaining and union negotiations managed professionally. Director/VP-level HR leaders per vertical.', hrAdvice: '✅ 100–500 HR professionals. Group CHRO. Workday/SAP HCM. HR shared service centre.' },
+    { range: '1,00,000–9,99,999 people', min: 100000, max: 999999, title: 'Large Enterprise', content: 'Federated HR model across Business Units. AI-driven talent acquisition tools (HireVue, Eightfold). Predictive attrition analytics. Workforce diversity & inclusion COE. ESG reporting includes workforce metrics. Multiple state-specific compliance officers.', hrAdvice: '✅ 500–2,000 HR professionals. Board-level People Committee. Global CHRO.' },
+    { range: '10,00,000+ people', min: 1000000, max: 9999999, title: 'Conglomerate / National Employer', content: 'Separate HR organisations per vertical/subsidiary. Political labour relations management. Influence over national labour policy. Advanced workforce intelligence platforms. Dedicated government liaison for labour law. Think Tata Group, Reliance, ONGC, Railways.', hrAdvice: '✅ 2,000+ HR professionals across the group. Group CHRO + subsidiary CHROs. HR is a P&L function.' },
+  ],
+
+  stateData: {
+    karnataka: {
+      name: 'Karnataka',
+      ptSlabs: 'Monthly: ₹0 (up to ₹24,999) | ₹200/month (₹25,000+). Annual PT: ₹2,500 limit.',
+      shops: 'Karnataka Shops & Commercial Establishments Act, 1961. Register within 30 days. Max 9hrs/day, 48hrs/week. Weekly off mandatory.',
+      minWage: 'Karnataka Minimum Wage notified sector-wise. Unskilled: ~₹9,000–₹10,000/month (2024 rates). Updated bi-annually.',
+      lwf: 'Karnataka Labour Welfare Fund Act. Employee: ₹20/month, Employer: ₹40/month. Deposited Jun & Dec.',
+      notes: 'Karnataka is home to most IT companies. IT/ITES employees under Karnataka Shops Act (not Factories Act). Flexible working hours for IT sector allowed under exemption notification.',
+      alerts: [
+        { type: 'info', msg: 'Karnataka IT companies get exemption from some provisions of the Factories Act under the IT Exemption Notification.' },
+        { type: 'warn', msg: 'Karnataka mandates equal pay for equal work under the Equal Remuneration Act. Gender pay gap audits are increasingly common.' },
+      ]
+    },
+    maharashtra: {
+      name: 'Maharashtra',
+      ptSlabs: 'Monthly: ₹175 (₹10,001–₹14,999) | ₹200 (₹15,000–₹24,999) | ₹300 (Feb month) for ₹25,000+. Annual cap ₹2,500.',
+      shops: 'Maharashtra Shops & Establishments Act, 2017. Register on MahaShram portal. Working hours: 9hrs/day, 48hrs/week. Overtime at 2x rate.',
+      minWage: 'Separate rates for different zones (Mumbai, Pune, rest of Maharashtra). Unskilled in Mumbai: ~₹12,000+/month.',
+      lwf: 'Maharashtra Labour Welfare Fund. Employee: ₹12/6 months, Employer: ₹36/6 months. Jun 30 & Dec 31.',
+      notes: 'Maharashtra\'s Shops & Establishments Act 2017 is progressive — allows women in night shifts with safety measures. Startups in Maharashtra can self-certify for 3 years.',
+      alerts: [
+        { type: 'success', msg: 'Maharashtra Startup Policy 2023 offers 3-year self-certification for labour compliance — reduces inspector raj.' },
+        { type: 'warn', msg: 'Maternity Benefit Act: Creche mandatory at 50+ employees. Maharashtra enforces this strictly.' },
+      ]
+    },
+    tamilnadu: {
+      name: 'Tamil Nadu',
+      ptSlabs: 'Tamil Nadu PT slab: ₹182/month for income ₹21,000–₹30,000 | ₹208/month for ₹30,001+. Paid half-yearly.',
+      shops: 'Tamil Nadu Shops & Establishments Act, 1947. Register within 30 days. 8hrs/day, 48hrs/week. Rest interval of 30 mins for >5 hrs.',
+      minWage: 'Tamil Nadu revises wages semi-annually. Unskilled: ~₹9,000–₹11,000/month. Chennai premium applies.',
+      lwf: 'Tamil Nadu Labour Welfare Fund: ₹10 (employee), ₹20 (employer) per 6 months.',
+      notes: 'Tamil Nadu has a strong manufacturing base (Chennai auto corridor) alongside growing IT. Factories Act applies to manufacturing. Tamil Nadu has separate rules for plantation workers.',
+      alerts: [
+        { type: 'info', msg: 'Tamil Nadu mandates Tamil signage and documentation for all local compliance filings.' },
+        { type: 'warn', msg: 'Tamil Nadu enforcement on the Maternity Benefit Act and Payment of Wages Act is strict — maintain proper records.' },
+      ]
+    },
+    telangana: {
+      name: 'Telangana',
+      ptSlabs: 'Monthly: ₹150 (₹15,000–₹19,999) | ₹200 (₹20,000+). Annual max ₹2,400.',
+      shops: 'Telangana Shops & Establishments Act, 1988. Online registration mandatory. 10hrs/day, 54hrs/week max.',
+      minWage: 'Telangana minimum wages revised bi-annually. Unskilled: ~₹9,500/month. IT/ITES: different schedule.',
+      lwf: 'Telangana Labour Welfare Fund: ₹30 (employee), ₹70 (employer) per 6 months.',
+      notes: 'Telangana has a booming IT sector (Hyderabad). Special Economic Zones (SEZs) in HITEC City have separate rules. SEZ companies may have additional income tax exemptions.',
+      alerts: [
+        { type: 'info', msg: 'Hyderabad IT companies in SEZs — different compliance under SEZ Act 2005. Verify with SEZ compliance officer.' },
+        { type: 'warn', msg: 'Telangana enforces the Building & Other Construction Workers Act strictly for tech campuses.' },
+      ]
+    },
+    gujarat: {
+      name: 'Gujarat',
+      ptSlabs: 'Gujarat Professional Tax: ₹200/month for salary ≥₹12,000. Annual max ₹2,400.',
+      shops: 'Gujarat Shops & Establishments Act, 1948. Register within 30 days. Working hours: 8hrs/day, 48hrs/week.',
+      minWage: 'Gujarat minimum wages revised April 1 annually. Unskilled: ~₹8,000–₹9,500/month.',
+      lwf: 'Gujarat Labour Welfare Fund: ₹6 (employee), ₹12 (employer) per 6 months.',
+      notes: 'Gujarat is a manufacturing powerhouse (Surat textiles, Ahmedabad chemicals, Vadodara chemicals). Gujarat has progressive industrial policies and SEZs (GIFT City for fintech).',
+      alerts: [
+        { type: 'success', msg: 'GIFT City (IFSC) companies have special regulatory dispensation — certain labour laws are relaxed.' },
+        { type: 'info', msg: 'Gujarat mandates factory licensing and factory plan approval before commencing manufacturing.' },
+      ]
+    },
+    up: {
+      name: 'Uttar Pradesh',
+      ptSlabs: 'UP does NOT levy Professional Tax.',
+      shops: 'UP Shops & Commercial Establishments Act, 1962. Register within 30 days. Governed by state labour commissioner.',
+      minWage: 'UP minimum wages: Unskilled ~₹8,000–₹9,000/month. Noida/Greater Noida higher due to cost of living.',
+      lwf: 'UP Labour Welfare Fund: ₹20 (employee), ₹40 (employer) per 6 months.',
+      notes: 'UP (Noida, Lucknow) is an emerging tech and manufacturing hub. Yogi government has brought significant labour law reforms — single window clearance for industries.',
+      alerts: [
+        { type: 'success', msg: 'UP Labour Law Amendment 2020 consolidated many laws. New industries get 1,000-day inspection holiday.' },
+        { type: 'info', msg: 'UP has been aggressively attracting investments. Check U.P. Industrial & Investment Policy 2022 for incentives.' },
+      ]
+    },
+    rajasthan: {
+      name: 'Rajasthan',
+      ptSlabs: 'Rajasthan does NOT levy Professional Tax.',
+      shops: 'Rajasthan Shops & Commercial Establishments Act, 1958. 8hrs/day, 48hrs/week. Register with labour department.',
+      minWage: 'Rajasthan minimum wages revised April 1. Unskilled: ~₹8,000–₹9,500/month.',
+      lwf: 'Rajasthan Labour Welfare Fund: ₹20 (employee), ₹40 (employer) per 6 months.',
+      notes: 'Rajasthan is strong in textiles, gems & jewellery, marble/mining, and tourism. Jaipur is growing as a tech hub. Rajasthan has special zones for MSME manufacturing.',
+      alerts: [
+        { type: 'info', msg: 'Rajasthan MSME policy 2023 offers significant concessions for new manufacturing units.' },
+        { type: 'warn', msg: 'Mining and gems sector has additional labour compliance under Mines Act 1952 — separate licensing needed.' },
+      ]
+    },
+    westbengal: {
+      name: 'West Bengal',
+      ptSlabs: 'West Bengal PT: Slab-based. ₹110/month (₹8,500–₹10,000) up to ₹200/month (₹40,000+). Half-yearly payment.',
+      shops: 'West Bengal Shops & Establishments Act, 1963. Register within 30 days. Max 8.5hrs/day, 48hrs/week.',
+      minWage: 'West Bengal revises minimum wages twice yearly. Unskilled: ~₹8,500–₹9,500/month.',
+      lwf: 'West Bengal Labour Welfare Fund: ₹3 (employee), ₹9 (employer) per year.',
+      notes: 'Kolkata has a growing startup ecosystem. West Bengal has strong trade union activity — important for manufacturing setups. New Town/Rajarhat is the IT hub.',
+      alerts: [
+        { type: 'warn', msg: 'West Bengal has strong trade union presence. Dispute resolution can be complex — maintain excellent employee documentation.' },
+        { type: 'info', msg: 'WB has the West Bengal MSME & Startup Act for policy benefits. Startups can self-certify for some inspections.' },
+      ]
+    },
+    haryana: {
+      name: 'Haryana',
+      ptSlabs: 'Haryana does NOT levy Professional Tax — benefit for employers.',
+      shops: 'Haryana Shops & Commercial Establishments Act, 1958. Online registration via Saral Portal. 9hrs/day, 48hrs/week.',
+      minWage: 'Haryana minimum wages: Unskilled ~₹9,000–₹10,500/month. Higher in Gurugram/Faridabad.',
+      lwf: 'Haryana Labour Welfare Fund: ₹31 (employee), ₹62 (employer) per 6 months.',
+      notes: 'Haryana (Gurugram) is a major IT/fintech hub. Manufacturing belt includes Manesar (auto), Faridabad. No PT is an advantage.',
+      alerts: [
+        { type: 'info', msg: 'Haryana RERA compliance needed if you deal in real estate. Tech/IT offices: Gurugram has special zones.' },
+        { type: 'warn', msg: 'Haryana has strict factory inspection regime — keep factory license, layout approval, and records updated.' },
+      ]
+    },
+    mp: {
+      name: 'Madhya Pradesh',
+      ptSlabs: 'MP does NOT levy Professional Tax.',
+      shops: 'MP Shops & Establishments Act, 1958. Register with local authority within 30 days. 9hrs/day, 48hrs/week.',
+      minWage: 'MP minimum wages revised April 1 & October 1. Unskilled: ~₹8,500–₹9,500/month (2024 rates).',
+      lwf: 'MP Labour Welfare Fund: ₹6 (employee), ₹18 (employer) per 6 months.',
+      notes: 'MP is strong in agriculture-based industries, minerals, and textiles (Indore). Indore is emerging as a significant IT and startup hub. Bhopal and Indore have SEZs.',
+      alerts: [
+        { type: 'success', msg: 'MP Startup Policy offers 3-year self-certification exemption from most labour inspections for startups.' },
+        { type: 'info', msg: 'MP has a unified single-window clearance (UDHYOG SARATHI) for industrial establishments.' },
+      ]
+    },
+    ap: {
+      name: 'Andhra Pradesh',
+      ptSlabs: 'AP Professional Tax: Monthly slabs up to ₹200/month for income ₹20,001+. Annual max ₹2,400.',
+      shops: 'AP Shops & Establishments Act, 1988. Register online via AP Labour portal. 8hrs/day, 48hrs/week.',
+      minWage: 'AP minimum wages revised bi-annually. Unskilled: ~₹9,000–₹10,000/month. Separate rates for agriculture and construction.',
+      lwf: 'AP Labour Welfare Fund: ₹30 (employee), ₹70 (employer) per 6 months.',
+      notes: 'Andhra Pradesh is focused on manufacturing (Visakhapatnam steel, pharma) and growing its IT sector (Amaravati, Visakhapatnam). AP has special coastal SEZs.',
+      alerts: [
+        { type: 'info', msg: 'AP has the YSR Jagananna Ceyuta scheme providing startup support. Check AP Industrial Policy 2023-2027 for incentives.' },
+        { type: 'warn', msg: 'Pharma and chemical industries in AP have additional PCB (Pollution Control Board) compliance requirements.' },
+      ]
+    },
+    bihar: {
+      name: 'Bihar',
+      ptSlabs: 'Bihar does NOT levy Professional Tax.',
+      shops: 'Bihar Shops & Establishments Act, 1953. Register with local labour inspector within 30 days.',
+      minWage: 'Bihar minimum wages among the lowest nationally. Unskilled: ~₹7,500–₹8,500/month. Revised annually.',
+      lwf: 'Bihar Labour Welfare Fund: ₹10 (employee), ₹20 (employer) per 6 months.',
+      notes: 'Bihar is primarily agricultural with emerging industries (agro-processing, leather). Patna is a growing service sector hub. Labour enforcement is relatively lower intensity.',
+      alerts: [
+        { type: 'info', msg: 'Bihar Industrial Investment Promotion Policy 2016 offers incentives for new manufacturing units including stamp duty waivers.' },
+        { type: 'warn', msg: 'Bihar has significant migrant labour flows — ensure contract workers have proper documentation and PF/ESI coverage.' },
+      ]
+    },
+    punjab: {
+      name: 'Punjab',
+      ptSlabs: 'Punjab does NOT levy Professional Tax.',
+      shops: 'Punjab Shops & Commercial Establishments Act, 1958. Register within 30 days. 8hrs/day, 48hrs/week.',
+      minWage: 'Punjab minimum wages revised April 1. Unskilled: ~₹8,500–₹10,000/month. Agricultural wages separate.',
+      lwf: 'Punjab Labour Welfare Fund: ₹5 (employee), ₹20 (employer) per 6 months.',
+      notes: 'Punjab is strong in agro-processing, textiles (Ludhiana), and auto parts. Mohali/Chandigarh tricity is a growing IT hub. Strong diaspora investment in manufacturing.',
+      alerts: [
+        { type: 'info', msg: 'Punjab Invest Punjab portal provides single-window clearance for all industrial licenses and approvals.' },
+        { type: 'warn', msg: 'Punjab has active trade unions in manufacturing. Maintain good IR (Industrial Relations) practices from day one.' },
+      ]
+    },
+    odisha: {
+      name: 'Odisha',
+      ptSlabs: 'Odisha Professional Tax: ₹125/month (₹13,304–₹25,000) | ₹200/month (₹25,001+). Annual max ₹2,400.',
+      shops: 'Odisha Shops & Commercial Establishments Act, 1956. Register within 30 days. 8hrs/day, 48hrs/week.',
+      minWage: 'Odisha minimum wages revised bi-annually. Unskilled: ~₹8,000–₹9,000/month.',
+      lwf: 'Odisha Labour Welfare Fund: ₹3 (employee), ₹6 (employer) per 6 months.',
+      notes: 'Odisha is rich in mineral resources (steel, aluminium, mining). Bhubaneswar is emerging as an IT/fintech hub. Odisha has investor-friendly policies and special SEZs.',
+      alerts: [
+        { type: 'info', msg: 'Odisha Industrial Policy Resolution 2022 offers significant incentives — check for sector-specific subsidies.' },
+        { type: 'warn', msg: 'Mining companies in Odisha need additional compliance under Mines Act 1952 and Forest Rights Act.' },
+      ]
+    },
+    kerala: {
+      name: 'Kerala',
+      ptSlabs: 'Kerala Professional Tax: Half-yearly slabs. ₹1,200/half-year for income ₹17,501–₹29,999 | ₹2,040/half-year for ₹50,000+. Max ₹2,400/year.',
+      shops: 'Kerala Shops & Commercial Establishments Act, 1960. Register within 30 days. 8hrs/day, 48hrs/week. Mandatory paid weekly off.',
+      minWage: 'Kerala has one of India\'s highest minimum wages outside metros. Unskilled: ~₹12,000–₹15,000/month. Revised annually.',
+      lwf: 'Kerala Labour Welfare Fund: Employee contributes per slab; Employer 3x employee contribution. Deposited quarterly.',
+      notes: 'Kerala has strong unionization across all sectors. Labour disputes are common. High minimum wages and strong worker protections mean payroll costs are higher. IT sector (Technopark Thiruvananthapuram, Infopark Kochi) has special exemptions.',
+      alerts: [
+        { type: 'warn', msg: 'Kerala has the strongest trade union culture in India. Avoid unilateral changes to service conditions — always negotiate.' },
+        { type: 'info', msg: 'Kerala IT/ITES companies in Technopark/Infopark get exemption from certain Factories Act provisions. Flexible hours allowed.' },
+      ]
+    },
+    jharkhand: {
+      name: 'Jharkhand',
+      ptSlabs: 'Jharkhand does NOT levy Professional Tax.',
+      shops: 'Jharkhand Shops & Establishments Act, 1953 (Bihar Act applies). Register with labour department within 30 days.',
+      minWage: 'Jharkhand minimum wages revised annually. Unskilled: ~₹7,500–₹8,500/month.',
+      lwf: 'Jharkhand Labour Welfare Fund: ₹10 (employee), ₹20 (employer) per 6 months.',
+      notes: 'Jharkhand is rich in minerals (coal, iron ore, mica). Heavy industries dominate (Tata Steel, SAIL). Ranchi and Jamshedpur are major industrial centres.',
+      alerts: [
+        { type: 'warn', msg: 'Mining and heavy industries in Jharkhand require compliance under the Mines Act 1952 and Mines Safety Regulations — separate licensing from labour laws.' },
+        { type: 'info', msg: 'Jharkhand has a single-window clearance system (JHARCRAFT) for MSMEs and industrial setups.' },
+      ]
+    },
+    assam: {
+      name: 'Assam',
+      ptSlabs: 'Assam Professional Tax: ₹150/month (₹10,001–₹14,999) | ₹180/month (₹15,000–₹24,999) | ₹208/month (₹25,000+).',
+      shops: 'Assam Shops & Establishments Act, 1971. Register within 30 days. 8hrs/day, 48hrs/week.',
+      minWage: 'Assam minimum wages revised bi-annually. Unskilled: ~₹7,500–₹8,500/month. Tea garden workers have separate wage boards.',
+      lwf: 'Assam Labour Welfare Fund: ₹5 (employee), ₹15 (employer) per 6 months.',
+      notes: 'Assam has a significant tea industry with separate plantation labour laws under the Plantation Labour Act 1951. Oil and gas sector (Oil India, ONGC) also present. Guwahati is a growing services hub.',
+      alerts: [
+        { type: 'warn', msg: 'Tea garden and plantation workers are governed by the Plantation Labour Act 1951 — separate from general Shops Act compliance.' },
+        { type: 'info', msg: 'Assam has the North East Industrial Development Scheme (NEIDS) with tax incentives for new industries.' },
+      ]
+    },
+    chhattisgarh: {
+      name: 'Chhattisgarh',
+      ptSlabs: 'Chhattisgarh does NOT levy Professional Tax.',
+      shops: 'CG Shops & Establishments Act, 1958 (MP Act applies). Register with local authority within 30 days.',
+      minWage: 'CG minimum wages revised annually. Unskilled: ~₹8,000–₹9,000/month.',
+      lwf: 'CG Labour Welfare Fund: ₹6 (employee), ₹18 (employer) per 6 months.',
+      notes: 'Chhattisgarh is rich in natural resources (coal, iron ore, bauxite). Steel and power sectors dominate. Raipur is the commercial hub with emerging IT presence.',
+      alerts: [
+        { type: 'info', msg: 'CG Industrial Policy 2019-24 offers capital subsidy and tax exemptions for new manufacturing units.' },
+        { type: 'warn', msg: 'Contract labour is heavily used in CG\'s mining/steel sector — ensure CLRA compliance and principal employer registration.' },
+      ]
+    },
+    uttarakhand: {
+      name: 'Uttarakhand',
+      ptSlabs: 'Uttarakhand does NOT levy Professional Tax.',
+      shops: 'UK Shops & Establishments Act, 1962 (UP Act applies). Register within 30 days with local authority.',
+      minWage: 'Uttarakhand minimum wages revised April 1. Unskilled: ~₹8,500–₹10,000/month.',
+      lwf: 'Uttarakhand Labour Welfare Fund: ₹10 (employee), ₹20 (employer) per 6 months.',
+      notes: 'Uttarakhand has a strong pharmaceutical corridor (Haridwar, Rudrapur, Kashipur). Tourism and hospitality sector is significant. SIDCUL industrial estates have special infrastructure.',
+      alerts: [
+        { type: 'success', msg: 'Uttarakhand offers excise duty and income tax exemptions for new manufacturing in Hill Areas — check current status as some have sunset.' },
+        { type: 'info', msg: 'Pharmaceutical companies in Uttarakhand need additional compliance under FSSAI/CDSCO depending on products.' },
+      ]
+    },
+    himachal: {
+      name: 'Himachal Pradesh',
+      ptSlabs: 'Himachal Pradesh does NOT levy Professional Tax.',
+      shops: 'HP Shops & Establishments Act, 1969. Register within 30 days. 8hrs/day, 48hrs/week.',
+      minWage: 'HP minimum wages revised April 1 and October 1. Unskilled: ~₹8,000–₹9,500/month. Apple/horticultural seasonal workers separate.',
+      lwf: 'HP Labour Welfare Fund: ₹5 (employee), ₹15 (employer) per 6 months.',
+      notes: 'HP has significant pharma and IT manufacturing (Baddi, Solan, Nalagarh industrial belt). Tourism sector is major employer. Himachal has historically offered tax incentives for new industries in hilly areas.',
+      alerts: [
+        { type: 'info', msg: 'Baddi-Barotiwala-Nalagarh (BBN) industrial area is a major pharmaceutical manufacturing hub — check sector-specific compliance.' },
+        { type: 'warn', msg: 'Construction/infrastructure in hilly terrain requires additional approvals from HIMUDA and local authorities.' },
+      ]
+    },
+    goa: {
+      name: 'Goa',
+      ptSlabs: 'Goa Professional Tax: Monthly slab — ₹200/month for income ₹15,001–₹25,000 | ₹300/month for ₹40,001+. Annual max ₹2,500.',
+      shops: 'Goa Shops & Establishments Act, 1973. Register within 30 days. 8hrs/day, 48hrs/week. Tourism and hospitality get extended hours with permission.',
+      minWage: 'Goa minimum wages are among the highest in small states. Unskilled: ~₹10,000–₹12,000/month. Revised annually.',
+      lwf: 'Goa Labour Welfare Fund: ₹5 (employee), ₹15 (employer) per 6 months.',
+      notes: 'Goa\'s dominant sector is tourism, hospitality, and mining. IT sector is growing (Panjim tech corridor). Goa has attracted international businesses due to lifestyle and infrastructure.',
+      alerts: [
+        { type: 'warn', msg: 'Goa\'s hospitality sector has high seasonal fluctuation — ensure proper contractual arrangements for seasonal workers.' },
+        { type: 'info', msg: 'Mining companies in Goa need Goa Mineral Policy compliance and separate environment clearances from GoI.' },
+      ]
+    },
+    tripura: {
+      name: 'Tripura',
+      ptSlabs: 'Tripura Professional Tax: ₹150/month for salary ₹15,001–₹25,000 | ₹200/month for ₹25,001+.',
+      shops: 'Tripura Shops & Establishments Act, 1970. Register within 30 days. 8hrs/day, 48hrs/week.',
+      minWage: 'Tripura minimum wages revised annually. Unskilled: ~₹7,000–₹8,000/month.',
+      lwf: 'Tripura Labour Welfare Fund: ₹5 (employee), ₹15 (employer) per year.',
+      notes: 'Tripura has natural gas, rubber, and bamboo industries. Agartala is developing as a services hub. Being a North East state, NEIDS incentives apply for new industries.',
+      alerts: [
+        { type: 'success', msg: 'North East Industrial Development Scheme (NEIDS) provides income tax exemptions and GST reimbursement for eligible industries in Tripura.' },
+        { type: 'info', msg: 'Rubber plantation workers in Tripura are covered under the Plantation Labour Act 1951 — different compliance from general shops act.' },
+      ]
+    },
+    meghalaya: {
+      name: 'Meghalaya',
+      ptSlabs: 'Meghalaya does NOT levy Professional Tax.',
+      shops: 'Meghalaya Shops & Establishments Act, 2001. Register within 30 days. 8hrs/day, 48hrs/week.',
+      minWage: 'Meghalaya minimum wages among the lowest in India. Unskilled: ~₹6,500–₹7,500/month.',
+      lwf: 'Meghalaya Labour Welfare Fund: Not widely enforced. Check with state labour department.',
+      notes: 'Meghalaya has coal mining (though regulated/banned in some areas), limestone, and tourism. Shillong is a growing services and education hub. NEIDS incentives apply.',
+      alerts: [
+        { type: 'warn', msg: 'Coal mining in Meghalaya has been subject to NGT orders — ensure any mining operations have full environmental compliance.' },
+        { type: 'info', msg: 'Meghalaya has a unique land tenure system — certain land acquisition rules differ significantly from mainland India.' },
+      ]
+    },
+    manipur: {
+      name: 'Manipur',
+      ptSlabs: 'Manipur does NOT levy Professional Tax.',
+      shops: 'Manipur Shops & Establishments Act, 1972. Register with local authority within 30 days.',
+      minWage: 'Manipur minimum wages revised annually. Unskilled: ~₹6,500–₹7,500/month.',
+      lwf: 'Manipur Labour Welfare Fund: Not widely enforced. Check with state labour department.',
+      notes: 'Manipur has emerging sectors in handloom, handicrafts, and tourism. Imphal is developing as a logistics gateway to South East Asia (Act East Policy). NEIDS incentives apply.',
+      alerts: [
+        { type: 'info', msg: 'Manipur\'s strategic location under the Act East Policy creates opportunities in logistics and trade facilitation — government incentives available.' },
+        { type: 'warn', msg: 'Security conditions may affect business operations in some districts — consult local legal counsel for operational compliance.' },
+      ]
+    },
+    nagaland: {
+      name: 'Nagaland',
+      ptSlabs: 'Nagaland does NOT levy Professional Tax.',
+      shops: 'Nagaland Shops & Establishments Act, 1981. Register with local authority within 30 days.',
+      minWage: 'Nagaland minimum wages revised periodically. Unskilled: ~₹6,000–₹7,000/month.',
+      lwf: 'Nagaland Labour Welfare Fund: Minimal enforcement. Check with state labour department.',
+      notes: 'Nagaland has cottage industries, tourism, and emerging organic farming. Dimapur is the commercial capital. NEIDS incentives apply. Village councils (Tribal customary law) influence labour practices.',
+      alerts: [
+        { type: 'info', msg: 'Nagaland\'s tribal customary laws (Naga Customary Law) may intersect with formal labour law in certain employment situations.' },
+        { type: 'success', msg: 'NEIDS scheme offers income tax exemption for 5 years and other incentives for new eligible industries in Nagaland.' },
+      ]
+    },
+    arunachal: {
+      name: 'Arunachal Pradesh',
+      ptSlabs: 'Arunachal Pradesh does NOT levy Professional Tax.',
+      shops: 'AP Shops & Establishments Act, 2010. Register within 30 days with Deputy Commissioner office.',
+      minWage: 'Arunachal Pradesh minimum wages among the lowest nationally. Unskilled: ~₹6,000–₹7,000/month.',
+      lwf: 'Arunachal Pradesh Labour Welfare Fund: Minimal enforcement. Check with state labour department.',
+      notes: 'Arunachal Pradesh has significant hydropower potential, tourism, and forestry. Most enterprises are small. NEIDS incentives apply. Indigenous people employment has special considerations.',
+      alerts: [
+        { type: 'warn', msg: 'Inner Line Permit (ILP) requirements — non-residents need ILP to enter and work in Arunachal Pradesh. This affects hiring non-Arunachalis.' },
+        { type: 'success', msg: 'NEIDS 2017 provides central tax incentives for new eligible industries established in Arunachal Pradesh.' },
+      ]
+    },
+    mizoram: {
+      name: 'Mizoram',
+      ptSlabs: 'Mizoram does NOT levy Professional Tax.',
+      shops: 'Mizoram Shops & Establishments Act, 1984. Register within 30 days with local authority.',
+      minWage: 'Mizoram minimum wages revised periodically. Unskilled: ~₹6,500–₹7,500/month.',
+      lwf: 'Mizoram Labour Welfare Fund: Minimal enforcement. Check with state labour department.',
+      notes: 'Mizoram has a highly literate workforce. Bamboo industry, tourism, and horticulture are key sectors. Aizawl is the commercial hub. NEIDS incentives apply.',
+      alerts: [
+        { type: 'info', msg: 'Mizoram has very high literacy and English proficiency — good talent pool for IT and services companies looking to hire remotely.' },
+        { type: 'success', msg: 'NEIDS 2017 offers capital investment incentive of 30% (max ₹5 crore) for eligible new industries in Mizoram.' },
+      ]
+    },
+    sikkim: {
+      name: 'Sikkim',
+      ptSlabs: 'Sikkim does NOT levy Professional Tax.',
+      shops: 'Sikkim Shops & Establishments Act, 1983. Register within 30 days.',
+      minWage: 'Sikkim minimum wages revised annually. Unskilled: ~₹7,000–₹8,500/month.',
+      lwf: 'Sikkim Labour Welfare Fund: Minimal enforcement. Check with state labour department.',
+      notes: 'Sikkim has unique tax advantages — income of Sikkim residents from all sources was exempt from income tax (Section 10(26AAA)) though applicability has evolved. Tourism, organic farming, and pharmaceuticals are key sectors.',
+      alerts: [
+        { type: 'info', msg: 'Sikkim residents may claim income tax exemption under Section 10(26AAA) — verify current applicability with a CA.' },
+        { type: 'success', msg: 'Sikkim has an organic farming policy and incentivises agro-based industries with subsidies and grants.' },
+      ]
+    },
+    delhi: {
+      name: 'Delhi (NCT)',
+      ptSlabs: 'Delhi does NOT levy Professional Tax. This is a significant advantage.',
+      shops: 'Delhi Shops & Establishments Act, 1954. Register within 30 days. 24/7 operations allowed with permission. Weekly rest mandatory.',
+      minWage: 'Delhi has one of India\'s highest minimum wages. Unskilled: ~₹17,494/month (2024). Revised annually on April 1.',
+      lwf: 'Delhi Labour Welfare Fund: Employee ₹0.75/month, Employer ₹1.50/month. Very nominal.',
+      notes: 'Delhi\'s minimum wages are the highest in India. This significantly impacts hiring decisions. No Professional Tax is a benefit for employers. Delhi NCR is a major startup and corporate hub.',
+      alerts: [
+        { type: 'warn', msg: 'Delhi\'s minimum wages are among India\'s highest — budget accordingly for non-skilled/semi-skilled workers.' },
+        { type: 'info', msg: 'The Delhi government has extended working hour flexibilities for IT/ITES companies. Check latest notifications.' },
+      ]
+    },
+    chandigarh: {
+      name: 'Chandigarh',
+      ptSlabs: 'Chandigarh does NOT levy Professional Tax as a Union Territory.',
+      shops: 'Chandigarh Shops & Establishments Act, 1958 (Punjab Act applies). Register within 30 days. 8hrs/day, 48hrs/week.',
+      minWage: 'Chandigarh follows central government minimum wages guidelines. Unskilled: ~₹9,500–₹10,500/month.',
+      lwf: 'Chandigarh follows central government LWF rates. Check with UT Labour Commissioner.',
+      notes: 'Chandigarh is the shared capital of Punjab and Haryana. It has a growing IT/ITES sector (IT Park), excellent infrastructure, and high quality of life — increasingly popular for tech companies.',
+      alerts: [
+        { type: 'info', msg: 'Chandigarh IT Park offers subsidized office space for eligible IT/ITES companies. Check eligibility with CITCO.' },
+        { type: 'success', msg: 'As a UT, Chandigarh benefits from centrally sponsored schemes and has streamlined single-window registration for businesses.' },
+      ]
+    },
+    puducherry: {
+      name: 'Puducherry',
+      ptSlabs: 'Puducherry Professional Tax: ₹75–₹208/month depending on salary slab. Annual max ₹2,500.',
+      shops: 'Puducherry Shops & Establishments Act, 1964. Register within 30 days. 8hrs/day, 48hrs/week.',
+      minWage: 'Puducherry minimum wages revised annually. Unskilled: ~₹8,000–₹9,500/month. Has French-influenced legislative heritage.',
+      lwf: 'Puducherry Labour Welfare Fund: ₹5 (employee), ₹15 (employer) per 6 months.',
+      notes: 'Puducherry has a unique French-influenced legal framework alongside Indian central laws. Manufacturing (chemicals, leather), IT, and tourism are key sectors. Kirloskar, Orchid Pharma have units here.',
+      alerts: [
+        { type: 'info', msg: 'Puducherry has a few French-origin enclaves (Yanam, Mahe, Karaikal) — compliance requirements may slightly differ in these territories.' },
+        { type: 'success', msg: 'Puducherry offers industrial incentives including power subsidy, capital investment subsidy for MSMEs and new industries.' },
+      ]
+    },
+    jk: {
+      name: 'Jammu & Kashmir',
+      ptSlabs: 'J&K does NOT levy Professional Tax.',
+      shops: 'J&K Shops & Establishments Act, 1966. Register within 30 days. Post 2019 reorganization, central labour laws now apply directly.',
+      minWage: 'J&K minimum wages revised annually. Unskilled: ~₹8,500–₹10,000/month. Revised after UT status in 2019.',
+      lwf: 'J&K Labour Welfare Fund Act applies. Check current rates with UT Labour Commissioner.',
+      notes: 'Post Article 370 abrogation (2019), J&K became a UT. All central labour laws now apply directly. Significant investment opportunities in tourism, handicrafts, IT, and horticulture (apple). J&K Industrial Policy 2021-30 offers major incentives.',
+      alerts: [
+        { type: 'success', msg: 'J&K Industrial Policy 2021-30 offers 30-50% capital investment subsidy, income tax exemption for 5-10 years, and GST reimbursement for eligible new industries.' },
+        { type: 'info', msg: 'Since 2019, residents from other states can now own land and set up industries in J&K — previously restricted. New investment opportunities.' },
+      ]
+    },
+    ladakh: {
+      name: 'Ladakh',
+      ptSlabs: 'Ladakh does NOT levy Professional Tax.',
+      shops: 'Ladakh follows central government regulations as a UT without legislature. Labour Commissioner Ladakh is the authority.',
+      minWage: 'Ladakh follows central government minimum wage schedules. Verify with Ladakh Labour Commissioner.',
+      lwf: 'Ladakh Labour Welfare Fund: Follow central government rates. Check with UT administration.',
+      notes: 'Ladakh became a separate UT in 2019. Key sectors include tourism, solar energy, and defence-related supply. The Ladakh Autonomous Hill Development Councils (LAHDC) have some regulatory roles.',
+      alerts: [
+        { type: 'info', msg: 'Ladakh is pursuing large-scale renewable energy projects — significant opportunities in solar and green hydrogen sectors.' },
+        { type: 'warn', msg: 'Ladakh\'s remote geography and altitude create unique operational challenges — factor in logistics and worker welfare provisions for extreme weather.' },
+      ]
+    },
+    andaman: {
+      name: 'Andaman & Nicobar Islands',
+      ptSlabs: 'Andaman & Nicobar does NOT levy Professional Tax.',
+      shops: 'A&N Shops & Establishments Regulation, 1974. Register within 30 days with local authority.',
+      minWage: 'A&N follows central government minimum wage schedules. Unskilled: ~₹9,000–₹11,000/month (higher due to island cost of living).',
+      lwf: 'A&N Labour Welfare Fund: Follow central government rates.',
+      notes: 'A&N\'s economy is dominated by tourism, fishing, and small-scale industries. The islands have significant restrictions on industrial activity due to forest and tribal protection laws. INS base and defence presence.',
+      alerts: [
+        { type: 'warn', msg: 'Tribal Protected Areas (Sentinel Island etc.) and forest reservations severely restrict industrial activity. Consult local UT administration before any land-based business.' },
+        { type: 'info', msg: 'A&N has a designated Free Trade Zone for import-export businesses. Tourism and marine industry have special incentive schemes.' },
+      ]
+    },
+    lakshadweep: {
+      name: 'Lakshadweep',
+      ptSlabs: 'Lakshadweep does NOT levy Professional Tax.',
+      shops: 'Lakshadweep Shops & Establishments Regulation applies. Register with local administration.',
+      minWage: 'Lakshadweep follows central government minimum wage schedules. Very limited formal employment sector.',
+      lwf: 'Lakshadweep Labour Welfare Fund: Follow central government rates. Check with UT Administrator.',
+      notes: 'Lakshadweep is India\'s smallest UT with very limited commercial activity. Economy is based on coconut, fishing, and emerging eco-tourism. Very strict environmental regulations. Entry permit required for non-residents.',
+      alerts: [
+        { type: 'warn', msg: 'Entry permit (Lakshadweep Entry Permit) is required for non-residents to visit and work in Lakshadweep islands — factor into hiring plans.' },
+        { type: 'info', msg: 'Lakshadweep Development Corporation (LDCL) manages most commercial activities. Engage with them for any business setup.' },
+      ]
+    },
+    dadra: {
+      name: 'Dadra, Nagar Haveli & Daman Diu',
+      ptSlabs: 'DNH & DD does NOT levy Professional Tax.',
+      shops: 'DNH Shops & Establishments Act applies (central oversight). Register within 30 days.',
+      minWage: 'DNH & DD minimum wages: Revised per central government schedules. Industrial rates: Unskilled ~₹9,000–₹10,500/month.',
+      lwf: 'DNH & DD Labour Welfare Fund: Follow central government rates. Check with UT Labour Commissioner.',
+      notes: 'DNH & DD (merged in 2020) has significant manufacturing — auto components, pharmaceuticals, chemicals, plastics. Silvassa is a major industrial hub. Lower cost base than nearby Mumbai/Gujarat attracts manufacturers.',
+      alerts: [
+        { type: 'success', msg: 'DNH & DD has historically offered lower power tariffs and industrial land rates compared to Gujarat and Maharashtra — significant cost advantage for manufacturing.' },
+        { type: 'info', msg: 'The UT has dedicated industrial estates. EPFO and ESIC enforcement is active — ensure timely compliance for manufacturing workers.' },
+      ]
+    },
+  },
+
+  industryData: {
+    tech: {
+      name: 'Tech / SaaS / Software',
+      icon: '💻',
+      specifics: [
+        { badge: 'mandatory', title: 'IT/ITES Exemption Notification', desc: 'Most states (Karnataka, Telangana, TN) have exempted IT companies from some provisions of the Factories Act. Operate under Shops & Establishments instead. Flexible shifts allowed (24/7 operations).' },
+        { badge: 'mandatory', title: 'Intellectual Property Agreements', desc: 'Every employee must sign an IP Assignment Agreement, NDA, and Non-Compete clause. Critical for software companies. Without this, the employee owns code they write.' },
+        { badge: 'mandatory', title: 'POSH Act (10+ employees)', desc: 'Prevention of Sexual Harassment at Workplace. Internal Complaints Committee (ICC) mandatory with 10+ employees. Annual report to District Officer. Policy must be displayed.' },
+        { badge: 'mandatory', title: 'Data Privacy / IT Act Compliance', desc: 'IT Act 2000 + DPDP Act 2023. If you process personal data, you need privacy policy, data handling procedures, employee data consent. Especially critical for SaaS B2C.' },
+        { badge: 'recommended', title: 'ESOP/Stock Option Policy', desc: 'Tech startups typically offer ESOPs. Requires board approval, ESOP trust, exercise price, vesting schedule. Taxed at exercise (perquisite) and sale (capital gains).' },
+        { badge: 'recommended', title: 'Work from Home / Remote Policy', desc: 'Define WFH eligibility, equipment policy, data security, overtime rules for remote employees. Critical post-COVID for legal clarity.' },
+        { badge: 'optional', title: 'ISO 27001 (Information Security)', desc: 'Not legally mandatory but required by enterprise clients and MNCs. Governs how you handle employee and client data. Certification takes 3–6 months.' },
+      ]
+    },
+    manufacturing: {
+      name: 'Manufacturing / Factory',
+      icon: '🏭',
+      specifics: [
+        { badge: 'mandatory', title: 'Factories Act 1948 Registration', desc: 'Any premises employing 10+ workers with power or 20+ without power is a "factory." Must register with Inspector of Factories. Factory plan approval required before construction.' },
+        { badge: 'mandatory', title: 'Factory License (Form 4)', desc: 'Annual license from the Chief Inspector of Factories. Must be renewed every year. Displayed on premises. Separate license for each unit.' },
+        { badge: 'mandatory', title: 'Contract Labour (Regulation & Abolition) Act', desc: 'If you hire workers through contractors (security, housekeeping, contract workers): Register as Principal Employer when 20+ contract workers. Contractor needs license. Wage register maintenance mandatory.' },
+        { badge: 'mandatory', title: 'Safety Officer (500+ workers)', desc: 'A certified Safety Officer is statutorily required for factories with 500+ workers or in hazardous processes. Responsible for accident prevention.' },
+        { badge: 'mandatory', title: 'Environmental Clearances', desc: 'Consent to Establish (CTE) and Consent to Operate (CTO) from State Pollution Control Board. Mandatory before starting production. Category A/B/C based on pollution potential.' },
+        { badge: 'mandatory', title: 'Workmen\'s Compensation Act / ESIC', desc: 'Factories must insure workers against workplace injuries. Either through ESIC (preferred) or Workmen\'s Compensation insurance policy for employees outside ESIC threshold.' },
+        { badge: 'mandatory', title: 'Building & Construction Workers Act (50+ workers)', desc: 'If construction/maintenance workers employed. Register with Building & Other Construction Workers Welfare Board. 1% cess on cost of construction.' },
+        { badge: 'recommended', title: 'ISO 9001 Quality Management', desc: 'Required by most large B2B buyers. Demonstrates process quality. Needed for government tenders typically.' },
+      ]
+    },
+    retail: {
+      name: 'Retail / E-commerce',
+      icon: '🛒',
+      specifics: [
+        { badge: 'mandatory', title: 'Trade License (Municipal)', desc: 'From your local municipal body/BBMP/MCD. Required to conduct commercial trade. Renewed annually.' },
+        { badge: 'mandatory', title: 'FSSAI License (if food retail)', desc: 'Food Safety & Standards Authority of India. Basic Registration (<₹12L turnover) or State/Central License. Mandatory for any food-related retail.' },
+        { badge: 'mandatory', title: 'Weights & Measures Act', desc: 'Legal Metrology Act 2009. All weighing/measuring equipment must be certified by Legal Metrology department. Pre-packaged goods must show MRP.' },
+        { badge: 'mandatory', title: 'Consumer Protection Act 2019', desc: 'E-commerce must comply with Consumer Protection (E-Commerce) Rules 2020. Mandatory grievance officer, return/refund policy displayed, no fake reviews.' },
+        { badge: 'mandatory', title: 'GST & E-way Bills', desc: 'All goods movement >₹50,000 requires E-way bill. Mandatory even for intra-state movement in some states. Failure = 200% penalty of tax.' },
+        { badge: 'recommended', title: 'BIS Certification (Electronics)', desc: 'If retailing electronics, mobile phones, IT equipment — BIS hallmark mandatory for many products under mandatory BIS schedule.' },
+      ]
+    },
+    services: {
+      name: 'Professional Services / Consulting',
+      icon: '💼',
+      specifics: [
+        { badge: 'mandatory', title: 'Professional Body Registration', desc: 'CA firms: ICAI. Law firms: Bar Council. Medical: MCI/NMC. Architecture: COA. CS firms: ICSI. Cannot practice without registration.' },
+        { badge: 'mandatory', title: 'Service Agreements & SoW', desc: 'All client engagements must have signed Service Agreements, Scope of Work, deliverable timelines, and IP ownership clauses. Critical for dispute prevention.' },
+        { badge: 'mandatory', title: 'TDS Deduction by Clients (Sec 194J)', desc: 'Your clients will deduct 10% TDS on professional fees. Ensure you collect Form 16A quarterly and reconcile with 26AS before filing ITR.' },
+        { badge: 'mandatory', title: 'MSME Registration (Optional but Recommended)', desc: 'Udyam Registration gives access to priority credit, delayed payment protections (MSME Samadhaan), and government tender benefits.' },
+        { badge: 'recommended', title: 'E&O / Professional Indemnity Insurance', desc: 'Errors & Omissions insurance. Protects against client claims of negligence. Increasingly required by enterprise clients in consulting agreements.' },
+        { badge: 'recommended', title: 'Non-Solicitation Agreements', desc: 'Prevent employees from poaching your clients when they leave. Must be reasonable in scope and duration to be enforceable in India.' },
+      ]
+    },
+    food: {
+      name: 'Food & Beverage / Restaurant',
+      icon: '🍽️',
+      specifics: [
+        { badge: 'mandatory', title: 'FSSAI License (Central/State)', desc: 'State license for turnover ₹12L–₹20Cr. Central license for larger. Must be displayed. Separate license for each outlet. Annual renewal.' },
+        { badge: 'mandatory', title: 'Fire NOC', desc: 'From Fire Department. Mandatory for restaurants. Annual inspection. Fire extinguishers, exit signs, sprinkler systems may be required based on area.' },
+        { badge: 'mandatory', title: 'Health Trade License', desc: 'From Municipal Corporation. Separate from shops & establishments. Inspects kitchen hygiene, water supply, drainage, pest control.' },
+        { badge: 'mandatory', title: 'Liquor License (if serving alcohol)', desc: 'State Excise Department license. Different licenses for beer/wine vs spirits. Extremely state-specific. Maharashtra, Goa, Karnataka have different rules.' },
+        { badge: 'mandatory', title: 'Eating House License (Delhi/Mumbai)', desc: 'Required in Delhi, Mumbai, Kolkata for restaurants. From Police Commissioner. Covers operational hours, seating capacity.' },
+        { badge: 'mandatory', title: 'Music/Entertainment License (if applicable)', desc: 'IPRS + PPL license for playing music. Event license if you host live performances. Noise regulation compliance.' },
+        { badge: 'recommended', title: 'Zomato/Swiggy FSSAI Compliance', desc: 'Aggregators verify FSSAI license before onboarding. Ensure your license covers delivery kitchen address. Cloud kitchens need separate address registration.' },
+      ]
+    },
+    healthcare: {
+      name: 'Healthcare / Clinic',
+      icon: '🏥',
+      specifics: [
+        { badge: 'mandatory', title: 'Clinical Establishment Registration', desc: 'Clinical Establishments (Registration and Regulation) Act, 2010. Register with state authority. Annual renewal. All diagnostic centers, clinics, hospitals.' },
+        { badge: 'mandatory', title: 'Medical Council Registration', desc: 'Doctors: State Medical Council (MCI/NMC). Dentists: Dental Council. Nurses: Nursing Council. Cannot practice without current registration.' },
+        { badge: 'mandatory', title: 'PCPNDT Registration (Diagnostic)', desc: 'Pre-Conception and Pre-Natal Diagnostic Techniques Act. Ultrasound centers must register. Strict compliance — no display of sex determination.' },
+        { badge: 'mandatory', title: 'Bio-Medical Waste Management', desc: 'BMW Management & Handling Rules. Segregation (Yellow/Red/Blue/Black bags). Tie-up with authorized CBWTF (Common Bio-Medical Waste Treatment Facility). Records for 5 years.' },
+        { badge: 'mandatory', title: 'NABH Accreditation (Hospitals 50+ beds)', desc: 'National Accreditation Board for Hospitals. Required for empanelment with CGHS, PSU insurance. Quality and safety standards.' },
+        { badge: 'mandatory', title: 'Drug License (if dispensing)', desc: 'From State Drug Controller. Pharmacist with registered degree required. Storage conditions (temperature, humidity) must be maintained.' },
+        { badge: 'recommended', title: 'Medical Indemnity / Malpractice Insurance', desc: 'Critical for all healthcare providers. Protects against patient claims. Individual and institutional policies available.' },
+      ]
+    },
+    construction: {
+      name: 'Construction / Real Estate',
+      icon: '🏗️',
+      specifics: [
+        { badge: 'mandatory', title: 'RERA Registration (Real Estate)', desc: 'Real Estate (Regulation and Development) Act 2016. Mandatory for projects >500 sqm or >8 units. Register with state RERA before advertising or selling.' },
+        { badge: 'mandatory', title: 'Building Construction Workers Act', desc: 'Register as Principal Employer. Contribute 1% of construction cost as cess to Building Workers Welfare Board. Workers get welfare benefits.' },
+        { badge: 'mandatory', title: 'Environmental Impact Assessment (EIA)', desc: 'Projects >20,000 sqm built-up area need EIA clearance from MoEFCC. State SEIAA for smaller projects. Takes 6–18 months.' },
+        { badge: 'mandatory', title: 'Contractor License (PWD / State)', desc: 'State Public Works Department registration for government contracts. Class A, B, C based on project size. Annual renewal.' },
+        { badge: 'mandatory', title: 'Labour License (Contract Labour Act)', desc: 'Mandatory if employing 20+ contract labourers. Register as Principal Employer. Contractors need license. Wage slips, muster roll, register of workers mandatory.' },
+        { badge: 'mandatory', title: 'GST on Construction (18%)', desc: 'Construction services attract 18% GST. Affordable housing: 1%/5% GST. Input tax credit available on inputs used for construction.' },
+        { badge: 'recommended', title: 'Contractor\'s All-Risk (CAR) Insurance', desc: 'Covers property damage, third-party liability, employee injuries during construction. Required by most project owners and lenders.' },
+      ]
+    },
+  }
+};
+
+let currentHeadcount = 1;
+
+// ─── TOGGLE PILL SELECTOR ───
+function selectToggle(groupId, btn) {
+  document.querySelectorAll(`#${groupId} .toggle-pill`).forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  updateGuide();
+}
+
+function getToggleValue(groupId) {
+  const active = document.querySelector(`#${groupId} .toggle-pill.active`);
+  return active ? active.dataset.value : null;
+}
+
+// Map size block index → phase key for active colouring
+const BLOCK_PHASES = ['solo','small','mid','large','xlarge','xlarge','mega','mega'];
+
+function selectSizeBlock(btn) {
+  // deactivate all blocks
+  document.querySelectorAll('.size-block').forEach((b, i) => {
+    b.classList.remove('active');
+    b.removeAttribute('data-phase');
+  });
+  // activate chosen
+  btn.classList.add('active');
+  const idx = Array.from(document.querySelectorAll('.size-block')).indexOf(btn);
+  btn.setAttribute('data-phase', BLOCK_PHASES[idx]);
+  // set headcount to midpoint of band for phase logic
+  const min = parseInt(btn.dataset.min);
+  const max = parseInt(btn.dataset.max);
+  currentHeadcount = min; // use band minimum for phase lookup
+  updateGuide();
+}
+
+function getPhase(n) {
+  return DATA.phases.find(p => n >= p.min && n <= p.max) || DATA.phases[DATA.phases.length - 1];
+}
+
+function updateGuide(scrollToResults = false) {
+  const phase = getPhase(currentHeadcount);
+  const listing = getToggleValue('listingToggle') || 'unlisted';
+  const geo     = getToggleValue('geoToggle')     || 'state';
+
+  const banner = document.getElementById('statusBanner');
+  banner.className = `status-banner ${phase.cls} fade-in`;
+  document.getElementById('statusTitle').textContent = phase.title;
+
+  // Build dynamic context line
+  const listingLabel = { unlisted: 'Unlisted Private Company', listed: 'Listed Company (BSE/NSE)', sme: 'SME Listed Company' }[listing];
+  const geoLabel     = { state: 'State-level Operations', panindia: 'Pan India Operations', global: 'Global Operations' }[geo];
+  document.getElementById('statusDesc').textContent = `${phase.desc} · ${listingLabel} · ${geoLabel}`;
+
+  // Show context-specific alert badges under banner
+  renderContextAlerts(listing, geo);
+
+  renderMandatoryCards();
+  renderTaxation();
+  renderTimeline();
+  renderSolPanel(activeSolPanel);
+  renderExpertise();
+  renderScaleUp();
+  renderStateContent();
+  renderIndustryContent();
+
+  if (scrollToResults) {
+    setTimeout(() => {
+      const target = document.getElementById('mainContent');
+      const headerH = document.querySelector('header').offsetHeight;
+      const configBar = document.querySelector('.config-bar');
+      const configSticky = window.getComputedStyle(configBar).position === 'sticky';
+      const configH = configSticky ? configBar.offsetHeight : 0;
+      const top = target.getBoundingClientRect().top + window.scrollY - headerH - configH - 16;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }, 80);
+  }
+}
+
+function renderContextAlerts(listing, geo) {
+  const container = document.getElementById('contextAlerts');
+  if (!container) return;
+
+  const alerts = [];
+
+  // ── PROACTIVE THRESHOLD WARNINGS ──
+  // Show warnings when on the band just BEFORE a critical statutory threshold
+  const n = currentHeadcount;
+
+  // On the 1–9 band → warn about upcoming 10-employee thresholds
+  if (n >= 1 && n <= 9) {
+    alerts.push({ type: 'warn', msg: '⏰ <strong>Get ahead before you hit 10 employees:</strong> Three major laws activate simultaneously at 10 staff — <strong>ESI registration</strong> (ESIC Act), <strong>Gratuity Act</strong> (Payment of Gratuity Act 1972), and the <strong>Maternity Benefit Act</strong> (26 weeks paid leave for women employees). Start your ESIC registration at esic.gov.in now — it takes 7–15 days. Also draft your <strong>POSH policy</strong> and form your Internal Complaints Committee (ICC) before you make your next hire.' });
+  }
+
+  // On the 10–99 band → warn about upcoming 20-employee PF threshold
+  if (n >= 10 && n <= 99) {
+    alerts.push({ type: 'warn', msg: '⏰ <strong>PF registration triggers at 20 employees:</strong> The <strong>EPF & MP Act 1952</strong> mandates registration within 30 days of crossing 20 employees. Begin the EPFO registration process via the Unified Shram Suvidha Portal well before you reach 19 — setup takes 7–15 days. Configure your payroll for 12% employer + 12% employee PF contributions. At 50 employees, the Maternity Benefit Act also mandates a <strong>creche facility</strong> arrangement.' });
+  }
+
+  // On the 100–999 band → warn about upcoming 1,000-employee thresholds
+  if (n >= 100 && n <= 999) {
+    alerts.push({ type: 'warn', msg: '⏰ <strong>Prepare now for the 1,000-employee scale-up:</strong> At 1,000 employees across multiple states you will need a <strong>dedicated Compliance Officer</strong> who owns all statutory returns, IR, and contract labour management. If you have a factory with 500+ workers, a <strong>Welfare Officer</strong> and full-time <strong>Safety Officer</strong> become mandatory under the Factories Act. Begin upgrading from mid-market HRMS to enterprise-grade (Darwinbox / SAP SuccessFactors) and engage a C&B consultant for formal salary bands before you cross this mark.' });
+  }
+
+  // ── LISTING ALERTS ──
+  if (listing === 'listed') {
+    alerts.push({ type: 'error', msg: '📈 <strong>Listed Company — SEBI Obligations:</strong> SEBI LODR Regulations 2015 apply. Mandatory: Compliance Officer, Board composition (min. 1 woman director), Audit Committee, Nomination & Remuneration Committee, quarterly financial disclosures, insider trading policy, Whistleblower policy, Related Party Transaction policy. HR must liaise with Company Secretary for all disclosures.' });
+    alerts.push({ type: 'warn', msg: '📋 <strong>Annual Report — Business Responsibility & Sustainability Report (BRSR):</strong> Top 1,000 listed companies must file BRSR with NSE/BSE. Covers workforce metrics, diversity ratios, safety stats, equal pay, training hours. HR owns a large portion of this data.' });
+    alerts.push({ type: 'info', msg: '⚖️ <strong>Employee Stock Options (ESOPs) — SEBI ESOP Guidelines:</strong> Listed companies must follow SEBI (Share Based Employee Benefits) Regulations 2021. Separate trustee, listed exchange filings, disclosures to stock exchange within 2 days of any ESOP exercise.' });
+  } else if (listing === 'sme') {
+    alerts.push({ type: 'warn', msg: '🏷️ <strong>SME Listed — BSE SME / NSE Emerge:</strong> Lighter SEBI compliance but still mandatory: half-yearly financial results, Annual Report, Compliance Officer. Insider Trading Code mandatory. ESOP disclosures required if stock options granted.' });
+    alerts.push({ type: 'info', msg: '📊 <strong>SME Listed HR Requirement:</strong> Company Secretary (CS) mandatory. Audit Committee with at least 2 independent directors. Nomination & Remuneration Committee recommended. HR must coordinate with CS for board meetings and statutory registers.' });
+  } else {
+    alerts.push({ type: 'info', msg: '🔒 <strong>Unlisted Company:</strong> No SEBI obligations. However, if you plan to list in future, start building BRSR-ready HR data now — diversity ratios, training hours, attrition rates, pay equity data. Investors and ESG auditors increasingly ask for this.' });
+  }
+
+  // ── GEOGRAPHY ALERTS ──
+  if (geo === 'global') {
+    alerts.push({ type: 'error', msg: '🌐 <strong>Global Operations — Key HR Obligations:</strong> FEMA compliance for overseas remittances (salary, ESOPs to foreign employees). Transfer Pricing regulations for cross-border related party transactions. Employees working from India for foreign entities may create PE (Permanent Establishment) risk. Each country where you operate has its own labour law.' });
+    alerts.push({ type: 'warn', msg: '🛂 <strong>Foreign Nationals in India:</strong> Employment visa (E-Visa), FRRO registration within 14 days of arrival, Form-C submission by employer. Expat salary structure (split payroll) has specific FEMA and Income Tax implications.' });
+    alerts.push({ type: 'warn', msg: '🔁 <strong>Indian Employees Working Abroad:</strong> Need proper employment agreements covering host country laws. PF — International Workers: Different PF contributions for employees from Social Security Agreement countries. Employees from non-SSA countries: PF on full salary at 12%.' });
+    alerts.push({ type: 'info', msg: '📝 <strong>GDPR / Data Privacy (if EU operations):</strong> GDPR applies to employee data of EU-based staff. Need Data Processing Agreements, lawful basis for processing, right to erasure compliance. India\'s DPDP Act 2023 applies to Indian employees.' });
+  } else if (geo === 'panindia') {
+    alerts.push({ type: 'warn', msg: '🇮🇳 <strong>Pan India — Multi-State Compliance:</strong> Each state where you have an office, factory, or employees requires separate registration: Shops & Establishments, PT enrollment, LWF, Professional Tax, state-specific minimum wages. "One registration fits all" does NOT apply in India.' });
+    alerts.push({ type: 'info', msg: '📋 <strong>Pan India Payroll:</strong> Different PT slabs across states (Maharashtra, Karnataka, WB, TN levy PT; UP, Delhi, Rajasthan do not). Your payroll software must handle state-wise PT deduction and challan generation. Minimum wages vary by state AND by job category.' });
+    alerts.push({ type: 'info', msg: '🏭 <strong>Multiple Establishments — Single Registration Per State:</strong> EPFO and ESIC allow a single establishment code per state or region. However, Shops Act and PT are per-establishment in most states. Maintain a compliance calendar per state location.' });
+  } else {
+    alerts.push({ type: 'success', msg: '📍 <strong>State-Specific Operations:</strong> Your compliance universe is limited to one state — simpler and more manageable. Focus on getting the selected state\'s Shops Act, PT, minimum wages, and LWF registrations right. When you expand to a second state, each new state adds its own compliance layer.' });
+  }
+
+  container.innerHTML = alerts.map(a => `
+    <div class="alert alert-${a.type} fade-in" style="margin-bottom:10px">
+      <span class="alert-icon">${a.type==='error'?'🚨':a.type==='warn'?'⚠️':a.type==='success'?'✅':'ℹ️'}</span>
+      <div style="font-size:13px;line-height:1.6">${a.msg}</div>
+    </div>
+  `).join('');
+}
+
+function renderMandatoryCards() {
+  const container = document.getElementById('mandatoryCards');
+  container.innerHTML = DATA.mandatoryCompliance.map(item => `
+    <div class="card fade-in">
+      <span class="card-badge badge-${item.badge}">${item.badge.toUpperCase()}</span>
+      <h3>${item.title}</h3>
+      <p>${item.desc}</p>
+      ${item.penalty ? `<div class="card-penalty">⚠️ ${item.penalty}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+function renderTaxation() {
+  const container = document.getElementById('taxContent');
+  const entityType = document.getElementById('entityType').value;
+  const entityNote = entityType === 'pvtltd' ? 'Private Limited companies pay 22% corporate tax (25% if new manufacturing). Director salary: TDS mandatory.' :
+    entityType === 'llp' ? 'LLPs pay 30% income tax on profit. Partners get profit share — not salary. No TDS on partner\'s profit share.' :
+    entityType === 'proprietorship' ? 'Proprietors pay income tax at individual slab rates (up to 30%). Business income = personal income. No separate corporate tax.' :
+    entityType === 'opc' ? 'OPC: 22% corporate tax. Single member-director. Mandatory conversion to Pvt Ltd at ₹2Cr paid-up capital or ₹20Cr turnover.' :
+    'Partnership Firm: 30% flat tax on profits. Partners deduct TDS on salary/interest/commission paid to partners (Section 40b limits apply).';
+
+  container.innerHTML = `
+    <div class="alert alert-info fade-in">
+      <span class="alert-icon">📋</span>
+      <div><strong>Your Entity (${document.getElementById('entityType').options[document.getElementById('entityType').selectedIndex].text}):</strong> ${entityNote}</div>
+    </div>
+    ${DATA.taxation.items.map(group => `
+      <div class="tax-card fade-in">
+        <h3>${group.section} <span>${group.items.length} obligations</span></h3>
+        ${group.items.map(row => `
+          <div class="tax-row">
+            <div>
+              <div class="label">${row.label}</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px">${row.note}</div>
+            </div>
+            <div class="value">${row.value}</div>
+          </div>
+        `).join('')}
+      </div>
+    `).join('')}
+  `;
+}
+
+function renderTimeline() {
+  const container = document.getElementById('timelineContent');
+  container.innerHTML = DATA.timeline.map(item => {
+    const isActive = currentHeadcount >= item.min && currentHeadcount <= item.max;
+    return `
+      <div class="timeline-item ${isActive ? 'active' : ''} fade-in">
+        <div class="range-label">${item.range}</div>
+        <h4>${item.title} ${isActive ? '← You are here' : ''}</h4>
+        <p>${item.content}</p>
+        <p style="margin-top:8px;font-weight:600;color:var(--ink)">${item.hrAdvice}</p>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderStateContent() {
+  const stateKey = document.getElementById('stateSelect').value;
+  const state = DATA.stateData[stateKey];
+  if (!state) return;
+
+  document.getElementById('stateSubtitle').textContent = `Showing specific labour laws and statutory obligations for ${state.name}`;
+
+  const container = document.getElementById('stateContent');
+  container.innerHTML = `
+    ${state.alerts.map(a => `
+      <div class="alert alert-${a.type} fade-in">
+        <span class="alert-icon">${a.type === 'warn' ? '⚠️' : a.type === 'info' ? 'ℹ️' : a.type === 'success' ? '✅' : '❌'}</span>
+        <div>${a.msg}</div>
+      </div>
+    `).join('')}
+    <div class="tax-card fade-in">
+      <h3>Professional Tax <span>${state.ptSlabs.includes('NOT') ? 'Not Applicable' : 'Applicable'}</span></h3>
+      <div class="tax-row"><div class="label">Slabs & Rates</div><div class="value" style="font-size:12px;max-width:60%;text-align:right">${state.ptSlabs}</div></div>
+    </div>
+    <div class="tax-card fade-in">
+      <h3>Shops & Establishments Act</h3>
+      <div style="font-size:13.5px;color:var(--muted);line-height:1.7">${state.shops}</div>
+    </div>
+    <div class="tax-card fade-in">
+      <h3>Minimum Wages</h3>
+      <div style="font-size:13.5px;color:var(--muted);line-height:1.7">${state.minWage}</div>
+    </div>
+    <div class="tax-card fade-in">
+      <h3>Labour Welfare Fund</h3>
+      <div style="font-size:13.5px;color:var(--muted);line-height:1.7">${state.lwf}</div>
+    </div>
+    <div class="tax-card fade-in">
+      <h3>State-Specific Notes</h3>
+      <div style="font-size:13.5px;color:var(--muted);line-height:1.7">${state.notes}</div>
+    </div>
+  `;
+}
+
+function renderIndustryContent() {
+  const industryKey = document.getElementById('companyType').value;
+  const industry = DATA.industryData[industryKey];
+  if (!industry) return;
+
+  const container = document.getElementById('industryContent');
+  container.innerHTML = `
+    <div class="alert alert-info fade-in" style="margin-bottom:24px">
+      <span class="alert-icon">${industry.icon}</span>
+      <div>Showing compliance requirements specific to <strong>${industry.name}</strong>. These are in addition to general compliance above.</div>
+    </div>
+    <div class="card-grid">
+      ${industry.specifics.map(item => `
+        <div class="card fade-in">
+          <span class="card-badge badge-${item.badge}">${item.badge.toUpperCase()}</span>
+          <h3>${item.title}</h3>
+          <p>${item.desc}</p>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+
+// ════════════════════════════════════════════
+// ─── HR SOLUTIONS DATA & RENDERER ───
+// ════════════════════════════════════════════
+const HR_SOLUTIONS = {
+  payroll: {
+    title: 'Payroll & Statutory Compliance', icon: '💰',
+    overview: 'The non-negotiable foundation of HR. Every company — from day one — must pay employees correctly, deduct and deposit statutory dues (PF, ESI, TDS, PT), and maintain records. This is both a legal obligation and a trust signal to employees.',
+    whenNeeded: 'Day 1 — before first salary payment',
+    cost: '₹500–₹2,000/employee/month (outsourced) or ₹3–8L/year (software + 1 person in-house)',
+    inHouseAt: '50+ employees',
+    steps: [
+      { title: 'Register for TAN', desc: 'Apply for Tax Deduction Account Number from Income Tax Dept (TAN application — Form 49B). Required before any salary payment.' },
+      { title: 'Set up payroll structure', desc: 'Define salary components: Basic (40–50%), HRA (40–50% of basic), Special Allowance, LTA, Medical, PF. Structure affects tax liability significantly.' },
+      { title: 'Register for PF (20+ employees)', desc: 'EPFO registration via Unified Shram Suvidha Portal. Get PF Establishment code. Set up ECR (Electronic Challan-cum-Return) portal login.' },
+      { title: 'Register for ESI (10+ employees ≤₹21K salary)', desc: 'ESIC registration via esic.gov.in. Get sub-code for each branch. Employee ESIC cards issued.' },
+      { title: 'Register for PT (applicable states)', desc: 'Professional Tax registration with state labour/commercial tax dept. Deduct monthly from employee salary per state slab.' },
+      { title: 'Run monthly payroll cycle', desc: 'Process attendance → calculate gross pay → deduct PT, PF, TDS → generate payslips → disburse via bank transfer → deposit statutory challans by due dates.' },
+      { title: 'File quarterly TDS returns', desc: 'Form 24Q filed quarterly. Issue Form 16 to all employees by June 15 every year. Reconcile with 26AS annually.' },
+      { title: 'Annual compliance', desc: 'PF Annual Return (Form 3A/6A), ESIC Annual Return, PT Annual Return, Labour Welfare Fund (Jun 30 & Dec 31). Maintain registers under Payment of Wages Act.' },
+    ],
+    vendors: [
+      { name: 'Razorpay Payroll', desc: 'Best for startups. Auto PF/ESI/TDS. Easy onboarding.', price: '₹2,999/mo base' },
+      { name: 'Keka HR', desc: 'Full-suite payroll + HRMS. Popular with 50–500 cos.', price: '₹6,999/mo' },
+      { name: 'greytHR', desc: 'Strong compliance engine. MNC-preferred.', price: '₹3,495/mo' },
+      { name: 'Darwinbox', desc: 'Enterprise payroll + HCM. 500+ employees.', price: 'Custom' },
+      { name: 'sumHR', desc: 'Mid-market payroll + leave management.', price: '₹4,999/mo' },
+      { name: 'CA Firm', desc: 'Outsource entire payroll to a CA. Best for <20 employees.', price: '₹5K–₹15K/mo' },
+    ]
+  },
+  recruitment: {
+    title: 'Talent Acquisition', icon: '🎯',
+    overview: 'Hiring the right people is the highest-leverage HR activity. A structured TA process reduces time-to-hire, cuts cost-per-hire, improves quality, and reduces early attrition. Build this before you desperately need it.',
+    whenNeeded: 'When you hire your 2nd employee onwards',
+    cost: '₹8,000–₹25,000/hire (ATS) or 8–12% CTC (agency) or 15–20% CTC (senior/CXO)',
+    inHouseAt: '25+ employees (part-time recruiter) | 100+ (dedicated TA team)',
+    steps: [
+      { title: 'Define the role (JD & scorecard)', desc: 'Write Job Description with: mission of role, key responsibilities, must-have vs nice-to-have qualifications, success metrics at 30/60/90 days. A clear JD is the single biggest quality filter.' },
+      { title: 'Choose sourcing channels', desc: 'LinkedIn (professional), Naukri (volume, India), Instahyre (startup ecosystem), AngelList/Wellfound (startup-specific), Employee Referral Programme (best ROI), Campus hiring (entry level).' },
+      { title: 'Set up Application Tracking System', desc: 'ATS captures, organises, and tracks all candidates. Even a simple spreadsheet is better than email chaos. At 20+ hires/year, invest in Freshteam, Zoho Recruit, or Keka TA.' },
+      { title: 'Define interview process', desc: 'Standardise: Screening call (30 min HR) → Technical round → Case study/assignment → Culture fit (Founder/Manager) → Offer. Have an interview guide with consistent questions to reduce bias.' },
+      { title: 'Make & negotiate offer', desc: 'Send offer letter within 24 hours of decision. Include: title, CTC breakup, joining date, ESOPs (if any), PF, notice period. Have an offer letter template signed by an authorised signatory.' },
+      { title: 'Pre-joining engagement', desc: 'Keep candidate warm between offer acceptance and joining. Send welcome email, share team intro, ask for documents. Reduces offer dropouts significantly.' },
+    ],
+    vendors: [
+      { name: 'Naukri.com', desc: 'India\'s largest job board. Best for volume hiring.', price: '₹15K–₹60K/slot/yr' },
+      { name: 'LinkedIn Recruiter', desc: 'Best for senior/niche/tech hiring.', price: '₹1.5L–₹4L/seat/yr' },
+      { name: 'Instahyre', desc: 'AI-powered sourcing. Startup ecosystem.', price: 'Pay-per-hire' },
+      { name: 'Freshteam', desc: 'ATS + onboarding. Great for SMBs.', price: '₹1,999/mo' },
+      { name: 'Keka TA', desc: 'ATS integrated with Keka HRMS.', price: 'Bundled' },
+      { name: 'iimjobs', desc: 'Premium MBA/management hiring portal.', price: '₹10K–₹25K/post' },
+    ]
+  },
+  onboarding: {
+    title: 'Onboarding & Induction', icon: '🚪',
+    overview: 'The first 90 days define whether a new hire stays for 5 years or leaves in 6 months. A structured onboarding programme reduces time-to-productivity by 50%, improves retention by 82%, and signals to the employee that the company is professional.',
+    whenNeeded: 'From your very first hire',
+    cost: 'Mostly time-cost. Digital onboarding tools: ₹1,000–₹3,000/employee',
+    inHouseAt: 'Immediately. Even a checklist counts as onboarding.',
+    steps: [
+      { title: 'Pre-joining (Day -7 to -1)', desc: 'Send welcome email with joining instructions, team intro video, equipment details, parking/access. Share handbook, code of conduct, policies for advance reading. Collect documents digitally (Aadhaar, PAN, bank details, previous employment proof).' },
+      { title: 'Day 1 — First impression', desc: 'Workstation ready with laptop/tools configured. Welcome by manager. Office tour. Team introduction (informal lunch). IT access set up. HR 1:1 for paperwork, benefits enrolment, query answering.' },
+      { title: 'Week 1 — Company context', desc: 'Founders\' vision session. Product/service walkthrough. Org structure and key stakeholders. Tools and processes training. Buddy/Mentor assigned (a peer who guides informally).' },
+      { title: 'Month 1 — Role clarity', desc: '30-day goals set with manager. Regular check-ins (weekly). Exposure to cross-functional teams. Formal introduction to key clients/partners if relevant.' },
+      { title: '90-day review', desc: 'Formal 90-day check-in. Assess: Is the employee happy? Are they meeting expectations? Is the role a good fit? Address concerns early — before resignation.' },
+      { title: 'Statutory onboarding', desc: 'PF nomination form, ESI form, PT enrolment, Form 11 (PF declaration), bank account details, TDS declaration (Form 12BB), POSH policy acknowledgement, NDA/IP Agreement signing.' },
+    ],
+    vendors: [
+      { name: 'Keka HR', desc: 'Digital onboarding + document collection.', price: 'Bundled' },
+      { name: 'Darwinbox', desc: 'AI-powered onboarding journeys.', price: 'Custom' },
+      { name: 'HROne', desc: 'Onboarding workflow automation.', price: '₹3,495/mo' },
+      { name: 'Leena AI', desc: 'Conversational HR bot for onboarding queries.', price: 'Custom' },
+      { name: 'Google Workspace / Notion', desc: 'Low-cost: Build your own onboarding wiki.', price: '₹125/user/mo' },
+      { name: 'DocuSign / DigiLocker', desc: 'Digital document signing & verification.', price: '₹1,500/mo' },
+    ]
+  },
+  performance: {
+    title: 'Performance Management', icon: '📊',
+    overview: 'Performance management is not annual appraisals — it\'s a continuous system of goal-setting, feedback, coaching, and recognition that drives output. Poor performance management is the #1 cause of top performer attrition.',
+    whenNeeded: 'When you hit 15+ employees. At 25+ it becomes critical.',
+    cost: 'Internal time cost + tool: ₹500–₹2,000/employee/year',
+    inHouseAt: '25–50 employees. Assign ownership to HR or a people-focused manager.',
+    steps: [
+      { title: 'Choose a performance philosophy', desc: 'OKRs (Google/startup approach): Objectives + Key Results, quarterly. MBOs (traditional): Management by Objectives, annual. 9-box grid: Potential vs Performance. Continuous feedback model: Real-time, no rating. Choose ONE and stick to it.' },
+      { title: 'Set goals (OKRs / KRAs)', desc: 'Every employee needs 3–5 clear goals at the start of each cycle. Goals must be: Specific, Measurable, Time-bound, aligned to company objectives. Cascade from company → team → individual.' },
+      { title: 'Mid-cycle check-ins', desc: 'Manager and employee 1:1 every 2–4 weeks. Review progress. Remove blockers. Adjust goals if context changed. Document briefly (not formally, but consistently).' },
+      { title: 'Annual/semi-annual review', desc: '360-degree feedback (self, manager, peers, reports if applicable). Calibration session (managers discuss and normalise ratings across teams). Bell curve or forced ranking (controversial — use carefully). Link to compensation/promotion decisions.' },
+      { title: 'PIP (Performance Improvement Plan)', desc: 'For underperformers: 30/60/90-day PIP with clear, measurable targets. HR must be involved in every PIP. Document every step. PIPs serve dual purpose: support recovery AND create a paper trail for separation if needed.' },
+      { title: 'Recognition & rewards', desc: 'Spot rewards (instant), peer recognition platforms, annual awards. Recognition is 10x cheaper than salary hikes and has equal or higher retention impact.' },
+    ],
+    vendors: [
+      { name: 'Leapsome', desc: 'OKRs + feedback + reviews. Best-in-class UX.', price: '~$8/user/mo' },
+      { name: 'Keka Performance', desc: 'India-built OKRs + appraisals. Integrated HRMS.', price: 'Bundled' },
+      { name: 'Lattice', desc: 'Performance + engagement + growth. Popular with tech cos.', price: '$11/user/mo' },
+      { name: '15Five', desc: 'Manager-employee 1:1s + OKRs + pulse surveys.', price: '$14/user/mo' },
+      { name: 'Darwinbox PMS', desc: 'Enterprise-grade for 500+ employees.', price: 'Custom' },
+      { name: 'Excel / Notion', desc: 'Manual but functional for <25 employees.', price: 'Free' },
+    ]
+  },
+  lnd: {
+    title: 'Learning & Development (L&D)', icon: '📚',
+    overview: 'L&D is the fastest-ROI HR investment for a growing company. Upskilling reduces attrition (employees stay where they grow), improves performance, and reduces external hiring costs. L&D is not just training — it\'s career architecture.',
+    whenNeeded: 'From day 1 for founder learning. Structured L&D at 50+ employees.',
+    cost: '₹5,000–₹50,000/employee/year depending on approach',
+    inHouseAt: '100+ employees (dedicated L&D manager). 500+ (L&D team).',
+    steps: [
+      { title: 'Training Needs Analysis (TNA)', desc: 'Map skills required for each role → assess current skills → identify gaps. Sources: Manager feedback, performance review data, business strategy. Don\'t build training without a TNA — it\'s money wasted.' },
+      { title: 'Mandatory statutory training', desc: 'POSH (every employee, annually), Fire safety (factories), First Aid (factories 500+), Sexual Harassment awareness, Data Privacy (DPDP Act), Code of Conduct. These are legal requirements, not optional.' },
+      { title: 'Build learning pathways', desc: 'New hire learning path (0–90 days). Role-specific technical skills. Leadership development for managers. Cross-functional exposure for high-potentials.' },
+      { title: 'Choose delivery method', desc: 'E-learning (LinkedIn Learning, Udemy Business, Coursera for Business): scalable, self-paced. ILT (Instructor-led): for complex skills, team workshops. On-the-job learning: projects, stretch assignments, mentoring (highest ROI).' },
+      { title: 'Measure L&D effectiveness', desc: 'Kirkpatrick 4 levels: Reaction (did they like it?), Learning (did they learn?), Behaviour (did they apply it?), Results (did business metrics improve?). Most companies only measure Level 1. Aim for Level 3.' },
+      { title: 'Set L&D budget', desc: 'Benchmark: 1–3% of payroll for growing cos. 3–5% for mature organisations. 0.5% is the bare minimum. Track: training hours per employee, % workforce trained, internal mobility rate.' },
+    ],
+    vendors: [
+      { name: 'LinkedIn Learning', desc: 'Largest library. 21,000+ courses. Best for professionals.', price: '₹25K–₹1L/yr/batch' },
+      { name: 'Udemy Business', desc: 'Tech + business skills. Pay-per-course or subscription.', price: '~$360/user/yr' },
+      { name: 'Coursera for Business', desc: 'University-grade courses. Certificates recognised.', price: 'Custom' },
+      { name: 'Learnyst / iSpring', desc: 'Build your own LMS for internal content.', price: '₹10K–₹30K/mo' },
+      { name: 'TalentLMS', desc: 'Simple LMS for SMBs. Easy to configure.', price: '$89/mo (50 users)' },
+      { name: 'Vernacular platforms', desc: 'Disprz, PeopleStrong for regional language training.', price: 'Custom' },
+    ]
+  },
+  engagement: {
+    title: 'Employee Engagement', icon: '💬',
+    overview: 'Engagement is the emotional commitment employees have to your organisation. Engaged employees are 21% more productive, 59% less likely to leave, and are your best brand ambassadors. Disengaged employees cost 33% of their annual salary in lost productivity.',
+    whenNeeded: 'When you have 15+ employees and want to retain them.',
+    cost: '₹2,000–₹10,000/employee/year for structured engagement programmes',
+    inHouseAt: '50+ employees. Assign to HR or a culture champion.',
+    steps: [
+      { title: 'Measure current engagement (eNPS)', desc: 'Employee Net Promoter Score: "How likely are you to recommend this company as a place to work?" (0–10). Run quarterly pulse surveys (5 questions max). Benchmark: eNPS > 30 is good, > 50 is excellent, < 0 is a crisis.' },
+      { title: 'Manager quality programme', desc: 'The #1 driver of engagement is manager quality. Invest in manager training: feedback, 1:1 skills, psychological safety. 70% of engagement variance is explained by manager behaviour.' },
+      { title: 'Recognition programmes', desc: 'Spot awards (instant ₹500–₹2,000 recognition), peer-to-peer recognition, employee of the month, long-service awards. Recognition must be timely, specific, and public.' },
+      { title: 'Career development conversations', desc: 'Every employee needs an annual career conversation with their manager (separate from appraisal). Ask: Where do you want to be in 2 years? What skills do you want to build? What\'s getting in the way?' },
+      { title: 'Culture and belonging', desc: 'Town halls, skip-level meetings, open-door policy, D&I initiatives, team offsites, internal social platform. Culture is not perks — it\'s how decisions are made and how people treat each other.' },
+      { title: 'Exit interview analysis', desc: 'Structured exit interviews every time someone leaves. Track exit reasons: Manager, compensation, growth, culture, role clarity. Monthly report on exit themes to leadership. Fix systemic issues, not just symptoms.' },
+    ],
+    vendors: [
+      { name: 'CultureAmp', desc: 'Industry-leading engagement surveys + analytics.', price: 'Custom (50+ users)' },
+      { name: 'Keka Engage', desc: 'India-built pulse surveys + recognition.', price: 'Bundled' },
+      { name: 'Vantage Circle', desc: 'Rewards, recognition + engagement platform.', price: '₹3/user/day' },
+      { name: 'Leapsome Engage', desc: 'Surveys + OKR + feedback in one platform.', price: '~$8/user/mo' },
+      { name: 'Typeform / Google Forms', desc: 'DIY pulse surveys for <50 employees.', price: 'Free–₹2,400/mo' },
+      { name: 'Slack + Donut', desc: 'Random coffee chats, peer connections.', price: 'Free plugin' },
+    ]
+  },
+  hrops: {
+    title: 'HR Operations & HRIS', icon: '⚙️',
+    overview: 'HR Operations is the backbone — employee records, leave management, attendance, letters, policies, and the HRMS that ties it all together. Poor HR Ops = frustrated employees and compliance gaps. A good HRIS makes everything else more efficient.',
+    whenNeeded: 'At 10+ employees, manual tracking breaks down. Invest in tools.',
+    cost: '₹3,000–₹12,000/employee/year for HRMS. In-house HR Ops person at 50+.',
+    inHouseAt: '50+ employees for a dedicated HR Ops Executive. 200+ for an HR Ops team.',
+    steps: [
+      { title: 'Employee master data management', desc: 'Single source of truth: employee profile, contract, designation, department, reporting manager, salary history, PF/ESI numbers. Keep this updated within 24 hours of any change.' },
+      { title: 'Leave & attendance management', desc: 'Define leave policy: CL (Casual), SL (Sick), EL/PL (Earned/Privilege), Maternity (26 weeks), Paternity (15 days), Bereavement. Set up a leave management system. Integrate with payroll.' },
+      { title: 'Letters & documents', desc: 'Maintain templates for: Offer Letter, Appointment Letter, Confirmation Letter, Increment Letter, Transfer Letter, Warning Letter, Termination Letter, Experience Letter, Full & Final Settlement. Issue within 24 hours of event.' },
+      { title: 'HR policy manual', desc: 'Must have: Code of Conduct, POSH Policy, Leave Policy, Travel Policy, IT Security Policy, Grievance Redressal Policy, Anti-Bribery Policy, Disciplinary Policy. Review annually and get all employees to acknowledge in writing.' },
+      { title: 'HRMS implementation', desc: 'Choose HRIS based on size and need. Implement in phases: payroll first, then leave/attendance, then performance, then L&D. Data migration from spreadsheets. Train all managers on self-service features.' },
+      { title: 'HR dashboards & MIS', desc: 'Monthly HR MIS: headcount by dept/location, attrition rate, hiring funnel, training hours, absenteeism, cost-per-hire. Share with leadership monthly. Data is your credibility as an HR professional.' },
+    ],
+    vendors: [
+      { name: 'Darwinbox', desc: 'Best enterprise HRMS. Full suite. 500+ cos.', price: 'Custom' },
+      { name: 'Keka HR', desc: 'Best mid-market. India-built. 50–2000 employees.', price: '₹6,999–₹19,999/mo' },
+      { name: 'greytHR', desc: 'Strong compliance + payroll. Popular with MNCs.', price: '₹3,495/mo' },
+      { name: 'Zoho People', desc: 'Affordable HRMS. Good for SMBs.', price: '₹50/user/mo' },
+      { name: 'HROne', desc: 'Mid-market India HRMS with mobile app.', price: '₹3,500+/mo' },
+      { name: 'SAP SuccessFactors', desc: 'Large enterprise (5000+). Global.', price: 'Custom (₹50L+)' },
+    ]
+  },
+  separation: {
+    title: 'Separation & Exit Management', icon: '🚶',
+    overview: 'How you handle exits defines your employer brand as much as how you hire. A smooth exit — with timely documents, fair FnF settlement, and a genuine exit conversation — creates alumni who recommend you. A bad exit creates Glassdoor nightmares.',
+    whenNeeded: 'From your very first exit. Have a process before you need it.',
+    cost: 'Administrative. FnF payout as per law. Gratuity (after 5 years).',
+    inHouseAt: 'Immediately. A 1-page checklist is better than nothing.',
+    steps: [
+      { title: 'Acceptance of resignation', desc: 'Accept resignation in writing within 24 hours. Confirm last working day per notice period. If notice buyout agreed, confirm terms in writing. Never ignore a resignation — it\'s a legal event.' },
+      { title: 'Notice period management', desc: 'Notice period per appointment letter (typically 1–3 months). Knowledge transfer plan. Handover document. If notice waived: issue waiver letter in writing.' },
+      { title: 'Exit interview', desc: 'Structured exit interview by HR (not manager — creates bias). Questions: Why leaving? What would have made you stay? Manager feedback? What can we improve? Document and analyse trends monthly.' },
+      { title: 'Full & Final settlement (FnF)', desc: 'Must be paid within 30–45 days of last working day (varies by state). Includes: salary for days worked, pending leave encashment, reimbursements, bonus pro-rata, less: notice pay shortfall if any. Issue FnF breakup in writing.' },
+      { title: 'Gratuity payment', desc: 'Payable if employee has completed 5 years of continuous service. Formula: 15 × Last Basic Salary × Years of Service ÷ 26. Payment within 30 days of separation. Delayed gratuity attracts 10% simple interest.' },
+      { title: 'Relieving & experience letters', desc: 'Issue Relieving Letter on last working day (or within 2 days). Issue Experience Letter within 7 days. These are legal rights of the employee — withholding them can lead to labour court complaints.' },
+    ],
+    vendors: [
+      { name: 'Keka HR', desc: 'FnF automation + exit interview workflow.', price: 'Bundled' },
+      { name: 'Darwinbox', desc: 'Enterprise separation management + FnF.', price: 'Custom' },
+      { name: 'Springworks', desc: 'Employee exit + alumni management.', price: 'Custom' },
+      { name: 'Typeform', desc: 'Build a structured exit interview form.', price: 'Free–₹2,400/mo' },
+      { name: 'Excel tracker', desc: 'Manual FnF tracker. Works for <50 employees.', price: 'Free' },
+      { name: 'CA / CS', desc: 'FnF compliance review for complex cases.', price: '₹5K–₹15K/case' },
+    ]
+  }
+};
+
+let activeSolPanel = 'payroll';
+
+function showSolPanel(key) {
+  activeSolPanel = key;
+  document.querySelectorAll('.sol-tab').forEach(t => t.classList.remove('active'));
+  const idx = Object.keys(HR_SOLUTIONS).indexOf(key);
+  document.querySelectorAll('.sol-tab')[idx]?.classList.add('active');
+  renderSolPanel(key);
+}
+
+function renderSolPanel(key) {
+  const s = HR_SOLUTIONS[key];
+  if (!s) return;
+  const container = document.getElementById('solPanels');
+  container.innerHTML = `
+    <div class="sol-panel active">
+      <div class="sol-overview">
+        <h3>${s.icon} ${s.title}</h3>
+        <p>${s.overview}</p>
+        <div class="sol-meta">
+          <div class="sol-meta-item"><strong>When to start</strong>${s.whenNeeded}</div>
+          <div class="sol-meta-item"><strong>Typical cost</strong>${s.cost}</div>
+          <div class="sol-meta-item"><strong>Bring in-house at</strong>${s.inHouseAt}</div>
+        </div>
+      </div>
+      <div class="sol-steps">
+        ${s.steps.map((step, i) => `
+          <div class="sol-step">
+            <div class="sol-step-num">${i + 1}</div>
+            <div><strong>${step.title}</strong><p>${step.desc}</p></div>
+          </div>
+        `).join('')}
+      </div>
+      <div style="margin-top:20px">
+        <div class="section-subtitle" style="margin-bottom:12px">Recommended Vendors & Tools</div>
+        <div class="sol-vendors">
+          ${s.vendors.map(v => `
+            <div class="sol-vendor">
+              <div class="vname">${v.name}</div>
+              <div class="vdesc">${v.desc}</div>
+              <div class="vprice">${v.price}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ════════════════════════════════════════════
+// ─── HR EXPERTISE DATA & RENDERER ───
+// ════════════════════════════════════════════
+const HR_EXPERTISE = [
+  {
+    icon: '👑', title: 'Leadership Development',
+    tag: 'strategic', tagLabel: 'Strategic',
+    when: 'Needed at 100+ people or before first management layer',
+    desc: 'The discipline of identifying, developing, and accelerating leaders across the organisation. Goes far beyond training — it\'s about building a leadership pipeline that ensures the company never depends on any single person.',
+    bullets: [
+      'First-time Manager Programme (FTMP): structured 3–6 month programme for new managers',
+      'Leadership competency framework: define what great leadership looks like at each level',
+      '70-20-10 model: 70% on-the-job stretch, 20% coaching/mentoring, 10% formal training',
+      'Executive coaching: 1:1 coaching for Director level and above (₹50K–₹2L per leader per programme)',
+      'Action Learning Projects: senior leaders solve real business problems in cross-functional teams',
+      'Leadership assessment tools: Hogan, 360-degree feedback, Leadership Circle Profile',
+    ]
+  },
+  {
+    icon: '♟️', title: 'Succession Planning',
+    tag: 'strategic', tagLabel: 'Strategic',
+    when: 'Critical at 200+ people or when the company has key-person risk',
+    desc: 'Succession planning ensures business continuity by identifying and developing internal candidates for critical roles. Without it, one resignation can cripple a function.',
+    bullets: [
+      '9-box talent review: map all employees on Performance (x) vs Potential (y) grid',
+      'Identify critical roles (top 10–15% of roles that drive 80% of value)',
+      'Name succession candidates: Ready Now, Ready in 1–2 years, Ready in 3–5 years',
+      'Individual Development Plans (IDPs) for identified successors',
+      'Retention risk assessment: who is a flight risk? What\'s the mitigation plan?',
+      'Board and C-suite succession: separate process involving the board and Nomination Committee',
+    ]
+  },
+  {
+    icon: '🎯', title: 'Performance Development',
+    tag: 'strategic', tagLabel: 'Strategic',
+    when: 'From 25 employees — this is different from basic performance management',
+    desc: 'A holistic approach that combines goal-setting, continuous feedback, skills development, and career growth into a single integrated system. Moves beyond appraisal to actual capability building.',
+    bullets: [
+      'Competency framework: define skills/behaviours required for each level across all functions',
+      'Individual Development Plans (IDPs): every employee has a written 12-month growth plan',
+      'Career pathing: defined vertical AND lateral growth routes (not just "promotions")',
+      'Continuous feedback culture: manager certification in feedback models (SBI — Situation, Behaviour, Impact)',
+      'Calibration sessions: ensure fair and consistent performance ratings across teams',
+      'Pay-for-performance philosophy: define how performance ratings translate to salary actions',
+    ]
+  },
+  {
+    icon: '💎', title: 'Compensation & Benefits (C&B)',
+    tag: 'specialist', tagLabel: 'Specialist',
+    when: 'Specialist needed at 500+ employees. Consultant from 100+.',
+    desc: 'The science and art of designing total rewards — salary structures, incentive plans, equity, benefits, and perks — that attract, retain, and motivate talent while remaining financially sustainable.',
+    bullets: [
+      'Job evaluation and grading: Hay/Mercer/Willis Towers Watson methodology',
+      'Salary benchmarking: Radford, Mercer, Korn Ferry annual surveys for market data',
+      'Salary bands: define min-mid-max for each grade to ensure internal equity',
+      'Variable pay design: target incentive % by level, KPI-linked, payout curves',
+      'ESOP design: vesting schedule, exercise price, ESOP trust, dilution management',
+      'Benefits benchmarking: health insurance, term life, NPS, flexi-benefits platforms',
+    ]
+  },
+  {
+    icon: '🧠', title: 'Organisation Design (OD)',
+    tag: 'specialist', tagLabel: 'Specialist',
+    when: 'Critical at 200+ people or during major restructuring/M&A',
+    desc: 'Organisation Design is the deliberate process of configuring structures, processes, roles, and relationships to execute strategy effectively. It\'s HR\'s most strategic work — often done once every 3–5 years but with decade-long impact.',
+    bullets: [
+      'Org structure design: functional vs divisional vs matrix vs flat vs holacracy',
+      'Span of control analysis: optimal manager-to-employee ratio by function',
+      'Role clarity: RACI matrix, job architecture, role levelling',
+      'Workforce planning: headcount modelling, skills gap analysis, build/buy/borrow decisions',
+      'Change management: Kotter\'s 8 steps, ADKAR model for restructuring',
+      'Culture change programmes: values refresh, leadership alignment, behaviour change at scale',
+    ]
+  },
+  {
+    icon: '🌍', title: 'Diversity, Equity & Inclusion (DEI)',
+    tag: 'emerging', tagLabel: 'Emerging',
+    when: 'Mandatory elements (POSH) from 10 employees. Full DEI practice at 200+.',
+    desc: 'DEI is both a compliance requirement (POSH, Equal Remuneration Act) and a business imperative. Diverse teams make better decisions and access wider talent pools. Listed companies now face BRSR DEI disclosures.',
+    bullets: [
+      'POSH compliance: ICC formation, policy, annual training, reporting (mandatory 10+ employees)',
+      'Gender pay gap audit: track and address unexplained pay differences',
+      'Diverse hiring panels: women and underrepresented groups on every interview panel',
+      'Inclusive job descriptions: remove gendered language, unnecessary degree requirements',
+      'Returnship programmes: structured re-entry for career-break candidates',
+      'DEI metrics dashboard: gender ratio by level, disability inclusion, LGBTQ+ inclusion, BRSR reporting',
+    ]
+  },
+  {
+    icon: '🧘', title: 'Employee Wellness & EAP',
+    tag: 'emerging', tagLabel: 'Emerging',
+    when: 'Recommended at 100+ employees. Essential at 500+ employees.',
+    desc: 'Employee wellness encompasses physical, mental, financial, and social wellbeing. Employee Assistance Programmes (EAPs) provide confidential counselling and support services. Mental health is now a mainstream business concern, not a taboo.',
+    bullets: [
+      'EAP (Employee Assistance Programme): free, confidential counselling for employees (₹500–₹1,500/employee/year)',
+      'Mental health first aiders: train 1 per 50 employees in mental health first aid',
+      'Financial wellness: salary advances, financial literacy programmes, NPS advisory',
+      'Physical wellness: health insurance with preventive care, step challenges, ergonomics',
+      'Psychological safety index: measure and improve manager practices that affect mental health',
+      'Bereavement and crisis leave policies: compassionate leave beyond statutory minimums',
+    ]
+  },
+  {
+    icon: '🤝', title: 'Industrial Relations (IR)',
+    tag: 'specialist', tagLabel: 'Specialist',
+    when: 'Essential in manufacturing, large workforce (1000+), or unionised sectors',
+    desc: 'Industrial Relations is the management of employer-employee-union relationships within the legal framework. In manufacturing and large organisations, skilled IR professionals prevent costly strikes and shutdowns.',
+    bullets: [
+      'Union recognition and collective bargaining under Industrial Disputes Act 1947',
+      'Long-term settlements (LTS): negotiating multi-year wage and benefit agreements with unions',
+      'Standing Orders: mandatory certified rules of conduct for factories/establishments 100+ workers',
+      'Grievance handling: structured 3-stage grievance redressal mechanism',
+      'Domestic enquiry: conducting fair enquiry for misconduct allegations — procedural compliance is critical',
+      'Labour court matters: representing employer in labour courts, Central/State Industrial Tribunals',
+    ]
+  },
+  {
+    icon: '🔮', title: 'HR Analytics & People Science',
+    tag: 'emerging', tagLabel: 'Emerging',
+    when: 'Recommended at 500+ employees. Transformative at 2,000+ employees.',
+    desc: 'HR Analytics transforms people data into predictive insights. Which employees are flight risks? What drives performance? What predicts leadership potential? People science separates reactive HR from strategic HR.',
+    bullets: [
+      'Descriptive analytics: headcount, attrition rate, time-to-hire, training hours, cost-per-hire',
+      'Predictive attrition: ML models that identify flight risk 3–6 months before resignation',
+      'Performance prediction: identify drivers of high performance to replicate in hiring',
+      'Workforce planning models: scenario planning for business growth, headcount budgeting',
+      'Network analysis: identify informal influencers, collaboration patterns, silos',
+      'Tools: Visier, SAP Workforce Analytics, Power BI + HRMS data, Python/R for custom models',
+    ]
+  },
+  {
+    icon: '🌱', title: 'Employer Branding (EB)',
+    tag: 'operational', tagLabel: 'Operational',
+    when: 'Start investing from 50+ employees. Critical for tech/startup hiring.',
+    desc: 'Employer Branding is the company\'s reputation as an employer — what it\'s like to work there. A strong employer brand reduces cost-per-hire by 43% and increases quality of applicants by 50%. Especially critical in competitive talent markets.',
+    bullets: [
+      'Employee Value Proposition (EVP): why do people choose to work here? Articulate it clearly.',
+      'Glassdoor/AmbitionBox management: respond to all reviews, maintain 4.0+ rating',
+      'LinkedIn company page: post culture content, employee stories, company news regularly',
+      'Campus branding: partnerships with target colleges, intern programmes, hackathons',
+      'Diversity employer branding: showcase inclusive practices, certified by GPTW (Great Place to Work)',
+      'Referral programme: structured employee referral programme (₹5K–₹50K reward per hire)',
+    ]
+  },
+  {
+    icon: '⚖️', title: 'Labour Law & Compliance Expertise',
+    tag: 'specialist', tagLabel: 'Specialist',
+    when: 'From Day 1 via a CA/CS. In-house compliance officer at 200+ employees.',
+    desc: 'Labour law compliance is a specialised domain that sits at the intersection of HR and legal. The 4 Labour Codes (when enforced) will radically change compliance requirements. This expertise protects the company from multi-crore penalties.',
+    bullets: [
+      '4 Labour Codes: Code on Wages, Industrial Relations Code, SS Code, OSH & WC Code — understand status per state',
+      'Contract Labour Act compliance: principal employer registration, contractor audits, PF/ESI passthrough',
+      'Factory Act compliance: Factory Inspector liaison, annual returns, safety audits',
+      'POSH compliance: ICC, annual training, District Officer reporting',
+      'Statutory registers and returns: Forms A, B, C, D under various acts — maintain and file on time',
+      'Labour audit: annual audit of all compliance registers by an external expert',
+    ]
+  },
+  {
+    icon: '🚀', title: 'HR Business Partnering (HRBP)',
+    tag: 'operational', tagLabel: 'Operational',
+    when: 'Model applicable from 200+ employees when HR needs to be business-aligned',
+    desc: 'An HRBP is a senior HR professional embedded within a business function who acts as a strategic advisor to the function head. HRBPs translate business strategy into people strategy — they\'re not transactional HR, they\'re business leaders with HR expertise.',
+    bullets: [
+      'Workforce planning: working with function heads to plan hiring 6–12 months ahead',
+      'Talent reviews: leading quarterly talent calibration with business leaders',
+      'Org design advisory: recommending structural changes to improve effectiveness',
+      'Change management: managing people-impact of mergers, restructuring, new products',
+      'HR data analysis: presenting people metrics monthly to function heads with recommendations',
+      'Business acumen: HRBP must understand P&L, business model, competitive landscape',
+    ]
+  }
+];
+
+function renderExpertise() {
+  const container = document.getElementById('expertiseGrid');
+  if (!container) return;
+  container.innerHTML = HR_EXPERTISE.map(e => `
+    <div class="expertise-card fade-in">
+      <div class="expertise-card-head">
+        <div class="expertise-icon">${e.icon}</div>
+        <div>
+          <h3>${e.title}</h3>
+          <div class="exp-when">${e.when}</div>
+        </div>
+      </div>
+      <div class="expertise-body">
+        <p>${e.desc}</p>
+        <ul class="expertise-bullets">
+          ${e.bullets.map(b => `<li>${b}</li>`).join('')}
+        </ul>
+        <span class="expertise-tag exp-tag-${e.tag}">${e.tagLabel}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ════════════════════════════════════════════
+// ─── SCALE-UP (NEXT BRACKET) DATA & RENDERER ───
+// ════════════════════════════════════════════
+const SCALEUP_DATA = [
+  {
+    from: '1–9', to: '10–99',
+    items: [
+      { cat: 'legal',   cat_label: 'Legal', title: 'ESI Registration (at 10 employees)', desc: 'As soon as you hire your 10th employee earning ≤₹21,000/month, you must register with ESIC within 15 days. Employer contributes 3.25% of gross wages.' },
+      { cat: 'legal',   cat_label: 'Legal', title: 'Maternity Benefit Act — prepare before 10th hire', desc: 'The Maternity Benefit Act 1961 (amended 2017) applies at 10+ employees. Women employees are entitled to 26 weeks of paid maternity leave for first two children (12 weeks for third child+). At 50 employees, a creche facility becomes mandatory. Update your leave policy and HR handbook now.' },
+      { cat: 'legal',   cat_label: 'Legal', title: 'POSH — Internal Complaints Committee', desc: 'Prevention of Sexual Harassment Act 2013 mandates an ICC at 10+ employees. Must have a senior female employee as chair + external member. Display policy.' },
+      { cat: 'legal',   cat_label: 'Legal', title: 'PF Registration (at 20 employees)', desc: 'EPF & MP Act 1952 kicks in at 20 employees. Register on Unified Shram Suvidha Portal within 30 days of hitting 20. Employer: 12% of basic.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'Employment Agreements for All', desc: 'Every employee must have a signed appointment letter. Include: role, salary, notice period, IP clause, NDA, POSH policy acknowledgement.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'Offboarding & FnF checklist', desc: 'Build your offboarding process before your first exit — not after. Define: resignation acceptance in writing, notice period management, structured exit interview, Full & Final (FnF) settlement within 30–45 days of last working day, relieving letter + experience letter on last day, PF transfer (Form 13). A checklist-based process prevents legal exposure and protects employer brand.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'Part-time HR consultant or payroll outsourcing', desc: 'At 10+ employees, HR complexity crosses the founder\'s bandwidth. Hire a part-time HR consultant (₹15,000–₹30,000/month) or outsource payroll.' },
+      { cat: 'ops',     cat_label: 'Operations', title: 'Leave management system', desc: 'Replace WhatsApp leave requests with a proper leave system. Even a simple Google Sheet or Keka/Zoho People for ₹50/user/month works.' },
+      { cat: 'finance', cat_label: 'Finance', title: 'Payroll software', desc: 'Manual payroll in Excel doesn\'t scale beyond 10 people. Invest in Razorpay Payroll or greytHR for automated TDS, PF, ESI calculations.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'Basic HR policy manual', desc: 'Document: Leave Policy, Code of Conduct, POSH Policy, IT Use Policy, Grievance Redressal. 1-page each is fine. Get written acknowledgement from all employees.' },
+    ]
+  },
+  {
+    from: '10–99', to: '100–999',
+    items: [
+      { cat: 'hr',      cat_label: 'HR', title: 'Hire your first HR Manager', desc: 'At 50+ employees you need in-house HR. At 100, you need an HR Manager. They own: payroll, compliance, onboarding, performance cycle, exit management.' },
+      { cat: 'legal',   cat_label: 'Legal', title: 'Contract Labour Act registration (20+ contract workers)', desc: 'If you use more than 20 contract workers through any contractor, register as Principal Employer under CLRA 1970. Contractor needs their own license.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'Implement HRMS (Keka/Darwinbox)', desc: 'Excel and WhatsApp don\'t work at 100 people. Implement a proper HRMS for leave, attendance, payroll, performance, and letters.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'Structured onboarding programme', desc: 'Build a 30-60-90 day onboarding plan. Buddy system. Company wiki. New hire survey at 30 days.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'Formalise offboarding & FnF process', desc: 'At 100 employees you are processing multiple exits per month. Formalise: separation workflow in HRMS, structured exit interviews with trend reporting, FnF settlement within 30–45 days, automated experience letter generation, PF transfer via Form 13, gratuity eligibility check for 5-year employees. Monthly exit analysis shared with leadership.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'Performance management system', desc: 'Launch your first formal performance cycle. OKRs or KRAs. Semi-annual reviews. Link to compensation decisions.' },
+      { cat: 'finance', cat_label: 'Finance', title: 'Gratuity provisioning', desc: 'Start provisioning for gratuity from day 1. At 100 employees, if many are 5+ year veterans, gratuity liability can be significant. Consider Group Gratuity Trust with LIC/HDFC.' },
+      { cat: 'legal',   cat_label: 'Legal', title: 'Shops Act compliance audit', desc: 'Conduct internal compliance audit: Are all registers maintained? Is PT paid on time? Are employee records complete? Do this before a labour inspector does.' },
+      { cat: 'tech',    cat_label: 'Technology', title: 'ATS for recruitment', desc: 'At 100 employees, you\'re hiring 20–30 people per year. Invest in an Applicant Tracking System (Freshteam, Zoho Recruit, Keka TA) to manage candidates systematically.' },
+    ]
+  },
+  {
+    from: '100–999', to: '1K–4.9K',
+    items: [
+      { cat: 'hr',      cat_label: 'HR', title: 'Build the HR team (HRBP model)', desc: 'Need: HR Manager, HRBP (1 per 150–200 employees), Payroll specialist, L&D executive, TA recruiter(s). Total HR team: 5–15 people.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'Succession planning & talent review', desc: 'Launch annual 9-box talent review. Identify high-potentials. Create Individual Development Plans for successors to all critical roles.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'L&D function and learning budget', desc: 'Appoint an L&D Manager. Set learning budget (1–2% of payroll). Mandatory POSH training for all. Launch first-time manager programme.' },
+      { cat: 'legal',   cat_label: 'Legal', title: 'Dedicated compliance officer', desc: 'At 1,000 employees across multiple states you need a dedicated compliance officer. They own: all statutory returns, IR, factory compliance, contract labour management.' },
+      { cat: 'tech',    cat_label: 'Technology', title: 'Upgrade to enterprise HRMS', desc: 'Darwinbox or SAP SuccessFactors for a unified system: core HR, payroll, performance, L&D, analytics. Data quality becomes critical.' },
+      { cat: 'finance', cat_label: 'Finance', title: 'Total Rewards / C&B strategy', desc: 'Engage a C&B consultant to design formal salary bands, grade structure, variable pay policy. Participate in Mercer/Radford salary surveys.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'Employee engagement programme', desc: 'Formal eNPS survey quarterly. Action planning by managers. Culture Committee. Town halls. Recognition platform.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'HR analytics dashboard', desc: 'Monthly HR MIS to leadership: attrition by function, hiring funnel, performance distribution, training hours. Use data to drive decisions.' },
+    ]
+  },
+  {
+    from: '1K–4.9K', to: '5K–9.9K',
+    items: [
+      { cat: 'hr',      cat_label: 'HR', title: 'COE (Centre of Excellence) HR model', desc: 'Separate specialist COEs: Talent Acquisition COE, L&D COE, C&B COE, HR Analytics COE, Employee Relations COE. HRBPs stay embedded in business.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'Leadership development programme', desc: 'Launch a structured Leadership Development Programme for top 100 leaders. External facilitators, action learning, executive coaching.' },
+      { cat: 'legal',   cat_label: 'Legal', title: 'IR capability for unionised locations', desc: 'If manufacturing: dedicated IR Manager at each plant location. Standing Orders certified. LTS negotiation team. Labour law retainer in each key state.' },
+      { cat: 'tech',    cat_label: 'Technology', title: 'Workforce analytics platform', desc: 'Visier or SAP Analytics Cloud for predictive attrition, workforce planning, performance prediction. Move from descriptive to predictive HR.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'DEI programme & reporting', desc: 'Formal DEI strategy. BRSR disclosures (if listed). Gender parity targets. LGBTQ+ inclusion. Returnship programme. D&I head appointed.' },
+      { cat: 'finance', cat_label: 'Finance', title: 'ESOP administration & trust', desc: 'At 5K employees the ESOP pool and exercise events become operationally complex. Dedicated ESOP administrator. Regular communication with employees on ESOP value.' },
+    ]
+  },
+  {
+    from: '5K–9.9K', to: '10K–99K',
+    items: [
+      { cat: 'hr',      cat_label: 'HR', title: 'HR Shared Services Centre (SSC)', desc: 'Centralise transactional HR (offer letters, data changes, payroll queries) into an SSC. Free up HRBPs for strategic work. Target: 80% queries resolved via self-service.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'Board-level people reporting', desc: 'CHRO presents quarterly to the Board: succession plan health, leadership bench depth, workforce risk, culture metrics, DEI progress.' },
+      { cat: 'tech',    cat_label: 'Technology', title: 'AI-powered talent acquisition', desc: 'Deploy AI sourcing tools (Eightfold, HireVue, Seekout). Predictive assessment. Bias reduction in screening. At 10,000 employees you may hire 1,000+ people a year.' },
+      { cat: 'legal',   cat_label: 'Legal', title: 'Multi-state compliance command centre', desc: 'Dedicated compliance teams per geography. Automated compliance calendar. External audit of each state\'s compliance annually.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'People science / predictive analytics', desc: 'ML models for: attrition prediction, performance prediction, internal mobility recommendation, optimal team composition.' },
+    ]
+  },
+  {
+    from: '10K–99K', to: '1L–9.9L',
+    items: [
+      { cat: 'hr',      cat_label: 'HR', title: 'Federated HR model across BUs', desc: 'Each Business Unit has its own HR head who operates with autonomy within Group HR policy. Group HR sets standards, BU HR executes.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'ESG workforce reporting', desc: 'Full ESG workforce disclosures: gender equity ratios at each level, pay parity analysis, diversity hiring data, attrition by category, training hours, safety incidents.' },
+      { cat: 'legal',   cat_label: 'Legal', title: 'Government and policy engagement', desc: 'At this scale, the company has standing to engage with Ministry of Labour on proposed labour law changes. Industry body participation (CII, FICCI, ASSOCHAM HR committees).' },
+      { cat: 'tech',    cat_label: 'Technology', title: 'Integrated talent intelligence platform', desc: 'Move to a unified talent intelligence platform that connects external market data with internal employee data for workforce planning at 5-year horizon.' },
+    ]
+  },
+  {
+    from: '1L–9.9L', to: '10L+',
+    items: [
+      { cat: 'hr',      cat_label: 'HR', title: 'Separate HR P&L per subsidiary', desc: 'HR becomes a P&L centre at this scale. Each major subsidiary has a CHRO reporting to the Group CHRO. HR investments evaluated like business investments.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'Political labour relations management', desc: 'At this scale, labour relations intersect with state and national politics. Dedicated government affairs function working alongside IR. Board-level oversight.' },
+      { cat: 'tech',    cat_label: 'Technology', title: 'Proprietary workforce AI', desc: 'Build proprietary AI models trained on your own workforce data. Internal talent marketplace where 20%+ of open roles are filled internally every year.' },
+      { cat: 'hr',      cat_label: 'HR', title: 'University and research partnerships', desc: 'Partner with IIMs, IITs for research on future of work, workforce productivity. Influence academic curriculum to pipeline talent for niche skills.' },
+    ]
+  },
+  {
+    from: '10L+', to: null,
+    items: [
+      { cat: 'hr', cat_label: 'HR', title: 'You are at the apex of organisational scale', desc: 'Companies at this level (Tata Group, Reliance, Government of India as employer, Indian Railways) operate HR as a distinct organisational science. Every element above applies across multiple subsidiaries, countries, and regulatory regimes.' },
+    ]
+  }
+];
+
+function renderScaleUp() {
+  const bands = ['1–9','10–99','100–999','1K–4.9K','5K–9.9K','10K–99K','1L–9.9L','10L+'];
+  const activeBlock = document.querySelector('.size-block.active');
+  const activeMin = activeBlock ? parseInt(activeBlock.dataset.min) : 1;
+
+  const bandIndex = SCALEUP_DATA.findIndex(b => {
+    const rangeMin = parseInt(b.from.replace(/[^\d]/g,'').split('–')[0]) || (b.from === '1L–9.9L' ? 100000 : b.from === '10L+' ? 1000000 : 0);
+    return activeMin <= rangeMin || b.from === bands[Math.max(0, bands.indexOf(bands.find(band => {
+      const [lo] = band.split('–').map(s => {
+        s = s.replace(/K/,'000').replace(/L/,'00000').replace(/\+/,'');
+        return parseInt(s) || 0;
+      });
+      return activeMin >= lo;
+    })))];
+  });
+
+  // Simple matching: find which SCALEUP_DATA entry matches current headcount
+  const currentBandLabels = ['1–9','10–99','100–999','1K–4.9K','5K–9.9K','10K–99K','1L–9.9L','10L+'];
+  const blockIndex = [1,10,100,1000,5000,10000,100000,1000000].findIndex((v,i,arr) => activeMin >= v && (i === arr.length-1 || activeMin < arr[i+1]));
+  const scaleupEntry = SCALEUP_DATA[blockIndex] || SCALEUP_DATA[SCALEUP_DATA.length - 1];
+
+  document.getElementById('scaleupSubtitle').textContent =
+    scaleupEntry.to
+      ? `You are at ${scaleupEntry.from}. Here's what you must prepare to grow to ${scaleupEntry.to}.`
+      : `You are at the highest bracket (${scaleupEntry.from}). Maintain what you've built.`;
+
+  const container = document.getElementById('scaleupContent');
+
+  const bannerHtml = `
+    <div class="scaleup-banner">
+      <h3>${scaleupEntry.to ? `Growing from ${scaleupEntry.from} → ${scaleupEntry.to}` : `Operating at ${scaleupEntry.from}`}</h3>
+      <p>${scaleupEntry.to ? `${scaleupEntry.items.length} key milestones to hit before you scale to the next bracket.` : 'You\'ve reached the top scale. Focus on sustaining and evolving your HR systems.'}</p>
+      <div class="scaleup-from-to">
+        <div class="scaleup-band current">${scaleupEntry.from} people</div>
+        ${scaleupEntry.to ? `<div class="scaleup-arrow">→</div><div class="scaleup-band next">${scaleupEntry.to} people</div>` : ''}
+      </div>
+    </div>
+  `;
+
+  const itemsHtml = `
+    <div class="scaleup-checklist">
+      ${scaleupEntry.items.map(item => `
+        <div class="scaleup-item cat-${item.cat}">
+          <div class="scaleup-cat">${item.cat_label}</div>
+          <h4>${item.title}</h4>
+          <p>${item.desc}</p>
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  container.innerHTML = bannerHtml + itemsHtml;
+}
+
+// ─── INIT ───
+document.querySelector('.size-block.active')?.setAttribute('data-phase', 'solo');
+updateGuide();
+renderSolPanel('payroll');
+
+// ─── CONFIG BAR STICKY TOP ───
+function syncConfigTop() {
+  const h = document.querySelector('header').offsetHeight;
+  const bar = document.querySelector('.config-bar');
+  if (window.getComputedStyle(bar).position === 'sticky') {
+    bar.style.top = h + 'px';
+  }
+}
+syncConfigTop();
+window.addEventListener('resize', syncConfigTop);
+
+// ─── MOBILE NAV ───
+function toggleNav() {
+  const nav = document.getElementById('mainNav');
+  const btn = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function closeNav() {
+  document.getElementById('mainNav').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+</script>
+</body>
+</html>
