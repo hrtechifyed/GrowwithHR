@@ -6,6 +6,33 @@ console.log(
   "GrowItWithHR Compliance Engine Started"
 );
 
+(async () => {
+
+  try {
+
+    const response =
+      await axios.get(
+        "https://www.epfindia.gov.in/site_en/Updates.php"
+      );
+
+    console.log(
+      "EPFO page fetched successfully"
+    );
+
+    console.log(
+      response.data.substring(0, 1000)
+    );
+
+  } catch (error) {
+
+    console.error(
+      "EPFO fetch failed",
+      error.message
+    );
+
+  }
+
+})();
 const today =
   new Date().toISOString().split("T")[0];
 
