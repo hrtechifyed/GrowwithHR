@@ -1,37 +1,3 @@
 {
-"lastVerified": "2026-06-22",
-"sources": [
-"Ministry of Labour",
-"EPFO",
-"ESIC",
-"India Code",
-"State Labour Departments"
-],
-"recentUpdates": [
-{
-"date": "2026-06-22",
-"source": "EPFO",
-"title": "EPFO compliance review completed",
-"url":"https://www.epfindia.gov.in/site_en/"
-  
-},
-{
-"date": "2026-06-22",
-"source": "ESIC",
-"title": "ESIC compliance review completed",
-"url":"https://esic.gov.in/"
-},
-{
-"date": "2026-06-22",
-"source": "Ministry of Labour",
-"title": "Labour compliance review completed",
-"url":"https://www.labour.gov.in/"
-},
-{
-"date": "2026-06-22",
-"source": "India Code",
-"title": "Legislative references verified",
-"url":"https://www.indiacode.nic.in/"  
-}
-]
+  "recentUpdates": []
 }
