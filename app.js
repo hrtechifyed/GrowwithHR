@@ -95,7 +95,11 @@ console.log("engine loaded", engineData);
     document.getElementById(
       "stateSelect"
     );
-
+  const stateList =
+    document.getElementById(
+    "stateList"
+  );
+  
   const entitySelect =
     document.getElementById(
       "entitySelect"
@@ -171,7 +175,7 @@ console.log("industrySelect", industrySelect);
         option.textContent =
           location;
 
-        stateSelect.appendChild(
+        stateList.appendChild(
           option
         );
 
