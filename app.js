@@ -47,6 +47,13 @@ try {
 
   const updatesData =
     await updatesResponse.json();
+    const liveUpdatesResponse =
+    await fetch(
+      "./data/live-updates.json"
+    );
+
+const liveUpdatesData =
+  await liveUpdatesResponse.json();
 
   const statesData =
     await statesResponse.json();
@@ -118,6 +125,10 @@ console.log("engine loaded", engineData);
     document.getElementById(
       "updatesContainer"
     );
+  const liveUpdatesContainer =
+  document.getElementById(
+    "liveUpdatesContainer"
+  );
 
   /* ==========================================
      POPULATE STATES
@@ -298,6 +309,64 @@ ${update.title}
     );
 
   }
+
+ if (
+  liveUpdatesContainer &&
+  liveUpdatesData.recentUpdates
+) {
+
+  liveUpdatesContainer.innerHTML = "";
+
+  liveUpdatesData.recentUpdates.forEach(
+    update => {
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+      card.className =
+        "update-card";
+
+      card.innerHTML = `
+
+        <div class="update-date">
+
+          ${update.date}
+
+        </div>
+
+        <h3>
+
+          <a
+          href="${update.url}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="update-link">
+
+            ${update.title}
+
+          </a>
+
+        </h3>
+
+        <p>
+
+          Source:
+          ${update.source}
+
+        </p>
+
+      `;
+
+      liveUpdatesContainer.appendChild(
+        card
+      );
+
+    }
+  );
+
+} 
 
   /* ==========================================
      EMPLOYEE BAND HELPER
