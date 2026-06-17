@@ -34,9 +34,10 @@ console.log(
 
     console.error(
       "EPFO fetch failed",
-      error.message
     );
-
+    console.error(
+  error.toString()
+);
   }
 
 })();
