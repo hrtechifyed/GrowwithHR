@@ -11,9 +11,16 @@ console.log(
   try {
 
     const response =
-      await axios.get(
-        "https://www.epfindia.gov.in/site_en/Updates.php"
-      );
+    await axios.get(
+      "https://www.epfindia.gov.in/site_en/Updates.php",
+      {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0 Safari/537.36"
+        },
+        timeout: 30000
+      }
+    );
 
     console.log(
       "EPFO page fetched successfully"
