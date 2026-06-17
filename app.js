@@ -328,37 +328,30 @@ ${update.title}
       card.className =
         "update-card";
 
-      card.innerHTML = `
+     card.innerHTML = `
 
-        <div class="update-date">
+  <h3>
 
-          ${update.date}
+<a
+href="${update.url}"
+target="_blank"
+rel="noopener noreferrer"
+class="update-link">
 
-        </div>
+${update.title}
 
-        <h3>
+</a>
 
-          <a
-          href="${update.url}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="update-link">
+</h3>
 
-            ${update.title}
+  <p>
 
-          </a>
+    Source:
+    ${update.source}
 
-        </h3>
+  </p>
 
-        <p>
-
-          Source:
-          ${update.source}
-
-        </p>
-
-      `;
-
+`;
       liveUpdatesContainer.appendChild(
         card
       );
