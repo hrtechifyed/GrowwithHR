@@ -286,7 +286,7 @@ target="_blank"
 rel="noopener noreferrer"
 class="update-link">
 
-${update.title}
+${update.summary}
 
 </a>
 
@@ -338,7 +338,7 @@ target="_blank"
 rel="noopener noreferrer"
 class="update-link">
 
-${update.summary}
+${update.title}
 
 </a>
 
