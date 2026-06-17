@@ -46,20 +46,14 @@ if (!alreadyExists) {
   );
 }
 
-const updates = {
+const liveUpdates = {
   lastVerified: today,
-  sources: [
-    "Ministry of Labour",
-    "EPFO",
-    "ESIC",
-    "India Code"
-  ],
   recentUpdates: newUpdates
 };
 
 fs.writeFileSync(
-  "data/updates.json",
-  JSON.stringify(updates, null, 2)
+  "data/live-updates.json",
+  JSON.stringify(liveUpdates, null, 2)
 );
 
 fs.writeFileSync(
