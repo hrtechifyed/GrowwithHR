@@ -272,12 +272,7 @@ console.log("industrySelect", industrySelect);
 
         card.innerHTML = `
 
-          <div class="update-date">
-
-            ${update.date}
-
-          </div>
-
+          
           <h3>
 
 <a
