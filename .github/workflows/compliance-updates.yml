@@ -34,5 +34,7 @@ jobs:
           git add data/update-history.json
 
           git diff --staged --quiet || git commit -m "Automated compliance update"
-
+          git pull --rebase origin main
           git push
+
+          
