@@ -85,18 +85,50 @@ if (!alreadyExists) {
    SAVE LIVE UPDATES
 ========================================== */
 
+const liveUpdatesPath =
+  "data/live-updates.json";
+
+let existingUpdates = [];
+
+if (
+  fs.existsSync(
+    liveUpdatesPath
+  )
+) {
+
+  const existingData =
+    JSON.parse(
+      fs.readFileSync(
+        liveUpdatesPath,
+        "utf8"
+      )
+    );
+
+  existingUpdates =
+    existingData.recentUpdates || [];
+
+}
+
 const liveUpdates = {
 
   lastVerified: today,
 
   recentUpdates:
-    newUpdates
+
+    newUpdates.length > 0
+
+      ? [
+          ...newUpdates,
+          ...existingUpdates
+        ].slice(0, 20)
+
+      : existingUpdates
 
 };
 
 fs.writeFileSync(
 
-  "data/live-updates.json",
+  liveUpdatesPath,
 
   JSON.stringify(
     liveUpdates,
