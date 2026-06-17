@@ -1,3 +1,17 @@
 {
-  "recentUpdates": []
+  "lastVerified": "2026-06-17",
+  "sources": [
+    "Ministry of Labour",
+    "EPFO",
+    "ESIC",
+    "India Code"
+  ],
+  "recentUpdates": [
+    {
+      "date": "2026-06-17",
+      "source": "EPFO",
+      "title": "EPFO compliance monitoring test",
+      "url": "https://www.epfindia.gov.in"
+    }
+  ]
 }
