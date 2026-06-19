@@ -248,11 +248,23 @@ if (
 
     </button>
 
-    <div
-      id="complianceContent"
-      class="expand-content">
+  <div
+id="complianceContent"
+class="expand-content">
 
-    </div>
+<ul>
+
+${assessment.mandatory
+.map(
+item => `
+<li>${item}</li>
+`
+)
+.join("")}
+
+</ul>
+
+</div>
 
   </div>
 
@@ -280,10 +292,22 @@ if (
     </button>
 
     <div
-      id="peopleContent"
-      class="expand-content">
+id="peopleContent"
+class="expand-content">
 
-    </div>
+<ul>
+
+${assessment.recommended
+.map(
+item => `
+<li>${item}</li>
+`
+)
+.join("")}
+
+</ul>
+
+</div>
 
   </div>
 
@@ -311,10 +335,22 @@ if (
     </button>
 
     <div
-      id="growthContent"
-      class="expand-content">
+id="growthContent"
+class="expand-content">
 
-    </div>
+<ul>
+
+${assessment.future
+.map(
+item => `
+<li>${item}</li>
+`
+)
+.join("")}
+
+</ul>
+
+</div>
 
   </div>
 
