@@ -359,51 +359,56 @@ Download People Strategy Report
 
   </div>
 
-  <div class="summary-card">
+ <div class="summary-card">
 
-    <h3>
-     📈 Organization Growth Readiness
-    </h3>
+  <h3>
+    📈 Organization Growth Readiness
+  </h3>
 
-    <p>
+  <p>
 
-      Capabilities needed
-      for scaling,
-      leadership and
-      workforce maturity.
+    Capabilities needed
+    for scaling,
+    leadership and
+    workforce maturity.
 
-    </p>
+  </p>
+
+  <button
+    class="primary-btn"
+    onclick="toggleCard('growthContent')">
+
+    View Details
+
+  </button>
+
+  <div
+  id="growthContent"
+  class="expand-content">
+
+    <ul>
+
+    ${assessment.future
+    .map(
+    item => `
+    <li>${item}</li>
+    `
+    )
+    .join("")}
+
+    </ul>
 
     <button
-      class="primary-btn"
-      onclick="toggleCard('growthContent')">
+    class="primary-btn pdf-btn">
 
-      View Details
+    Download Organization Readiness Report
 
     </button>
 
-    <div
-id="growthContent"
-class="expand-content">
+  </div>
 
-<ul>
+</div>
 
-${assessment.future
-.map(
-item => `
-<li>${item}</li>
-`
-)
-.join("")}
-
-</ul>
-
-<button
-class="primary-btn pdf-btn">
-
-Download Organization Readiness Report
-
-</button>
 </div>
 
 <div
@@ -412,25 +417,18 @@ text-align:center;
 margin-top:60px;
 ">
 
-<button
-class="primary-btn">
+  <button
+  class="primary-btn">
 
-Download Complete Advisory Pack
+  Download Complete Advisory Pack
 
-</button>
-
-</div>
-
-`;
-</div>
-
-  </div>
+  </button>
 
 </div>
 
 `;
+
 }
-
 </script>
 
 <script>
