@@ -529,89 +529,133 @@ ${update.summary}
         }
 
         /* ==========================================
-           EMPLOYEE THRESHOLDS
-        ========================================== */
+   EMPLOYEE THRESHOLDS
+   CURRENT BAND + NEXT BAND
+========================================== */
 
-        Object.keys(
+const thresholds = Object.keys(
+  engineData.employeeThresholdRules || {}
+)
+.map(Number)
+.sort((a,b)=>a-b);
 
-          engineData
-            .employeeThresholdRules || {}
+let currentThreshold = null;
+let nextThreshold = null;
 
-        ).forEach(
-          threshold => {
+for (let i = 0; i < thresholds.length; i++) {
 
-            if (
+  if (
+    employeeCount >= thresholds[i]
+  ) {
 
-              employeeCount >=
-              parseInt(
-                threshold
-              )
+    currentThreshold =
+      thresholds[i];
 
-            ) {
+    nextThreshold =
+      thresholds[i + 1] || null;
 
-              const rule =
+  }
 
-                engineData
-                  .employeeThresholdRules[
-                    threshold
-                  ];
+}
 
-              mandatory.push(
+/* CURRENT BAND */
 
-                ...(
-                  rule.mandatory || []
-                )
+if (
+  currentThreshold &&
+  engineData
+    .employeeThresholdRules[
+      currentThreshold
+    ]
+) {
 
-              );
+  const rule =
+    engineData
+      .employeeThresholdRules[
+        currentThreshold
+      ];
 
-              recommended.push(
+  mandatory.push(
+    ...(rule.mandatory || [])
+  );
 
-                ...(
-                  rule.recommended || []
-                )
+  recommended.push(
+    ...(rule.recommended || [])
+  );
 
-              );
+}
 
-            }
+/* NEXT BAND PREVIEW */
 
-          }
-        );
+if (
+  nextThreshold &&
+  engineData
+    .employeeThresholdRules[
+      nextThreshold
+    ]
+) {
 
+  const nextRule =
+    engineData
+      .employeeThresholdRules[
+        nextThreshold
+      ];
+
+  future.push(
+
+    `As your workforce approaches ${nextThreshold}+ employees, prepare for:`,
+
+    ...(nextRule.mandatory || []),
+
+    ...(nextRule.recommended || [])
+
+  );
+
+}
         /* ==========================================
-           FUTURE READINESS
-        ========================================== */
+   FUTURE READINESS
+   NEXT MATURITY LEVEL ONLY
+========================================== */
 
-        Object.keys(
+const futureThresholds = Object.keys(
+  engineData.futureReadiness || {}
+)
+.map(Number)
+.sort((a,b)=>a-b);
 
-          engineData
-            .futureReadiness || {}
+let nextFutureBand = null;
 
-        ).forEach(
-          threshold => {
+for (let i = 0; i < futureThresholds.length; i++) {
 
-            if (
+  if (
+    employeeCount <
+    futureThresholds[i]
+  ) {
 
-              employeeCount >=
-              parseInt(
-                threshold
-              )
+    nextFutureBand =
+      futureThresholds[i];
 
-            ) {
+    break;
 
-              future.push(
+  }
 
-                ...engineData
-                  .futureReadiness[
-                    threshold
-                  ]
+}
 
-              );
+if (
+  nextFutureBand &&
+  engineData.futureReadiness[
+    nextFutureBand
+  ]
+) {
 
-            }
+  future.push(
 
-          }
-        );
+    ...engineData.futureReadiness[
+      nextFutureBand
+    ]
 
+  );
+
+}
         /* ==========================================
            REMOVE DUPLICATES
         ========================================== */
