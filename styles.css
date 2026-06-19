@@ -341,18 +341,19 @@ align-items:center;
 
 .hero-badge{
 
+display:block;
+
+width:fit-content;
+
+margin:0 auto 20px auto;
+
 font-size:20px;
 
 font-weight:700;
 
-letter-spacing:1px;
-
 padding:16px 32px;
 
-margin-bottom:20px;
 text-align:center;
-
-}
 
 .hero h1{
 
