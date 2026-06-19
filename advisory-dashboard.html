@@ -264,6 +264,49 @@ item => `
 
 </ul>
 
+
+
+<h4
+style="
+margin-top:24px;
+margin-bottom:16px;
+color:#ff9933;
+">
+
+Official Sources
+
+</h4>
+
+<ul>
+
+${assessment.sources
+.map(
+source => `
+<li>
+
+<a
+href="${source.url}"
+target="_blank"
+style="color:white;">
+
+${source.name}
+
+</a>
+
+</li>
+`
+)
+.join("")}
+
+</ul>
+
+<button
+class="primary-btn pdf-btn">
+
+Download Compliance PDF
+
+</button>
+
 </div>
 
   </div>
@@ -307,6 +350,11 @@ item => `
 
 </ul>
 
+<button
+class="primary-btn pdf-btn">
+
+Download People Strategy Report
+</button>
 </div>
 
   </div>
@@ -350,6 +398,30 @@ item => `
 
 </ul>
 
+<button
+class="primary-btn pdf-btn">
+
+Download Organization Readiness Report
+
+</button>
+</div>
+
+<div
+style="
+text-align:center;
+margin-top:60px;
+">
+
+<button
+class="primary-btn">
+
+Download Complete Advisory Pack
+
+</button>
+
+</div>
+
+`;
 </div>
 
   </div>
