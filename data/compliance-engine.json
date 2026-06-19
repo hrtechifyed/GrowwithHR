@@ -1,38 +1,62 @@
 {
-  "version": "1.0",
-  "lastUpdated": "2026-06-22",
+  "version": "6.3",
+  "lastUpdated": "2026-06-19",
 
-  "employeeThresholdRules": {
-    "10": {
-      "mandatory": [
-        "POSH Policy",
-        "POSH Awareness Training"
-      ]
-    },
+"employeeThresholdRules": {
 
-    "20": {
-      "recommended": [
-        "Employee Handbook",
-        "Leave Policy",
-        "Attendance Policy"
-      ]
-    },
+"10": {
+"mandatory": [
+"POSH Policy",
+"POSH Awareness Training"
+],
+"recommended": [
+"Basic Employee Handbook",
+"Leave Policy",
+"Attendance Management Process",
+"Employment Documentation Review"
+]
+},
 
-    "50": {
-      "mandatory": [
-        "Formal HR Policies",
-        "Performance Management Framework"
-      ]
-    },
+"20": {
+"mandatory": [
+"Review EPF Applicability and Employer Obligations"
+],
+"recommended": [
+"Employee Handbook",
+"Code of Conduct",
+"Grievance Redressal Framework",
+"Performance Management Process",
+"Employee Data Management Framework"
+]
+},
 
-    "100": {
-      "recommended": [
-        "HRIS Implementation",
-        "Workforce Analytics",
-        "Internal Compliance Reviews"
-      ]
-    }
-  },
+"50": {
+"mandatory": [
+"Formal HR Policies",
+"Performance Management Framework",
+"Workforce Compliance Calendar"
+],
+"recommended": [
+"Manager Capability Development",
+"Structured Onboarding Program",
+"Workforce Planning Framework",
+"Internal HR Governance Reviews"
+]
+},
+
+"100": {
+"mandatory": [
+"Formal HR Governance Framework"
+],
+"recommended": [
+"HRIS Implementation",
+"Workforce Analytics",
+"Internal Compliance Reviews",
+"Leadership Development Framework",
+"Succession Planning Framework"
+]
+}
+}
 
   "entityRules": {
 
@@ -351,24 +375,44 @@
 
   "futureReadiness": {
 
-    "50": [
-      "Formal grievance process",
-      "Structured onboarding",
-      "Manager training"
-    ],
+"20": [
+"Review EPF applicability as workforce scales",
+"Establish foundational HR policies",
+"Implement structured employee documentation"
+],
 
-    "100": [
-      "HRIS implementation",
-      "Workforce analytics",
-      "Leadership development"
-    ],
+"50": [
+"Formal grievance process",
+"Structured onboarding",
+"Manager training",
+"Compliance calendar",
+"Workforce planning framework"
+],
 
-    "250": [
-      "Internal compliance audits",
-      "Talent management framework",
-      "Organisation design review"
-    ]
-  },
+"100": [
+"HRIS implementation",
+"Workforce analytics",
+"Leadership development",
+"Policy governance reviews",
+"Internal HR audit readiness"
+],
+
+"250": [
+"Internal compliance audits",
+"Talent management framework",
+"Organisation design review",
+"Succession planning",
+"People analytics maturity"
+],
+
+"500": [
+"Enterprise workforce governance",
+"Integrated people strategy",
+"Leadership pipeline development",
+"Advanced workforce planning",
+"HR operating model review"
+]
+}
 
   "sources": [
     {
