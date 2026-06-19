@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+GrowItWithHR | Executive Advisory Dashboard
+</title>
+
+<link
+rel="stylesheet"
+href="styles.css">
+
+</head>
+
+<body>
+
 <!-- ==========================================
 NAVIGATION
 ========================================== -->
@@ -30,34 +50,6 @@ GrowItWithHR
 
 </div>
 
-<div class="nav-links">
-
-<a href="#home">
-Home
-</a>
-
-<a href="#assessment">
-Assessment
-</a>
-
-<a href="#preview">
-Preview
-</a>
-
-<a href="#updates">
-Updates
-</a>
-
-<a href="#founder">
-Founder
-</a>
-
-<a href="#contact">
-Contact
-</a>
-
-</div>
-
 </div>
 
 </nav>
@@ -66,119 +58,31 @@ Contact
 HERO
 ========================================== -->
 
-<header
-id="home"
-class="hero">
+<header class="hero">
 
 <div class="container">
-
-<div class="hero-grid">
 
 <div class="hero-content">
 
 <div class="hero-badge">
 
-Smart People Strategy. More business momentum.
+Executive Advisory Dashboard
 
 </div>
 
 <h1>
 
-Build HR Compliance,
-Workforce Governance
-& Growth Readiness
-With Confidence
+Your HR Compliance & Growth Readiness Summary
 
 </h1>
 
 <p class="hero-description">
 
-Know exactly which labour law,
-HR compliance,
-people governance
-and organisational requirements
-apply to your company today.
+Explore compliance obligations,
+people foundations and growth priorities
+tailored to your organisation.
 
 </p>
-
-<div class="hero-actions">
-
-<a
-href="#assessment"
-class="primary-btn">
-
-Get Your HR Readiness Assessment
-
-</a>
-
-</div>
-
-</div>
-
-<div class="hero-showcase">
-
-<div class="showcase-card">
-
-<div class="showcase-icon">
-⚖️
-</div>
-
-<h3>
-Compliance Clarity
-</h3>
-
-<p>
-
-Understand obligations
-based on state,
-entity type,
-industry and workforce size.
-
-</p>
-
-</div>
-
-<div class="showcase-card">
-
-<div class="showcase-icon">
-📈
-</div>
-
-<h3>
-Growth Readiness
-</h3>
-
-<p>
-
-Build policies,
-governance frameworks
-and HR systems before risks emerge.
-
-</p>
-
-</div>
-
-<div class="showcase-card">
-
-<div class="showcase-icon">
-🛡️
-</div>
-
-<h3>
-Trusted Sources
-</h3>
-
-<p>
-
-Powered by labour law,
-EPFO,
-ESIC and statutory references.
-
-</p>
-
-</div>
-
-</div>
 
 </div>
 
@@ -186,6 +90,27 @@ ESIC and statutory references.
 
 </header>
 
+<!-- ==========================================
+DASHBOARD CONTENT
+========================================== -->
+
+<section class="section">
+
+<div class="container">
+
+<div id="dashboardContent">
+
+<h2>
+
+Loading Advisory Dashboard...
+
+</h2>
+
+</div>
+
+</div>
+
+</section>
 
 <!-- ==========================================
 FOOTER
@@ -211,7 +136,7 @@ HRTechify
 </div>
 
 <div class="product-name">
-GrowItWithHR Public Beta v6.2
+GrowItWithHR Public Beta v6.3
 </div>
 
 </div>
@@ -237,7 +162,105 @@ Smart People Strategy. More business momentum.
 
 </footer>
 
-<script src="app.js"></script>
+<!-- ==========================================
+READ SAVED ASSESSMENT
+========================================== -->
+
+<script>
+
+const assessment =
+JSON.parse(
+  localStorage.getItem(
+    "growitwithhrAssessment"
+  )
+);
+
+console.log(
+  "Assessment:",
+  assessment
+);
+
+if (
+  assessment
+) {
+
+  document.getElementById(
+    "dashboardContent"
+  ).innerHTML = `
+
+    <div class="profile-grid">
+
+      <div class="profile-card">
+
+        <span>State / UT</span>
+
+        <strong>
+
+          ${assessment.state}
+
+        </strong>
+
+      </div>
+
+      <div class="profile-card">
+
+        <span>Entity Type</span>
+
+        <strong>
+
+          ${assessment.entity}
+
+        </strong>
+
+      </div>
+
+      <div class="profile-card">
+
+        <span>Industry</span>
+
+        <strong>
+
+          ${assessment.industry}
+
+        </strong>
+
+      </div>
+
+      <div class="profile-card">
+
+        <span>Employee Count</span>
+
+        <strong>
+
+          ${assessment.employeeBand}
+
+        </strong>
+
+      </div>
+
+    </div>
+
+    <div style="margin-top:40px;">
+
+      <h2>
+
+        Executive Advisory Dashboard
+
+      </h2>
+
+      <p>
+
+        Assessment successfully loaded.
+
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+</script>
 
 </body>
 
