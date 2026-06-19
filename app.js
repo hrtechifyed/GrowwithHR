@@ -970,6 +970,26 @@ if (
     document.getElementById(
       "reportContainer"
     );
+ 
+  
+/* ==========================================
+   RESTORE EXECUTIVE SUMMARY
+========================================== */
+
+const savedSummary =
+  localStorage.getItem(
+    "growitwithhrExecutiveSummary"
+  );
+
+if (
+  savedSummary &&
+  reportContainer
+) {
+
+  reportContainer.innerHTML =
+    savedSummary;
+
+}
 
   if(reportContainer){
 
@@ -985,6 +1005,10 @@ if (
     </div>
 
     `;
+    localStorage.setItem(
+  "growitwithhrExecutiveSummary",
+  reportContainer.innerHTML
+);
 
   }
 
