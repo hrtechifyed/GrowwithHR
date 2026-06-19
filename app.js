@@ -846,7 +846,7 @@ ${update.summary}
 
             <h3>
 
-              Immediate Priorities
+              Compliance Obligations
 
             </h3>
 
@@ -870,7 +870,7 @@ ${update.summary}
 
             <h3>
 
-              Recommended Actions
+              People Strategy Foundations
 
             </h3>
 
@@ -894,7 +894,7 @@ ${update.summary}
 
             <h3>
 
-              Future Readiness
+              Organization Growth Readiness
 
             </h3>
 
