@@ -783,234 +783,166 @@ if (
 
           }
         );
-
+                
         /* ==========================================
            BUILD REPORT
         ========================================== */
 
         reportContainer.innerHTML = `
 
-        <div class="report-document">
+<div class="executive-summary">
 
-          <div class="report-header">
+  <div class="report-header">
 
-            <div class="report-brand">
+    <div class="report-brand">
 
-              <img
-              src="assets/hrtechify-logo.png"
-              alt="HRTechify Logo"
-              class="report-logo">
+      <img
+      src="assets/hrtechify-logo.png"
+      alt="HRTechify Logo"
+      class="report-logo">
 
-              <div>
+      <div>
 
-                <div class="report-title">
-
-                  GrowItWithHR
-
-                </div>
-
-                <div class="report-subtitle">
-
-                  Executive HR Advisory Report
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <div class="report-meta">
-
-              Generated:
-              ${reportData.generatedDate}
-
-            </div>
-
-          </div>
-
-          <div class="report-banner">
-
-            HR Compliance & Workforce Governance Advisory
-
-          </div>
-
-          <div class="profile-grid">
-
-            <div class="profile-card">
-
-              <span>
-              State / UT
-              </span>
-
-              <strong>
-              ${reportData.state}
-              </strong>
-
-            </div>
-
-            <div class="profile-card">
-
-              <span>
-              Entity Type
-              </span>
-
-              <strong>
-              ${reportData.entity}
-              </strong>
-
-            </div>
-
-            <div class="profile-card">
-
-              <span>
-              Industry
-              </span>
-
-              <strong>
-              ${reportData.industry}
-              </strong>
-
-            </div>
-
-            <div class="profile-card">
-
-              <span>
-              Employee Count
-              </span>
-
-              <strong>
-              ${reportData.employeeBand}
-              </strong>
-
-            </div>
-
-          </div>
-
-          <div class="report-section">
-
-            <h3>
-
-              Immediate Priorities
-
-            </h3>
-
-            <ul class="report-list">
-
-              ${reportData.mandatory
-                .map(
-                  item => `
-                  <li>
-                  ✓ ${item}
-                  </li>
-                  `
-                )
-                .join("")}
-
-            </ul>
-
-          </div>
-
-          <div class="report-section">
-
-            <h3>
-
-              Recommended Actions
-
-            </h3>
-
-            <ul class="report-list">
-
-              ${reportData.recommended
-                .map(
-                  item => `
-                  <li>
-                  ✓ ${item}
-                  </li>
-                  `
-                )
-                .join("")}
-
-            </ul>
-
-          </div>
-
-          <div class="report-section">
-
-            <h3>
-
-              Future Readiness
-
-            </h3>
-
-            <ul class="report-list">
-
-              ${reportData.future
-                .map(
-                  item => `
-                  <li>
-                  ✓ ${item}
-                  </li>
-                  `
-                )
-                .join("")}
-
-            </ul>
-
-          </div>
-
-          <div class="report-section">
-
-            <h3>
-
-              Official Sources
-
-            </h3>
-
-            <ul class="sources-list">
-
-              ${sourcesHTML}
-
-            </ul>
-
-          </div>
-
-          <div class="report-disclaimer">
-
-            <strong>
-            Disclaimer:
-            </strong>
-
-            ${reportData.disclaimer}
-
-          </div>
-
-          <div class="report-footer">
-
-            Last Updated:
-            ${engineData.lastUpdated || "N/A"}
-
-            <br><br>
-
-            HRTechify | GrowItWithHR
-
-          </div>
-
-          <div class="report-actions">
-
-            <button
-            class="primary-btn print-btn"
-            onclick="window.print()">
-
-              Print / Save PDF
-
-            </button>
-
-          </div>
-
+        <div class="report-title">
+          GrowItWithHR
         </div>
 
-        `;
+        <div class="report-subtitle">
+          Executive HR Advisory Summary
+        </div>
 
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="profile-grid">
+
+    <div class="profile-card">
+
+      <span>State / UT</span>
+
+      <strong>
+        ${reportData.state}
+      </strong>
+
+    </div>
+
+    <div class="profile-card">
+
+      <span>Entity Type</span>
+
+      <strong>
+        ${reportData.entity}
+      </strong>
+
+    </div>
+
+    <div class="profile-card">
+
+      <span>Industry</span>
+
+      <strong>
+        ${reportData.industry}
+      </strong>
+
+    </div>
+
+    <div class="profile-card">
+
+      <span>Employee Count</span>
+
+      <strong>
+        ${reportData.employeeBand}
+      </strong>
+
+    </div>
+
+  </div>
+
+  <div class="summary-cards">
+
+    <div class="summary-card">
+
+      <h3>
+        Compliance Obligations
+      </h3>
+
+      <p>
+
+        State-specific labour law obligations,
+        statutory requirements and workforce
+        compliance considerations relevant to
+        your organisation.
+
+      </p>
+
+      <a
+      href="compliance-roadmap.html"
+      class="primary-btn">
+
+        View Compliance Roadmap →
+
+      </a>
+
+    </div>
+
+    <div class="summary-card">
+
+      <h3>
+        People & HR Foundations
+      </h3>
+
+      <p>
+
+        Policies, documentation, employee
+        lifecycle practices and governance
+        frameworks required to build a scalable
+        organisation.
+
+      </p>
+
+      <a
+      href="people-roadmap.html"
+      class="primary-btn">
+
+        View People Roadmap →
+
+      </a>
+
+    </div>
+
+    <div class="summary-card">
+
+      <h3>
+        Growth Readiness
+      </h3>
+
+      <p>
+
+        Capabilities required to support
+        workforce growth, leadership
+        development, governance maturity
+        and organisational scale.
+
+      </p>
+
+      <a
+      href="growth-roadmap.html"
+      class="primary-btn">
+
+        View Growth Roadmap →
+
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+`;
         reportContainer.scrollIntoView({
 
           behavior:"smooth",
