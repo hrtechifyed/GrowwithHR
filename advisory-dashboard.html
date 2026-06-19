@@ -257,7 +257,13 @@ class="expand-content">
 ${assessment.mandatory
 .map(
 item => `
-<li>${item}</li>
+<li>
+
+[MANDATORY]
+
+${item}
+
+</li>
 `
 )
 .join("")}
@@ -343,7 +349,13 @@ class="expand-content">
 ${assessment.recommended
 .map(
 item => `
-<li>${item}</li>
+<li>
+
+[RECOMMENDED]
+
+${item}
+
+</li>
 `
 )
 .join("")}
@@ -388,13 +400,19 @@ Download People Strategy Report
 
     <ul>
 
-    ${assessment.future
-    .map(
-    item => `
-    <li>${item}</li>
-    `
-    )
-    .join("")}
+${assessment.future
+.map(
+item => `
+<li>
+
+[FUTURE]
+
+${item}
+
+</li>
+`
+)
+.join("")}
 
     </ul>
 
