@@ -529,131 +529,89 @@ ${update.summary}
         }
 
         /* ==========================================
-   EMPLOYEE THRESHOLDS
-   CURRENT BAND + NEXT BAND
-========================================== */
+           EMPLOYEE THRESHOLDS
+        ========================================== */
 
-const thresholds = Object.keys(
-  engineData.employeeThresholdRules || {}
-)
-.map(Number)
-.sort((a,b)=>a-b);
+        Object.keys(
 
-let currentThreshold = null;
-let nextThreshold = null;
+          engineData
+            .employeeThresholdRules || {}
 
-for (let i = 0; i < thresholds.length; i++) {
+        ).forEach(
+          threshold => {
 
-  if (
-    employeeCount >= thresholds[i]
-  ) {
+            if (
 
-    currentThreshold =
-      thresholds[i];
+              employeeCount >=
+              parseInt(
+                threshold
+              )
 
-    nextThreshold =
-      thresholds[i + 1] || null;
+            ) {
 
-  }
+              const rule =
 
-}
+                engineData
+                  .employeeThresholdRules[
+                    threshold
+                  ];
 
-/* CURRENT BAND */
+              mandatory.push(
 
-if (
-  currentThreshold &&
-  engineData
-    .employeeThresholdRules[
-      currentThreshold
-    ]
-) {
+                ...(
+                  rule.mandatory || []
+                )
 
-  const rule =
-    engineData
-      .employeeThresholdRules[
-        currentThreshold
-      ];
+              );
 
-  mandatory.push(
-    ...(rule.mandatory || [])
-  );
+              recommended.push(
 
-  recommended.push(
-    ...(rule.recommended || [])
-  );
+                ...(
+                  rule.recommended || []
+                )
 
-}
+              );
 
-/* NEXT BAND PREVIEW */
+            }
 
-if (
-  nextThreshold &&
-  engineData
-    .employeeThresholdRules[
-      nextThreshold
-    ]
-) {
+          }
+        );
 
-  const nextRule =
-    engineData
-      .employeeThresholdRules[
-        nextThreshold
-      ];
-
-  future.push(
-
-    ...(nextRule.mandatory || []),
-
-    ...(nextRule.recommended || [])
-
-  );
-
-}
         /* ==========================================
-   FUTURE READINESS
-   NEXT MATURITY LEVEL ONLY
-========================================== */
+           FUTURE READINESS
+        ========================================== */
 
-const futureThresholds = Object.keys(
-  engineData.futureReadiness || {}
-)
-.map(Number)
-.sort((a,b)=>a-b);
+        Object.keys(
 
-let nextFutureBand = null;
+          engineData
+            .futureReadiness || {}
 
-for (let i = 0; i < futureThresholds.length; i++) {
+        ).forEach(
+          threshold => {
 
-  if (
-    employeeCount <
-    futureThresholds[i]
-  ) {
+            if (
 
-    nextFutureBand =
-      futureThresholds[i];
+              employeeCount >=
+              parseInt(
+                threshold
+              )
 
-    break;
+            ) {
 
-  }
+              future.push(
 
-}
+                ...engineData
+                  .futureReadiness[
+                    threshold
+                  ]
 
-if (
-  nextFutureBand &&
-  engineData.futureReadiness[
-    nextFutureBand
-  ]
-) {
+              );
 
-  future.push(
+            }
 
-    ...engineData.futureReadiness[
-      nextFutureBand
-    ]
+          }
+        );
 
-  );
-
-}
         /* ==========================================
            REMOVE DUPLICATES
         ========================================== */
@@ -782,170 +740,233 @@ if (
           }
         );
 
-        localStorage.setItem(
-        "growitwithhrAssessment",
-        JSON.stringify(reportData)
-      );
-                
         /* ==========================================
            BUILD REPORT
         ========================================== */
 
         reportContainer.innerHTML = `
 
-<div class="executive-summary">
+        <div class="report-document">
 
-  <div class="report-header">
+          <div class="report-header">
 
-    <div class="report-brand">
+            <div class="report-brand">
 
-      <img
-      src="assets/hrtechify-logo.png"
-      alt="HRTechify Logo"
-      class="report-logo">
+              <img
+              src="assets/hrtechify-logo.png"
+              alt="HRTechify Logo"
+              class="report-logo">
 
-      <div>
+              <div>
 
-        <div class="report-title">
-          GrowItWithHR
+                <div class="report-title">
+
+                  GrowItWithHR
+
+                </div>
+
+                <div class="report-subtitle">
+
+                  Executive HR Advisory Report
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="report-meta">
+
+              Generated:
+              ${reportData.generatedDate}
+
+            </div>
+
+          </div>
+
+          <div class="report-banner">
+
+            HR Compliance & Workforce Governance Advisory
+
+          </div>
+
+          <div class="profile-grid">
+
+            <div class="profile-card">
+
+              <span>
+              State / UT
+              </span>
+
+              <strong>
+              ${reportData.state}
+              </strong>
+
+            </div>
+
+            <div class="profile-card">
+
+              <span>
+              Entity Type
+              </span>
+
+              <strong>
+              ${reportData.entity}
+              </strong>
+
+            </div>
+
+            <div class="profile-card">
+
+              <span>
+              Industry
+              </span>
+
+              <strong>
+              ${reportData.industry}
+              </strong>
+
+            </div>
+
+            <div class="profile-card">
+
+              <span>
+              Employee Count
+              </span>
+
+              <strong>
+              ${reportData.employeeBand}
+              </strong>
+
+            </div>
+
+          </div>
+
+          <div class="report-section">
+
+            <h3>
+
+              Immediate Priorities
+
+            </h3>
+
+            <ul class="report-list">
+
+              ${reportData.mandatory
+                .map(
+                  item => `
+                  <li>
+                  ✓ ${item}
+                  </li>
+                  `
+                )
+                .join("")}
+
+            </ul>
+
+          </div>
+
+          <div class="report-section">
+
+            <h3>
+
+              Recommended Actions
+
+            </h3>
+
+            <ul class="report-list">
+
+              ${reportData.recommended
+                .map(
+                  item => `
+                  <li>
+                  ✓ ${item}
+                  </li>
+                  `
+                )
+                .join("")}
+
+            </ul>
+
+          </div>
+
+          <div class="report-section">
+
+            <h3>
+
+              Future Readiness
+
+            </h3>
+
+            <ul class="report-list">
+
+              ${reportData.future
+                .map(
+                  item => `
+                  <li>
+                  ✓ ${item}
+                  </li>
+                  `
+                )
+                .join("")}
+
+            </ul>
+
+          </div>
+
+          <div class="report-section">
+
+            <h3>
+
+              Official Sources
+
+            </h3>
+
+            <ul class="sources-list">
+
+              ${sourcesHTML}
+
+            </ul>
+
+          </div>
+
+          <div class="report-disclaimer">
+
+            <strong>
+            Disclaimer:
+            </strong>
+
+            ${reportData.disclaimer}
+
+          </div>
+
+          <div class="report-footer">
+
+            Last Updated:
+            ${engineData.lastUpdated || "N/A"}
+
+            <br><br>
+
+            HRTechify | GrowItWithHR
+
+          </div>
+
+          <div class="report-actions">
+
+            <button
+            class="primary-btn print-btn"
+            onclick="window.print()">
+
+              Print / Save PDF
+
+            </button>
+
+          </div>
+
         </div>
 
-        <div class="report-subtitle">
-          Executive HR Advisory Summary
-        </div>
+        `;
 
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="profile-grid">
-
-    <div class="profile-card">
-
-      <span>State / UT</span>
-
-      <strong>
-        ${reportData.state}
-      </strong>
-
-    </div>
-
-    <div class="profile-card">
-
-      <span>Entity Type</span>
-
-      <strong>
-        ${reportData.entity}
-      </strong>
-
-    </div>
-
-    <div class="profile-card">
-
-      <span>Industry</span>
-
-      <strong>
-        ${reportData.industry}
-      </strong>
-
-    </div>
-
-    <div class="profile-card">
-
-      <span>Employee Count</span>
-
-      <strong>
-        ${reportData.employeeBand}
-      </strong>
-
-    </div>
-
-  </div>
-
-  <div class="summary-cards">
-
-    <div class="summary-card">
-
-      <h3>
-        Compliance Obligations
-      </h3>
-
-      <p>
-
-        State-specific labour law obligations,
-        statutory requirements and workforce
-        compliance considerations relevant to
-        your organisation.
-
-      </p>
-
-      <a
-      href="compliance-roadmap.html"
-      class="primary-btn">
-
-        View Compliance Roadmap →
-
-      </a>
-
-    </div>
-
-    <div class="summary-card">
-
-      <h3>
-        People & HR Foundations
-      </h3>
-
-      <p>
-
-        Policies, documentation, employee
-        lifecycle practices and governance
-        frameworks required to build a scalable
-        organisation.
-
-      </p>
-
-      <a
-      href="people-roadmap.html"
-      class="primary-btn">
-
-        View People Roadmap →
-
-      </a>
-
-    </div>
-
-    <div class="summary-card">
-
-      <h3>
-        Growth Readiness
-      </h3>
-
-      <p>
-
-        Capabilities required to support
-        workforce growth, leadership
-        development, governance maturity
-        and organisational scale.
-
-      </p>
-
-      <a
-      href="growth-roadmap.html"
-      class="primary-btn">
-
-        View Growth Roadmap →
-
-      </a>
-
-    </div>
-
-  </div>
-
-</div>
-
-`;
         reportContainer.scrollIntoView({
 
           behavior:"smooth",
@@ -970,26 +991,6 @@ if (
     document.getElementById(
       "reportContainer"
     );
- 
-  
-/* ==========================================
-   RESTORE EXECUTIVE SUMMARY
-========================================== */
-
-const savedSummary =
-  localStorage.getItem(
-    "growitwithhrExecutiveSummary"
-  );
-
-if (
-  savedSummary &&
-  reportContainer
-) {
-
-  reportContainer.innerHTML =
-    savedSummary;
-
-}
 
   if(reportContainer){
 
@@ -1005,10 +1006,6 @@ if (
     </div>
 
     `;
-    localStorage.setItem(
-  "growitwithhrExecutiveSummary",
-  reportContainer.innerHTML
-);
 
   }
 
