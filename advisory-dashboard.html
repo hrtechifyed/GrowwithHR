@@ -188,75 +188,168 @@ if (
     "dashboardContent"
   ).innerHTML = `
 
-    <div class="profile-grid">
+ document.getElementById(
+  "dashboardContent"
+).innerHTML = `
 
-      <div class="profile-card">
+<div class="profile-grid">
 
-        <span>State / UT</span>
+  <div class="profile-card">
 
-        <strong>
+    <span>State / UT</span>
 
-          ${assessment.state}
+    <strong>${assessment.state}</strong>
 
-        </strong>
+  </div>
 
-      </div>
+  <div class="profile-card">
 
-      <div class="profile-card">
+    <span>Entity Type</span>
 
-        <span>Entity Type</span>
+    <strong>${assessment.entity}</strong>
 
-        <strong>
+  </div>
 
-          ${assessment.entity}
+  <div class="profile-card">
 
-        </strong>
+    <span>Industry</span>
 
-      </div>
+    <strong>${assessment.industry}</strong>
 
-      <div class="profile-card">
+  </div>
 
-        <span>Industry</span>
+  <div class="profile-card">
 
-        <strong>
+    <span>Employee Count</span>
 
-          ${assessment.industry}
+    <strong>${assessment.employeeBand}</strong>
 
-        </strong>
+  </div>
 
-      </div>
+</div>
 
-      <div class="profile-card">
+<div class="summary-cards">
 
-        <span>Employee Count</span>
+  <div class="summary-card">
 
-        <strong>
+    <h3>
+      Compliance Readiness
+    </h3>
 
-          ${assessment.employeeBand}
+    <p>
 
-        </strong>
+      Statutory obligations,
+      labour law requirements
+      and workforce compliance.
 
-      </div>
+    </p>
+
+    <button
+      class="primary-btn"
+      onclick="toggleCard('complianceContent')">
+
+      View Details
+
+    </button>
+
+    <div
+      id="complianceContent"
+      class="expand-content">
 
     </div>
 
-    <div style="margin-top:40px;">
+  </div>
 
-      <h2>
+  <div class="summary-card">
 
-        Executive Advisory Dashboard
+    <h3>
+      People & HR Foundation
+    </h3>
 
-      </h2>
+    <p>
 
-      <p>
+      Policies,
+      documentation,
+      employee lifecycle
+      and governance.
 
-        Assessment successfully loaded.
+    </p>
 
-      </p>
+    <button
+      class="primary-btn"
+      onclick="toggleCard('peopleContent')">
+
+      View Details
+
+    </button>
+
+    <div
+      id="peopleContent"
+      class="expand-content">
 
     </div>
 
-  `;
+  </div>
+
+  <div class="summary-card">
+
+    <h3>
+      Growth Readiness
+    </h3>
+
+    <p>
+
+      Capabilities needed
+      for scaling,
+      leadership and
+      workforce maturity.
+
+    </p>
+
+    <button
+      class="primary-btn"
+      onclick="toggleCard('growthContent')">
+
+      View Details
+
+    </button>
+
+    <div
+      id="growthContent"
+      class="expand-content">
+
+    </div>
+
+  </div>
+
+</div>
+
+`;
+}
+
+</script>
+
+<script>
+
+function toggleCard(id){
+
+  const section =
+  document.getElementById(id);
+
+  if(
+    section.style.display ===
+    "block"
+  ){
+
+    section.style.display =
+    "none";
+
+  }else{
+
+    section.style.display =
+    "block";
+
+  }
 
 }
 
