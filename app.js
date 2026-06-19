@@ -602,8 +602,6 @@ if (
 
   future.push(
 
-    `As your workforce approaches ${nextThreshold}+ employees, prepare for:`,
-
     ...(nextRule.mandatory || []),
 
     ...(nextRule.recommended || [])
@@ -783,6 +781,11 @@ if (
 
           }
         );
+
+        localStorage.setItem(
+        "growitwithhrAssessment",
+        JSON.stringify(reportData)
+      );
                 
         /* ==========================================
            BUILD REPORT
