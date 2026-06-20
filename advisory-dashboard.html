@@ -826,9 +826,6 @@ text-align:center;
 margin-bottom:40px;
 ">
 
-<img
-src="assets/hrtechify-logo.png"
-style="width:120px;">
 
 <h1>HRTechify</h1>
 
@@ -905,6 +902,11 @@ console.log(
 pdfTemplate.offsetWidth,
 pdfTemplate.offsetHeight
 );
+
+document.body.appendChild(
+pdfTemplate.cloneNode(true)
+);
+
   
 html2pdf()
 .set({
@@ -915,7 +917,9 @@ type:"jpeg",
 quality:1
 },
 html2canvas:{
-scale:2
+scale:2,
+useCORS:true,
+logging:true  
 },
 jsPDF:{
 unit:"mm",
