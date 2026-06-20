@@ -611,6 +611,85 @@ window.print();
 }
 
 </script>
+
+<!-- ==========================================
+PDF THEME MODAL
+========================================== -->
+
+<div
+id="pdfModal"
+class="pdf-modal">
+
+<div class="pdf-modal-content">
+
+<h3>
+
+Choose Report Theme
+
+</h3>
+
+<p>
+
+Select the report style you would like to generate.
+
+</p>
+
+<label class="theme-option">
+
+<input
+type="radio"
+name="reportTheme"
+value="lite"
+checked>
+
+Lite Version
+<span>
+
+Printer Friendly
+
+</span>
+
+</label>
+
+<label class="theme-option">
+
+<input
+type="radio"
+name="reportTheme"
+value="dark">
+
+Dark Version
+<span>
+
+Website Theme
+
+</span>
+
+</label>
+
+<div class="modal-actions">
+
+<button
+class="primary-btn"
+onclick="generateSelectedReport()">
+
+Generate Report
+
+</button>
+
+<button
+class="secondary-btn"
+onclick="closePDFModal()">
+
+Cancel
+
+</button>
+
+</div>
+
+</div>
+
+</div>
   
 </body>
 
