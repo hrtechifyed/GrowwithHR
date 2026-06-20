@@ -16,7 +16,7 @@ GrowItWithHR | Executive Advisory Dashboard
 <link
 rel="stylesheet"
 href="styles.css">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
@@ -305,7 +305,8 @@ ${source.name}
 </ul>
 
 <button
-class="primary-btn pdf-btn">
+class="primary-btn pdf-btn"
+onclick="downloadCompliancePDF()">
 
 Download Compliance PDF
 
@@ -359,9 +360,11 @@ ${item}
 </ul>
 
 <button
-class="primary-btn pdf-btn">
+class="primary-btn pdf-btn"
+onclick="downloadPeoplePDF()">
 
 Download People Strategy Report
+
 </button>
 </div>
 
@@ -410,12 +413,13 @@ ${item}
 
     </ul>
 
-    <button
-    class="primary-btn pdf-btn">
+<button
+class="primary-btn pdf-btn"
+onclick="downloadGrowthPDF()">
 
-    Download Organization Readiness Report
+Download Organization Readiness Report
 
-    </button>
+</button>
 
   </div>
 
@@ -492,6 +496,112 @@ function toggleCard(id){
 
 </script>
 
+  <script>
+
+async function downloadCompliancePDF(){
+
+const { jsPDF } = window.jspdf;
+
+const doc = new jsPDF();
+
+doc.setFontSize(18);
+
+doc.text(
+"Compliance Readiness Report",
+20,
+20
+);
+
+let y = 40;
+
+assessment.mandatory.forEach(item=>{
+
+doc.text(
+"• " + item,
+20,
+y
+);
+
+y += 10;
+
+});
+
+doc.save(
+"Compliance-Readiness.pdf"
+);
+
+}
+
+async function downloadPeoplePDF(){
+
+const { jsPDF } = window.jspdf;
+
+const doc = new jsPDF();
+
+doc.setFontSize(18);
+
+doc.text(
+"People Strategy Report",
+20,
+20
+);
+
+let y = 40;
+
+assessment.recommended.forEach(item=>{
+
+doc.text(
+"• " + item,
+20,
+y
+);
+
+y += 10;
+
+});
+
+doc.save(
+"People-Strategy.pdf"
+);
+
+}
+
+async function downloadGrowthPDF(){
+
+const { jsPDF } = window.jspdf;
+
+const doc = new jsPDF();
+
+doc.setFontSize(18);
+
+doc.text(
+"Growth Readiness Report",
+20,
+20
+);
+
+let y = 40;
+
+assessment.future.forEach(item=>{
+
+doc.text(
+"• " + item,
+20,
+y
+);
+
+y += 10;
+
+});
+
+doc.save(
+"Growth-Readiness.pdf"
+);
+
+}
+
+</script>
+  
 </body>
 
 </html>
