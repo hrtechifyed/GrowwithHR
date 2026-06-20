@@ -1332,6 +1332,27 @@ assessment.employeeBand
 
 );
 
+await emailjs.send(
+
+"service_as95qfh",
+
+"template_9ii4u3e",
+
+{
+
+user_email:
+email,
+
+report_type:
+selectedReportType,
+
+generated_on:
+"GWHR " + generatedOn
+
+}
+
+);  
+
 console.log(
 "Email sent successfully"
 );
