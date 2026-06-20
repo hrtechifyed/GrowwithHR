@@ -2254,3 +2254,32 @@ font-weight:700;
 margin-right:10px;
 
 }
+.secondary-btn{
+
+padding:14px 24px;
+
+border-radius:14px;
+
+border:1px solid var(--border);
+
+background:var(--surface);
+
+color:white;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.secondary-btn:hover{
+
+border-color:var(--primary);
+
+color:var(--primary);
+
+transform:translateY(-2px);
+
+}
