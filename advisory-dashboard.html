@@ -34,7 +34,9 @@ publicKey:
 
 </script>  
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 </head>
 
@@ -874,53 +876,56 @@ Users are strongly encouraged to independently verify all recommendations before
 document.body.appendChild(wrapper);
 
 
-setTimeout(() => {
+setTimeout(async () => {
 
-html2pdf()
-.set({
-margin:10,
-filename:`${reportTitle}.pdf`,
-html2canvas:{
+const canvas =
+await html2canvas(
+wrapper,
+{
 scale:2,
 useCORS:true
-},
-jsPDF:{
-unit:"mm",
-format:"a4",
-orientation:"portrait"
 }
-})
-.from(wrapper)
-.save()
-.then(() => {
+);
 
-document.body.removeChild(wrapper);
+const imgData =
+canvas.toDataURL(
+"image/png"
+);
 
-});
+const { jsPDF } =
+window.jspdf;
+
+const pdf =
+new jsPDF(
+"p",
+"mm",
+"a4"
+);
+
+const pdfWidth = 210;
+
+const pdfHeight =
+(canvas.height * pdfWidth)
+/ canvas.width;
+
+pdf.addImage(
+imgData,
+"PNG",
+0,
+0,
+pdfWidth,
+pdfHeight
+);
+
+pdf.save(
+`${reportTitle}.pdf`
+);
+
+document.body.removeChild(
+wrapper
+);
 
 },1000);
-  
-
-html2pdf()
-.set({
-margin:10,
-filename:`${reportTitle}.pdf`,
-html2canvas:{
-scale:2
-},
-jsPDF:{
-unit:"mm",
-format:"a4",
-orientation:"portrait"
-}
-})
-.from(wrapper)
-.save()
-.then(() => {
-
-document.body.removeChild(wrapper);
-
-});
 
 }
 
