@@ -90,7 +90,7 @@ TYPOGRAPHY
 
 h1,h2,h3,h4{
 
-font-weight:800;
+font-weight:600;
 
 line-height:1.15;
 
@@ -98,7 +98,7 @@ line-height:1.15;
 
 h2{
 
-font-size:clamp(1.8rem,3vw,2.8rem);
+font-size:clamp(1.6rem,2.5vw,2.3rem);
 
 margin-bottom:20px;
 
