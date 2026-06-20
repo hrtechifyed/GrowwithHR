@@ -1641,19 +1641,30 @@ align-items:center;
 }
 
 .nav-links{
-display:none;
-position:absolute;
-top:80px;
-left:0;
-width:100%;
-background:#111827;
-padding:20px;
-flex-direction:column;
-gap:20px;
-border-top:1px solid var(--border);
-z-index:999;
-}
 
+display:none;
+
+position:absolute;
+
+top:100%;
+
+left:0;
+
+right:0;
+
+background:#111827;
+
+padding:20px;
+
+flex-direction:column;
+
+gap:16px;
+
+border-top:1px solid var(--border);
+
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+}
 .nav-links.active{
 display:flex;
 }
