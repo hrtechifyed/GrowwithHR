@@ -975,6 +975,170 @@ ${assessment.future
 <div style="height:20px;"></div>
 <hr>
 
+${
+reportType === "compliance"
+? `
+
+<hr>
+
+<h2>
+Compliance Requirements
+</h2>
+
+<ul>
+
+${assessment.mandatory
+.map(item => `
+<li>${item}</li>
+`)
+.join("")}
+
+</ul>
+
+<hr>
+
+<h2>
+Official Sources & References
+</h2>
+
+<ul>
+
+${assessment.sources
+.map(source => `
+<li>
+${source.name}
+</li>
+`)
+.join("")}
+
+</ul>
+
+`
+: ""
+}
+
+${
+reportType === "people"
+? `
+
+<hr>
+
+<h2>
+People Strategy Priorities
+</h2>
+
+<ul>
+
+${assessment.recommended
+.map(item => `
+<li>${item}</li>
+`)
+.join("")}
+
+</ul>
+
+`
+: ""
+}
+
+${
+reportType === "growth"
+? `
+
+<hr>
+
+<h2>
+Growth Readiness Roadmap
+</h2>
+
+<ul>
+
+${assessment.future
+.map(item => `
+<li>${item}</li>
+`)
+.join("")}
+
+</ul>
+
+`
+: ""
+}
+
+${
+reportType === "complete"
+? `
+
+<hr>
+
+<h2>
+Mandatory Compliance Requirements
+</h2>
+
+<ul>
+
+${assessment.mandatory
+.map(item => `
+<li>${item}</li>
+`)
+.join("")}
+
+</ul>
+
+<hr>
+
+<h2>
+People Strategy Priorities
+</h2>
+
+<ul>
+
+${assessment.recommended
+.map(item => `
+<li>${item}</li>
+`)
+.join("")}
+
+</ul>
+
+<hr>
+
+<h2>
+Growth Readiness Roadmap
+</h2>
+
+<ul>
+
+${assessment.future
+.map(item => `
+<li>${item}</li>
+`)
+.join("")}
+
+</ul>
+
+<hr>
+
+<h2>
+Official Sources & References
+</h2>
+
+<ul>
+
+${assessment.sources
+.map(source => `
+<li>
+${source.name}
+</li>
+`)
+.join("")}
+
+</ul>
+
+`
+: ""
+}
+
 <h2>Important Disclaimer</h2>
 
 <p>
