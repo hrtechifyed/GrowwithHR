@@ -934,8 +934,28 @@ alert(
 
 return;
 
-}  
-  
+}
+
+const generatedOn =
+new Date().toLocaleDateString(
+"en-GB",
+{
+day:"2-digit",
+month:"long",
+year:"numeric"
+}
+);
+
+generatePDF(
+selectedReportType,
+theme,
+generatedOn
+);
+
+closePDFModal();
+
+}
+
 </script>  
 
 <div
@@ -949,5 +969,5 @@ background:white;
 z-index:-1;
 ">
 </div>
-
+</body>
 </html>
