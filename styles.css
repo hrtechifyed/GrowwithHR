@@ -341,24 +341,41 @@ align-items:center;
 
 .hero-badge{
 
-display:block;
+display:inline-block;
 
-width:fit-content;
+background:
+rgba(255,122,0,.12);
 
-margin:0 auto 20px auto;
+color:
+var(--primary);
 
+padding:
+10px 18px;
+
+border-radius:
+999px;
+
+font-size:12px;
 font-size:20px;
 
 font-weight:700;
 
+letter-spacing:1px;
+
+margin-bottom:24px;
 padding:16px 32px;
 
+margin-bottom:20px;
 text-align:center;
+
+}
 
 .hero h1{
 
+font-size:68px;
 font-size:52px;
 
+margin-bottom:24px;
 line-height:1.08;
 
 margin-top:0;
@@ -368,6 +385,7 @@ margin-bottom:20px;
 max-width:800px;
 
 }
+
 .hero-description{
 
 font-size:clamp(1.1rem,2vw,1.35rem);
@@ -460,7 +478,7 @@ var(--muted);
 }
 
 /* ==========================================
-   ASSESSMENT SECTION
+  ASSESSMENT SECTION
 ========================================== */
 
 .assessment-section{
@@ -598,7 +616,7 @@ height:56px;
 }
 
 /* ==========================================
-   REPORT CONTAINER
+  REPORT CONTAINER
 ========================================== */
 
 .report-container{
@@ -626,7 +644,7 @@ font-weight:600;
 }
 
 /* ==========================================
-   REPORT PREVIEW
+  REPORT PREVIEW
 ========================================== */
 
 .preview-section{
@@ -707,7 +725,7 @@ var(--muted);
 }
 
 /* ==========================================
-   VALUE SECTION
+  VALUE SECTION
 ========================================== */
 
 .value-section{
@@ -793,7 +811,7 @@ var(--muted);
 }
 
 /* ==========================================
-   SECTION DIVIDER EFFECT
+  SECTION DIVIDER EFFECT
 ========================================== */
 
 .preview-section,
@@ -852,7 +870,7 @@ z-index:2;
 
 }
 /* ==========================================
-   UPDATES SECTION
+  UPDATES SECTION
 ========================================== */
 
 .updates-section{
@@ -951,7 +969,7 @@ line-height:1.7
 }
 
 /* ==========================================
-   FOUNDER SECTION
+  FOUNDER SECTION
 ========================================== */
 
 .founder-section{
@@ -963,6 +981,7 @@ var(--background);
 
 .founder-card{
 
+max-width:1000px;
 max-width:500px;
 
 margin:auto;
@@ -1003,7 +1022,7 @@ margin-top:25px;
 }
 
 /* ==========================================
-   CONTACT SECTION
+  CONTACT SECTION
 ========================================== */
 
 .contact-section{
@@ -1072,7 +1091,7 @@ var(--primary);
 }
 
 /* ==========================================
-   FOOTER
+  FOOTER
 ========================================== */
 
 .footer{
@@ -1123,7 +1142,7 @@ margin-bottom:10px;
 }
 
 /* ==========================================
-   REPORT DOCUMENT
+  REPORT DOCUMENT
 ========================================== */
 
 .report-document{
@@ -1218,7 +1237,7 @@ var(--muted);
 }
 
 /* ==========================================
-   REPORT BANNER
+  REPORT BANNER
 ========================================== */
 
 .report-banner{
@@ -1245,7 +1264,7 @@ margin-bottom:35px;
 }
 
 /* ==========================================
-   PROFILE GRID
+  PROFILE GRID
 ========================================== */
 
 .profile-grid{
@@ -1307,7 +1326,7 @@ line-height:1.4;
 }
 
 /* ==========================================
-   REPORT SECTIONS
+  REPORT SECTIONS
 ========================================== */
 
 .report-section{
@@ -1363,7 +1382,7 @@ var(--text);
 }
 
 /* ==========================================
-   SOURCES
+  SOURCES
 ========================================== */
 
 .sources-list{
@@ -1395,7 +1414,7 @@ color:
 }
 
 /* ==========================================
-   DISCLAIMER
+  DISCLAIMER
 ========================================== */
 
 .report-disclaimer{
@@ -1421,7 +1440,7 @@ line-height:1.8;
 }
 
 /* ==========================================
-   REPORT FOOTER
+  REPORT FOOTER
 ========================================== */
 
 .report-footer{
@@ -1449,7 +1468,7 @@ margin-top:35px;
 }
 
 /* ==========================================
-   REPORT ANIMATION
+  REPORT ANIMATION
 ========================================== */
 
 @keyframes reportFade{
@@ -1470,7 +1489,7 @@ transform:translateY(0);
 
 }
 /* ==========================================
-   TABLET RESPONSIVE
+  TABLET RESPONSIVE
 ========================================== */
 
 @media(max-width:992px){
@@ -1566,7 +1585,7 @@ padding:40px;
 }
 
 /* ==========================================
-   MOBILE RESPONSIVE
+  MOBILE RESPONSIVE
 ========================================== */
 
 @media(max-width:768px){
@@ -1595,7 +1614,7 @@ font-size:17px;
 
 }
 
-   .section-heading h2{
+.section-heading h2{
 
 background:
 linear-gradient(
@@ -1610,7 +1629,7 @@ linear-gradient(
 
 }
 
-   .section-heading::after{
+.section-heading::after{
 
 content:"";
 
@@ -1758,7 +1777,7 @@ width:50px;
 }
 
 /* ==========================================
-   SMALL MOBILE
+  SMALL MOBILE
 ========================================== */
 
 @media(max-width:480px){
@@ -1802,7 +1821,7 @@ padding:14px;
 }
 
 /* ==========================================
-   ULTRAWIDE MONITORS
+  ULTRAWIDE MONITORS
 ========================================== */
 
 @media(min-width:1800px){
@@ -1828,7 +1847,7 @@ font-size:26px;
 }
 
 /* ==========================================
-   PRINT / PDF
+  PRINT / PDF
 ========================================== */
 
 @media print{
@@ -1956,7 +1975,7 @@ text-decoration:none !important;
 }
 
 /* ==========================================
-   PDF PAGE SETTINGS
+  PDF PAGE SETTINGS
 ========================================== */
 
 @page{
@@ -1968,7 +1987,7 @@ margin:12mm;
 }
 
 /* ==========================================
-   ACCESSIBILITY
+  ACCESSIBILITY
 ========================================== */
 
 :focus-visible{
@@ -1981,7 +2000,7 @@ outline-offset:2px;
 }
 
 /* ==========================================
-   IMAGE RESPONSIVENESS
+  IMAGE RESPONSIVENESS
 ========================================== */
 
 img{
@@ -1993,7 +2012,7 @@ height:auto;
 }
 
 /* ==========================================
-   BUTTON IMPROVEMENTS
+  BUTTON IMPROVEMENTS
 ========================================== */
 
 .primary-btn{
@@ -2009,7 +2028,7 @@ justify-content:center;
 }
 
 /* ==========================================
-   SMOOTH CARD HOVER
+  SMOOTH CARD HOVER
 ========================================== */
 
 .preview-card,
@@ -2023,15 +2042,15 @@ will-change:transform;
 }
 
 /* ==========================================
-   END OF STYLES.CSS V6
+  END OF STYLES.CSS V6
 ========================================== */
 .update-card a {
-  color: #ff8c00 !important;
-  text-decoration: none;
+color: #ff8c00 !important;
+text-decoration: none;
 }
 
 .update-card a:hover {
-  color: #f59e0b !important;
+color: #f59e0b !important;
 }
 
 .summary-cards{
