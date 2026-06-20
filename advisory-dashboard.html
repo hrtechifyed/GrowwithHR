@@ -818,11 +818,10 @@ wrapper.style.padding = "40px";
 wrapper.style.background = bg;
 wrapper.style.color = color;
 wrapper.style.fontFamily = "Arial, sans-serif";
-wrapper.style.position = "fixed";
-wrapper.style.left = "20px";
-wrapper.style.top = "20px";
+wrapper.style.position = "absolute";
+wrapper.style.left = "-9999px";
+wrapper.style.top = "0";
 wrapper.style.zIndex = "999999";
-wrapper.style.border = "5px solid red";
 
 wrapper.innerHTML = `
 
@@ -839,7 +838,7 @@ Generated On: GWHR ${generatedOn}
 </p>
 
 </div>
-
+<div style="height:20px;"></div>
 <hr>
 
 <h2>Organisation Profile</h2>
@@ -852,6 +851,128 @@ Generated On: GWHR ${generatedOn}
 
 <p><strong>Employee Count:</strong> ${assessment.employeeBand}</p>
 
+${
+reportType === "compliance"
+? `
+<div style="height:20px;"></div>
+<hr>
+
+<h2>
+Compliance Requirements
+</h2>
+
+<ul>
+
+${assessment.mandatory
+.map(item => `<li>${item}</li>`)
+.join("")}
+
+</ul>
+
+<h2>
+Official Sources
+</h2>
+
+<ul>
+
+${assessment.sources
+.map(source => `
+<li>
+${source.name}
+</li>
+`)
+.join("")}
+
+</ul>
+`
+: ""
+}
+
+${
+reportType === "people"
+? `
+<div style="height:20px;"></div>
+<hr>
+
+<h2>
+People Strategy Priorities
+</h2>
+
+<ul>
+
+${assessment.recommended
+.map(item => `<li>${item}</li>`)
+.join("")}
+
+</ul>
+`
+: ""
+}
+
+${
+reportType === "growth"
+? `
+<div style="height:20px;"></div>
+<hr>
+
+<h2>
+Growth Readiness Priorities
+</h2>
+
+<ul>
+
+${assessment.future
+.map(item => `<li>${item}</li>`)
+.join("")}
+
+</ul>
+`
+: ""
+}
+
+${
+reportType === "complete"
+? `
+<div style="height:20px;"></div>
+<hr>
+
+<h2>
+Compliance Requirements
+</h2>
+
+<ul>
+${assessment.mandatory
+.map(item => `<li>${item}</li>`)
+.join("")}
+</ul>
+<div style="height:20px;"></div>
+<hr>
+
+<h2>
+People Strategy Priorities
+</h2>
+
+<ul>
+${assessment.recommended
+.map(item => `<li>${item}</li>`)
+.join("")}
+</ul>
+<div style="height:20px;"></div>
+<hr>
+
+<h2>
+Growth Readiness Priorities
+</h2>
+
+<ul>
+${assessment.future
+.map(item => `<li>${item}</li>`)
+.join("")}
+</ul>
+`
+: ""
+}
+<div style="height:20px;"></div>
 <hr>
 
 <h2>Important Disclaimer</h2>
@@ -860,7 +981,7 @@ Generated On: GWHR ${generatedOn}
 This report has been generated using artificial intelligence and rules-based assessment logic.
 Users are strongly encouraged to independently verify all recommendations before acting on compliance or workforce matters.
 </p>
-
+<div style="height:20px;"></div>
 <hr>
 
 <p>HRTechify | GrowItWithHR</p>
