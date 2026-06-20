@@ -1136,14 +1136,10 @@ Smart People Strategy. More business momentum.
 <script>
 
 const hamburger =
-document.getElementById(
-"hamburger"
-);
+document.getElementById("hamburger");
 
 const navLinks =
-document.getElementById(
-"navLinks"
-);
+document.getElementById("navLinks");
 
 hamburger.addEventListener(
 "click",
@@ -1155,6 +1151,25 @@ navLinks.classList.toggle(
 
 }
 );
+
+document
+.querySelectorAll(
+"#navLinks a"
+)
+.forEach(link => {
+
+link.addEventListener(
+"click",
+function(){
+
+navLinks.classList.remove(
+"active"
+);
+
+}
+);
+
+});
 
 </script>
 </body>
