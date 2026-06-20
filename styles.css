@@ -369,7 +369,6 @@ border-radius:
 }
 
 .hero h1{
-.hero h1{
 
 font-size:52px;
 
@@ -912,7 +911,6 @@ var(--shadow);
 transform:
 translateY(-6px);
 
-border-color:
 border-color:var(--primary);
 
 box-shadow:
