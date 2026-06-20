@@ -17,6 +17,23 @@ GrowItWithHR | Executive Advisory Dashboard
 rel="stylesheet"
 href="styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script
+src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
+<script>
+
+(function(){
+
+emailjs.init({
+publicKey:
+"VW0eRAbcJdIvP4Mc3"
+});
+
+})();
+
+</script>  
 </head>
 
 <body>
@@ -666,7 +683,56 @@ Website Theme
 </span>
 
 </label>
+<div
+style="
+margin-top:24px;
+text-align:left;
+">
 
+<label>
+
+Email Address *
+
+</label>
+
+<input
+type="email"
+id="userEmail"
+placeholder="name@company.com"
+style="
+width:100%;
+padding:14px;
+margin-top:8px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.15);
+background:#111827;
+color:white;
+">
+
+<label
+style="
+display:flex;
+gap:10px;
+align-items:flex-start;
+margin-top:18px;
+font-size:14px;
+">
+
+<input
+type="checkbox"
+id="userConsent">
+
+<span>
+
+I agree to receive product updates,
+advisory insights and future releases
+from HRTechify.
+
+</span>
+
+</label>
+
+</div>
 <div class="modal-actions">
 
 <button
@@ -715,22 +781,113 @@ document.getElementById(
 
 }
 
-function generateSelectedReport(){
+async function generateSelectedReport(){
 
 const theme =
 document.querySelector(
 'input[name="reportTheme"]:checked'
 ).value;
 
-console.log(
-"Generating:",
-selectedReportType,
-theme
+const email =
+document.getElementById(
+"userEmail"
+).value.trim();
+
+const consent =
+document.getElementById(
+"userConsent"
+).checked;
+
+if(!email){
+
+alert(
+"Please enter your email address."
 );
+
+return;
+
+}
+
+if(!consent){
+
+alert(
+"Please provide consent before downloading the report."
+);
+
+return;
+
+}
+
+const today =
+new Date();
+
+const generatedOn =
+today.toLocaleDateString(
+"en-GB",
+{
+day:"2-digit",
+month:"long",
+year:"numeric"
+}
+);
+
+try{
+
+await emailjs.send(
+
+"service_as95qfh",
+
+"template_4j8ld17",
+
+{
+
+user_email:
+email,
+
+report_type:
+selectedReportType,
+
+theme:
+theme,
+
+consent:
+"Yes",
+
+generated_on:
+"GWHR " + generatedOn,
+
+industry:
+assessment.industry,
+
+state:
+assessment.state,
+
+employee_count:
+assessment.employeeBand
+
+}
+
+);
+
+console.log(
+"Lead captured successfully"
+);
+
+}catch(error){
+
+console.error(
+error
+);
+
+}
 
 closePDFModal();
 
-/* PDF generation comes in Step 2 */
+/* PDF generation comes next */
+
+alert(
+"Email captured successfully. Report generation will begin."
+);
 
 }
 
