@@ -306,7 +306,7 @@ ${source.name}
 
 <button
 class="primary-btn pdf-btn"
-onclick="downloadCompliancePDF()">
+onclick="openPDFModal('compliance')">
 
 Download Compliance PDF
 
@@ -361,7 +361,7 @@ ${item}
 
 <button
 class="primary-btn pdf-btn"
-onclick="downloadPeoplePDF()">
+onclick="openPDFModal('people')">
 
 Download People Strategy Report
 
@@ -415,7 +415,7 @@ ${item}
 
 <button
 class="primary-btn pdf-btn"
-onclick="downloadGrowthPDF()">
+onclick="openPDFModal('growth')">
 
 Download Organization Readiness Report
 
@@ -435,7 +435,7 @@ margin-top:60px;
 
 <button
 class="primary-btn"
-onclick="downloadCompletePack()">
+onclick="openPDFModal('complete')">
 
 Download Complete Advisory Pack
 
@@ -690,7 +690,51 @@ Cancel
 </div>
 
 </div>
-  
+
+<script>
+
+let selectedReportType = "";
+
+function openPDFModal(type){
+
+selectedReportType = type;
+
+document.getElementById(
+"pdfModal"
+).style.display =
+"flex";
+
+}
+
+function closePDFModal(){
+
+document.getElementById(
+"pdfModal"
+).style.display =
+"none";
+
+}
+
+function generateSelectedReport(){
+
+const theme =
+document.querySelector(
+'input[name="reportTheme"]:checked'
+).value;
+
+console.log(
+"Generating:",
+selectedReportType,
+theme
+);
+
+closePDFModal();
+
+/* PDF generation comes in Step 2 */
+
+}
+
+</script>  
 </body>
 
 </html>
