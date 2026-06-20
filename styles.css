@@ -255,6 +255,21 @@ transition:.3s;
 color:var(--primary);
 
 }
+.hamburger{
+
+display:none;
+
+background:none;
+
+border:none;
+
+color:white;
+
+font-size:32px;
+
+cursor:pointer;
+
+}
 
 /* ==========================================
 BUTTONS
@@ -1608,7 +1623,51 @@ padding:40px;
 .container{
 grid-template-columns:1fr;
 padding:40px;
+.hamburger{
 
+display:block;
+
+}
+
+.nav-container{
+
+flex-direction:row;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.nav-links{
+
+display:none;
+
+position:absolute;
+
+top:80px;
+
+left:0;
+
+width:100%;
+
+background:#111827;
+
+padding:20px;
+
+flex-direction:column;
+
+gap:20px;
+
+border-top:1px solid var(--border);
+
+}
+
+.nav-links.active{
+
+display:flex;
+
+}
 }
 
 h2{
