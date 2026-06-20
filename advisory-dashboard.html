@@ -890,9 +890,22 @@ console.log(pdfTemplate.innerHTML);
   
 pdfTemplate.style.display =
 "block";
+pdfTemplate.style.position =
+"fixed";
 
+pdfTemplate.style.left =
+"-9999px";
+
+pdfTemplate.style.top =
+"0";
+  
 setTimeout(() => {
-
+console.log(
+"PDF TEMPLATE:",
+pdfTemplate.offsetWidth,
+pdfTemplate.offsetHeight
+);
+  
 html2pdf()
 .set({
 margin:10,
@@ -1027,10 +1040,16 @@ closePDFModal();
 
 </script>  
 
-  <div
+<div
 id="pdfTemplate"
-style="display:none;">
+style="
+position:fixed;
+left:-9999px;
+top:0;
+width:900px;
+background:white;
+z-index:-1;
+">
 </div>
-</body>
 
 </html>
