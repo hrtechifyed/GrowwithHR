@@ -1097,7 +1097,51 @@ year:"numeric"
 }
 );
 
-  
+try{
+
+await emailjs.send(
+
+"service_as95qfh",
+
+"template_4j8ld17",
+
+{
+
+user_email:
+email,
+
+report_type:
+selectedReportType,
+
+generated_on:
+"GWHR " + generatedOn,
+
+industry:
+assessment.industry,
+
+state:
+assessment.state,
+
+employee_count:
+assessment.employeeBand
+
+}
+
+);
+
+console.log(
+"Email sent successfully"
+);
+
+}catch(error){
+
+console.error(
+"EmailJS Error:",
+error
+);
+
+}
+
 generatePDF(
 selectedReportType,
 theme,
@@ -1105,7 +1149,6 @@ generatedOn
 );
 
 closePDFModal();
-
 }
 
 </script>  
