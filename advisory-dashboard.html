@@ -898,7 +898,34 @@ document.body.removeChild(wrapper);
 });
 
 }
-  
+
+async function generateSelectedReport(){
+
+const theme =
+document.querySelector(
+'input[name="reportTheme"]:checked'
+).value;
+
+const email =
+document.getElementById(
+"userEmail"
+).value.trim();
+
+const consent =
+document.getElementById(
+"userConsent"
+).checked;
+
+if(!email){
+
+alert(
+"Please enter your email address."
+);
+
+return;
+
+}
+
 if(!consent){
 
 alert(
@@ -907,75 +934,8 @@ alert(
 
 return;
 
-}
-
-const today =
-new Date();
-
-const generatedOn =
-today.toLocaleDateString(
-"en-GB",
-{
-day:"2-digit",
-month:"long",
-year:"numeric"
-}
-);
-
-try{
-
-await emailjs.send(
-
-"service_as95qfh",
-
-"template_4j8ld17",
-
-{
-
-user_email:
-email,
-
-report_type:
-selectedReportType,
-
-theme:
-theme,
-
-consent:
-"Yes",
-
-generated_on:
-"GWHR " + generatedOn,
-
-industry:
-assessment.industry,
-
-state:
-assessment.state,
-
-employee_count:
-assessment.employeeBand
-
-}
-
-);
-
-}catch(error){
-
-console.error(error);
-
-}
-
-generatePDF(
-selectedReportType,
-theme,
-generatedOn
-);
-
-closePDFModal();
-
-}
-
+}  
+  
 </script>  
 
 <div
