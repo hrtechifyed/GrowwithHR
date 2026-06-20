@@ -433,13 +433,13 @@ text-align:center;
 margin-top:60px;
 ">
 
-  <button
-  class="primary-btn">
+<button
+class="primary-btn"
+onclick="downloadCompletePack()">
 
-  Download Complete Advisory Pack
+Download Complete Advisory Pack
 
-  </button>
-
+</button>
 </div>
 
 `;
@@ -597,6 +597,16 @@ y += 10;
 doc.save(
 "Growth-Readiness.pdf"
 );
+
+}
+
+</script>
+
+<script>
+
+function downloadCompletePack(){
+
+window.print();
 
 }
 
