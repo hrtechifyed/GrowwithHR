@@ -473,6 +473,14 @@ Download Organization Readiness Report
 </div>
 
 <div
+id="comparisonResultsContainer"
+style="
+margin-top:40px;
+display:none;
+">
+</div>
+
+<div
 style="
 text-align:center;
 margin-top:60px;
@@ -723,6 +731,7 @@ Cancel
 </div>
 
 </div>
+
   
 <!-- ==========================================
 PDF THEME MODAL
@@ -889,6 +898,8 @@ reportType === "compliance"
 ? "People Strategy Report"
 : reportType === "growth"
 ? "Growth Readiness Report"
+: reportType === "statecomparison"
+? "State Expansion Comparison Report"
 : "Executive Advisory Pack";
 
 const bg =
@@ -1107,6 +1118,13 @@ ${source.name}
 : ""
 }
 
+${
+reportType === "statecomparison"
+? document.getElementById(
+"comparisonResultsContainer"
+).innerHTML
+: ""
+}
 <h2>Important Disclaimer</h2>
 
 <p>
@@ -1452,22 +1470,179 @@ const selectedStates =
 cb => cb.value
 );
 
-console.log(
-"Current State:",
-assessment.state
-);
-
-console.log(
-"Selected States:",
-selectedStates
-);
+if(
+selectedStates.length === 0
+){
 
 alert(
-"Comparison engine connected successfully."
+"Please select at least one state."
 );
 
-}  
+return;
 
+}
+
+function downloadStateComparisonPDF(){
+
+generatePDF(
+"statecomparison",
+"lite",
+new Date().toLocaleDateString(
+"en-GB"
+)
+);
+
+}
+
+const currentState =
+assessment.state;
+
+let html = `
+
+<div class="summary-card">
+
+<h3>
+
+🚀 State Expansion Comparison
+
+</h3>
+
+<table
+style="
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+">
+
+<tr>
+
+<th style="padding:12px;border:1px solid #ddd;">
+Factor
+</th>
+
+<th style="padding:12px;border:1px solid #ddd;">
+${currentState}
+</th>
+
+${selectedStates.map(
+s => `
+<th style="padding:12px;border:1px solid #ddd;">
+${s}
+</th>
+`
+).join("")}
+
+</tr>
+
+`;
+
+const factors = [
+
+"professionalTax",
+"labourWelfareFund",
+"shopsEstablishment",
+"startupPolicy",
+"singleWindow",
+"employmentExchange"
+
+];
+
+const labels = {
+
+professionalTax:
+"Professional Tax",
+
+labourWelfareFund:
+"Labour Welfare Fund",
+
+shopsEstablishment:
+"Shops & Establishments",
+
+startupPolicy:
+"Startup Policy",
+
+singleWindow:
+"Single Window Clearance",
+
+employmentExchange:
+"Employment Exchange"
+
+};
+
+factors.forEach(factor => {
+
+html += "<tr>";
+
+html += `
+<td style="padding:12px;border:1px solid #ddd;">
+${labels[factor]}
+</td>
+`;
+
+html += `
+<td style="padding:12px;border:1px solid #ddd;">
+${
+stateExpansionData[currentState]?.[factor]?.value
+||
+"Data Not Available"
+}
+</td>
+`;
+
+selectedStates.forEach(state => {
+
+html += `
+<td style="padding:12px;border:1px solid #ddd;">
+${
+stateExpansionData[state]?.[factor]?.value
+||
+"Data Not Available"
+}
+</td>
+`;
+
+});
+
+html += "</tr>";
+
+});
+
+html += `
+
+</table>
+
+<br>
+
+<button
+class="primary-btn"
+onclick="downloadStateComparisonPDF()">
+
+Download Comparison Report
+
+</button>
+
+</div>
+
+`;
+
+const container =
+document.getElementById(
+"comparisonResultsContainer"
+);
+
+container.innerHTML =
+html;
+
+container.style.display =
+"block";
+
+closeStateComparisonModal();
+
+container.scrollIntoView({
+behavior:"smooth"
+});
+
+}
 </script>  
 
 <div
