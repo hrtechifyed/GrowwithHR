@@ -2148,11 +2148,13 @@ will-change:transform;
 display:grid;
 
 grid-template-columns:
-repeat(auto-fit,minmax(320px,1fr));
+repeat(4,1fr);
 
-gap:30px;
+gap:24px;
 
 margin-top:40px;
+
+align-items:start;
 
 }
 
@@ -2170,8 +2172,13 @@ transition:.3s ease;
 
 backdrop-filter:blur(12px);
 
-}
+display:flex;
 
+flex-direction:column;
+
+height:100%;
+
+}
 .summary-card:hover{
 
 transform:translateY(-6px);
@@ -2198,6 +2205,16 @@ line-height:1.7;
 opacity:.85;
 
 margin-bottom:24px;
+
+}
+
+.expand-content{
+
+display:none;
+
+margin-top:20px;
+
+animation:fadeIn .3s ease;
 
 }
 
