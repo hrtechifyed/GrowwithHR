@@ -1205,10 +1205,7 @@ assessment.employeeBand
 );
 
 const userEmailResponse =
-console.log(
-"EMAIL BEING SENT TO:",
-email
-);
+
   await emailjs.send(
 
 "service_as95qfh",
@@ -1229,6 +1226,11 @@ generated_on:
 }
 
 );
+
+console.log(
+"EMAIL BEING SENT TO:",
+email
+);  
 
 console.log(
 "USER EMAIL SUCCESS",
