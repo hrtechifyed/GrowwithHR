@@ -393,7 +393,7 @@ if (
 
     <button
     class="secondary-btn"
-    onclick="downloadStateComparisonPDF()">
+    onclick="showSection('expansion')"
 
     Download Report
 
@@ -1138,7 +1138,7 @@ ${source.name}
 ${
 reportType === "statecomparison"
 ? document.getElementById(
-"comparisonResultsContainer"
+"detailsPanel"
 ).innerHTML
 : ""
 }
@@ -1652,8 +1652,9 @@ html;
 
 closeStateComparisonModal();
 
- 
-</script>  
+}   // closes generateStateComparison()
+
+ </script>  
 
 <div
 id="pdfTemplate"
