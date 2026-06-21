@@ -2384,3 +2384,44 @@ max-width:1600px;
 margin:0 auto;
 
 }
+.dashboard-hero::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+right:0;
+
+width:50%;
+
+height:100%;
+
+background:
+radial-gradient(
+circle at center,
+rgba(255,122,0,.12),
+transparent 70%
+);
+
+animation:
+pulseGlow 8s ease-in-out infinite;
+
+pointer-events:none;
+
+}
+
+@keyframes pulseGlow{
+
+0%,100%{
+opacity:.4;
+transform:scale(1);
+}
+
+50%{
+opacity:.8;
+transform:scale(1.05);
+}
+
+}
