@@ -352,20 +352,22 @@ Download Compliance PDF
 
   </div>
 
-  <div class="summary-card">
+ <div class="summary-card">
 
-    <h3>
-     👥 People Strategy
-    </h3>
+  <h3>
+    👥 People Strategy
+  </h3>
 
-    <p>
+  <p>
 
-      Policies,
-      documentation,
-      employee lifecycle
-      and governance.
+    Policies,
+    documentation,
+    employee lifecycle
+    and governance.
 
-    </p>
+  </p>
+
+  <div class="card-actions">
 
     <button
       class="primary-btn"
@@ -375,11 +377,22 @@ Download Compliance PDF
 
     </button>
 
-    <div
-id="peopleContent"
-class="expand-content">
+    <button
+      class="secondary-btn"
+      onclick="openPDFModal('people')">
 
-<ul>
+      Download PDF
+
+    </button>
+
+  </div>
+
+  <div
+  id="peopleContent"
+  class="expand-content"
+  style="display:none;">
+
+    <ul>
 
 ${assessment.recommended
 .map(
@@ -393,19 +406,14 @@ ${item}
 )
 .join("")}
 
-</ul>
-
-<button
-class="primary-btn pdf-btn"
-onclick="openPDFModal('people')">
-
-Download People Strategy Report
-
-</button>
-</div>
+    </ul>
 
   </div>
 
+</div>
+ 
+ 
+ 
  <div class="summary-card">
 
   <h3>
@@ -421,17 +429,30 @@ Download People Strategy Report
 
   </p>
 
-  <button
-    class="primary-btn"
-    onclick="toggleCard('growthContent')">
+  <div class="card-actions">
 
-    View Details
+    <button
+      class="primary-btn"
+      onclick="toggleCard('growthContent')">
 
-  </button>
+      View Details
+
+    </button>
+
+    <button
+      class="secondary-btn"
+      onclick="openPDFModal('growth')">
+
+      Download PDF
+
+    </button>
+
+  </div>
 
   <div
   id="growthContent"
-  class="expand-content">
+  class="expand-content"
+  style="display:none;">
 
     <ul>
 
@@ -449,18 +470,9 @@ ${item}
 
     </ul>
 
-<button
-class="primary-btn pdf-btn"
-onclick="openPDFModal('growth')">
-
-Download Organization Readiness Report
-
-</button>
-
   </div>
 
 </div>
-
 <div class="summary-card">
 
   <h3>
