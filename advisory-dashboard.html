@@ -1189,7 +1189,7 @@ report_type:
 selectedReportType,
 
 generated_on:
-"GWHR " + generatedOn,
+generatedOn + " | GWHR",
 
 industry:
 assessment.industry,
@@ -1204,6 +1204,7 @@ assessment.employeeBand
 
 );
 
+const userEmailResponse =
 await emailjs.send(
 
 "service_as95qfh",
@@ -1223,7 +1224,12 @@ generated_on:
 
 }
 
-);  
+);
+
+console.log(
+"USER EMAIL SUCCESS",
+userEmailResponse
+);
 
 console.log(
 "Email sent successfully"
