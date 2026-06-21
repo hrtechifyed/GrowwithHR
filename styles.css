@@ -1386,6 +1386,7 @@ repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 
 margin-bottom:40px;
+margin-top:20px;
 
 }
 
@@ -2144,6 +2145,7 @@ will-change:transform;
 }
 
 .summary-cards{
+margin-top:30px;
 
 display:grid;
 
