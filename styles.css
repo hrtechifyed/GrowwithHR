@@ -1714,16 +1714,6 @@ padding:40px;
 /* ==========================================
    MOBILE RESPONSIVE
 ========================================== */
-@media(max-width:1200px){
-
-.summary-cards{
-
-grid-template-columns:
-repeat(2,1fr);
-
-}
-
-}
 
 @media(max-width:768px){
 
@@ -2320,7 +2310,18 @@ flex-wrap:wrap;
 .card-actions button{
 
 flex:1;
+
 min-width:140px;
+
+min-height:54px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+text-align:center;
 
 }
 
@@ -2354,5 +2355,13 @@ flex-direction:column;
 width:100%;
 
 }
+
+}
+
+.dashboard-wrapper{
+
+max-width:1600px;
+
+margin:0 auto;
 
 }
