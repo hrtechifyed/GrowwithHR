@@ -404,27 +404,14 @@ if (
 </div>
 
 </div> <!-- dashboard-nav -->
+
 <div id="detailsPanel"
-class="details-panel">
-
-<h3>
-
-Select a section
-
-</h3>
-
-<p>
-
-Click View Details on any card
-to see advisory content here.
-
-</p>
+class="details-panel"
+style="display:none;">
 
 </div> <!-- detailsPanel -->
 
 </div> <!-- dashboard-layout -->
-
-
 
 <div
 style="
@@ -477,6 +464,9 @@ const panel =
 document.getElementById(
 "detailsPanel"
 );
+
+panel.style.display =
+"block";
 
 if(section==="compliance"){
 
@@ -1647,9 +1637,12 @@ document.getElementById(
 "detailsPanel"
 );
 
+panel.style.display =
+"block";
+
 panel.innerHTML =
 html;
-
+ 
 closeStateComparisonModal();
 
 }   // closes generateStateComparison()
