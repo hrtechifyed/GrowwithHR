@@ -472,16 +472,27 @@ Download Organization Readiness Report
 
   </p>
 
-  <button
-    class="primary-btn"
-    onclick="openStateComparisonModal()">
+  <div class="card-actions">
 
-    Compare States
+    <button
+      class="primary-btn"
+      onclick="openStateComparisonModal()">
 
-  </button>
+      Compare States
+
+    </button>
+
+    <button
+      class="secondary-btn"
+      onclick="downloadStateComparisonPDF()">
+
+      Download Report
+
+    </button>
+
+  </div>
 
 </div>
-
 </div>
 
 <div
@@ -1471,6 +1482,18 @@ checked.length - 1
 
 }
 
+function downloadStateComparisonPDF(){
+
+generatePDF(
+"statecomparison",
+"lite",
+new Date().toLocaleDateString(
+"en-GB"
+)
+);
+
+}
+  
 function generateStateComparison(){
 
 const selectedStates =
@@ -1491,18 +1514,6 @@ alert(
 );
 
 return;
-
-}
-
-function downloadStateComparisonPDF(){
-
-generatePDF(
-"statecomparison",
-"lite",
-new Date().toLocaleDateString(
-"en-GB"
-)
-);
 
 }
 
