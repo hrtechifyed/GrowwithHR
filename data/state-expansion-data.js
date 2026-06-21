@@ -1,6 +1,6 @@
 const stateExpansionData = {
 
-" Andhra Pradesh ": {
+"Andhra Pradesh": {
 jurisdictionType:"State",
 lastVerified:"2026-06-21",
 professionalTax:{value:"Yes (₹2,400/year)",source:"labour.ap.gov.in"},
@@ -15,7 +15,7 @@ url:"https://labour.ap.gov.in/"
 }
 },
 
-" Bihar ": {
+"Bihar": {
 jurisdictionType:"State",
 lastVerified:"2026-06-21",
 professionalTax:{value:"Yes",source:"state.bihar.gov.in/labour"},
@@ -30,7 +30,7 @@ url:"https://state.bihar.gov.in/labour/CitizenHome.html"
 }
 },
 
-" Karnataka ": {
+"Karnataka": {
 jurisdictionType:"State",
 lastVerified:"2026-06-21",
 professionalTax:{value:"Yes (₹2,400/year)",source:"labour.karnataka.gov.in"},
@@ -45,7 +45,7 @@ url:"https://labour.karnataka.gov.in/en"
 }
 },
 
-" Maharashtra ": {
+"Maharashtra": {
 jurisdictionType:"State",
 lastVerified:"2026-06-21",
 professionalTax:{value:"Yes (₹2,500/year)",source:"labour.gov.in/maharashtra"},
@@ -60,7 +60,7 @@ url:"https://labour.gov.in/maharashtra"
 }
 },
 
-" Gujarat ": {
+"Gujarat": {
 jurisdictionType:"State",
 lastVerified:"2026-06-21",
 professionalTax:{value:"Yes (₹2,400/year)",source:"labour.gujarat.gov.in"},
@@ -75,7 +75,7 @@ url:"https://labour.gujarat.gov.in/"
 }
 },
 
-" Tamil Nadu ": {
+"Tamil Nadu": {
 jurisdictionType:"State",
 lastVerified:"2026-06-21",
 professionalTax:{value:"Yes (₹1,200/year)",source:"labour.tn.gov.in"},
@@ -90,7 +90,7 @@ url:"http://www.labour.tn.gov.in/"
 }
 },
 
-" Telangana ": {
+"Telangana": {
 jurisdictionType:"State",
 lastVerified:"2026-06-21",
 professionalTax:{value:"Yes (₹2,400/year)",source:"Not Available"},
@@ -105,7 +105,7 @@ url:""
 }
 },
 
-" Delhi ": {
+"Delhi": {
 jurisdictionType:"UT",
 lastVerified:"2026-06-21",
 professionalTax:{value:"Yes (₹2,500/year)",source:"labour.delhi.gov.in"},
