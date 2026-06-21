@@ -1205,7 +1205,11 @@ assessment.employeeBand
 );
 
 const userEmailResponse =
-await emailjs.send(
+console.log(
+"EMAIL BEING SENT TO:",
+email
+);
+  await emailjs.send(
 
 "service_as95qfh",
 
