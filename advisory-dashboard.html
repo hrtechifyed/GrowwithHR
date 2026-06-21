@@ -263,13 +263,25 @@ if (
 
     </p>
 
-    <button
-      class="primary-btn"
-      onclick="toggleCard('complianceContent')">
+    <div class="card-actions">
 
-      View Details
+<button
+class="primary-btn"
+onclick="toggleCard('complianceContent')">
 
-    </button>
+View Details
+
+</button>
+
+<button
+class="secondary-btn"
+onclick="openPDFModal('compliance')">
+
+Download PDF
+
+</button>
+
+</div>
 
   <div
 id="complianceContent"
