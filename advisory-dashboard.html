@@ -1354,6 +1354,120 @@ generatedOn
 closePDFModal();
 }
 
+function openStateComparisonModal(){
+
+document.getElementById(
+"stateComparisonModal"
+).style.display = "flex";
+
+document.getElementById(
+"currentStateLabel"
+).textContent =
+assessment.state;
+
+populateStateComparisonList();
+
+}
+
+function closeStateComparisonModal(){
+
+document.getElementById(
+"stateComparisonModal"
+).style.display = "none";
+
+}
+
+function populateStateComparisonList(){
+
+const container =
+document.getElementById(
+"stateSelectionContainer"
+);
+
+container.innerHTML = "";
+
+Object.keys(stateExpansionData)
+.sort()
+.forEach(state => {
+
+if(
+state === assessment.state
+){
+return;
+}
+
+container.innerHTML += `
+
+<label>
+
+<input
+type="checkbox"
+class="state-checkbox"
+value="${state}"
+onchange="validateStateSelection()">
+
+${state}
+
+</label>
+
+<br><br>
+
+`;
+
+});
+
+}
+
+function validateStateSelection(){
+
+const checked =
+document.querySelectorAll(
+".state-checkbox:checked"
+);
+
+if(
+checked.length > 4
+){
+
+alert(
+"You can compare a maximum of 4 states."
+);
+
+checked[
+checked.length - 1
+].checked = false;
+
+}
+
+}
+
+function generateStateComparison(){
+
+const selectedStates =
+[
+...document.querySelectorAll(
+".state-checkbox:checked"
+)
+].map(
+cb => cb.value
+);
+
+console.log(
+"Current State:",
+assessment.state
+);
+
+console.log(
+"Selected States:",
+selectedStates
+);
+
+alert(
+"Comparison engine connected successfully."
+);
+
+}  
+
 </script>  
 
 <div
