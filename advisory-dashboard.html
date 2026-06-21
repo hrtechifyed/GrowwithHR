@@ -424,13 +424,7 @@ to see advisory content here.
 
 </div> <!-- dashboard-layout -->
 
-<div
-id="comparisonResultsContainer"
-style="
-margin-top:40px;
-display:none;
-">
-</div>
+
 
 <div
 style="
@@ -1648,24 +1642,17 @@ Download Comparison Report
 
 `;
 
-const container =
+const panel =
 document.getElementById(
-"comparisonResultsContainer"
+"detailsPanel"
 );
 
-container.innerHTML =
+panel.innerHTML =
 html;
-
-container.style.display =
-"block";
 
 closeStateComparisonModal();
 
-container.scrollIntoView({
-behavior:"smooth"
-});
-
-}
+ 
 </script>  
 
 <div
