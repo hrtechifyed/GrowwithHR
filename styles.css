@@ -411,26 +411,7 @@ box-shadow:
 HERO
 ========================================== */
 
-.hero{
-
-padding:
-70px 0;
-
-background:
-
-radial-gradient(
-circle at top right,
-rgba(255,122,0,.18),
-transparent 35%
-),
-
-linear-gradient(
-180deg,
-#0b1120,
-#111827
-);
-
-}
+v
 
 .hero-grid{
 
