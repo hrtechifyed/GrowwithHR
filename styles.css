@@ -2281,23 +2281,25 @@ font-weight:700;
 margin-right:10px;
 
 }
+
+
 .secondary-btn{
 
-padding:14px 24px;
-
-border-radius:14px;
-
-border:1px solid var(--border);
-
-background:var(--surface);
+background:
+linear-gradient(
+135deg,
+#ff7a00,
+#ff5500
+);
 
 color:white;
 
-font-weight:600;
+border:none;
 
-cursor:pointer;
+font-weight:700;
 
-transition:.3s;
+box-shadow:
+0 10px 25px rgba(255,122,0,.35);
 
 }
 .card-actions{
