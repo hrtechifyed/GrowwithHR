@@ -517,6 +517,18 @@ ${update.summary}
           ]
         ) {
 
+          mandatory.push(
+
+            ...(
+              engineData
+                .industryRules[
+                  industry
+                ]
+                .mandatory || []
+            )
+
+          );
+
           recommended.push(
 
             ...(
@@ -723,35 +735,6 @@ ${update.summary}
           JSON.stringify(reportData)
         );
         
-        /* ==========================================
-           BUILD SOURCES
-        ========================================== */
-
-        let sourcesHTML = "";
-
-        reportData.sources.forEach(
-          source => {
-
-            sourcesHTML += `
-
-            <li>
-
-              <a
-              href="${source.url}"
-              target="_blank"
-              rel="noopener noreferrer">
-
-                ${source.name}
-
-              </a>
-
-            </li>
-
-            `;
-
-          }
-        );
-
         /* ==========================================
            BUILD REPORT
         ========================================== */

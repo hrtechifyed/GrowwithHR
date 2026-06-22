@@ -1,11 +1,14 @@
 {
-  "version": "6.4",
+  "version": "6.4.1",
   "lastUpdated": "2026-06-22",
   "employeeThresholdRules": {
     "10": {
       "mandatory": [
         "POSH Policy",
-        "POSH Awareness Training"
+        "POSH Awareness Training",
+        "Review ESIC Applicability and Wage-Ceiling Coverage",
+        "Review Payment of Gratuity Act Applicability",
+        "Review Maternity Benefit Act Applicability"
       ],
       "recommended": [
         "Basic Employee Handbook",
@@ -489,14 +492,6 @@
       "recommended": [
         "Verify current Puducherry state labour registrations and return filing calendars before acting"
       ]
-    },
-    "Delhi": {
-      "mandatory": [
-        "Delhi Shops & Establishments Compliance"
-      ],
-      "recommended": [
-        "Verify current Delhi state labour registrations and return filing calendars before acting"
-      ]
     }
   },
   "industryRules": {
@@ -533,6 +528,9 @@
         "Shift Management Framework",
         "Contract Labour Governance",
         "Industrial Relations Framework"
+      ],
+      "mandatory": [
+        "Review Factories Act Applicability"
       ]
     },
     "Retail": {
@@ -581,6 +579,9 @@
         "Contract Labour Compliance",
         "Site Compliance Monitoring",
         "Statutory Registration Reviews"
+      ],
+      "mandatory": [
+        "Review BOCW and Contract Labour Applicability"
       ]
     },
     "Hospitality": {
@@ -669,5 +670,27 @@
       "url": "https://www.indiacode.nic.in"
     }
   ],
-  "disclaimer": "This report is intended for informational purposes only and should not be considered legal, regulatory or HR advice. Users should obtain professional review before acting on compliance obligations."
+  "disclaimer": "This report is intended for informational purposes only and should not be considered legal, regulatory or HR advice. Users should obtain professional review before acting on compliance obligations.",
+  "sourceReferences": [
+    {
+      "name": "ESIC Coverage",
+      "url": "https://esic.gov.in/coverage",
+      "supports": "ESI Act coverage for non-seasonal factories employing 10 or more persons; state notifications may extend coverage to establishments."
+    },
+    {
+      "name": "Payment of Gratuity Act, 1972 - India Code",
+      "url": "https://www.indiacode.nic.in/bitstream/123456789/15318/1/payment-of-gratuity-act-1972.pdf",
+      "supports": "Gratuity applicability to factories, shops and establishments employing 10 or more persons."
+    },
+    {
+      "name": "Maternity Benefit Act, 1961 - India Code",
+      "url": "https://www.indiacode.nic.in/bitstream/123456789/9324/1/the_maternity_benefit_act_1961.pdf",
+      "supports": "Maternity Benefit Act applicability to shops and establishments employing 10 or more persons."
+    },
+    {
+      "name": "Tamil Nadu Professional Tax - Government of Tamil Nadu",
+      "url": "https://www.tn.gov.in/dtp/professional-tax.htm",
+      "supports": "Tamil Nadu professional tax uses half-year periods."
+    }
+  ]
 }
