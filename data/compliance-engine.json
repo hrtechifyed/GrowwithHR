@@ -1,65 +1,58 @@
 {
-  "version": "6.3",
-  "lastUpdated": "2026-06-19",
-
-"employeeThresholdRules": {
-
-"10": {
-"mandatory": [
-"POSH Policy",
-"POSH Awareness Training"
-],
-"recommended": [
-"Basic Employee Handbook",
-"Leave Policy",
-"Attendance Management Process",
-"Employment Documentation Review"
-]
-},
-
-"20": {
-"mandatory": [
-"Review EPF Applicability and Employer Obligations"
-],
-"recommended": [
-"Employee Handbook",
-"Code of Conduct",
-"Grievance Redressal Framework",
-"Performance Management Process",
-"Employee Data Management Framework"
-]
-},
-
-"50": {
-"mandatory": [
-"Formal HR Policies",
-"Performance Management Framework",
-"Workforce Compliance Calendar"
-],
-"recommended": [
-"Manager Capability Development",
-"Structured Onboarding Program",
-"Workforce Planning Framework",
-"Internal HR Governance Reviews"
-]
-},
-
-"100": {
-"mandatory": [
-"Formal HR Governance Framework"
-],
-"recommended": [
-"HRIS Implementation",
-"Workforce Analytics",
-"Internal Compliance Reviews",
-"Leadership Development Framework",
-"Succession Planning Framework"
-]
-}
-},
-
+  "version": "6.4",
+  "lastUpdated": "2026-06-22",
+  "employeeThresholdRules": {
+    "10": {
+      "mandatory": [
+        "POSH Policy",
+        "POSH Awareness Training"
+      ],
+      "recommended": [
+        "Basic Employee Handbook",
+        "Leave Policy",
+        "Attendance Management Process",
+        "Employment Documentation Review"
+      ]
+    },
+    "20": {
+      "mandatory": [
+        "Review EPF Applicability and Employer Obligations"
+      ],
+      "recommended": [
+        "Employee Handbook",
+        "Code of Conduct",
+        "Grievance Redressal Framework",
+        "Performance Management Process",
+        "Employee Data Management Framework"
+      ]
+    },
+    "50": {
+      "mandatory": [
+        "Formal HR Policies",
+        "Performance Management Framework",
+        "Workforce Compliance Calendar"
+      ],
+      "recommended": [
+        "Manager Capability Development",
+        "Structured Onboarding Program",
+        "Workforce Planning Framework",
+        "Internal HR Governance Reviews"
+      ]
+    },
+    "100": {
+      "mandatory": [
+        "Formal HR Governance Framework"
+      ],
+      "recommended": [
+        "HRIS Implementation",
+        "Workforce Analytics",
+        "Internal Compliance Reviews",
+        "Leadership Development Framework",
+        "Succession Planning Framework"
+      ]
+    }
+  },
   "entityRules": {
-
     "Private Limited Company": {
       "mandatory": [
         "Employment Agreements",
@@ -67,35 +60,30 @@
         "Payroll Compliance Review"
       ]
     },
-
     "Limited Liability Partnership (LLP)": {
       "mandatory": [
         "Employment Agreements",
         "Payroll Compliance Review"
       ]
     },
-
     "Proprietorship": {
       "mandatory": [
         "Employment Records",
         "Basic HR Documentation"
       ]
     },
-
     "Partnership Firm": {
       "mandatory": [
         "Employment Records",
         "Payroll Compliance Review"
       ]
     },
-
     "One Person Company (OPC)": {
       "mandatory": [
         "Employment Agreements",
         "Employment Records"
       ]
     },
-
     "Public Limited Company (Unlisted)": {
       "mandatory": [
         "Employment Agreements",
@@ -103,7 +91,6 @@
         "Statutory Employee Records"
       ]
     },
-
     "Public Limited Company (Listed)": {
       "mandatory": [
         "Employment Agreements",
@@ -112,7 +99,6 @@
         "Formal HR Governance Framework"
       ]
     },
-
     "Section 8 Company": {
       "mandatory": [
         "Employment Agreements",
@@ -125,7 +111,6 @@
         "Employee Handbook"
       ]
     },
-
     "Trust": {
       "mandatory": [
         "Employment Records",
@@ -137,7 +122,6 @@
         "Code of Conduct"
       ]
     },
-
     "Society": {
       "mandatory": [
         "Employment Records",
@@ -149,7 +133,6 @@
         "Volunteer Governance"
       ]
     },
-
     "NGO": {
       "mandatory": [
         "Employment Records",
@@ -162,7 +145,6 @@
         "Safeguarding Policy"
       ]
     },
-
     "DPIIT Recognized Startup": {
       "mandatory": [
         "Employment Agreements",
@@ -176,7 +158,6 @@
         "Manager Capability Development"
       ]
     },
-
     "Government Entity": {
       "mandatory": [
         "Service Rules Compliance",
@@ -189,7 +170,6 @@
         "Performance Governance"
       ]
     },
-
     "Educational Institution": {
       "mandatory": [
         "Faculty Contracts",
@@ -203,45 +183,323 @@
       ]
     }
   },
-
   "stateRules": {
-
+    "Andhra Pradesh": {
+      "mandatory": [
+        "Andhra Pradesh Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Andhra Pradesh state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Arunachal Pradesh": {
+      "mandatory": [
+        "Arunachal Pradesh Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Arunachal Pradesh state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Assam": {
+      "mandatory": [
+        "Assam Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Assam state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Bihar": {
+      "mandatory": [
+        "Bihar Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Bihar state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Chhattisgarh": {
+      "mandatory": [
+        "Chhattisgarh Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Chhattisgarh state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Goa": {
+      "mandatory": [
+        "Goa Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Goa state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Gujarat": {
+      "mandatory": [
+        "Gujarat Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Gujarat state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Haryana": {
+      "mandatory": [
+        "Haryana Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Haryana state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Himachal Pradesh": {
+      "mandatory": [
+        "Himachal Pradesh Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Himachal Pradesh state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Jharkhand": {
+      "mandatory": [
+        "Jharkhand Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Jharkhand state labour registrations and return filing calendars before acting"
+      ]
+    },
     "Karnataka": {
       "mandatory": [
         "Karnataka Shops & Establishments Compliance",
         "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Karnataka state labour registrations and return filing calendars before acting"
       ]
     },
-
+    "Kerala": {
+      "mandatory": [
+        "Kerala Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Kerala state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Madhya Pradesh": {
+      "mandatory": [
+        "Madhya Pradesh Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Madhya Pradesh state labour registrations and return filing calendars before acting"
+      ]
+    },
     "Maharashtra": {
       "mandatory": [
         "Maharashtra Shops & Establishments Compliance",
         "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Maharashtra state labour registrations and return filing calendars before acting"
       ]
     },
-
+    "Manipur": {
+      "mandatory": [
+        "Manipur Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Manipur state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Meghalaya": {
+      "mandatory": [
+        "Meghalaya Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Meghalaya state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Mizoram": {
+      "mandatory": [
+        "Mizoram Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Mizoram state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Nagaland": {
+      "mandatory": [
+        "Nagaland Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Nagaland state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Odisha": {
+      "mandatory": [
+        "Odisha Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Odisha state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Punjab": {
+      "mandatory": [
+        "Punjab Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Punjab state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Rajasthan": {
+      "mandatory": [
+        "Rajasthan Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Rajasthan state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Sikkim": {
+      "mandatory": [
+        "Sikkim Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Sikkim state labour registrations and return filing calendars before acting"
+      ]
+    },
     "Tamil Nadu": {
       "mandatory": [
-        "Tamil Nadu Shops & Establishments Compliance"
+        "Tamil Nadu Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Tamil Nadu state labour registrations and return filing calendars before acting"
       ]
     },
-
-    "Delhi": {
-      "mandatory": [
-        "Delhi Shops & Establishments Compliance"
-      ]
-    },
-
     "Telangana": {
       "mandatory": [
         "Telangana Shops & Establishments Compliance",
         "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Telangana state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Tripura": {
+      "mandatory": [
+        "Tripura Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Tripura state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Uttar Pradesh": {
+      "mandatory": [
+        "Uttar Pradesh Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Uttar Pradesh state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Uttarakhand": {
+      "mandatory": [
+        "Uttarakhand Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Uttarakhand state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "West Bengal": {
+      "mandatory": [
+        "West Bengal Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current West Bengal state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Andaman and Nicobar Islands": {
+      "mandatory": [
+        "Andaman and Nicobar Islands Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Andaman and Nicobar Islands state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Chandigarh": {
+      "mandatory": [
+        "Chandigarh Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Chandigarh state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Dadra and Nagar Haveli and Daman and Diu": {
+      "mandatory": [
+        "Dadra and Nagar Haveli and Daman and Diu Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Dadra and Nagar Haveli and Daman and Diu state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Delhi (NCT)": {
+      "mandatory": [
+        "Delhi Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Delhi state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Jammu and Kashmir": {
+      "mandatory": [
+        "Jammu and Kashmir Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Jammu and Kashmir state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Ladakh": {
+      "mandatory": [
+        "Ladakh Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Ladakh state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Lakshadweep": {
+      "mandatory": [],
+      "recommended": [
+        "Verify current Lakshadweep state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Puducherry": {
+      "mandatory": [
+        "Puducherry Shops & Establishments Compliance",
+        "Professional Tax Compliance"
+      ],
+      "recommended": [
+        "Verify current Puducherry state labour registrations and return filing calendars before acting"
+      ]
+    },
+    "Delhi": {
+      "mandatory": [
+        "Delhi Shops & Establishments Compliance"
+      ],
+      "recommended": [
+        "Verify current Delhi state labour registrations and return filing calendars before acting"
       ]
     }
   },
-
   "industryRules": {
-
     "Information Technology / SaaS": {
       "recommended": [
         "Remote Work Policy",
@@ -250,9 +508,7 @@
         "Employee Handbook"
       ]
     },
-
-
-        "Semiconductor": {
+    "Semiconductor": {
       "recommended": [
         "Shift Workforce Governance",
         "Engineering Talent Retention Strategy",
@@ -263,7 +519,6 @@
         "Payroll Compliance Review"
       ]
     },
-    
     "Consulting & Professional Services": {
       "recommended": [
         "Employment Contracts",
@@ -272,7 +527,6 @@
         "Workforce Planning Process"
       ]
     },
-
     "Manufacturing": {
       "recommended": [
         "Safety Policy",
@@ -281,7 +535,6 @@
         "Industrial Relations Framework"
       ]
     },
-
     "Retail": {
       "recommended": [
         "Shift Scheduling Framework",
@@ -290,7 +543,6 @@
         "Payroll Governance"
       ]
     },
-
     "Healthcare": {
       "recommended": [
         "Clinical Workforce Governance",
@@ -299,7 +551,6 @@
         "Compliance Monitoring"
       ]
     },
-
     "Education": {
       "recommended": [
         "Faculty Contracts",
@@ -308,7 +559,6 @@
         "Policy Governance"
       ]
     },
-
     "Financial Services": {
       "recommended": [
         "Code of Conduct",
@@ -317,7 +567,6 @@
         "Regulatory Compliance Monitoring"
       ]
     },
-
     "Logistics & Transportation": {
       "recommended": [
         "Contract Labour Governance",
@@ -326,7 +575,6 @@
         "Payroll Compliance Review"
       ]
     },
-
     "Construction": {
       "recommended": [
         "Worker Safety Framework",
@@ -335,7 +583,6 @@
         "Statutory Registration Reviews"
       ]
     },
-
     "Hospitality": {
       "recommended": [
         "Shift Workforce Governance",
@@ -344,7 +591,6 @@
         "Payroll Governance"
       ]
     },
-
     "E-Commerce": {
       "recommended": [
         "Warehouse Workforce Compliance",
@@ -353,7 +599,6 @@
         "Payroll Governance"
       ]
     },
-
     "Startup": {
       "recommended": [
         "Foundational HR Compliance",
@@ -362,7 +607,6 @@
         "Manager Capability Building"
       ]
     },
-
     "Other": {
       "recommended": [
         "HR Governance",
@@ -372,48 +616,41 @@
       ]
     }
   },
-
   "futureReadiness": {
-
-"20": [
-"Review EPF applicability as workforce scales",
-"Establish foundational HR policies",
-"Implement structured employee documentation"
-],
-
-"50": [
-"Formal grievance process",
-"Structured onboarding",
-"Manager training",
-"Compliance calendar",
-"Workforce planning framework"
-],
-
-"100": [
-"HRIS implementation",
-"Workforce analytics",
-"Leadership development",
-"Policy governance reviews",
-"Internal HR audit readiness"
-],
-
-"250": [
-"Internal compliance audits",
-"Talent management framework",
-"Organisation design review",
-"Succession planning",
-"People analytics maturity"
-],
-
-"500": [
-"Enterprise workforce governance",
-"Integrated people strategy",
-"Leadership pipeline development",
-"Advanced workforce planning",
-"HR operating model review"
-]
-},
-
+    "20": [
+      "Review EPF applicability as workforce scales",
+      "Establish foundational HR policies",
+      "Implement structured employee documentation"
+    ],
+    "50": [
+      "Formal grievance process",
+      "Structured onboarding",
+      "Manager training",
+      "Compliance calendar",
+      "Workforce planning framework"
+    ],
+    "100": [
+      "HRIS implementation",
+      "Workforce analytics",
+      "Leadership development",
+      "Policy governance reviews",
+      "Internal HR audit readiness"
+    ],
+    "250": [
+      "Internal compliance audits",
+      "Talent management framework",
+      "Organisation design review",
+      "Succession planning",
+      "People analytics maturity"
+    ],
+    "500": [
+      "Enterprise workforce governance",
+      "Integrated people strategy",
+      "Leadership pipeline development",
+      "Advanced workforce planning",
+      "HR operating model review"
+    ]
+  },
   "sources": [
     {
       "name": "Ministry of Labour & Employment",
@@ -432,6 +669,5 @@
       "url": "https://www.indiacode.nic.in"
     }
   ],
-
   "disclaimer": "This report is intended for informational purposes only and should not be considered legal, regulatory or HR advice. Users should obtain professional review before acting on compliance obligations."
 }
