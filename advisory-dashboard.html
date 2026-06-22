@@ -199,17 +199,48 @@ READ SAVED ASSESSMENT
 
 <script>
 
-const assessment =
+const rawAssessment =
 JSON.parse(
   localStorage.getItem(
     "growitwithhrAssessment"
   )
 );
 
-console.log(
-  "Assessment:",
-  assessment
-);
+function escapeHTML(value){
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function escapeAssessmentList(items){
+  return Array.isArray(items)
+    ? items.map(item => escapeHTML(item))
+    : [];
+}
+
+const assessment = rawAssessment
+  ? {
+      ...rawAssessment,
+      state: escapeHTML(rawAssessment.state),
+      entity: escapeHTML(rawAssessment.entity),
+      industry: escapeHTML(rawAssessment.industry),
+      employeeBand: escapeHTML(rawAssessment.employeeBand),
+      mandatory: escapeAssessmentList(rawAssessment.mandatory),
+      recommended: escapeAssessmentList(rawAssessment.recommended),
+      future: escapeAssessmentList(rawAssessment.future),
+      sources: Array.isArray(rawAssessment.sources)
+        ? rawAssessment.sources.map(source => ({
+            name: escapeHTML(source.name),
+            url: escapeHTML(source.url)
+          }))
+        : []
+    }
+  : null;
+
+
 
 if (
   assessment
@@ -1221,9 +1252,6 @@ font-weight:600;
 ">
 ✅ Report downloaded successfully.
 
-A confirmation email has been sent.
-Please check your Inbox and Spam folder.
-
 </div>
 `;
 
@@ -1244,6 +1272,23 @@ alert(
 },1000);
 
 };
+
+function showToast(message){
+  const toast = document.createElement("div");
+  toast.textContent = message;
+  toast.style.position = "fixed";
+  toast.style.top = "20px";
+  toast.style.right = "20px";
+  toast.style.background = "#0f172a";
+  toast.style.color = "white";
+  toast.style.padding = "14px 20px";
+  toast.style.borderRadius = "10px";
+  toast.style.zIndex = "999999";
+  toast.style.boxShadow = "0 4px 12px rgba(0,0,0,0.25)";
+  toast.style.fontWeight = "600";
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
 
 async function generateSelectedReport(){
 
@@ -1357,9 +1402,7 @@ console.log(
 userEmailResponse
 );
 
-console.log(
-"Email sent successfully"
-);
+showToast("Email sent successfully.");
 
 }catch(error){
 
@@ -1367,6 +1410,8 @@ console.error(
 "EmailJS Error:",
 error
 );
+
+showToast("Email delivery failed. Your PDF will still download locally.");
 
 }
 
