@@ -1,14 +1,10 @@
-# GrowItWithHR V2
+# GrowItWithHR Public Beta v6.4.1
 
-Planned sections:
+Rules-based HR compliance and growth-readiness advisory prototype for Indian employers.
 
-- Hero
-- Problem
-- Interactive Tool
-- Example Company
-- Trust
-- Founder
-- Demo Request
-- Citations
-- Freshness
-- Change Alertsv
+## Current release focus
+
+- State/UT-aware advisory input validation.
+- Compliance rule conflict prevention between mandatory and recommended sections.
+- Conservative statutory trigger coverage with source references.
+- Live-update parsing foundation without fabricated placeholder updates.
