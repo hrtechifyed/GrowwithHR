@@ -919,9 +919,9 @@ function renderDefaultDetails(){
       <h2>Start with the highest-signal actions</h2>
       <p>Use the cards on the left to review compliance, people strategy, growth readiness, or state expansion. This panel is pre-filled so the dashboard never opens with unused blank space.</p>
       <div class="insight-grid">
-        <div><strong>${assessment.mandatory.length}</strong><span>Compliance items</span></div>
-        <div><strong>${assessment.recommended.length}</strong><span>People priorities</span></div>
-        <div><strong>${assessment.future.length}</strong><span>Growth actions</span></div>
+        <div><strong>${assessment.mandatoryCount ?? assessment.mandatory.length}</strong><span>Compliance items</span></div>
+        <div><strong>${assessment.recommendedCount ?? assessment.recommended.length}</strong><span>People priorities</span></div>
+        <div><strong>${assessment.futureCount ?? assessment.future.length}</strong><span>Growth actions</span></div>
       </div>
       <h3>Recommended first step</h3>
       <ul>
