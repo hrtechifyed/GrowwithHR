@@ -458,23 +458,12 @@ ${update.summary}
           engineData.stateRules[state]
         ) {
 
-          const stateRule =
-
-            engineData
-              .stateRules[state];
-
           mandatory.push(
 
             ...(
-              stateRule.mandatory || []
-            )
-
-          );
-
-          recommended.push(
-
-            ...(
-              stateRule.recommended || []
+              engineData
+                .stateRules[state]
+                .mandatory || []
             )
 
           );
@@ -668,16 +657,6 @@ ${update.summary}
           ];
 
         /* ==========================================
-           CAPTURE REAL COUNTS BEFORE FALLBACKS
-        ========================================== */
-
-        const mandatoryCount = mandatory.length;
-
-        const recommendedCount = recommended.length;
-
-        const futureCount = future.length;
-
-        /* ==========================================
            FALLBACKS
         ========================================== */
 
@@ -741,12 +720,6 @@ ${update.summary}
           recommended,
 
           future,
-
-          mandatoryCount,
-
-          recommendedCount,
-
-          futureCount,
 
           sources:
 
