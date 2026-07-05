@@ -134,22 +134,6 @@ console.log("engine loaded", engineData);
     "liveUpdatesContainer"
   );
 
-
-  const locations = [
-    ...statesData.states,
-    ...statesData.unionTerritories
-  ];
-
-  const normalizeLocation = value => {
-    const trimmed = (value || "").trim();
-    if (trimmed.toLowerCase() === "delhi") {
-      return "Delhi (NCT)";
-    }
-    return locations.find(
-      location => location.toLowerCase() === trimmed.toLowerCase()
-    ) || "";
-  };
-
   /* ==========================================
      POPULATE STATES
   ========================================== */
@@ -157,13 +141,25 @@ console.log("engine loaded", engineData);
      Debug 2
   ========================================== */
 
+console.log("stateSelect", stateSelect);
 
+console.log("entitySelect", entitySelect);
+
+console.log("industrySelect", industrySelect);
   /* ==========================================
      Debug 2
   ========================================== */
 
   
   if (stateSelect) {
+
+    const locations = [
+
+      ...statesData.states,
+
+      ...statesData.unionTerritories
+
+    ];
 
     locations.forEach(
       location => {
@@ -407,7 +403,7 @@ ${update.summary}
       () => {
 
         const state =
-          normalizeLocation(stateSelect.value);
+          stateSelect.value;
 
         const entity =
           entitySelect.value;
@@ -428,7 +424,8 @@ ${update.summary}
 
           <div class="report-error">
 
-            Please complete all selections with a valid listed state or union territory before generating a report.
+            Please complete all selections
+            before generating a report.
 
           </div>
 
@@ -516,18 +513,6 @@ ${update.summary}
             industry
           ]
         ) {
-
-          mandatory.push(
-
-            ...(
-              engineData
-                .industryRules[
-                  industry
-                ]
-                .mandatory || []
-            )
-
-          );
 
           recommended.push(
 
@@ -625,10 +610,6 @@ ${update.summary}
             }
 
           }
-        );
-
-        recommended = recommended.filter(
-          item => !mandatory.includes(item)
         );
 
         /* ==========================================
@@ -736,21 +717,42 @@ ${update.summary}
         );
         
         /* ==========================================
+           BUILD SOURCES
+        ========================================== */
+
+        let sourcesHTML = "";
+
+        reportData.sources.forEach(
+          source => {
+
+            sourcesHTML += `
+
+            <li>
+
+              <a
+              href="${source.url}"
+              target="_blank"
+              rel="noopener noreferrer">
+
+                ${source.name}
+
+              </a>
+
+            </li>
+
+            `;
+
+          }
+        );
+
+        /* ==========================================
            BUILD REPORT
         ========================================== */
 
-        const dashboardWindow = window.open(
-          "advisory-dashboard.html",
-          "_blank"
-        );
-
-        reportContainer.innerHTML = `
-          <div class="report-success">
-            Your advisory report is ready and has been opened in a new tab.
-            ${dashboardWindow ? "" : "Please allow pop-ups for this site, then open the generated report again."}
-          </div>
-        `;
-
+        window.open(
+  "advisory-dashboard.html",
+  "_blank"
+);
         reportContainer.scrollIntoView({
 
           behavior:"smooth",
