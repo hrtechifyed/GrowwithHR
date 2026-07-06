@@ -123,24 +123,6 @@ const liveUpdatesData =
   sourceRegistryResponse.url
 );
 
-console.log(
-  "Central Laws",
-  centralLawsResponse.status,
-  centralLawsResponse.url
-);
-
-console.log(
-  "Entity Rules",
-  entitiesRulesResponse.status,
-  entitiesRulesResponse.url
-);
-
-console.log(
-  "Industry Rules",
-  industriesRulesResponse.status,
-  industriesRulesResponse.url
-);
-
 if (!sourceRegistryResponse.ok)
   throw new Error("source-registry.json not found");
 
