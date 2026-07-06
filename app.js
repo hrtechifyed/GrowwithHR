@@ -290,40 +290,10 @@ console.log(
 
 "Resolver Test",
 
-resolveCentralRule("EPF-001")
+resolveCentralRule("EPFO-001")
 
 );  
 
-console.log(sourceRegistry);
-
-console.log(centralLaws);
-
-console.log(
-
-"Entity KB",
-
-entityRules
-
-);
-
-console.log(
-
-"Industry KB",
-
-industryRules
-
-);
-
-console.log(
-
-"States Loaded",
-
-Object.keys(stateKnowledgeBase).length
-
-);
-
-console.log(stateKnowledgeBase);  
-  
 /* ==========================================
      Debug
   ========================================== */
