@@ -20,7 +20,21 @@ const [
   sourceRegistryResponse,
   centralLawsResponse,
   entitiesRulesResponse,
-  industriesRulesResponse
+  industriesRulesResponse,
+
+  epfoResponse,
+  esicResponse,
+  gratuityResponse,
+  bonusResponse,
+  maternityResponse,
+  poshResponse,
+  contractLabourResponse,
+  employeesCompensationResponse,
+  apprenticesResponse,
+  childLabourResponse,
+  codeOnWagesResponse,
+  oshwcResponse
+
 ] = await Promise.all([
 
   fetch("./data/updates.json"),
@@ -39,7 +53,31 @@ const [
 
   fetch("./data/knowledge-base/entities/entities.json"),
 
-  fetch("./data/knowledge-base/industries/industries.json")
+  fetch("./data/knowledge-base/industries/industries.json"),
+
+  fetch("./data/knowledge-base/laws/central/epfo.json"),
+
+fetch("./data/knowledge-base/laws/central/esic.json"),
+
+fetch("./data/knowledge-base/laws/central/gratuity.json"),
+
+fetch("./data/knowledge-base/laws/central/bonus.json"),
+
+fetch("./data/knowledge-base/laws/central/maternity-benefit.json"),
+
+fetch("./data/knowledge-base/laws/central/posh.json"),
+
+fetch("./data/knowledge-base/laws/central/contract-labour.json"),
+
+fetch("./data/knowledge-base/laws/central/employees-compensation.json"),
+
+fetch("./data/knowledge-base/laws/central/apprentices.json"),
+
+fetch("./data/knowledge-base/laws/central/child-labour.json"),
+
+fetch("./data/knowledge-base/laws/central/code-on-wages.json"),
+
+fetch("./data/knowledge-base/laws/central/oshwc-code.json")
 
 ]);
 
@@ -126,6 +164,43 @@ const entityRules =
 
 const industryRules =
   await industriesRulesResponse.json();
+
+  /* ==========================================
+   CENTRAL LAW KNOWLEDGE BASE
+========================================== */
+
+const centralKnowledgeBase = {
+
+  epfo: await epfoResponse.json(),
+
+  esic: await esicResponse.json(),
+
+  gratuity: await gratuityResponse.json(),
+
+  bonus: await bonusResponse.json(),
+
+  maternityBenefit: await maternityResponse.json(),
+
+  posh: await poshResponse.json(),
+
+  contractLabour: await contractLabourResponse.json(),
+
+  employeesCompensation:
+    await employeesCompensationResponse.json(),
+
+  apprentices:
+    await apprenticesResponse.json(),
+
+  childLabour:
+    await childLabourResponse.json(),
+
+  codeOnWages:
+    await codeOnWagesResponse.json(),
+
+  oshwc:
+    await oshwcResponse.json()
+
+};
 
  /* ==========================================
    LOAD STATE KNOWLEDGE BASE
@@ -227,6 +302,25 @@ console.log("industries loaded", industriesData);
 console.log("engine loaded", engineData);
 
 console.log("knowledge base loaded");
+
+console.log(
+"Central Laws Loaded",
+Object.keys(
+  centralKnowledgeBase
+).length
+);
+
+console.log(
+centralKnowledgeBase
+);  
+
+console.log(
+
+"Resolver Test",
+
+resolveCentralRule("EPF-001")
+
+);  
 
 console.log(sourceRegistry);
 
@@ -540,6 +634,85 @@ ${update.summary}
 
 } 
 
+/* ==========================================
+   CENTRAL RULE RESOLVER
+========================================== */
+
+function resolveCentralRule(ruleId){
+
+    if(!ruleId){
+
+        return null;
+
+    }
+
+    for(const law of Object.values(centralKnowledgeBase)){
+
+        if(!law){
+
+            continue;
+
+        }
+
+        const collections = [];
+
+        if(Array.isArray(law.rules))
+            collections.push(law.rules);
+
+        if(Array.isArray(law.mandatory))
+            collections.push(law.mandatory);
+
+        if(Array.isArray(law.recommended))
+            collections.push(law.recommended);
+
+        for(const group of collections){
+
+            const found = group.find(rule=>rule.id===ruleId);
+
+            if(found){
+
+                return found;
+
+            }
+
+        }
+
+    }
+
+    return null;
+
+}
+
+/* ==========================================
+   ADD CENTRAL RULE
+========================================== */
+
+function addCentralRule(targetArray, ruleId){
+
+    const rule = resolveCentralRule(ruleId);
+
+    if(rule){
+
+        targetArray.push(rule);
+
+    }
+
+    else{
+
+        console.warn(
+
+            "Central Rule Not Found:",
+
+            ruleId
+
+        );
+
+    }
+
+}  
+  
+
+  
   /* ==========================================
      EMPLOYEE BAND HELPER
   ========================================== */
