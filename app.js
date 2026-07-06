@@ -2,7 +2,7 @@ document.addEventListener(
 "DOMContentLoaded",
 async () => {
 console.log(
-  "GrowItWithHR V6 Engine Initializing..."
+  "GrowItWithHR V7 Engine Initializing..."
 );
 
 try {
@@ -999,22 +999,53 @@ if (
                   .employeeThresholdRules[
                     threshold
                   ];
+/* ---------------------------------------
+   Resolve Central Law Rules
+---------------------------------------- */
 
-              mandatory.push(
+(rule.mandatoryRuleIds || []).forEach(
 
-                ...(
-                  rule.mandatory || []
-                )
+    ruleId => {
 
-              );
+        const resolvedRule =
 
-              recommended.push(
+            resolveCentralRule(ruleId);
 
-                ...(
-                  rule.recommended || []
-                )
+        if(resolvedRule){
 
-              );
+            mandatory.push(
+
+                resolvedRule
+
+            );
+
+        }
+
+        else{
+
+            console.warn(
+
+                "Unknown Rule:",
+
+                ruleId
+
+            );
+
+        }
+
+    }
+
+);
+
+/* ---------------------------------------
+   HR Advisory
+---------------------------------------- */
+
+recommended.push(
+
+    ...(rule.recommended || [])
+
+);
 
             }
 
