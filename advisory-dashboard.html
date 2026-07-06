@@ -595,7 +595,7 @@ let y = 40;
 assessment.mandatory.forEach(item=>{
 
 doc.text(
-"• " + item,
+"• " + formatRule(item),
 20,
 y
 );
@@ -1027,7 +1027,7 @@ People Strategy Priorities
 <ul>
 
 ${assessment.recommended
-.map(item => `<li>${formatRule(item)}</li>`)
+.map(item=>`<li>${formatRule(item)}</li>`)
 .join("")}
 
 </ul>
@@ -1114,8 +1114,7 @@ Compliance Requirements
 <ul>
 
 ${assessment.mandatory
-.map(item => `
-<li>${formatRule(item)}</li>
+.map(item => `<li>${formatRule(item)}</li>
 `)
 .join("")}
 
