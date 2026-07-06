@@ -178,23 +178,26 @@ await Promise.all(
 
       );
 
-      if(response.ok){
+if (response.ok) {
 
-        stateKnowledgeBase[stateName] =
+  try {
 
-          await safeJson(response, `states/${fileName}`);
+    stateKnowledgeBase[stateName] =
+      await response.json();
 
-      }
+    console.log(`✅ Loaded ${fileName}`);
 
-      else{
+  } catch (e) {
 
-        console.warn(
+    console.error(`❌ Invalid JSON: ${fileName}`, e);
 
-          `Unable to load ${fileName}`
+  }
 
-        );
+} else {
 
-      }
+  console.warn(`❌ Missing file: ${fileName}`);
+
+}
 
     }
 
