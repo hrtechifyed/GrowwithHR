@@ -11,25 +11,37 @@ try {
      LOAD JSON FILES
   ========================================== */
 
-  const [
-    updatesResponse,
-    statesResponse,
-    entitiesResponse,
-    industriesResponse,
-    engineResponse
-  ] = await Promise.all([
+const [
+  updatesResponse,
+  statesResponse,
+  entitiesResponse,
+  industriesResponse,
+  engineResponse,
+  sourceRegistryResponse,
+  centralLawsResponse,
+  entitiesRulesResponse,
+  industriesRulesResponse
+] = await Promise.all([
 
-    fetch("./data/updates.json"),
+  fetch("./data/updates.json"),
 
-    fetch("./data/states.json"),
+  fetch("./data/states.json"),
 
-    fetch("./data/entity-types.json"),
+  fetch("./data/entity-types.json"),
 
-    fetch("./data/industries.json"),
+  fetch("./data/industries.json"),
 
-    fetch("./data/compliance-engine.json")
+  fetch("./data/compliance-engine.json"),
 
-  ]);
+  fetch("./data/knowledge-base/source-registry.json"),
+
+  fetch("./data/knowledge-base/laws/central/central-laws.json"),
+
+  fetch("./data/knowledge-base/entities/entities.json"),
+
+  fetch("./data/knowledge-base/industries/industries.json")
+
+]);
 
   if (
     !updatesResponse.ok ||
@@ -67,6 +79,102 @@ const liveUpdatesData =
   const engineData =
     await engineResponse.json();
 
+  const sourceRegistry =
+  await sourceRegistryResponse.json();
+
+const centralLaws =
+  await centralLawsResponse.json();
+
+const entityRules =
+  await entitiesRulesResponse.json();
+
+const industryRules =
+  await industriesRulesResponse.json();
+
+ /* ==========================================
+   LOAD STATE KNOWLEDGE BASE
+========================================== */
+
+const stateFiles = {
+
+  "Andaman and Nicobar Islands":"andaman-and-nicobar.json",
+  "Andhra Pradesh":"andhra-pradesh.json",
+  "Arunachal Pradesh":"arunachal-pradesh.json",
+  "Assam":"assam.json",
+  "Bihar":"bihar.json",
+  "Chandigarh":"chandigarh.json",
+  "Chhattisgarh":"chhattisgarh.json",
+  "Dadra and Nagar Haveli and Daman and Diu":"dadra-and-nagar-haveli-and-daman-and-diu.json",
+  "Delhi":"delhi.json",
+  "Goa":"goa.json",
+  "Gujarat":"gujarat.json",
+  "Haryana":"haryana.json",
+  "Himachal Pradesh":"himachal-pradesh.json",
+  "Jammu and Kashmir":"jammu-and-kashmir.json",
+  "Jharkhand":"jharkhand.json",
+  "Karnataka":"karnataka.json",
+  "Kerala":"kerala.json",
+  "Ladakh":"ladakh.json",
+  "Lakshadweep":"lakshadweep.json",
+  "Madhya Pradesh":"madhya-pradesh.json",
+  "Maharashtra":"maharashtra.json",
+  "Manipur":"manipur.json",
+  "Meghalaya":"meghalaya.json",
+  "Mizoram":"mizoram.json",
+  "Nagaland":"nagaland.json",
+  "Odisha":"odisha.json",
+  "Puducherry":"puducherry.json",
+  "Punjab":"punjab.json",
+  "Rajasthan":"rajasthan.json",
+  "Sikkim":"sikkim.json",
+  "Tamil Nadu":"tamil-nadu.json",
+  "Telangana":"telangana.json",
+  "Tripura":"tripura.json",
+  "Uttar Pradesh":"uttar-pradesh.json",
+  "Uttarakhand":"uttarakhand.json",
+  "West Bengal":"west-bengal.json"
+
+};
+
+const stateKnowledgeBase = {};
+
+await Promise.all(
+
+  Object.entries(stateFiles).map(
+
+    async ([stateName,fileName]) => {
+
+      const response = await fetch(
+
+        `./data/knowledge-base/laws/states/${fileName}`
+
+      );
+
+      if(response.ok){
+
+        stateKnowledgeBase[stateName] =
+
+          await response.json();
+
+      }
+
+      else{
+
+        console.warn(
+
+          `Unable to load ${fileName}`
+
+        );
+
+      }
+
+    }
+
+  )
+
+);
+  
+
 /* ==========================================
      Debug
   ========================================== */
@@ -78,6 +186,39 @@ console.log("entities loaded", entityData);
 console.log("industries loaded", industriesData);
 
 console.log("engine loaded", engineData);
+
+console.log("knowledge base loaded");
+
+console.log(sourceRegistry);
+
+console.log(centralLaws);
+
+console.log(
+
+"Entity KB",
+
+entityRules
+
+);
+
+console.log(
+
+"Industry KB",
+
+industryRules
+
+);
+
+console.log(
+
+"States Loaded",
+
+Object.keys(stateKnowledgeBase).length
+
+);
+
+console.log(stateKnowledgeBase);  
+  
 /* ==========================================
      Debug
   ========================================== */
@@ -447,87 +588,178 @@ ${update.summary}
         let future = [];
 
         /* ==========================================
-           STATE RULES
-        ========================================== */
+   STATE KNOWLEDGE BASE
+========================================== */
+
+if (
+
+  stateKnowledgeBase[state]
+
+) {
+
+  const stateData =
+
+    stateKnowledgeBase[state];
+
+  if (
+
+    Array.isArray(stateData.rules)
+
+  ) {
+
+    stateData.rules.forEach(
+
+      rule => {
 
         if (
-          engineData.stateRules &&
-          engineData.stateRules[state]
+
+          rule.priority === "Mandatory"
+
         ) {
 
-          mandatory.push(
-
-            ...(
-              engineData
-                .stateRules[state]
-                .mandatory || []
-            )
-
-          );
+          mandatory.push(rule);
 
         }
 
+      }
+
+    );
+
+  }
+
+  if (
+
+    Array.isArray(stateData.recommended)
+
+  ) {
+
+    recommended.push(
+
+      ...stateData.recommended
+
+    );
+
+  }
+
+}
+       /* ==========================================
+   ENTITY KNOWLEDGE BASE
+========================================== */
+
+if (
+
+  entityRules.entities
+
+) {
+
+  const selectedEntity =
+
+    entityRules.entities.find(
+
+      e => e.name === entity
+
+    );
+
+  if (
+
+    selectedEntity
+
+  ) {
+
+    if (
+
+      Array.isArray(selectedEntity.rules)
+
+    ) {
+
+      selectedEntity.rules.forEach(
+
+        rule => {
+
+          if (
+
+            rule.priority === "Mandatory"
+
+          ) {
+
+            mandatory.push(rule);
+
+          }
+
+          else {
+
+            recommended.push(rule);
+
+          }
+
+        }
+
+      );
+
+    }
+
+  }
+
+}
         /* ==========================================
-           ENTITY RULES
-        ========================================== */
+   INDUSTRY KNOWLEDGE BASE
+========================================== */
 
-        if (
-          engineData.entityRules &&
-          engineData.entityRules[
-            entity
-          ]
-        ) {
+if (
 
-          const entityRule =
+  industryRules.industries
 
-            engineData
-              .entityRules[
-                entity
-              ];
+) {
 
-          mandatory.push(
+  const selectedIndustry =
 
-            ...(
-              entityRule.mandatory || []
-            )
+    industryRules.industries.find(
 
-          );
+      i => i.name === industry
 
-          recommended.push(
+    );
 
-            ...(
-              entityRule.recommended || []
-            )
+  if (
 
-          );
+    selectedIndustry
 
-        }
+  ) {
 
-        /* ==========================================
-           INDUSTRY RULES
-        ========================================== */
+    if (
 
-        if (
-          engineData.industryRules &&
-          engineData.industryRules[
-            industry
-          ]
-        ) {
+      Array.isArray(selectedIndustry.rules)
 
-          recommended.push(
+    ) {
 
-            ...(
-              engineData
-                .industryRules[
-                  industry
-                ]
-                .recommended || []
-            )
+      selectedIndustry.rules.forEach(
 
-          );
+        rule => {
+
+          if (
+
+            rule.priority === "Mandatory"
+
+          ) {
+
+            mandatory.push(rule);
+
+          }
+
+          else {
+
+            recommended.push(rule);
+
+          }
 
         }
 
+      );
+
+    }
+
+  }
+
+}
         /* ==========================================
            EMPLOYEE THRESHOLDS
         ========================================== */
@@ -616,19 +848,45 @@ ${update.summary}
            REMOVE DUPLICATES
         ========================================== */
 
-        mandatory =
-          [
-            ...new Set(
-              mandatory
-            )
-          ];
+mandatory = [
 
-        recommended =
-          [
-            ...new Set(
-              recommended
-            )
-          ];
+  ...new Map(
+
+    mandatory.map(
+
+      rule => [
+
+        rule.id || rule,
+
+        rule
+
+      ]
+
+    )
+
+  ).values()
+
+];
+
+recommended = [
+
+  ...new Map(
+
+    recommended.map(
+
+      rule => [
+
+        rule.id || rule,
+
+        rule
+
+      ]
+
+    )
+
+  ).values()
+
+];
 
         future =
           [
@@ -645,23 +903,24 @@ ${update.summary}
           mandatory.length === 0
         ) {
 
-          mandatory.push(
+         mandatory.push({
 
+          title:
             "No immediate mandatory requirements currently configured."
 
-          );
-
+      });
         }
 
         if (
           recommended.length === 0
         ) {
 
-          recommended.push(
+          recommended.push({
 
-            "No recommendations currently configured."
+          title:
+          "No recommendations currently configured."
 
-          );
+        });
 
         }
 
