@@ -243,24 +243,16 @@ await Promise.all(
 
       );
 
-  if (response.ok) {
-
-  try {
+if (response.ok) {
 
     stateKnowledgeBase[stateName] =
-      await response.json();
-
-    console.log(`✅ Loaded ${fileName}`);
-
-  } catch (e) {
-
-    console.error(`❌ Invalid JSON: ${fileName}`, e);
-
-  }
+        await response.json();
 
 } else {
 
-  console.warn(`❌ Missing file: ${fileName}`);
+    throw new Error(
+        `Missing knowledge base file: ${fileName}`
+    );
 
 }
 
