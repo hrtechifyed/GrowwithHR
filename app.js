@@ -275,16 +275,6 @@ await Promise.all(
      Debug
   ========================================== */
 
-  console.log("states loaded", statesData);
-
-console.log("entities loaded", entityData);
-
-console.log("industries loaded", industriesData);
-
-console.log("engine loaded", engineData);
-
-console.log("knowledge base loaded");
-
 console.log(
 "Central Laws Loaded",
 Object.keys(
@@ -338,7 +328,7 @@ console.log(stateKnowledgeBase);
      Debug
   ========================================== */
   console.log(
-    "GrowItWithHR V6 Engine Loaded Successfully"
+    "GrowItWithHR V7 Engine Loaded Successfully"
   );
 
   
