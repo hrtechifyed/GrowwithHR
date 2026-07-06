@@ -8,6 +8,26 @@ console.log(
 try {
 
   /* ==========================================
+     SAFE JSON HELPER
+     Prevents crashes from empty or malformed
+     JSON responses (e.g. empty files on host)
+  ========================================== */
+
+  async function safeJson(response, label) {
+    const text = await response.text();
+    if (!text) {
+      console.warn(`${label} was empty, defaulting to {}`);
+      return {};
+    }
+    try {
+      return JSON.parse(text);
+    } catch (e) {
+      console.warn(`${label} was invalid JSON, defaulting to {}`, e);
+      return {};
+    }
+  }
+
+  /* ==========================================
      LOAD JSON FILES
   ========================================== */
 
@@ -79,53 +99,25 @@ const liveUpdatesData =
   const engineData =
     await engineResponse.json();
 
- console.log(
-  "Source Registry",
-  sourceRegistryResponse.status,
-  sourceRegistryResponse.url
-);
+  const sourceRegistry =
+  await safeJson(sourceRegistryResponse, "source-registry.json");
 
-console.log(
-  "Central Laws",
-  centralLawsResponse.status,
-  centralLawsResponse.url
-);
-
-console.log(
-  "Entity Rules",
-  entitiesRulesResponse.status,
-  entitiesRulesResponse.url
-);
-
-console.log(
-  "Industry Rules",
-  industriesRulesResponse.status,
-  industriesRulesResponse.url
-);
-
-if (!sourceRegistryResponse.ok)
-  throw new Error("source-registry.json not found");
-
-if (!centralLawsResponse.ok)
-  throw new Error("central-laws.json not found");
-
-if (!entitiesRulesResponse.ok)
-  throw new Error("entities.json not found");
-
-if (!industriesRulesResponse.ok)
-  throw new Error("industries.json not found");
-
-const sourceRegistry =
-  await sourceRegistryResponse.json();
+console.log("Source Registry", sourceRegistryResponse.status, sourceRegistryResponse.url);
 
 const centralLaws =
-  await centralLawsResponse.json();
+  await safeJson(centralLawsResponse, "central-laws.json");
+
+console.log("Central Laws", centralLawsResponse.status, centralLawsResponse.url);
 
 const entityRules =
-  await entitiesRulesResponse.json();
+  await safeJson(entitiesRulesResponse, "entities.json (rules)");
+
+console.log("Entity Rules", entitiesRulesResponse.status, entitiesRulesResponse.url);
 
 const industryRules =
-  await industriesRulesResponse.json();
+  await safeJson(industriesRulesResponse, "industries.json (rules)");
+
+console.log("Industry Rules", industriesRulesResponse.status, industriesRulesResponse.url);
 
  /* ==========================================
    LOAD STATE KNOWLEDGE BASE
@@ -190,7 +182,7 @@ await Promise.all(
 
         stateKnowledgeBase[stateName] =
 
-          await response.json();
+          await safeJson(response, `states/${fileName}`);
 
       }
 
@@ -328,7 +320,7 @@ console.log("industrySelect", industrySelect);
   ========================================== */
 
   
-  if (stateSelect) {
+  if (stateSelect && stateList) {
 
     const locations = [
 
