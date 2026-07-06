@@ -458,6 +458,24 @@ Download Complete Advisory Pack
 
 <script>
 
+function formatRule(item){
+
+if(typeof item === "string"){
+
+return item;
+
+}
+
+if(item && typeof item === "object"){
+
+return item.title || item.name || JSON.stringify(item);
+
+}
+
+return "";
+
+} 
+
 function showSection(section){
 
 const panel =
@@ -479,7 +497,7 @@ panel.innerHTML = `
 <ul>
 
 ${assessment.mandatory
-.map(item=>`<li>${item}</li>`)
+.map(item=>`<li>${formatRule(item)}</li>`)
 .join("")}
 
 </ul>
@@ -518,7 +536,7 @@ panel.innerHTML = `
 <ul>
 
 ${assessment.recommended
-.map(item=>`<li>${item}</li>`)
+.map(item=>`<li>${formatRule(item)}</li>`)
 .join("")}
 
 </ul>
@@ -538,7 +556,7 @@ panel.innerHTML = `
 <ul>
 
 ${assessment.future
-.map(item=>`<li>${item}</li>`)
+.map(item=>`<li>${formatRule(item)}</li>`)
 .join("")}
 
 </ul>
@@ -1009,7 +1027,7 @@ People Strategy Priorities
 <ul>
 
 ${assessment.recommended
-.map(item => `<li>${item}</li>`)
+.map(item => `<li>${formatRule(item)}</li>`)
 .join("")}
 
 </ul>
@@ -1030,7 +1048,7 @@ Growth Readiness Priorities
 <ul>
 
 ${assessment.future
-.map(item => `<li>${item}</li>`)
+.map(item => `<li>${formatRule(item)}</li>`)
 .join("")}
 
 </ul>
@@ -1050,7 +1068,7 @@ Compliance Requirements
 
 <ul>
 ${assessment.mandatory
-.map(item => `<li>${item}</li>`)
+.map(item => `<li>${formatRule(item)}</li>`)
 .join("")}
 </ul>
 <div style="height:20px;"></div>
@@ -1062,7 +1080,7 @@ People Strategy Priorities
 
 <ul>
 ${assessment.recommended
-.map(item => `<li>${item}</li>`)
+.map(item => `<li>${formatRule(item)}</li>`)
 .join("")}
 </ul>
 <div style="height:20px;"></div>
@@ -1074,7 +1092,7 @@ Growth Readiness Priorities
 
 <ul>
 ${assessment.future
-.map(item => `<li>${item}</li>`)
+.map(item => `<li>${formatRule(item)}</li>`)
 .join("")}
 </ul>
 `
@@ -1097,7 +1115,7 @@ Compliance Requirements
 
 ${assessment.mandatory
 .map(item => `
-<li>${item}</li>
+<li>${formatRule(item)}</li>
 `)
 .join("")}
 
