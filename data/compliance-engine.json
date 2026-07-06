@@ -4,60 +4,104 @@
 
 "employeeThresholdRules": {
 
-"10": {
-"mandatory": [
-"POSH Policy",
-"POSH Awareness Training"
-],
-"recommended": [
-"Basic Employee Handbook",
-"Leave Policy",
-"Attendance Management Process",
-"Employment Documentation Review"
-]
-},
+  "10": {
 
-"20": {
-"mandatory": [
-"Review EPF Applicability and Employer Obligations"
-],
-"recommended": [
-"Employee Handbook",
-"Code of Conduct",
-"Grievance Redressal Framework",
-"Performance Management Process",
-"Employee Data Management Framework"
-]
-},
+    "mandatoryRuleIds": [
+      "POSH-001"
+    ],
 
-"50": {
-"mandatory": [
-"Formal HR Policies",
-"Performance Management Framework",
-"Workforce Compliance Calendar"
-],
-"recommended": [
-"Manager Capability Development",
-"Structured Onboarding Program",
-"Workforce Planning Framework",
-"Internal HR Governance Reviews"
-]
-},
+    "recommended": [
+      "Basic Employee Handbook",
+      "Leave Policy",
+      "Attendance Management Process",
+      "Employment Documentation Review"
+    ]
 
-"100": {
-"mandatory": [
-"Formal HR Governance Framework"
-],
-"recommended": [
-"HRIS Implementation",
-"Workforce Analytics",
-"Internal Compliance Reviews",
-"Leadership Development Framework",
-"Succession Planning Framework"
-]
-}
-},
+  },
 
+  "20": {
+
+    "mandatoryRuleIds": [
+      "EPFO-001"
+    ],
+
+    "recommended": [
+      "Employee Handbook",
+      "Code of Conduct",
+      "Grievance Redressal Framework",
+      "Performance Management Process",
+      "Employee Data Management Framework"
+    ]
+
+  },
+
+  "50": {
+
+    "mandatoryRuleIds": [
+
+      "EPFO-002",
+      "EPFO-003",
+      "EPFO-004",
+      "EPFO-005",
+
+      "ESIC-001",
+
+      "GRAT-001"
+
+    ],
+
+    "recommended": [
+
+      "Formal HR Policies",
+
+      "Performance Management Framework",
+
+      "Workforce Compliance Calendar",
+
+      "Manager Capability Development",
+
+      "Structured Onboarding Program",
+
+      "Workforce Planning Framework",
+
+      "Internal HR Governance Reviews"
+
+    ]
+
+  },
+
+  "100": {
+
+    "mandatoryRuleIds": [
+
+      "BONUS-001",
+
+      "MB-001"
+
+    ],
+
+    "recommended": [
+
+      "Formal HR Governance Framework",
+
+      "HRIS Implementation",
+
+      "Workforce Analytics",
+
+      "Leadership Development Framework",
+      
+      "Organization Development Framework",     
+
+      "Succession Planning Framework",
+      
+      "Total Rewards Framework",
+      
+
+    ]
+
+  }
+
+},
   "entityRules": {
 
     "Private Limited Company": {
