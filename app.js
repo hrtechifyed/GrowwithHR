@@ -79,7 +79,43 @@ const liveUpdatesData =
   const engineData =
     await engineResponse.json();
 
-  const sourceRegistry =
+ console.log(
+  "Source Registry",
+  sourceRegistryResponse.status,
+  sourceRegistryResponse.url
+);
+
+console.log(
+  "Central Laws",
+  centralLawsResponse.status,
+  centralLawsResponse.url
+);
+
+console.log(
+  "Entity Rules",
+  entitiesRulesResponse.status,
+  entitiesRulesResponse.url
+);
+
+console.log(
+  "Industry Rules",
+  industriesRulesResponse.status,
+  industriesRulesResponse.url
+);
+
+if (!sourceRegistryResponse.ok)
+  throw new Error("source-registry.json not found");
+
+if (!centralLawsResponse.ok)
+  throw new Error("central-laws.json not found");
+
+if (!entitiesRulesResponse.ok)
+  throw new Error("entities.json not found");
+
+if (!industriesRulesResponse.ok)
+  throw new Error("industries.json not found");
+
+const sourceRegistry =
   await sourceRegistryResponse.json();
 
 const centralLaws =
