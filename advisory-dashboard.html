@@ -809,6 +809,54 @@ return "This requirement relates to statutory maternity benefit obligations appl
 return "This requirement has been identified after evaluating your selected state, entity type, industry and employee band against the GrowItWithHR Knowledge Base.";
 
 }
+
+function getAuthorityName(sourceId){
+
+switch(sourceId){
+
+case "EPFO":
+
+return "Employees' Provident Fund Organisation (EPFO)";
+
+case "ESIC":
+
+return "Employees' State Insurance Corporation (ESIC)";
+
+case "INDIACODE":
+
+return "India Code";
+
+default:
+
+return "Ministry of Labour & Employment";
+
+}
+
+}
+
+ function getAuthorityURL(sourceId){
+
+switch(sourceId){
+
+case "EPFO":
+
+return "https://www.epfindia.gov.in";
+
+case "ESIC":
+
+return "https://www.esic.gov.in";
+
+case "INDIACODE":
+
+return "https://www.indiacode.nic.in";
+
+default:
+
+return "https://labour.gov.in";
+
+}
+
+}
  
 function showSection(section){
 
@@ -946,9 +994,29 @@ ${getRuleExplanation(rule)}
 </div>
 <p>
 
+<div
+style="
+margin-top:20px;
+padding:18px;
+background:#f8fafc;
+border-radius:12px;
+border:1px solid #e5e7eb;
+">
+
+<h4
+style="
+margin-bottom:15px;
+">
+
+🏛 Official Resources
+
+</h4>
+
+<p>
+
 <strong>Authority</strong><br>
 
-${authority}
+${getAuthorityName(authority)}
 
 </p>
 
@@ -958,7 +1026,7 @@ citations
 `
 <p>
 
-<strong>Legal Reference</strong><br>
+<strong>Applicable Law</strong><br>
 
 ${citations}
 
@@ -967,6 +1035,32 @@ ${citations}
 :
 ""
 }
+
+<p>
+
+<strong>Official Website</strong><br>
+
+<a
+href="${getAuthorityURL(authority)}"
+target="_blank">
+
+${getAuthorityURL(authority)}
+
+</a>
+
+</p>
+
+<p>
+
+<strong>Last Verified</strong><br>
+
+${rule.lastVerified || "Knowledge Base v7.0"}
+
+</p>
+
+</div>
+
+
 
 <div
 style="
