@@ -985,6 +985,116 @@ return "Annual review";
 return "As the organisation scales.";
 }
 
+function getNextActions(rule){
+
+const title =
+(rule.title || "").toLowerCase();
+
+if(title.includes("epf")){
+
+return [
+
+"Review EPF applicability.",
+
+"Register the establishment with EPFO if applicable.",
+
+"Enroll eligible employees.",
+
+"Deposit monthly EPF contributions.",
+
+"Maintain statutory EPF records."
+
+];
+
+}
+
+if(title.includes("esic")){
+
+return [
+
+"Review ESIC applicability.",
+
+"Register the establishment.",
+
+"Register eligible employees.",
+
+"Deposit contributions within timelines.",
+
+"Maintain ESIC records."
+
+];
+
+}
+
+if(title.includes("posh")){
+
+return [
+
+"Review POSH applicability.",
+
+"Constitute an Internal Committee where required.",
+
+"Publish the POSH policy.",
+
+"Conduct awareness sessions.",
+
+"Maintain complaint records."
+
+];
+
+}
+
+if(title.includes("gratuity")){
+
+return [
+
+"Review gratuity eligibility.",
+
+"Maintain service records.",
+
+"Calculate gratuity correctly.",
+
+"Process payments within timelines.",
+
+"Maintain statutory documentation."
+
+];
+
+}
+
+if(title.includes("bonus")){
+
+return [
+
+"Review employee eligibility.",
+
+"Calculate bonus correctly.",
+
+"Maintain payment records.",
+
+"Disburse within statutory timelines."
+
+];
+
+}
+
+return [
+
+"Review the requirement.",
+
+"Prepare supporting documentation.",
+
+"Implement the necessary process.",
+
+"Maintain appropriate records.",
+
+"Review compliance periodically."
+
+];
+
+}
+
+ 
  
 
  
@@ -1244,6 +1354,24 @@ Learn More
 }
 
 </div>
+
+<hr style="margin:20px 0;">
+
+<h4>
+
+✅ Next Actions
+
+</h4>
+
+<ul>
+
+${getNextActions(rule).map(action=>`
+
+<li>${action}</li>
+
+`).join("")}
+
+</ul>
 
 </div>
 
