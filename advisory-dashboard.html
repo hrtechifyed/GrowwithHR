@@ -919,6 +919,74 @@ return "90–180 Days";
 return "As the organisation scales.";
 }
  
+function getGrowthReason(item){
+
+const text = item.toLowerCase();
+
+if(text.includes("hris"))
+return "Implementing an HRIS improves employee data management, reporting and operational efficiency.";
+
+if(text.includes("analytics"))
+return "People analytics enables better workforce planning and informed decision-making.";
+
+if(text.includes("leadership"))
+return "Leadership capability becomes increasingly important as reporting structures expand.";
+
+if(text.includes("succession"))
+return "Succession planning reduces business continuity risk and strengthens organisational resilience.";
+
+if(text.includes("audit"))
+return "Periodic internal reviews improve governance and compliance preparedness.";
+
+return "This initiative supports long-term organisational growth.";
+}
+
+function getGrowthBenefit(item){
+
+const text = item.toLowerCase();
+
+if(text.includes("hris"))
+return "Reduces manual administration and improves data accuracy.";
+
+if(text.includes("analytics"))
+return "Supports evidence-based workforce decisions.";
+
+if(text.includes("leadership"))
+return "Builds stronger managers and future leaders.";
+
+if(text.includes("succession"))
+return "Improves business continuity and talent retention.";
+
+if(text.includes("audit"))
+return "Improves governance maturity.";
+
+return "Supports sustainable organisational growth.";
+}
+
+function getGrowthTimeline(item){
+
+const text = item.toLowerCase();
+
+if(text.includes("hris"))
+return "Within 6–12 months";
+
+if(text.includes("analytics"))
+return "After HRIS implementation";
+
+if(text.includes("leadership"))
+return "Within 3–6 months";
+
+if(text.includes("succession"))
+return "Before crossing 250 employees";
+
+if(text.includes("audit"))
+return "Annual review";
+
+return "As the organisation scales.";
+}
+
+ 
+
  
 function showSection(section){
 
@@ -1275,26 +1343,95 @@ ${getRecommendationTimeline(recommendation)}
 `;
 
 }
+ 
 if(section==="growth"){
 
 panel.innerHTML = `
 
 <h2>
+
 📈 Growth Readiness
+
 </h2>
 
-<ul>
+<p style="margin-bottom:30px;">
 
-${assessment.future
-.map(item=>`<li>${formatRule(item)}</li>`)
-.join("")}
+The following initiatives will help your organisation scale sustainably as your workforce grows.
 
-</ul>
+</p>
+
+${assessment.future.map(item=>{
+
+const initiative = formatRule(item);
+
+return `
+
+<div
+style="
+background:white;
+border-radius:18px;
+padding:24px;
+margin-bottom:24px;
+border:1px solid rgba(0,0,0,.08);
+box-shadow:0 8px 25px rgba(0,0,0,.05);
+">
+
+<h3>
+
+${initiative}
+
+</h3>
+
+<p>
+
+<strong>Why this matters</strong>
+
+</p>
+
+<p>
+
+${getGrowthReason(initiative)}
+
+</p>
+
+<hr style="margin:20px 0;">
+
+<p>
+
+<strong>Business Impact</strong>
+
+</p>
+
+<p>
+
+${getGrowthBenefit(initiative)}
+
+</p>
+
+<hr style="margin:20px 0;">
+
+<p>
+
+<strong>Suggested Timeline</strong>
+
+</p>
+
+<p>
+
+${getGrowthTimeline(initiative)}
+
+</p>
+
+</div>
+
+`;
+
+}).join("")}
 
 `;
 
 }
-
+ 
 if(section==="expansion"){
 
 openStateComparisonModal();
