@@ -857,6 +857,68 @@ return "https://labour.gov.in";
 }
 
 }
+
+function getRecommendationReason(item){
+
+const text = item.toLowerCase();
+
+if(text.includes("handbook"))
+return "A documented handbook establishes consistent workplace expectations and improves employee understanding of organisational policies.";
+
+if(text.includes("performance"))
+return "A structured performance framework improves accountability, development and organisational alignment.";
+
+if(text.includes("manager"))
+return "Developing people managers improves team performance and reduces employee relations risk.";
+
+if(text.includes("workforce"))
+return "Planning workforce requirements supports sustainable organisational growth.";
+
+if(text.includes("grievance"))
+return "A formal grievance process strengthens governance and employee confidence.";
+
+return "This recommendation supports stronger HR governance as the organisation grows.";
+
+}
+
+function getRecommendationBenefit(item){
+
+const text = item.toLowerCase();
+
+if(text.includes("handbook"))
+return "Improves consistency, transparency and employee experience.";
+
+if(text.includes("performance"))
+return "Supports goal alignment and continuous employee development.";
+
+if(text.includes("manager"))
+return "Builds leadership capability and improves decision-making.";
+
+if(text.includes("workforce"))
+return "Improves hiring decisions and future workforce readiness.";
+
+return "Supports long-term organisational maturity.";
+}
+
+ function getRecommendationTimeline(item){
+
+const text = item.toLowerCase();
+
+if(text.includes("handbook"))
+return "0–30 Days";
+
+if(text.includes("performance"))
+return "30–90 Days";
+
+if(text.includes("manager"))
+return "60–180 Days";
+
+if(text.includes("workforce"))
+return "90–180 Days";
+
+return "As the organisation scales.";
+}
+ 
  
 function showSection(section){
 
@@ -1131,21 +1193,88 @@ if(section==="people"){
 panel.innerHTML = `
 
 <h2>
+
 👥 People Strategy
+
 </h2>
 
-<ul>
+<p style="margin-bottom:30px;">
 
-${assessment.recommended
-.map(item=>`<li>${formatRule(item)}</li>`)
-.join("")}
+The following HR governance recommendations are intended to strengthen organisational capability as your business grows.
 
-</ul>
+</p>
+
+${assessment.recommended.map(item=>{
+
+const recommendation = formatRule(item);
+
+return `
+
+<div
+style="
+background:white;
+border-radius:18px;
+padding:24px;
+margin-bottom:24px;
+border:1px solid rgba(0,0,0,.08);
+box-shadow:0 8px 25px rgba(0,0,0,.05);
+">
+
+<h3>
+
+${recommendation}
+
+</h3>
+
+<p>
+
+<strong>Why recommended</strong>
+
+</p>
+
+<p>
+
+${getRecommendationReason(recommendation)}
+
+</p>
+
+<hr style="margin:20px 0;">
+
+<p>
+
+<strong>Business Benefit</strong>
+
+</p>
+
+<p>
+
+${getRecommendationBenefit(recommendation)}
+
+</p>
+
+<hr style="margin:20px 0;">
+
+<p>
+
+<strong>Recommended Timeline</strong>
+
+</p>
+
+<p>
+
+${getRecommendationTimeline(recommendation)}
+
+</p>
+
+</div>
+
+`;
+
+}).join("")}
 
 `;
 
 }
-
 if(section==="growth"){
 
 panel.innerHTML = `
