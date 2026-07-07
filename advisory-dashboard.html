@@ -483,7 +483,7 @@ ${
 assessment.mandatory.map(rule=>{
 
 const title =
-formatRule(rule).toLowerCase();
+(rule.title || rule.name || String(rule)).toLowerCase();
 
 if(
 title.includes("epf") ||
