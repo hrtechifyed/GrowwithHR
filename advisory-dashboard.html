@@ -261,76 +261,202 @@ EXECUTIVE COMPLIANCE SUMMARY
 
 <div class="summary-card executive-summary">
 
-<h2 style="margin-bottom:25px;">
+<h2>
 
 📋 Executive Compliance Summary
 
 </h2>
 
-<div class="profile-grid">
+<p class="executive-subtitle">
 
-<div class="profile-card">
+A consolidated overview of your organisation's compliance and HR governance profile.
 
-<span>Assessment Date</span>
+</p>
 
-<strong>
+<hr style="margin:30px 0;opacity:.12;">
 
-${assessment.generatedDate}
+<div class="executive-top">
 
-</strong>
+<div>
 
-</div>
+<h4>Assessment Date</h4>
 
-<div class="profile-card">
-
-<span>State</span>
-
-<strong>
-
-${assessment.state}
-
-</strong>
+<p>${assessment.generatedDate}</p>
 
 </div>
 
-<div class="profile-card">
+<div>
 
-<span>Entity</span>
+<h4>Compliance Status</h4>
 
-<strong>
+<p>
 
-${assessment.entity}
+${
+assessment.mandatory.length >= 15
+? "🔴 Immediate Attention Required"
+: assessment.mandatory.length >= 8
+? "🟡 Review Required"
+: "🟢 Foundational Compliance Established"
+}
 
-</strong>
+</p>
 
 </div>
 
-<div class="profile-card">
+</div>
+
+<hr style="margin:30px 0;opacity:.12;">
+
+<h3>
+
+Organisation Profile
+
+</h3>
+
+<div class="executive-profile">
+
+<div class="executive-item">
+
+<span>State / UT</span>
+
+<strong>${assessment.state}</strong>
+
+</div>
+
+<div class="executive-item">
+
+<span>Entity Type</span>
+
+<strong>${assessment.entity}</strong>
+
+</div>
+
+<div class="executive-item">
 
 <span>Industry</span>
 
-<strong>
-
-${assessment.industry}
-
-</strong>
+<strong>${assessment.industry}</strong>
 
 </div>
 
-<div class="profile-card">
+<div class="executive-item">
 
 <span>Employee Band</span>
 
-<strong>
-
-${assessment.employeeBand}
-
-</strong>
+<strong>${assessment.employeeBand}</strong>
 
 </div>
 
 </div>
 
+<hr style="margin:30px 0;opacity:.12;">
+
+<h3>
+
+Compliance Overview
+
+</h3>
+
+<div class="executive-metrics">
+
+<div class="metric-card">
+
+<h2>${assessment.mandatory.length}</h2>
+
+<p>Mandatory Requirements</p>
+
+<button
+class="secondary-btn"
+onclick="showSection('compliance')">
+
+View Details
+
+</button>
+
+</div>
+
+<div class="metric-card">
+
+<h2>${assessment.recommended.length}</h2>
+
+<p>HR Recommendations</p>
+
+<button
+class="secondary-btn"
+onclick="showSection('people')">
+
+View Details
+
+</button>
+
+</div>
+
+<div class="metric-card">
+
+<h2>${assessment.future.length}</h2>
+
+<p>Future Readiness</p>
+
+<button
+class="secondary-btn"
+onclick="showSection('growth')">
+
+View Details
+
+</button>
+
+</div>
+
+</div>
+
+<hr style="margin:30px 0;opacity:.12;">
+
+<h3>
+
+Primary Focus Areas
+
+</h3>
+
+<ul class="focus-list">
+
+${
+[
+...new Set(
+
+assessment.mandatory.map(rule=>{
+
+const title =
+(rule.title || rule.name || String(rule)).toLowerCase();
+
+if(title.includes("epf") || title.includes("esic"))
+return "Social Security Compliance";
+
+if(title.includes("payroll"))
+return "Payroll Compliance";
+
+if(title.includes("employment"))
+return "Employment Documentation";
+
+if(title.includes("posh"))
+return "Workplace Policies";
+
+if(title.includes("gratuity") || title.includes("bonus"))
+return "Statutory Benefits";
+
+return "General Labour Compliance";
+
+})
+
+)
+
+]
+.map(item=>`<li>${item}</li>`)
+.join("")
+}
+
+</ul>
+
+</div>
 <hr
 style="
 margin:30px 0;
