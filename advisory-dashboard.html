@@ -763,45 +763,175 @@ document.getElementById(
 panel.style.display =
 "block";
 
+
 if(section==="compliance"){
 
 panel.innerHTML = `
 
 <h2>
+
 ⚖️ Compliance Readiness
+
 </h2>
 
-<ul>
+<p style="margin-bottom:30px;">
 
-${assessment.mandatory
-.map(item=>`<li>${formatRule(item)}</li>`)
-.join("")}
+The following statutory compliance obligations have been identified based on your selected organisation profile.
 
-</ul>
+</p>
+
+${assessment.mandatory.map(rule=>{
+
+const title =
+rule.title || formatRule(rule);
+
+const description =
+rule.description ||
+"No additional description available.";
+
+const category =
+rule.category ||
+"General Compliance";
+
+const authority =
+rule.sourceId ||
+"Government Authority";
+
+const citations =
+(rule.citations || [])
+.map(c=>c.reference)
+.join("<br>");
+
+return `
+
+<div
+style="
+background:white;
+border-radius:18px;
+padding:24px;
+margin-bottom:24px;
+border:1px solid rgba(0,0,0,.08);
+box-shadow:0 8px 25px rgba(0,0,0,.05);
+">
 
 <h3>
-Official Sources
+
+${title}
+
 </h3>
 
-<ul>
+<p>
 
-${assessment.sources
+${description}
+
+</p>
+
+<hr style="margin:20px 0;">
+
+<p>
+
+<strong>Category</strong><br>
+
+${category}
+
+</p>
+
+<p>
+
+<strong>Why this applies</strong><br>
+
+Applicable based on your selected organisation profile, including employee band, entity type, industry and state.
+
+</p>
+
+<p>
+
+<strong>Authority</strong><br>
+
+${authority}
+
+</p>
+
+${
+citations
+?
+`
+<p>
+
+<strong>Legal Reference</strong><br>
+
+${citations}
+
+</p>
+`
+:
+""
+}
+
+<div
+style="
+margin-top:20px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+">
+
+${
+assessment.sources
+.filter(s=>{
+
+const name =
+s.name.toLowerCase();
+
+return(
+
+name.includes("labour") ||
+
+name.includes("epfo") ||
+
+name.includes("esic") ||
+
+name.includes("india")
+
+);
+
+})
 .map(source=>`
-<li>
-<a href="${source.url}"
-target="_blank">
-${source.name}
-</a>
-</li>
-`)
-.join("")}
 
-</ul>
+<a
+href="${source.url}"
+target="_blank"
+style="
+padding:10px 16px;
+background:#0f172a;
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-size:14px;
+">
+
+Learn More
+
+</a>
+
+`)
+.join("")
+
+}
+
+</div>
+
+</div>
+
+`;
+
+}).join("")}
 
 `;
 
 }
 
+ 
 if(section==="people"){
 
 panel.innerHTML = `
