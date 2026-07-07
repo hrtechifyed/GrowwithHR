@@ -753,6 +753,63 @@ return "";
 
 } 
 
+function getRuleExplanation(rule){
+
+const title =
+(rule.title || "").toLowerCase();
+
+if(
+title.includes("epf")
+){
+
+return "This requirement has been identified because organisations in the selected employee band should review their obligations under the Employees' Provident Funds and Miscellaneous Provisions Act, 1952.";
+
+}
+
+if(
+title.includes("esic")
+){
+
+return "This requirement has been identified because organisations in the selected employee band should review their obligations under the Employees' State Insurance Act, 1948.";
+
+}
+
+if(
+title.includes("posh")
+){
+
+return "This requirement applies because employers are expected to review workplace harassment prevention obligations under the POSH framework.";
+
+}
+
+if(
+title.includes("gratuity")
+){
+
+return "This requirement has been identified based on statutory obligations relating to gratuity benefits for eligible employees.";
+
+}
+
+if(
+title.includes("bonus")
+){
+
+return "This requirement has been identified based on statutory obligations relating to payment of bonus.";
+
+}
+
+if(
+title.includes("maternity")
+){
+
+return "This requirement relates to statutory maternity benefit obligations applicable to eligible establishments.";
+
+}
+
+return "This requirement has been identified after evaluating your selected state, entity type, industry and employee band against the GrowItWithHR Knowledge Base.";
+
+}
+ 
 function showSection(section){
 
 const panel =
@@ -838,12 +895,55 @@ ${category}
 
 <p>
 
-<strong>Why this applies</strong><br>
-
-Applicable based on your selected organisation profile, including employee band, entity type, industry and state.
+<strong>Why this applies</strong>
 
 </p>
 
+<div
+style="
+background:#f8fafc;
+padding:16px;
+border-radius:12px;
+margin-top:12px;
+margin-bottom:20px;
+border-left:4px solid #2563eb;
+">
+
+<p>
+
+<strong>State:</strong>
+${assessment.state}
+
+</p>
+
+<p>
+
+<strong>Entity:</strong>
+${assessment.entity}
+
+</p>
+
+<p>
+
+<strong>Industry:</strong>
+${assessment.industry}
+
+</p>
+
+<p>
+
+<strong>Employee Band:</strong>
+${assessment.employeeBand}
+
+</p>
+
+<p style="margin-top:16px;">
+
+${getRuleExplanation(rule)}
+
+</p>
+
+</div>
 <p>
 
 <strong>Authority</strong><br>
