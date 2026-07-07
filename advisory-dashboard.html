@@ -1,3 +1,7 @@
+PART WISE
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,33 +10,28 @@
 <meta charset="UTF-8">
 
 <meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
 <title>
-GrowItWithHR | Executive Advisory Dashboard
+    GrowItWithHR | Executive Advisory Dashboard
 </title>
 
 <link
-rel="stylesheet"
-href="styles.css">
+    rel="stylesheet"
+    href="styles.css">
 
-<script
-src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
+(function () {
 
-(function(){
-
-emailjs.init({
-publicKey:
-"VW0eRAbcJdIvP4Mc3"
-});
+    emailjs.init({
+        publicKey: "VW0eRAbcJdIvP4Mc3"
+    });
 
 })();
-
-</script>  
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
@@ -44,220 +43,213 @@ publicKey:
 
 <body>
 
-<!-- ==========================================
-NAVIGATION
-========================================== -->
+<!-- =====================================================
+     NAVIGATION
+====================================================== -->
 
 <nav class="navbar">
 
-<div class="nav-container">
+    <div class="nav-container">
 
-<div class="brand">
+        <div class="brand">
 
-<img
-src="assets/hrtechify-logo.png"
-alt="HRTechify Logo"
-class="nav-logo">
+            <img
+                src="assets/hrtechify-logo.png"
+                alt="HRTechify Logo"
+                class="nav-logo">
 
-<div>
+            <div>
 
-<div class="brand-name">
-HRTechify
-</div>
+                <div class="brand-name">
+                    HRTechify
+                </div>
 
-<div class="product-name">
-GrowItWithHR
-</div>
+                <div class="product-name">
+                    GrowItWithHR
+                </div>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </nav>
 
-<!-- ==========================================
-HERO
-========================================== -->
+<!-- =====================================================
+     HERO
+====================================================== -->
 
 <header class="hero">
 
-<div class="hero-orb hero-orb-1"></div>
-<div class="hero-orb hero-orb-2"></div>
-<div class="hero-orb hero-orb-3"></div> 
- 
-  
-<div class="hero-particles"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
 
-<div class="container">
+    <div class="hero-particles"></div>
 
-<div class="hero-content">
+    <div class="container">
 
-<div class="hero-badge">
+        <div class="hero-content">
 
-Executive Advisory Dashboard
+            <div class="hero-badge">
 
-</div>
+                Executive Advisory Dashboard
 
-<h1>
+            </div>
 
-Your HR Compliance & Growth Readiness Summary
+            <h1>
 
-</h1>
+                Your HR Compliance &amp; Growth Readiness Summary
 
-<p class="hero-description">
+            </h1>
 
-Explore compliance obligations,
-people foundations and growth priorities
-tailored to your organisation.
+            <p class="hero-description">
 
-</p>
+                Explore compliance obligations,
+                people foundations,
+                governance priorities,
+                and organisational growth recommendations
+                tailored specifically to your business profile.
 
-</div>
+            </p>
 
-</div>
+        </div>
+
+    </div>
 
 </header>
 
-
-<!-- ==========================================
-DASHBOARD CONTENT
-========================================== -->
+<!-- =====================================================
+     DASHBOARD
+====================================================== -->
 
 <section class="section">
 
-<div class="container">
+    <div class="container">
 
-<div id="dashboardContent">
+        <div id="dashboardContent">
 
-<h2>
+            <div class="summary-card">
 
-Loading Advisory Dashboard...
+                <h2>
 
-</h2>
+                    Loading Executive Advisory Dashboard...
 
-</div>
+                </h2>
 
-</div>
+                <p>
+
+                    Preparing your personalised compliance assessment.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
-<!-- ==========================================
-FOOTER
-========================================== -->
+<!-- =====================================================
+     FOOTER
+====================================================== -->
 
 <footer class="footer">
 
-<div class="container">
+    <div class="container">
 
-<div class="footer-content">
+        <div class="footer-content">
 
-<div class="footer-brand">
+            <div class="footer-brand">
 
-<img
-src="assets/hrtechify-logo.png"
-alt="HRTechify Logo"
-class="footer-logo">
+                <img
+                    src="assets/hrtechify-logo.png"
+                    alt="HRTechify Logo"
+                    class="footer-logo">
 
-<div>
+                <div>
 
-<div class="brand-name">
-HRTechify
-</div>
+                    <div class="brand-name">
+                        HRTechify
+                    </div>
 
-<div class="product-name">
-GrowItWithHR Public Beta v6.3
-</div>
+                    <div class="product-name">
+                        GrowItWithHR Public Beta v7.1
+                    </div>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-<p>
+            <p>
 
-© 2026 HRTechify.
-All Rights Reserved.
+                © 2026 HRTechify. All Rights Reserved.
 
-</p>
+            </p>
 
-<p>
+            <p>
 
-Smart People Strategy. More business momentum.
+                Smart People Strategy. More Business Momentum.
 
-</p>
+            </p>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </footer>
 
-<!-- ==========================================
-READ SAVED ASSESSMENT
-========================================== -->
+<!-- =====================================================
+     LOAD SAVED ASSESSMENT
+====================================================== -->
 
 <script>
 
 const assessment =
 JSON.parse(
-  localStorage.getItem(
-    "growitwithhrAssessment"
-  )
+    localStorage.getItem(
+        "growitwithhrAssessment"
+    )
 );
 
 console.log(
-  "Assessment:",
-  assessment
+    "Assessment Loaded:",
+    assessment
 );
 
-if (
-  assessment
-) {
+if (!assessment) {
 
-  document.getElementById(
-    "dashboardContent"
-  ).innerHTML = `
+    document.getElementById("dashboardContent").innerHTML = `
 
-<div class="profile-grid">
+<div class="summary-card">
 
-  <div class="profile-card">
+<h2>
 
-    <span>State / UT</span>
+No Assessment Found
 
-    <strong>${assessment.state}</strong>
+</h2>
 
-  </div>
+<p>
 
-  <div class="profile-card">
+Please return to GrowItWithHR,
+complete an assessment,
+and generate your Executive Advisory Dashboard.
 
-    <span>Entity Type</span>
-
-    <strong>${assessment.entity}</strong>
-
-  </div>
-
-  <div class="profile-card">
-
-    <span>Industry</span>
-
-    <strong>${assessment.industry}</strong>
-
-  </div>
-
-  <div class="profile-card">
-
-    <span>Employee Count</span>
-
-    <strong>${assessment.employeeBand}</strong>
-
-  </div>
+</p>
 
 </div>
 
-<!-- ==========================================
-EXECUTIVE COMPLIANCE SUMMARY
-========================================== -->
+`;
+
+} else {
+
+    document.getElementById("dashboardContent").innerHTML = `
+
+<!-- =====================================================
+     EXECUTIVE SUMMARY
+====================================================== -->
 
 <div class="summary-card executive-summary">
 
@@ -269,25 +261,39 @@ EXECUTIVE COMPLIANCE SUMMARY
 
 <p class="executive-subtitle">
 
-A consolidated overview of your organisation's compliance and HR governance profile.
+A consolidated view of your statutory compliance obligations,
+HR governance priorities and organisational growth readiness
+based on your assessment.
 
 </p>
 
-<hr style="margin:30px 0;opacity:.12;">
+<hr>
 
 <div class="executive-top">
 
 <div>
 
-<h4>Assessment Date</h4>
+<h4>
 
-<p>${assessment.generatedDate}</p>
+Assessment Date
+
+</h4>
+
+<p>
+
+${assessment.generatedDate || new Date().toLocaleDateString("en-GB")}
+
+</p>
 
 </div>
 
 <div>
 
-<h4>Compliance Status</h4>
+<h4>
+
+Compliance Status
+
+</h4>
 
 <p>
 
@@ -305,7 +311,7 @@ assessment.mandatory.length >= 15
 
 </div>
 
-<hr style="margin:30px 0;opacity:.12;">
+<hr>
 
 <h3>
 
@@ -317,39 +323,71 @@ Organisation Profile
 
 <div class="executive-item">
 
-<span>State / UT</span>
+<span>
 
-<strong>${assessment.state}</strong>
+State / UT
 
-</div>
+</span>
 
-<div class="executive-item">
+<strong>
 
-<span>Entity Type</span>
+${assessment.state}
 
-<strong>${assessment.entity}</strong>
-
-</div>
-
-<div class="executive-item">
-
-<span>Industry</span>
-
-<strong>${assessment.industry}</strong>
+</strong>
 
 </div>
 
 <div class="executive-item">
 
-<span>Employee Band</span>
+<span>
 
-<strong>${assessment.employeeBand}</strong>
+Entity Type
+
+</span>
+
+<strong>
+
+${assessment.entity}
+
+</strong>
+
+</div>
+
+<div class="executive-item">
+
+<span>
+
+Industry
+
+</span>
+
+<strong>
+
+${assessment.industry}
+
+</strong>
+
+</div>
+
+<div class="executive-item">
+
+<span>
+
+Employee Band
+
+</span>
+
+<strong>
+
+${assessment.employeeBand}
+
+</strong>
 
 </div>
 
 </div>
 
-<hr style="margin:30px 0;opacity:.12;">
+<hr>
 
 <h3>
 
@@ -361,9 +399,17 @@ Compliance Overview
 
 <div class="metric-card">
 
-<h2>${assessment.mandatory.length}</h2>
+<h2>
 
-<p>Mandatory Requirements</p>
+${assessment.mandatory.length}
+
+</h2>
+
+<p>
+
+Mandatory Requirements
+
+</p>
 
 <button
 class="secondary-btn"
@@ -377,9 +423,17 @@ View Details
 
 <div class="metric-card">
 
-<h2>${assessment.recommended.length}</h2>
+<h2>
 
-<p>HR Recommendations</p>
+${assessment.recommended.length}
+
+</h2>
+
+<p>
+
+HR Recommendations
+
+</p>
 
 <button
 class="secondary-btn"
@@ -393,9 +447,17 @@ View Details
 
 <div class="metric-card">
 
-<h2>${assessment.future.length}</h2>
+<h2>
 
-<p>Future Readiness</p>
+${assessment.future.length}
+
+</h2>
+
+<p>
+
+Growth Readiness
+
+</p>
 
 <button
 class="secondary-btn"
@@ -409,7 +471,7 @@ View Details
 
 </div>
 
-<hr style="margin:30px 0;opacity:.12;">
+<hr>
 
 <h3>
 
@@ -443,6 +505,9 @@ return "Workplace Policies";
 if(title.includes("gratuity") || title.includes("bonus"))
 return "Statutory Benefits";
 
+if(title.includes("contract"))
+return "Employment Contracts";
+
 return "General Labour Compliance";
 
 })
@@ -457,84 +522,87 @@ return "General Labour Compliance";
 </ul>
 
 </div>
-<hr
-style="
-margin:30px 0;
-opacity:.15;
-">
 
-<div class="profile-grid">
+<!-- =====================================================
+     DASHBOARD LAYOUT
+====================================================== -->
 
-<div class="profile-card">
+<div class="dashboard-layout">
 
-<span>
+<div class="dashboard-nav">
 
-Applicable Mandatory Requirements
+<div class="summary-card">
 
-</span>
+<h3>
 
-<strong>
+⚖️ Compliance Readiness
 
-${assessment.mandatory.length}
+</h3>
 
-</strong>
+<p>
+
+Review statutory labour law obligations,
+mandatory registrations,
+ongoing compliance requirements,
+and legal responsibilities applicable to your organisation.
+
+</p>
+
+<div class="card-actions">
 
 <button
-class="secondary-btn"
-style="margin-top:15px;"
+class="primary-btn"
 onclick="showSection('compliance')">
 
-View Requirements
+View Details
+
+</button>
+
+<button
+class="secondary-btn"
+onclick="openPDFModal('compliance')">
+
+Download PDF
 
 </button>
 
 </div>
 
-<div class="profile-card">
+</div>
 
-<span>
+<div class="summary-card">
 
-HR Governance Recommendations
+<h3>
 
-</span>
+👥 People Strategy
 
-<strong>
+</h3>
 
-${assessment.recommended.length}
+<p>
 
-</strong>
+Strengthen HR governance through
+policies,
+documentation,
+employee lifecycle management,
+and workforce best practices.
+
+</p>
+
+<div class="card-actions">
 
 <button
-class="secondary-btn"
-style="margin-top:15px;"
+class="primary-btn"
 onclick="showSection('people')">
 
-View Recommendations
+View Details
 
 </button>
-
-</div>
-
-<div class="profile-card">
-
-<span>
-
-Future Readiness Actions
-
-</span>
-
-<strong>
-
-${assessment.future.length}
-
-</strong>
 
 <button
 class="secondary-btn"
-style="margin-top:15px;"
-onclick="showSection('growth')">
+onclick="openPDFModal('people')">
 
-View Roadmap
+Download PDF
 
 </button>
 
@@ -542,279 +610,118 @@ View Roadmap
 
 </div>
 
-<hr
-style="
-margin:30px 0;
-opacity:.15;
-">
+<div class="summary-card">
+
+<h3>
+
+📈 Growth Readiness
+
+</h3>
+
+<p>
+
+Build the capabilities required
+to scale your organisation,
+develop leadership,
+and improve workforce maturity.
+
+</p>
+
+<div class="card-actions">
+
+<button
+class="primary-btn"
+onclick="showSection('growth')">
+
+View Details
+
+</button>
+
+<button
+class="secondary-btn"
+onclick="openPDFModal('growth')">
+
+Download PDF
+
+</button>
+
+</div>
+
+</div>
+
+<div class="summary-card">
+
+<h3>
+
+🚀 State Expansion Advisor
+
+</h3>
+
+<p>
+
+Compare labour law obligations,
+state incentives,
+registrations,
+and expansion readiness before entering a new market.
+
+</p>
+
+<div class="card-actions">
+
+<button
+class="primary-btn"
+onclick="showSection('expansion')">
+
+Compare States
+
+</button>
+
+<button
+class="secondary-btn"
+onclick="downloadStateComparisonPDF()">
+
+Download Report
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =====================================================
+     DETAILS PANEL
+====================================================== -->
 
 <div
-style="
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
-gap:20px;
-">
-
-<div>
-
-<h3
-style="
-margin-bottom:10px;
-">
-
-Compliance Status
-
-</h3>
-
-<strong
-style="
-font-size:20px;
-">
-
-${
-assessment.mandatory.length >= 15
-? "🔴 Immediate Attention Required"
-: assessment.mandatory.length >= 8
-? "🟡 Review Required"
-: "🟢 Foundational Compliance Established"
-}
-
-</strong>
-
-</div>
-
-<div>
-
-<h3
-style="
-margin-bottom:10px;
-">
-
-Primary Focus Areas
-
-</h3>
-
-<ul
-style="
-margin:0;
-padding-left:20px;
-">
-
-${
-[
-...new Set(
-
-assessment.mandatory.map(rule=>{
-
-const title =
-(rule.title || rule.name || String(rule)).toLowerCase();
-
-if(
-title.includes("epf") ||
-title.includes("esic")
-)
-return "Social Security Compliance";
-
-if(
-title.includes("payroll")
-)
-return "Payroll Compliance";
-
-if(
-title.includes("employment")
-)
-return "Employment Documentation";
-
-if(
-title.includes("posh")
-)
-return "Workplace Policies";
-
-if(
-title.includes("gratuity") ||
-title.includes("bonus")
-)
-return "Statutory Benefits";
-
-return "General Labour Compliance";
-
-})
-
-)
-
-]
-.map(item=>`<li>${item}</li>`)
-.join("")
-}
-
-</ul>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="dashboard-layout"> 
-<div class="dashboard-nav">
-<div class="summary-card">
-
-    <h3>
-      ⚖️ Compliance Readiness
-    </h3>
-
-    <p>
-
-      Statutory obligations,
-      labour law requirements
-      and workforce compliance.
-
-    </p>
-
-    <div class="card-actions">
-
-      <button
-      class="primary-btn"
-      onclick="showSection('compliance')">
-
-      View Details
-
-      </button>
-
-      <button
-      class="secondary-btn"
-      onclick="openPDFModal('compliance')">
-
-      Download PDF
-
-      </button>
-
-    </div>
-
-</div>
-
-
- <div class="summary-card">
-
-  <h3>
-    👥 People Strategy
-  </h3>
-
-  <p>
-
-    Policies,
-    documentation,
-    employee lifecycle
-    and governance.
-
-  </p>
-
-  <div class="card-actions">
-
-    <button
-    class="primary-btn"
-    onclick="showSection('people')">
-
-    View Details
-
-    </button>
-
-    <button
-    class="secondary-btn"
-    onclick="openPDFModal('people')">
-
-    Download PDF
-
-    </button>
-
-  </div>
-
-</div>
-
- <div class="summary-card">
-
-  <h3>
-    📈 Organization Growth Readiness
-  </h3>
-
-  <p>
-
-    Capabilities needed
-    for scaling,
-    leadership and
-    workforce maturity.
-
-  </p>
-
-  <div class="card-actions">
-
-    <button
-    class="primary-btn"
-    onclick="showSection('growth')">
-
-    View Details
-
-    </button>
-
-    <button
-    class="secondary-btn"
-    onclick="openPDFModal('growth')">
-
-    Download PDF
-
-    </button>
-
-  </div>
-
-</div>
-<div class="summary-card">
-
-  <h3>
-    🚀 State Expansion Advisor
-  </h3>
-
-  <p>
-
-    Compare states and
-    union territories before
-    deciding where to expand.
-
-  </p>
-
-  <div class="card-actions">
-
-    <button
-    class="primary-btn"
-    onclick="showSection('expansion')">
-
-    Compare States
-
-    </button>
-
-    <button
-    class="secondary-btn"
-    onclick="showSection('expansion')">
-
-    Download Report
-
-    </button>
-
-  </div>
-
-</div>
-
-</div> <!-- dashboard-nav -->
-
-<div id="detailsPanel"
+id="detailsPanel"
 class="details-panel"
 style="display:none;">
 
-</div> <!-- detailsPanel -->
+<div class="summary-card">
 
-</div> <!-- dashboard-layout -->
+<h2>
+
+Welcome to Your Executive Advisory Dashboard
+
+</h2>
+
+<p>
+
+Select any advisory area from the left navigation
+to view personalised recommendations,
+legal obligations,
+official resources,
+and implementation guidance.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
 
 <div
 style="
@@ -829,206 +736,191 @@ onclick="openPDFModal('complete')">
 Download Complete Advisory Pack
 
 </button>
+
 </div>
 
 `;
-
-} else {
-
-  document.getElementById(
-    "dashboardContent"
-  ).innerHTML = `
-
-  <div class="summary-card">
-
-    <h3>
-      No Assessment Found
-    </h3>
-
-    <p>
-
-      Please return to the homepage and generate an advisory report first.
-
-    </p>
-
-  </div>
-
-  `;
 
 }
 
 </script>
 
+<!-- =====================================================
+     HELPER FUNCTIONS
+====================================================== -->
+
 <script>
 
 function formatRule(item){
 
-if(typeof item === "string"){
-
+if(typeof item==="string"){
 return item;
-
 }
 
-if(item && typeof item === "object"){
-
-return item.title || item.name || JSON.stringify(item);
-
+if(item && typeof item==="object"){
+return item.title || item.name || "";
 }
 
 return "";
 
-} 
+}
 
 function getRuleExplanation(rule){
 
-const title =
-(rule.title || "").toLowerCase();
+const title=(rule.title || "").toLowerCase();
 
-if(
-title.includes("epf")
-){
+if(title.includes("epf")){
 
-return "This requirement has been identified because organisations in the selected employee band should review their obligations under the Employees' Provident Funds and Miscellaneous Provisions Act, 1952.";
+return "This requirement applies because organisations meeting the prescribed applicability criteria are required to review and comply with the Employees' Provident Funds and Miscellaneous Provisions Act, 1952.";
 
 }
 
-if(
-title.includes("esic")
-){
+if(title.includes("esic")){
 
-return "This requirement has been identified because organisations in the selected employee band should review their obligations under the Employees' State Insurance Act, 1948.";
+return "This requirement applies because organisations meeting the prescribed applicability criteria are required to comply with the Employees' State Insurance Act, 1948.";
 
 }
 
-if(
-title.includes("posh")
-){
+if(title.includes("posh")){
 
-return "This requirement applies because employers are expected to review workplace harassment prevention obligations under the POSH framework.";
+return "This recommendation has been identified because employers are expected to establish workplace sexual harassment prevention measures under the POSH framework.";
 
 }
 
-if(
-title.includes("gratuity")
-){
+if(title.includes("gratuity")){
 
-return "This requirement has been identified based on statutory obligations relating to gratuity benefits for eligible employees.";
+return "This requirement relates to statutory gratuity obligations for eligible employees.";
 
 }
 
-if(
-title.includes("bonus")
-){
+if(title.includes("bonus")){
 
-return "This requirement has been identified based on statutory obligations relating to payment of bonus.";
+return "This requirement relates to statutory bonus obligations for eligible employees.";
 
 }
 
-if(
-title.includes("maternity")
-){
+if(title.includes("maternity")){
 
 return "This requirement relates to statutory maternity benefit obligations applicable to eligible establishments.";
 
 }
 
-return "This requirement has been identified after evaluating your selected state, entity type, industry and employee band against the GrowItWithHR Knowledge Base.";
+return "This requirement has been identified by evaluating your selected state, entity type, industry and employee band against the GrowItWithHR Knowledge Base.";
 
 }
+
 
 function getAuthorityName(sourceId){
 
 switch(sourceId){
 
 case "EPFO":
-
-return "Employees' Provident Fund Organisation (EPFO)";
+return "Employees' Provident Fund Organisation";
 
 case "ESIC":
-
-return "Employees' State Insurance Corporation (ESIC)";
+return "Employees' State Insurance Corporation";
 
 case "INDIACODE":
-
 return "India Code";
 
-default:
-
+case "LABOUR":
 return "Ministry of Labour & Employment";
 
-}
+default:
+return "Government Authority";
 
 }
 
- function getAuthorityURL(sourceId){
+}
+
+
+function getAuthorityURL(sourceId){
 
 switch(sourceId){
 
 case "EPFO":
-
 return "https://www.epfindia.gov.in";
 
 case "ESIC":
-
 return "https://www.esic.gov.in";
 
 case "INDIACODE":
-
 return "https://www.indiacode.nic.in";
 
-default:
+case "LABOUR":
+return "https://labour.gov.in";
 
+default:
 return "https://labour.gov.in";
 
 }
 
 }
 
+
 function getRecommendationReason(item){
 
-const text = item.toLowerCase();
+const text=item.toLowerCase();
 
-if(text.includes("handbook"))
-return "A documented handbook establishes consistent workplace expectations and improves employee understanding of organisational policies.";
+if(text.includes("handbook")){
 
-if(text.includes("performance"))
-return "A structured performance framework improves accountability, development and organisational alignment.";
-
-if(text.includes("manager"))
-return "Developing people managers improves team performance and reduces employee relations risk.";
-
-if(text.includes("workforce"))
-return "Planning workforce requirements supports sustainable organisational growth.";
-
-if(text.includes("grievance"))
-return "A formal grievance process strengthens governance and employee confidence.";
-
-return "This recommendation supports stronger HR governance as the organisation grows.";
+return "A documented employee handbook creates consistency across the organisation and improves policy communication.";
 
 }
+
+if(text.includes("performance")){
+
+return "Performance management helps align employees with organisational goals.";
+
+}
+
+if(text.includes("manager")){
+
+return "Building manager capability improves leadership effectiveness and employee engagement.";
+
+}
+
+if(text.includes("workforce")){
+
+return "Workforce planning supports future hiring decisions and organisational growth.";
+
+}
+
+if(text.includes("grievance")){
+
+return "A structured grievance process strengthens governance and employee confidence.";
+
+}
+
+return "This recommendation strengthens HR governance and organisational maturity.";
+
+}
+
 
 function getRecommendationBenefit(item){
 
-const text = item.toLowerCase();
+const text=item.toLowerCase();
 
 if(text.includes("handbook"))
-return "Improves consistency, transparency and employee experience.";
+return "Improves policy consistency and employee experience.";
 
 if(text.includes("performance"))
-return "Supports goal alignment and continuous employee development.";
+return "Supports employee development and accountability.";
 
 if(text.includes("manager"))
-return "Builds leadership capability and improves decision-making.";
+return "Builds stronger leadership capability.";
 
 if(text.includes("workforce"))
-return "Improves hiring decisions and future workforce readiness.";
+return "Improves future hiring and capacity planning.";
 
-return "Supports long-term organisational maturity.";
+return "Strengthens organisational governance.";
+
 }
 
- function getRecommendationTimeline(item){
 
-const text = item.toLowerCase();
+function getRecommendationTimeline(item){
+
+const text=item.toLowerCase();
 
 if(text.includes("handbook"))
 return "0–30 Days";
@@ -1042,56 +934,77 @@ return "60–180 Days";
 if(text.includes("workforce"))
 return "90–180 Days";
 
-return "As the organisation scales.";
+return "As the organisation grows.";
+
 }
- 
+
+
 function getGrowthReason(item){
 
-const text = item.toLowerCase();
+const text=item.toLowerCase();
 
-if(text.includes("hris"))
-return "Implementing an HRIS improves employee data management, reporting and operational efficiency.";
+if(text.includes("hris")){
 
-if(text.includes("analytics"))
-return "People analytics enables better workforce planning and informed decision-making.";
+return "An HRIS improves employee data management, reporting and operational efficiency.";
 
-if(text.includes("leadership"))
-return "Leadership capability becomes increasingly important as reporting structures expand.";
+}
 
-if(text.includes("succession"))
-return "Succession planning reduces business continuity risk and strengthens organisational resilience.";
+if(text.includes("analytics")){
 
-if(text.includes("audit"))
-return "Periodic internal reviews improve governance and compliance preparedness.";
+return "People analytics supports evidence-based workforce decisions.";
+
+}
+
+if(text.includes("leadership")){
+
+return "Leadership capability becomes increasingly important as organisations scale.";
+
+}
+
+if(text.includes("succession")){
+
+return "Succession planning strengthens business continuity.";
+
+}
+
+if(text.includes("audit")){
+
+return "Regular internal reviews improve governance and audit readiness.";
+
+}
 
 return "This initiative supports long-term organisational growth.";
+
 }
+
 
 function getGrowthBenefit(item){
 
-const text = item.toLowerCase();
+const text=item.toLowerCase();
 
 if(text.includes("hris"))
-return "Reduces manual administration and improves data accuracy.";
+return "Improves efficiency and data accuracy.";
 
 if(text.includes("analytics"))
-return "Supports evidence-based workforce decisions.";
+return "Supports informed workforce decisions.";
 
 if(text.includes("leadership"))
-return "Builds stronger managers and future leaders.";
+return "Develops future leaders.";
 
 if(text.includes("succession"))
-return "Improves business continuity and talent retention.";
+return "Reduces business continuity risk.";
 
 if(text.includes("audit"))
 return "Improves governance maturity.";
 
-return "Supports sustainable organisational growth.";
+return "Supports sustainable growth.";
+
 }
+
 
 function getGrowthTimeline(item){
 
-const text = item.toLowerCase();
+const text=item.toLowerCase();
 
 if(text.includes("hris"))
 return "Within 6–12 months";
@@ -1109,243 +1022,96 @@ if(text.includes("audit"))
 return "Annual review";
 
 return "As the organisation scales.";
+
 }
+
 
 function getNextActions(rule){
 
-const title =
-(rule.title || "").toLowerCase();
+const title=(rule.title || "").toLowerCase();
 
 if(title.includes("epf")){
 
-return [
-
+return[
 "Review EPF applicability.",
-
 "Register the establishment with EPFO if applicable.",
-
 "Enroll eligible employees.",
-
 "Deposit monthly EPF contributions.",
-
 "Maintain statutory EPF records."
-
 ];
 
 }
 
 if(title.includes("esic")){
 
-return [
-
+return[
 "Review ESIC applicability.",
-
 "Register the establishment.",
-
 "Register eligible employees.",
-
-"Deposit contributions within timelines.",
-
+"Deposit contributions within statutory timelines.",
 "Maintain ESIC records."
-
 ];
 
 }
 
 if(title.includes("posh")){
 
-return [
-
+return[
 "Review POSH applicability.",
-
-"Constitute an Internal Committee where required.",
-
-"Publish the POSH policy.",
-
-"Conduct awareness sessions.",
-
-"Maintain complaint records."
-
+"Constitute the Internal Committee where required.",
+"Publish the POSH Policy.",
+"Conduct employee awareness programmes.",
+"Maintain statutory complaint records."
 ];
 
 }
 
 if(title.includes("gratuity")){
 
-return [
-
-"Review gratuity eligibility.",
-
-"Maintain service records.",
-
-"Calculate gratuity correctly.",
-
-"Process payments within timelines.",
-
-"Maintain statutory documentation."
-
-];
-
-}
-
-if(title.includes("bonus")){
-
-return [
-
+return[
 "Review employee eligibility.",
-
-"Calculate bonus correctly.",
-
-"Maintain payment records.",
-
-"Disburse within statutory timelines."
-
-];
-
-}
-
-return [
-
-"Review the requirement.",
-
-"Prepare supporting documentation.",
-
-"Implement the necessary process.",
-
-"Maintain appropriate records.",
-
-"Review compliance periodically."
-
-];
-
-}
-
-
-function getNextActions(rule){
-
-const title =
-(rule.title || "").toLowerCase();
-
-if(title.includes("epf")){
-
-return [
-
-"Review EPF applicability.",
-
-"Register the establishment with EPFO if applicable.",
-
-"Enroll eligible employees.",
-
-"Deposit monthly EPF contributions.",
-
-"Maintain statutory EPF records."
-
-];
-
-}
-
-if(title.includes("esic")){
-
-return [
-
-"Review ESIC applicability.",
-
-"Register the establishment.",
-
-"Register eligible employees.",
-
-"Deposit contributions within timelines.",
-
-"Maintain ESIC records."
-
-];
-
-}
-
-if(title.includes("posh")){
-
-return [
-
-"Review POSH applicability.",
-
-"Constitute an Internal Committee where required.",
-
-"Publish the POSH policy.",
-
-"Conduct awareness sessions.",
-
-"Maintain complaint records."
-
-];
-
-}
-
-if(title.includes("gratuity")){
-
-return [
-
-"Review gratuity eligibility.",
-
 "Maintain service records.",
-
 "Calculate gratuity correctly.",
-
 "Process payments within statutory timelines.",
-
-"Maintain statutory documentation."
-
+"Maintain supporting documentation."
 ];
 
 }
 
 if(title.includes("bonus")){
 
-return [
-
+return[
 "Review employee eligibility.",
-
-"Calculate bonus correctly.",
-
+"Calculate statutory bonus.",
 "Maintain payment records.",
-
 "Disburse bonus within statutory timelines."
-
 ];
 
 }
 
-return [
-
-"Review the requirement.",
-
+return[
+"Review the legal requirement.",
 "Prepare supporting documentation.",
-
-"Implement the necessary process.",
-
-"Maintain appropriate records.",
-
+"Implement the required process.",
+"Maintain statutory records.",
 "Review compliance periodically."
-
 ];
 
-} 
- 
+}
 
- 
 function showSection(section){
 
-const panel =
-document.getElementById(
-"detailsPanel"
-);
+const panel=document.getElementById("detailsPanel");
 
-panel.style.display =
-"block";
-
+panel.style.display="block";
+panel.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
 if(section==="compliance"){
 
-panel.innerHTML = `
+panel.innerHTML=`
 
 <h2>
 
@@ -1353,47 +1119,56 @@ panel.innerHTML = `
 
 </h2>
 
-<p style="margin-bottom:30px;">
+<p class="section-intro">
 
-The following statutory compliance obligations have been identified based on your selected organisation profile.
+The following statutory compliance obligations have been identified
+based on your selected organisation profile.
 
 </p>
 
 ${assessment.mandatory.map(rule=>{
 
-const title =
+const title=
 rule.title || formatRule(rule);
 
-const description =
+const description=
 rule.description ||
 "No additional description available.";
 
-const category =
+const category=
 rule.category ||
 "General Compliance";
 
-const authority =
+const authority=
 rule.sourceId ||
-"Government Authority";
+"LABOUR";
 
-const citations =
+const citations=
 (rule.citations || [])
 .map(c=>c.reference)
 .join("<br>");
 
 return `
 
-<div
-style="
-background:white;
-border-radius:18px;
-padding:24px;
-margin-bottom:24px;
-border:1px solid rgba(0,0,0,.08);
-box-shadow:0 8px 25px rgba(0,0,0,.05);
-">
+<div class="compliance-card">
 
-<h3>
+<div class="rule-header">
+
+<span class="rule-priority">
+
+${rule.priority || "Mandatory"}
+
+</span>
+
+<span class="rule-category">
+
+${category}
+
+</span>
+
+</div>
+
+<h3 class="rule-title">
 
 ${title}
 
@@ -1405,86 +1180,65 @@ ${description}
 
 </p>
 
-<hr style="margin:20px 0;">
+<hr>
 
-<p>
+<h4>
 
-<strong>Category</strong><br>
+Why this applies
 
-${category}
+</h4>
 
-</p>
+<div class="rule-context">
 
-<p>
+<div>
 
-<strong>Why this applies</strong>
+<strong>State</strong><br>
 
-</p>
-
-<div
-style="
-background:#f8fafc;
-padding:16px;
-border-radius:12px;
-margin-top:12px;
-margin-bottom:20px;
-border-left:4px solid #2563eb;
-">
-
-<p>
-
-<strong>State:</strong>
 ${assessment.state}
 
-</p>
+</div>
 
-<p>
+<div>
 
-<strong>Entity:</strong>
+<strong>Entity</strong><br>
+
 ${assessment.entity}
 
-</p>
+</div>
 
-<p>
+<div>
 
-<strong>Industry:</strong>
+<strong>Industry</strong><br>
+
 ${assessment.industry}
 
-</p>
+</div>
 
-<p>
+<div>
 
-<strong>Employee Band:</strong>
+<strong>Employee Band</strong><br>
+
 ${assessment.employeeBand}
 
-</p>
+</div>
 
-<p style="margin-top:16px;">
+</div>
+
+<p class="rule-explanation">
 
 ${getRuleExplanation(rule)}
 
 </p>
 
-</div>
-<p>
+<hr>
 
-<div
-style="
-margin-top:20px;
-padding:18px;
-background:#f8fafc;
-border-radius:12px;
-border:1px solid #e5e7eb;
-">
-
-<h4
-style="
-margin-bottom:15px;
-">
+<h4>
 
 🏛 Official Resources
 
 </h4>
+
+<div class="resource-card">
 
 <p>
 
@@ -1498,6 +1252,7 @@ ${
 citations
 ?
 `
+
 <p>
 
 <strong>Applicable Law</strong><br>
@@ -1505,6 +1260,7 @@ citations
 ${citations}
 
 </p>
+
 `
 :
 ""
@@ -1528,38 +1284,29 @@ ${getAuthorityURL(authority)}
 
 <strong>Last Verified</strong><br>
 
-${rule.lastVerified || "Knowledge Base v7.0"}
+${rule.lastVerified || "Knowledge Base"}
 
 </p>
 
 </div>
 
-
-
-<div
-style="
-margin-top:20px;
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-">
+<div class="resource-links">
 
 ${
 assessment.sources
-.filter(s=>{
+.filter(source=>{
 
-const name =
-s.name.toLowerCase();
+const name=source.name.toLowerCase();
 
 return(
-
-name.includes("labour") ||
 
 name.includes("epfo") ||
 
 name.includes("esic") ||
 
-name.includes("india")
+name.includes("india") ||
+
+name.includes("labour")
 
 );
 
@@ -1569,39 +1316,35 @@ name.includes("india")
 <a
 href="${source.url}"
 target="_blank"
-style="
-padding:10px 16px;
-background:#0f172a;
-color:white;
-border-radius:8px;
-text-decoration:none;
-font-size:14px;
-">
+class="resource-button">
 
-Learn More
+${source.name}
 
 </a>
 
 `)
 .join("")
-
 }
 
 </div>
 
-<hr style="margin:20px 0;">
+<hr>
 
 <h4>
 
-✅ Next Actions
+📋 Next Actions
 
 </h4>
 
-<ul>
+<ul class="next-actions">
 
 ${getNextActions(rule).map(action=>`
 
-<li>${action}</li>
+<li>
+
+${action}
+
+</li>
 
 `).join("")}
 
@@ -1615,12 +1358,13 @@ ${getNextActions(rule).map(action=>`
 
 `;
 
+return;
+
 }
 
- 
 if(section==="people"){
 
-panel.innerHTML = `
+panel.innerHTML=`
 
 <h2>
 
@@ -1628,39 +1372,51 @@ panel.innerHTML = `
 
 </h2>
 
-<p style="margin-bottom:30px;">
+<p class="section-intro">
 
-The following HR governance recommendations are intended to strengthen organisational capability as your business grows.
+The following recommendations are intended to strengthen
+your HR governance, employee experience and organisational
+capability as your business grows.
 
 </p>
 
 ${assessment.recommended.map(item=>{
 
-const recommendation = formatRule(item);
+const recommendation=formatRule(item);
 
-return `
+return`
 
-<div
-style="
-background:white;
-border-radius:18px;
-padding:24px;
-margin-bottom:24px;
-border:1px solid rgba(0,0,0,.08);
-box-shadow:0 8px 25px rgba(0,0,0,.05);
-">
+<div class="compliance-card">
 
-<h3>
+<div class="rule-header">
+
+<span class="rule-priority">
+
+Recommended
+
+</span>
+
+<span class="rule-category">
+
+HR Governance
+
+</span>
+
+</div>
+
+<h3 class="rule-title">
 
 ${recommendation}
 
 </h3>
 
-<p>
+<hr>
 
-<strong>Why recommended</strong>
+<h4>
 
-</p>
+Why this is recommended
+
+</h4>
 
 <p>
 
@@ -1668,13 +1424,13 @@ ${getRecommendationReason(recommendation)}
 
 </p>
 
-<hr style="margin:20px 0;">
+<hr>
 
-<p>
+<h4>
 
-<strong>Business Benefit</strong>
+Business Benefit
 
-</p>
+</h4>
 
 <p>
 
@@ -1682,13 +1438,13 @@ ${getRecommendationBenefit(recommendation)}
 
 </p>
 
-<hr style="margin:20px 0;">
+<hr>
 
-<p>
+<h4>
 
-<strong>Recommended Timeline</strong>
+Suggested Timeline
 
-</p>
+</h4>
 
 <p>
 
@@ -1696,6 +1452,48 @@ ${getRecommendationTimeline(recommendation)}
 
 </p>
 
+<hr>
+
+<h4>
+
+Suggested Next Steps
+
+</h4>
+
+<ul class="next-actions">
+
+<li>
+
+Review your existing HR processes.
+
+</li>
+
+<li>
+
+Identify current gaps.
+
+</li>
+
+<li>
+
+Develop the required policy or process.
+
+</li>
+
+<li>
+
+Communicate changes to employees.
+
+</li>
+
+<li>
+
+Review implementation every quarter.
+
+</li>
+
+</ul>
+
 </div>
 
 `;
@@ -1704,51 +1502,65 @@ ${getRecommendationTimeline(recommendation)}
 
 `;
 
+return;
+
 }
- 
+
 if(section==="growth"){
 
-panel.innerHTML = `
+panel.innerHTML=`
 
 <h2>
 
-📈 Growth Readiness
+📈 Organisation Growth Readiness
 
 </h2>
 
-<p style="margin-bottom:30px;">
+<p class="section-intro">
 
-The following initiatives will help your organisation scale sustainably as your workforce grows.
+These initiatives are designed to prepare your organisation
+for sustainable growth, stronger governance and future
+workforce maturity.
 
 </p>
 
 ${assessment.future.map(item=>{
 
-const initiative = formatRule(item);
+const initiative=formatRule(item);
 
-return `
+return`
 
-<div
-style="
-background:white;
-border-radius:18px;
-padding:24px;
-margin-bottom:24px;
-border:1px solid rgba(0,0,0,.08);
-box-shadow:0 8px 25px rgba(0,0,0,.05);
-">
+<div class="compliance-card">
 
-<h3>
+<div class="rule-header">
+
+<span class="rule-priority">
+
+Growth
+
+</span>
+
+<span class="rule-category">
+
+Organisation Development
+
+</span>
+
+</div>
+
+<h3 class="rule-title">
 
 ${initiative}
 
 </h3>
 
-<p>
+<hr>
 
-<strong>Why this matters</strong>
+<h4>
 
-</p>
+Why this matters
+
+</h4>
 
 <p>
 
@@ -1756,13 +1568,13 @@ ${getGrowthReason(initiative)}
 
 </p>
 
-<hr style="margin:20px 0;">
+<hr>
 
-<p>
+<h4>
 
-<strong>Business Impact</strong>
+Business Impact
 
-</p>
+</h4>
 
 <p>
 
@@ -1770,19 +1582,61 @@ ${getGrowthBenefit(initiative)}
 
 </p>
 
-<hr style="margin:20px 0;">
+<hr>
 
-<p>
+<h4>
 
-<strong>Suggested Timeline</strong>
+Suggested Timeline
 
-</p>
+</h4>
 
 <p>
 
 ${getGrowthTimeline(initiative)}
 
 </p>
+
+<hr>
+
+<h4>
+
+Suggested Next Steps
+
+</h4>
+
+<ul class="next-actions">
+
+<li>
+
+Review current organisational capability.
+
+</li>
+
+<li>
+
+Prioritise initiatives based on business goals.
+
+</li>
+
+<li>
+
+Allocate ownership and timelines.
+
+</li>
+
+<li>
+
+Track implementation progress.
+
+</li>
+
+<li>
+
+Review maturity annually.
+
+</li>
+
+</ul>
 
 </div>
 
@@ -1792,204 +1646,24 @@ ${getGrowthTimeline(initiative)}
 
 `;
 
+return;
+
 }
- 
+
 if(section==="expansion"){
 
 openStateComparisonModal();
 
+return;
+
 }
 
 }
 </script>
 
-  <script>
-
-async function downloadCompliancePDF(){
-
-const { jsPDF } = window.jspdf;
-
-const doc = new jsPDF();
-
-doc.setFontSize(18);
-
-doc.text(
-"Compliance Readiness Report",
-20,
-20
-);
-
-let y = 40;
-
-assessment.mandatory.forEach(item=>{
-
-doc.text(
-"• " + formatRule(item),
-20,
-y
-);
-
-y += 10;
-
-});
-
-doc.save(
-"Compliance-Readiness.pdf"
-);
-
-}
-
-async function downloadPeoplePDF(){
-
-const { jsPDF } = window.jspdf;
-
-const doc = new jsPDF();
-
-doc.setFontSize(18);
-
-doc.text(
-"People Strategy Report",
-20,
-20
-);
-
-let y = 40;
-
-assessment.recommended.forEach(item=>{
-
-doc.text(
-"• " + item,
-20,
-y
-);
-
-y += 10;
-
-});
-
-doc.save(
-"People-Strategy.pdf"
-);
-
-}
-
-async function downloadGrowthPDF(){
-
-const { jsPDF } = window.jspdf;
-
-const doc = new jsPDF();
-
-doc.setFontSize(18);
-
-doc.text(
-"Growth Readiness Report",
-20,
-20
-);
-
-let y = 40;
-
-assessment.future.forEach(item=>{
-
-doc.text(
-"• " + item,
-20,
-y
-);
-
-y += 10;
-
-});
-
-doc.save(
-"Growth-Readiness.pdf"
-);
-
-}
-
-</script>
-
-<script>
-
-function downloadCompletePack(){
-
-window.print();
-
-}
-
-</script>
-
-<!-- ==========================================
-STATE EXPANSION MODAL
-========================================== -->
-
-<div
-id="stateComparisonModal"
-class="pdf-modal">
-
-<div class="pdf-modal-content">
-
-<h3>
-
-🚀 State Expansion Advisor
-
-</h3>
-
-<p>
-
-Current State:
-<strong id="currentStateLabel"></strong>
-
-</p>
-
-<p>
-
-Select up to 4 states or union territories for comparison
-
-</p>
-
-<div
-id="stateSelectionContainer"
-style="
-max-height:350px;
-overflow:auto;
-text-align:left;
-margin-top:20px;
-padding-right:10px;
-">
-
-<!-- Populated dynamically -->
-
-</div>
-
-<div class="modal-actions">
-
-<button
-class="primary-btn"
-onclick="generateStateComparison()">
-
-Generate Comparison
-
-</button>
-
-<button
-class="primary-btn"
-onclick="closeStateComparisonModal()">
-
-Cancel
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-  
-<!-- ==========================================
-PDF THEME MODAL
-========================================== -->
+<!-- =====================================================
+     PDF THEME MODAL
+====================================================== -->
 
 <div
 id="pdfModal"
@@ -2018,6 +1692,7 @@ value="lite"
 checked>
 
 Lite Version
+
 <span>
 
 Printer Friendly
@@ -2034,6 +1709,7 @@ name="reportTheme"
 value="dark">
 
 Dark Version
+
 <span>
 
 Website Theme
@@ -2041,6 +1717,7 @@ Website Theme
 </span>
 
 </label>
+
 <div
 style="
 margin-top:24px;
@@ -2083,7 +1760,8 @@ id="userConsent">
 <span>
 
 I agree to receive product updates,
-advisory insights and future releases
+legal alerts,
+product announcements and future releases
 from HRTechify.
 
 </span>
@@ -2091,6 +1769,7 @@ from HRTechify.
 </label>
 
 </div>
+
 <div class="modal-actions">
 
 <button
@@ -2102,7 +1781,7 @@ Generate Report
 </button>
 
 <button
-class="primary-btn"
+class="secondary-btn"
 onclick="closePDFModal()">
 
 Cancel
@@ -2117,16 +1796,15 @@ Cancel
 
 <script>
 
-let selectedReportType = "";
+let selectedReportType="";
 
 function openPDFModal(type){
 
-selectedReportType = type;
+selectedReportType=type;
 
 document.getElementById(
 "pdfModal"
-).style.display =
-"flex";
+).style.display="flex";
 
 }
 
@@ -2134,8 +1812,117 @@ function closePDFModal(){
 
 document.getElementById(
 "pdfModal"
-).style.display =
-"none";
+).style.display="none";
+
+}
+
+async function generateSelectedReport(){
+
+const theme=
+document.querySelector(
+'input[name="reportTheme"]:checked'
+).value;
+
+const email=
+document.getElementById(
+"userEmail"
+).value.trim();
+
+const consent=
+document.getElementById(
+"userConsent"
+).checked;
+
+if(!email){
+
+alert(
+"Please enter your email address."
+);
+
+return;
+
+}
+
+if(!consent){
+
+alert(
+"Please provide your consent before downloading the report."
+);
+
+return;
+
+}
+
+const generatedOn=
+new Date().toLocaleDateString(
+"en-GB",
+{
+day:"2-digit",
+month:"long",
+year:"numeric"
+}
+);
+
+try{
+
+await emailjs.send(
+
+"service_as95qfh",
+
+"template_4j8ld17",
+
+{
+
+user_email:email,
+
+report_type:selectedReportType,
+
+generated_on:generatedOn,
+
+industry:assessment.industry,
+
+state:assessment.state,
+
+employee_count:assessment.employeeBand
+
+}
+
+);
+
+await emailjs.send(
+
+"service_as95qfh",
+
+"template_9ii4u3e",
+
+{
+
+user_email:email,
+
+report_type:selectedReportType,
+
+generated_on:generatedOn
+
+}
+
+);
+
+}catch(error){
+
+console.error(
+"EmailJS Error",
+error
+);
+
+}
+
+generatePDF(
+selectedReportType,
+theme,
+generatedOn
+);
+
+closePDFModal();
 
 }
 
@@ -2169,17 +1956,16 @@ theme === "dark"
 const wrapper =
 document.createElement("div");
 
-wrapper.style.width = "900px";
-wrapper.style.padding = "40px";
-wrapper.style.background = bg;
-wrapper.style.color = color;
-wrapper.style.fontFamily = "Arial, sans-serif";
-wrapper.style.position = "absolute";
-wrapper.style.left = "-9999px";
-wrapper.style.top = "0";
-wrapper.style.zIndex = "999999";
+wrapper.style.width="900px";
+wrapper.style.padding="40px";
+wrapper.style.background=bg;
+wrapper.style.color=color;
+wrapper.style.fontFamily="Arial, sans-serif";
+wrapper.style.position="absolute";
+wrapper.style.left="-9999px";
+wrapper.style.top="0";
 
-wrapper.innerHTML = `
+wrapper.innerHTML=`
 
 <style>
 
@@ -2194,15 +1980,15 @@ margin-bottom:10px;
 h2{
 margin-top:30px;
 margin-bottom:15px;
-color:#ff9933;
+color:#ff8a00;
 }
 
 p{
-line-height:1.6;
+line-height:1.7;
 }
 
 ul{
-margin-left:20px;
+margin-left:22px;
 line-height:1.8;
 }
 
@@ -2211,198 +1997,294 @@ margin-bottom:10px;
 }
 
 hr{
-margin-top:25px;
-margin-bottom:25px;
+margin:28px 0;
 }
 
 </style>
 
 <div style="text-align:center;">
 
-<h1>HRTechify</h1>
+<h1>
 
-<h2>GrowItWithHR</h2>
+HRTechify
 
-<h1>${reportTitle}</h1>
+</h1>
+
+<h2>
+
+GrowItWithHR
+
+</h2>
+
+<h1>
+
+${reportTitle}
+
+</h1>
 
 <p>
-Generated On: GWHR ${generatedOn}
+
+Generated On:
+${generatedOn}
+
 </p>
 
 </div>
-<div style="height:20px;"></div>
-<hr>
-
-<h2>Organisation Profile</h2>
-
-<p><strong>State:</strong> ${assessment.state}</p>
-
-<p><strong>Entity:</strong> ${assessment.entity}</p>
-
-<p><strong>Industry:</strong> ${assessment.industry}</p>
-
-<p><strong>Employee Count:</strong> ${assessment.employeeBand}</p>
-
-${
-reportType === "people"
-? `
-<div style="height:20px;"></div>
-<hr>
-
-<h2>
-People Strategy Priorities
-</h2>
-
-<ul>
-
-${assessment.recommended
-.map(item=>`<li>${formatRule(item)}</li>`)
-.join("")}
-
-</ul>
-`
-: ""
-}
-
-${
-reportType === "growth"
-? `
-<div style="height:20px;"></div>
-<hr>
-
-<h2>
-Growth Readiness Priorities
-</h2>
-
-<ul>
-
-${assessment.future
-.map(item => `<li>${formatRule(item)}</li>`)
-.join("")}
-
-</ul>
-`
-: ""
-}
-
-${
-reportType === "complete"
-? `
-<div style="height:20px;"></div>
-<hr>
-
-<h2>
-Compliance Requirements
-</h2>
-
-<ul>
-${assessment.mandatory
-.map(item => `<li>${formatRule(item)}</li>`)
-.join("")}
-</ul>
-<div style="height:20px;"></div>
-<hr>
-
-<h2>
-People Strategy Priorities
-</h2>
-
-<ul>
-${assessment.recommended
-.map(item => `<li>${formatRule(item)}</li>`)
-.join("")}
-</ul>
-<div style="height:20px;"></div>
-<hr>
-
-<h2>
-Growth Readiness Priorities
-</h2>
-
-<ul>
-${assessment.future
-.map(item => `<li>${formatRule(item)}</li>`)
-.join("")}
-</ul>
-`
-: ""
-}
-<div style="height:20px;"></div>
-<hr>
-
-${
-reportType === "compliance"
-? `
 
 <hr>
 
 <h2>
-Compliance Requirements
+
+Organisation Profile
+
 </h2>
-
-<ul>
-
-${assessment.mandatory
-.map(item => `<li>${formatRule(item)}</li>
-`)
-.join("")}
-
-</ul>
-
-<hr>
-
-<h2>
-Official Sources & References
-</h2>
-
-<ul>
-
-${assessment.sources
-.map(source => `
-<li>
-${source.name}
-</li>
-`)
-.join("")}
-
-</ul>
-
-`
-: ""
-}
-
-${
-reportType === "statecomparison"
-? document.getElementById(
-"detailsPanel"
-).innerHTML
-: ""
-}
-<h2>Important Disclaimer</h2>
 
 <p>
-This report has been generated using artificial intelligence and rules-based assessment logic.
-Users are strongly encouraged to independently verify all recommendations before acting on compliance or workforce matters.
+
+<strong>State</strong>
+
+${assessment.state}
+
 </p>
-<div style="height:20px;"></div>
+
+<p>
+
+<strong>Entity</strong>
+
+${assessment.entity}
+
+</p>
+
+<p>
+
+<strong>Industry</strong>
+
+${assessment.industry}
+
+</p>
+
+<p>
+
+<strong>Employee Band</strong>
+
+${assessment.employeeBand}
+
+</p>
+
+${
+reportType==="compliance"
+?`
+
 <hr>
 
-<p>HRTechify | GrowItWithHR</p>
+<h2>
 
-<p>Smart People Strategy. More business momentum.</p>
+Mandatory Compliance Requirements
 
-<p>hrtechifyed@gmail.com</p>
+</h2>
 
-<p>Generated by GrowItWithHR Public Beta v6.3</p>
+<ul>
+
+${assessment.mandatory.map(rule=>`
+
+<li>
+
+${formatRule(rule)}
+
+</li>
+
+`).join("")}
+
+</ul>
+
+`
+:""
+}
+
+${
+reportType==="people"
+?`
+
+<hr>
+
+<h2>
+
+People Strategy Priorities
+
+</h2>
+
+<ul>
+
+${assessment.recommended.map(item=>`
+
+<li>
+
+${formatRule(item)}
+
+</li>
+
+`).join("")}
+
+</ul>
+
+`
+:""
+}
+
+${
+reportType==="growth"
+?`
+
+<hr>
+
+<h2>
+
+Growth Readiness Priorities
+
+</h2>
+
+<ul>
+
+${assessment.future.map(item=>`
+
+<li>
+
+${formatRule(item)}
+
+</li>
+
+`).join("")}
+
+</ul>
+
+`
+:""
+}
+
+${
+reportType==="complete"
+?`
+
+<hr>
+
+<h2>
+
+Mandatory Compliance Requirements
+
+</h2>
+
+<ul>
+
+${assessment.mandatory.map(rule=>`
+
+<li>${formatRule(rule)}</li>
+
+`).join("")}
+
+</ul>
+
+<hr>
+
+<h2>
+
+People Strategy Priorities
+
+</h2>
+
+<ul>
+
+${assessment.recommended.map(item=>`
+
+<li>${formatRule(item)}</li>
+
+`).join("")}
+
+</ul>
+
+<hr>
+
+<h2>
+
+Growth Readiness Priorities
+
+</h2>
+
+<ul>
+
+${assessment.future.map(item=>`
+
+<li>${formatRule(item)}</li>
+
+`).join("")}
+
+</ul>
+
+`
+:""
+}
+
+<hr>
+
+<h2>
+
+Official Sources
+
+</h2>
+
+<ul>
+
+${assessment.sources.map(source=>`
+
+<li>
+
+${source.name}
+
+</li>
+
+`).join("")}
+
+</ul>
+
+<hr>
+
+<h2>
+
+Disclaimer
+
+</h2>
+
+<p>
+
+This report has been generated using GrowItWithHR's
+rules engine and knowledge base.
+It is intended as an executive advisory document and
+should not be treated as a substitute for professional
+legal advice.
+
+</p>
+
+<hr>
+
+<p>
+
+HRTechify | GrowItWithHR
+
+</p>
+
+<p>
+
+Smart People Strategy.
+More Business Momentum.
+
+</p>
 
 `;
 
 document.body.appendChild(wrapper);
 
+setTimeout(async()=>{
 
-setTimeout(async () => {
-
-const canvas =
+const canvas=
 await html2canvas(
 wrapper,
 {
@@ -2411,26 +2293,24 @@ useCORS:true
 }
 );
 
-const imgData =
-canvas.toDataURL(
-"image/png"
-);
+const imgData=
+canvas.toDataURL("image/png");
 
-const { jsPDF } =
+const { jsPDF }=
 window.jspdf;
 
-const pdf =
+const pdf=
 new jsPDF(
 "p",
 "mm",
 "a4"
 );
 
-const pdfWidth = 210;
+const pdfWidth=210;
 
-const pdfHeight =
-(canvas.height * pdfWidth)
-/ canvas.width;
+const pdfHeight=
+(canvas.height*pdfWidth)
+/canvas.width;
 
 pdf.addImage(
 imgData,
@@ -2449,191 +2329,96 @@ document.body.removeChild(
 wrapper
 );
 
-const successMessage =
-document.createElement("div");
+alert(
+"Report downloaded successfully."
+);
 
-successMessage.innerHTML = `
-<div style="
-position:fixed;
-top:20px;
-right:20px;
-background:#0f172a;
-color:white;
-padding:14px 20px;
-border-radius:10px;
-z-index:999999;
-box-shadow:0 4px 12px rgba(0,0,0,0.25);
-font-weight:600;
+},500);
+
+}
+
+function downloadCompletePack(){
+
+openPDFModal("complete");
+
+}
+
+<!-- ==========================================
+STATE EXPANSION MODAL
+========================================== -->
+
+<div
+id="stateComparisonModal"
+class="pdf-modal">
+
+<div class="pdf-modal-content">
+
+<h3>
+
+🚀 State Expansion Advisor
+
+</h3>
+
+<p>
+
+Current State:
+<strong id="currentStateLabel"></strong>
+
+</p>
+
+<p>
+
+Select up to four states or union territories to compare.
+
+</p>
+
+<div
+id="stateSelectionContainer"
+style="
+max-height:350px;
+overflow:auto;
+text-align:left;
+margin-top:20px;
+padding-right:10px;
 ">
-✅ Report downloaded successfully.
-
-A confirmation email has been sent.
-Please check your Inbox and Spam folder.
 
 </div>
-`;
 
-document.body.appendChild(
-successMessage
-);
+<div class="modal-actions">
 
-setTimeout(() => {
+<button
+class="primary-btn"
+onclick="generateStateComparison()">
 
-successMessage.remove();
+Generate Comparison
 
-},3000);
+</button>
 
-alert(
-"Your beta advisory report has been downloaded successfully."
-);
+<button
+class="secondary-btn"
+onclick="closeStateComparisonModal()">
 
-},1000);
+Cancel
 
-};
+</button>
 
-async function generateSelectedReport(){
+</div>
 
-const theme =
-document.querySelector(
-'input[name="reportTheme"]:checked'
-).value;
+</div>
 
-const email =
-document.getElementById(
-"userEmail"
-).value.trim();
+</div>
 
-const consent =
-document.getElementById(
-"userConsent"
-).checked;
-
-if(!email){
-
-alert(
-"Please enter your email address."
-);
-
-return;
-
-}
-
-if(!consent){
-
-alert(
-"Please provide consent before downloading the report."
-);
-
-return;
-
-}
-
-const generatedOn =
-new Date().toLocaleDateString(
-"en-GB",
-{
-day:"2-digit",
-month:"long",
-year:"numeric"
-}
-);
-
-try{
-
-await emailjs.send(
-
-"service_as95qfh",
-
-"template_4j8ld17",
-
-{
-
-user_email:
-email,
-
-report_type:
-selectedReportType,
-
-generated_on:
-generatedOn + " | GWHR",
-
-industry:
-assessment.industry,
-
-state:
-assessment.state,
-
-employee_count:
-assessment.employeeBand
-
-}
-
-);
-
-const userEmailResponse =
-
-  await emailjs.send(
-
-"service_as95qfh",
-
-"template_9ii4u3e",
-
-{
-
-user_email:
-email,
-
-report_type:
-selectedReportType,
-
-generated_on:
-"GWHR " + generatedOn
-
-}
-
-);
-
-console.log(
-"EMAIL BEING SENT TO:",
-email
-);  
-
-console.log(
-"USER EMAIL SUCCESS",
-userEmailResponse
-);
-
-console.log(
-"Email sent successfully"
-);
-
-}catch(error){
-
-console.error(
-"EmailJS Error:",
-error
-);
-
-}
-
-generatePDF(
-selectedReportType,
-theme,
-generatedOn
-);
-
-closePDFModal();
-}
+<script>
 
 function openStateComparisonModal(){
 
 document.getElementById(
 "stateComparisonModal"
-).style.display = "flex";
+).style.display="flex";
 
 document.getElementById(
 "currentStateLabel"
-).textContent =
+).textContent=
 assessment.state;
 
 populateStateComparisonList();
@@ -2644,30 +2429,28 @@ function closeStateComparisonModal(){
 
 document.getElementById(
 "stateComparisonModal"
-).style.display = "none";
+).style.display="none";
 
 }
 
 function populateStateComparisonList(){
 
-const container =
+const container=
 document.getElementById(
 "stateSelectionContainer"
 );
 
-container.innerHTML = "";
+container.innerHTML="";
 
 Object.keys(stateExpansionData)
 .sort()
-.forEach(state => {
+.forEach(state=>{
 
-if(
-state === assessment.state
-){
+if(state===assessment.state){
 return;
 }
 
-container.innerHTML += `
+container.innerHTML+=`
 
 <label>
 
@@ -2691,53 +2474,35 @@ ${state}
 
 function validateStateSelection(){
 
-const checked =
+const checked=
 document.querySelectorAll(
 ".state-checkbox:checked"
 );
 
-if(
-checked.length > 4
-){
+if(checked.length>4){
 
 alert(
-"You can compare a maximum of 4 states."
+"You can compare a maximum of four states."
 );
 
 checked[
-checked.length - 1
-].checked = false;
+checked.length-1
+].checked=false;
 
 }
 
 }
 
-function downloadStateComparisonPDF(){
-
-generatePDF(
-"statecomparison",
-"lite",
-new Date().toLocaleDateString(
-"en-GB"
-)
-);
-
-}
-  
 function generateStateComparison(){
 
-const selectedStates =
+const selectedStates=
 [
 ...document.querySelectorAll(
 ".state-checkbox:checked"
 )
-].map(
-cb => cb.value
-);
+].map(cb=>cb.value);
 
-if(
-selectedStates.length === 0
-){
+if(selectedStates.length===0){
 
 alert(
 "Please select at least one state."
@@ -2747,49 +2512,47 @@ return;
 
 }
 
-const currentState =
+const currentState=
 assessment.state;
 
-let html = `
+let html=`
 
 <div class="summary-card">
 
-<h3>
+<h2>
 
 🚀 State Expansion Comparison
 
-</h3>
+</h2>
+
+<p>
+
+Comparison of key employment compliance indicators.
+
+</p>
 
 <table
 style="
 width:100%;
 border-collapse:collapse;
-margin-top:20px;
+margin-top:24px;
 ">
 
 <tr>
 
-<th style="padding:12px;border:1px solid #ddd;">
-Factor
-</th>
+<th>Factor</th>
 
-<th style="padding:12px;border:1px solid #ddd;">
-${currentState}
-</th>
+<th>${currentState}</th>
 
-${selectedStates.map(
-s => `
-<th style="padding:12px;border:1px solid #ddd;">
-${s}
-</th>
-`
-).join("")}
+${selectedStates.map(state=>`
+<th>${state}</th>
+`).join("")}
 
 </tr>
 
 `;
 
-const factors = [
+const factors=[
 
 "professionalTax",
 "labourWelfareFund",
@@ -2800,7 +2563,7 @@ const factors = [
 
 ];
 
-const labels = {
+const labels={
 
 professionalTax:
 "Professional Tax",
@@ -2822,49 +2585,65 @@ employmentExchange:
 
 };
 
-factors.forEach(factor => {
+factors.forEach(factor=>{
 
-html += "<tr>";
+html+="<tr>";
 
-html += `
-<td style="padding:12px;border:1px solid #ddd;">
+html+=`
+
+<td>
+
 ${labels[factor]}
+
 </td>
+
 `;
 
-html += `
-<td style="padding:12px;border:1px solid #ddd;">
+html+=`
+
+<td>
+
 ${
 stateExpansionData[currentState]?.[factor]?.value
 ||
-"Data Not Available"
+"Not Available"
 }
+
 </td>
+
 `;
 
-selectedStates.forEach(state => {
+selectedStates.forEach(state=>{
 
-html += `
-<td style="padding:12px;border:1px solid #ddd;">
+html+=`
+
+<td>
+
 ${
 stateExpansionData[state]?.[factor]?.value
 ||
-"Data Not Available"
+"Not Available"
 }
+
 </td>
+
 `;
 
 });
 
-html += "</tr>";
+html+="</tr>";
 
 });
 
-html += `
+html+=`
 
 </table>
 
-<br>
+<div
+style="
+margin-top:30px;
+text-align:center;
+">
 
 <button
 class="primary-btn"
@@ -2876,24 +2655,38 @@ Download Comparison Report
 
 </div>
 
+</div>
+
 `;
 
-const panel =
+const panel=
 document.getElementById(
 "detailsPanel"
 );
 
-panel.style.display =
-"block";
+panel.style.display="block";
 
-panel.innerHTML =
-html;
- 
+panel.innerHTML=html;
+
 closeStateComparisonModal();
 
-}   // closes generateStateComparison()
+}
 
- </script>  
+function downloadStateComparisonPDF(){
+
+generatePDF(
+
+"statecomparison",
+
+"lite",
+
+new Date().toLocaleDateString("en-GB")
+
+);
+
+}
+
+</script>
 
 <div
 id="pdfTemplate"
@@ -2905,8 +2698,10 @@ width:900px;
 background:white;
 z-index:-1;
 ">
+
 </div>
 
 </body>
+
 </html>
 
