@@ -114,18 +114,38 @@ function renderDashboardLayout(reportData) {
                 <span>5 Download</span>
             </div>
 
-            <div class="dashboard-workspace">
-                <aside class="dashboard-sidebar" aria-label="Advisory categories">
-                    <a href="#complianceSection">Compliance <span>View →</span></a>
-                    <a href="#peopleSection">People <span>View →</span></a>
-                    <a href="#growthSection">Growth <span>View →</span></a>
-                    <a href="#expansionSection">Expansion <span>View →</span></a>
-                    <div class="download-actions">
-                        <button class="primary-btn" type="button" id="downloadReportButton">Download Report</button>
-                        <button class="primary-btn" type="button" id="downloadPackButton">Download Advisory Pack</button>
-                    </div>
-                </aside>
+            <div class="dashboard-quick-actions" aria-label="Advisory categories">
+                <button class="dashboard-nav-card" type="button" data-target="complianceSection">
+                    <span class="nav-card-kicker">Mandatory</span>
+                    <strong>Compliance</strong>
+                    <span>View →</span>
+                </button>
+                <button class="dashboard-nav-card" type="button" data-target="peopleSection">
+                    <span class="nav-card-kicker">Recommended</span>
+                    <strong>People</strong>
+                    <span>View →</span>
+                </button>
+                <button class="dashboard-nav-card" type="button" data-target="growthSection">
+                    <span class="nav-card-kicker">Future</span>
+                    <strong>Growth</strong>
+                    <span>View →</span>
+                </button>
+                <button class="dashboard-nav-card" type="button" data-target="expansionSection">
+                    <span class="nav-card-kicker">Planner</span>
+                    <strong>Expansion</strong>
+                    <span>View →</span>
+                </button>
+            </div>
 
+            <details class="dashboard-download-menu">
+                <summary>Download options <span>+</span></summary>
+                <div class="download-actions">
+                    <button class="primary-btn" type="button" id="downloadReportButton">Download Report</button>
+                    <button class="primary-btn" type="button" id="downloadPackButton">Download Advisory Pack</button>
+                </div>
+            </details>
+
+            <div class="dashboard-workspace">
                 <main class="dashboard-content">
                     ${renderSectionShell(
                         "complianceSection",
@@ -162,6 +182,7 @@ function renderDashboardLayout(reportData) {
 
     bindAccordionEvents();
     bindDashboardActions(reportData);
+    bindDashboardNavigation();
 }
 
 function bindAccordionEvents() {
@@ -179,6 +200,27 @@ function bindAccordionEvents() {
 
             if (panel) {
                 panel.hidden = expanded;
+            }
+        });
+    });
+}
+
+function bindDashboardNavigation() {
+    document.querySelectorAll(".dashboard-nav-card").forEach(button => {
+        button.addEventListener("click", () => {
+            const section = document.getElementById(button.dataset.target);
+            const trigger = section ? section.querySelector(".accordion-trigger") : null;
+            const panel = trigger ? trigger.nextElementSibling : null;
+
+            if (trigger && panel && trigger.getAttribute("aria-expanded") !== "true") {
+                trigger.setAttribute("aria-expanded", "true");
+                const icon = trigger.querySelector(".accordion-icon");
+                if (icon) icon.textContent = "−";
+                panel.hidden = false;
+            }
+
+            if (section) {
+                section.scrollIntoView({ behavior: "smooth", block: "start" });
             }
         });
     });
