@@ -53,33 +53,34 @@ function getComplianceCategory(rule) {
 
 function getRuleExplanation(rule) {
 
-    const title = (rule.title || "").toLowerCase();
+    const title = (rule.title || rule.name || "").toLowerCase();
+    const threshold = rule.threshold || rule.applicability || rule.condition || "the selected state, entity type, industry, and workforce size";
 
-    if (title.includes("epf")) {
-        return "This requirement applies because establishments meeting the prescribed applicability criteria must comply with the Employees' Provident Funds and Miscellaneous Provisions Act, 1952.";
+    if (title.includes("epf") || title.includes("provident")) {
+        return "This applies because the Employees' Provident Funds and Miscellaneous Provisions Act, 1952 can require covered establishments to register, enrol eligible employees, deposit contributions, and maintain returns. Non-compliance may lead to interest, damages, recovery proceedings, inspections, and prosecution exposure for responsible officers.";
     }
 
-    if (title.includes("esic")) {
-        return "This requirement applies because eligible establishments are required to comply with the Employees' State Insurance Act, 1948.";
+    if (title.includes("esic") || title.includes("insurance")) {
+        return "This applies because the Employees' State Insurance Act, 1948 can require eligible establishments and employees to be registered and contributions to be deposited within statutory timelines. Violations may trigger interest, damages, contribution recovery, inspection actions, and prosecution exposure.";
     }
 
-    if (title.includes("posh")) {
-        return "Employers are expected to establish workplace sexual harassment prevention mechanisms under the POSH framework.";
+    if (title.includes("posh") || title.includes("sexual harassment")) {
+        return "This applies because the POSH framework requires covered employers to prevent and redress workplace sexual harassment through an Internal Committee, policy communication, awareness, and records. Failure can result in monetary penalties, reputational harm, cancellation or non-renewal risks for business licences, and repeat-offence consequences.";
     }
 
     if (title.includes("gratuity")) {
-        return "This obligation relates to statutory gratuity payments for eligible employees.";
+        return "This applies because the Payment of Gratuity Act, 1972 creates a statutory terminal-benefit obligation for eligible employees. Delayed or incorrect payment can lead to interest, authority proceedings, recovery directions, penalties, and avoidable employee disputes.";
     }
 
     if (title.includes("bonus")) {
-        return "This obligation relates to statutory payment of bonus requirements.";
+        return "This applies because the Payment of Bonus Act, 1965 can require qualifying establishments to calculate and pay statutory bonus to eligible employees. Breaches may lead to labour authority proceedings, arrears, penalties, prosecution exposure, and employee-relations risk.";
     }
 
     if (title.includes("maternity")) {
-        return "This obligation relates to maternity benefit compliance.";
+        return "This applies because the Maternity Benefit Act, 1961 protects eligible employees with statutory benefits, leave, and related safeguards. Non-compliance can create wage liability, penalties, prosecution exposure, and heightened discrimination or employee-relations risk.";
     }
 
-    return "This requirement has been identified by evaluating your organisation profile against the GrowItWithHR Knowledge Base.";
+    return `This applies because your organisation profile matches applicability signals for this law or statutory requirement: ${threshold}. Treat this as a legal-risk checkpoint: missed registrations, late filings, weak records, or unpaid statutory dues can result in notices, financial exposure, prosecution risk, and disruption during audits, funding diligence, or enterprise customer reviews.`;
 
 }
 
