@@ -369,9 +369,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         });
 
-        storage.save(company.get());
+        const result = storage.save(company.get());
 
-        alert("Organization Profile saved successfully.");
+if (!result.valid) {
+
+    alert(result.message);
+
+    return;
+
+}
+
+alert(result.message);
 
     }
 
