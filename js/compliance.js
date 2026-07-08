@@ -24,28 +24,41 @@ function renderComplianceRule(rule, index) {
     const authorityName = getAuthorityName(sourceId);
     const authorityURL = getAuthorityURL(sourceId);
     const actions = getNextActions(rule || {});
+    const category = rule && rule.category ? rule.category : getComplianceCategory(rule || {});
 
     return `
-        <article class="compliance-card">
-            <div class="card-header-row">
-                <span class="sequence-pill">${index + 1}</span>
-                <div>
-                    <h3>${title}</h3>
+        <article class="compliance-card rule-card">
+            <details ${index === 0 ? "open" : ""}>
+                <summary class="rule-summary">
+                    <span class="priority-dot" aria-hidden="true">🟠</span>
+                    <span class="rule-summary-copy">
+                        <span class="rule-priority">Mandatory</span>
+                        <strong>${title}</strong>
+                        <small>${escapeHTML(category)}</small>
+                    </span>
+                    <span class="expand-label">Expand ▼</span>
+                </summary>
+
+                <div class="rule-detail-block">
+                    <h4>Why this applies</h4>
                     <p>${escapeHTML(getRuleExplanation(rule || {}))}</p>
                 </div>
-            </div>
 
-            <div class="authority-box">
-                <span>Authority</span>
-                <a href="${escapeHTML(authorityURL)}" target="_blank" rel="noopener noreferrer">
-                    ${escapeHTML(authorityName)}
-                </a>
-            </div>
+                <div class="rule-detail-block">
+                    <h4>Official Sources</h4>
+                    <div class="source-links">
+                        <a href="${escapeHTML(authorityURL)}" target="_blank" rel="noopener noreferrer">${escapeHTML(authorityName)}</a>
+                        <a href="https://www.indiacode.nic.in" target="_blank" rel="noopener noreferrer">India Code</a>
+                    </div>
+                </div>
 
-            <h4>Next Actions</h4>
-            <ol class="action-list">
-                ${actions.map(action => `<li>${escapeHTML(action)}</li>`).join("")}
-            </ol>
+                <div class="rule-detail-block">
+                    <h4>Next Actions</h4>
+                    <ul class="action-list check-list">
+                        ${actions.map(action => `<li>${escapeHTML(action)}</li>`).join("")}
+                    </ul>
+                </div>
+            </details>
         </article>
     `;
 }

@@ -7,13 +7,13 @@
 function renderExpansionAdvisor(reportData) {
     return `
         <div class="expansion-card">
-            <h3>State Expansion Advisor</h3>
+            <h3>Expansion Planner</h3>
             <p>
-                Compare compliance considerations for expansion from
+                Plan compliance considerations for expansion from
                 <strong>${escapeHTML(reportData.state)}</strong> into additional Indian states.
             </p>
             <button class="secondary-btn" type="button" id="openStateComparisonButton">
-                Compare States
+                Learn More →
             </button>
             <div id="stateComparisonResults" class="comparison-results"></div>
         </div>
