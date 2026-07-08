@@ -6,7 +6,15 @@ class CompanyStorage {
 
     }
 
-    save(companyData) {
+    save(company) {
+
+        const validation = this.validate(company);
+
+        if (!validation.valid) {
+
+            return validation;
+
+        }
 
         try {
 
@@ -14,17 +22,29 @@ class CompanyStorage {
 
                 this.storageKey,
 
-                JSON.stringify(companyData)
+                JSON.stringify(company)
 
             );
 
-            return true;
+            return {
 
-        } catch (error) {
+                valid: true,
 
-            console.error("Unable to save Company Profile.", error);
+                message: "Organization Profile saved successfully."
 
-            return false;
+            };
+
+        }
+
+        catch (error) {
+
+            return {
+
+                valid: false,
+
+                message: error.message
+
+            };
 
         }
 
@@ -32,25 +52,15 @@ class CompanyStorage {
 
     load() {
 
-        try {
+        const data = localStorage.getItem(this.storageKey);
 
-            const data = localStorage.getItem(this.storageKey);
-
-            if (!data) {
-
-                return null;
-
-            }
-
-            return JSON.parse(data);
-
-        } catch (error) {
-
-            console.error("Unable to load Company Profile.", error);
+        if (!data) {
 
             return null;
 
         }
+
+        return JSON.parse(data);
 
     }
 
@@ -60,31 +70,91 @@ class CompanyStorage {
 
     }
 
-    remove() {
+    clear() {
 
         localStorage.removeItem(this.storageKey);
 
     }
 
-    update(updates) {
+    validate(company) {
 
-        const current = this.load() || {};
+        if (!company.companyName) {
 
-        const updated = {
+            return {
 
-            ...current,
+                valid: false,
 
-            ...updates
+                message: "Organization Name is required."
+
+            };
+
+        }
+
+        if (!company.entityType) {
+
+            return {
+
+                valid: false,
+
+                message: "Legal Entity Type is required."
+
+            };
+
+        }
+
+        if (!company.industry) {
+
+            return {
+
+                valid: false,
+
+                message: "Industry is required."
+
+            };
+
+        }
+
+        if (!company.natureOfBusiness) {
+
+            return {
+
+                valid: false,
+
+                message: "Nature of Business is required."
+
+            };
+
+        }
+
+        if (!company.yearOfIncorporation) {
+
+            return {
+
+                valid: false,
+
+                message: "Year of Incorporation is required."
+
+            };
+
+        }
+
+        if (!company.workModel) {
+
+            return {
+
+                valid: false,
+
+                message: "Work Model is required."
+
+            };
+
+        }
+
+        return {
+
+            valid: true
 
         };
-
-        this.save(updated);
-
-    }
-
-    clear() {
-
-        localStorage.clear();
 
     }
 
