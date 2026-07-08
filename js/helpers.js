@@ -18,6 +18,35 @@ function formatRule(item) {
 
 }
 
+
+function getComplianceCategory(rule) {
+
+    const title = (rule.title || rule.name || "").toLowerCase();
+
+    if (rule.category) {
+        return rule.category;
+    }
+
+    if (title.includes("epf") || title.includes("provident")) {
+        return "Provident Fund";
+    }
+
+    if (title.includes("esic") || title.includes("insurance")) {
+        return "Employee Insurance";
+    }
+
+    if (title.includes("posh")) {
+        return "Workplace Safety";
+    }
+
+    if (title.includes("gratuity") || title.includes("bonus") || title.includes("maternity")) {
+        return "Statutory Benefits";
+    }
+
+    return "Statutory Compliance";
+
+}
+
 /* ==========================================
    RULE EXPLANATIONS
 ========================================== */

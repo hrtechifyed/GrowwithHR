@@ -13,7 +13,7 @@ function escapeHTML(value) {
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
+        .replace(/\"/g, "&quot;")
         .replace(/'/g, "&#039;");
 }
 
@@ -51,7 +51,7 @@ function renderSectionShell(id, title, subtitle, content, expanded) {
                     <strong>${escapeHTML(title)}</strong>
                     <small>${escapeHTML(subtitle)}</small>
                 </span>
-                <span class="accordion-icon">+</span>
+                <span class="accordion-icon">${expanded ? "−" : "+"}</span>
             </button>
             <div class="accordion-panel" ${expanded ? "" : "hidden"}>
                 ${content}
@@ -64,25 +64,34 @@ function renderExecutiveSummary(reportData) {
     const mandatoryCount = asArray(reportData.mandatory).length;
     const recommendedCount = asArray(reportData.recommended).length;
     const futureCount = asArray(reportData.future).length;
+    const totalActions = mandatoryCount + recommendedCount + futureCount;
 
     return `
-        <div class="executive-summary-card">
-            <div>
-                <p class="eyebrow">Executive Summary</p>
-                <h2>HR Compliance & Growth Readiness Snapshot</h2>
+        <section class="executive-summary-card executive-summary-hero" aria-labelledby="executiveSummaryTitle">
+            <div class="summary-hero-copy">
+                <p class="eyebrow">Executive Compliance Summary</p>
+                <h2 id="executiveSummaryTitle">A single executive view of obligations, governance, and growth readiness.</h2>
                 <p>
                     Advisory assessment for <strong>${escapeHTML(reportData.entity)}</strong>
                     operating in <strong>${escapeHTML(reportData.state)}</strong>
                     within <strong>${escapeHTML(reportData.industry)}</strong>.
                 </p>
             </div>
-            <div class="executive-meta-grid">
-                ${renderMetricCard("Employee Band", reportData.employeeBand || "Not specified", "Current scale")}
-                ${renderMetricCard("Mandatory", mandatoryCount, "Compliance priorities")}
-                ${renderMetricCard("Recommended", recommendedCount, "People practices")}
-                ${renderMetricCard("Growth", futureCount, "Readiness actions")}
+
+            <div class="executive-profile-strip" aria-label="Assessment profile">
+                ${renderMetricCard("State", reportData.state || "Not specified", "Operating location")}
+                ${renderMetricCard("Entity", reportData.entity || "Not specified", "Business profile")}
+                ${renderMetricCard("Industry", reportData.industry || "Not specified", "Sector lens")}
+                ${renderMetricCard("Employees", reportData.employeeBand || "Not specified", "Current scale")}
             </div>
-        </div>
+
+            <div class="executive-meta-grid executive-status-grid">
+                ${renderMetricCard("Mandatory", mandatoryCount, "Compliance obligations")}
+                ${renderMetricCard("Recommendations", recommendedCount, "HR governance")}
+                ${renderMetricCard("Future", futureCount, "Organisation growth")}
+                ${renderMetricCard("Status", totalActions ? "Action Required" : "No Actions", "Advisory outcome")}
+            </div>
+        </section>
     `;
 }
 
@@ -97,40 +106,51 @@ function renderDashboardLayout(reportData) {
         <div class="executive-dashboard" id="executiveDashboard">
             ${renderExecutiveSummary(reportData)}
 
+            <div class="journey-rail" aria-label="Dashboard journey">
+                <span>1 Executive Summary</span>
+                <span>2 Choose a Category</span>
+                <span>3 Expand a Rule</span>
+                <span>4 Official Sources</span>
+                <span>5 Download</span>
+            </div>
+
             <div class="dashboard-workspace">
-                <aside class="dashboard-sidebar">
-                    <a href="#complianceSection">Compliance</a>
-                    <a href="#peopleSection">People Strategy</a>
-                    <a href="#growthSection">Growth Readiness</a>
-                    <a href="#expansionSection">Expansion</a>
-                    <button class="primary-btn" type="button" id="downloadReportButton">Download PDF</button>
+                <aside class="dashboard-sidebar" aria-label="Advisory categories">
+                    <a href="#complianceSection">Compliance <span>View →</span></a>
+                    <a href="#peopleSection">People <span>View →</span></a>
+                    <a href="#growthSection">Growth <span>View →</span></a>
+                    <a href="#expansionSection">Expansion <span>View →</span></a>
+                    <div class="download-actions">
+                        <button class="primary-btn" type="button" id="downloadReportButton">Download Report</button>
+                        <button class="primary-btn" type="button" id="downloadPackButton">Download Advisory Pack</button>
+                    </div>
                 </aside>
 
                 <main class="dashboard-content">
                     ${renderSectionShell(
                         "complianceSection",
-                        "Statutory Compliance",
-                        "Mandatory obligations and actions",
+                        "Compliance Obligations",
+                        "Mandatory statutory obligations and next actions",
                         typeof renderCompliance === "function" ? renderCompliance(reportData) : renderEmptyState("Compliance module is not loaded."),
                         true
                     )}
                     ${renderSectionShell(
                         "peopleSection",
-                        "People Strategy",
-                        "Recommended HR governance practices",
+                        "HR Governance",
+                        "Recommended people practices",
                         typeof renderPeopleStrategy === "function" ? renderPeopleStrategy(reportData) : renderEmptyState("People module is not loaded."),
                         false
                     )}
                     ${renderSectionShell(
                         "growthSection",
-                        "Growth Readiness",
+                        "Organisation Growth",
                         "Future operating model recommendations",
                         typeof renderGrowthReadiness === "function" ? renderGrowthReadiness(reportData) : renderEmptyState("Growth module is not loaded."),
                         false
                     )}
                     ${renderSectionShell(
                         "expansionSection",
-                        "Expansion Advisor",
+                        "Expansion Planner",
                         "State comparison and expansion readiness",
                         typeof renderExpansionAdvisor === "function" ? renderExpansionAdvisor(reportData) : renderEmptyState("Expansion module is not loaded."),
                         false
@@ -152,6 +172,11 @@ function bindAccordionEvents() {
 
             trigger.setAttribute("aria-expanded", String(!expanded));
 
+            const icon = trigger.querySelector(".accordion-icon");
+            if (icon) {
+                icon.textContent = expanded ? "+" : "−";
+            }
+
             if (panel) {
                 panel.hidden = expanded;
             }
@@ -160,13 +185,18 @@ function bindAccordionEvents() {
 }
 
 function bindDashboardActions(reportData) {
-    const downloadButton = document.getElementById("downloadReportButton");
+    const downloadButtons = [
+        document.getElementById("downloadReportButton"),
+        document.getElementById("downloadPackButton")
+    ];
 
-    if (downloadButton) {
-        downloadButton.addEventListener("click", () => {
-            if (typeof openPDFModal === "function") {
-                openPDFModal(reportData);
-            }
-        });
-    }
+    downloadButtons.forEach(button => {
+        if (button) {
+            button.addEventListener("click", () => {
+                if (typeof openPDFModal === "function") {
+                    openPDFModal(reportData);
+                }
+            });
+        }
+    });
 }

@@ -1,6 +1,5 @@
 /* ==========================================
    GrowItWithHR V8
-   growth.js
    Growth Readiness Rendering
 ========================================== */
 
@@ -12,23 +11,42 @@ function renderGrowthReadiness(reportData) {
     }
 
     return `
-        <div class="growth-roadmap-grid">
+        <div class="growth-roadmap-grid compact-rule-list">
             ${items.map(renderGrowthItem).join("")}
         </div>
     `;
 }
 
-function renderGrowthItem(item) {
+function renderGrowthItem(item, index) {
     const title = formatRule(item);
 
     return `
-        <article class="growth-card">
-            <h3>${escapeHTML(title)}</h3>
-            <p>${escapeHTML(getGrowthReason(title))}</p>
-            <ul>
-                <li><strong>Benefit:</strong> ${escapeHTML(getGrowthBenefit(title))}</li>
-                <li><strong>Timeline:</strong> ${escapeHTML(getGrowthTimeline(title))}</li>
-            </ul>
+        <article class="growth-card rule-card">
+            <details ${index === 0 ? "open" : ""}>
+                <summary class="rule-summary">
+                    <span class="priority-dot muted-dot" aria-hidden="true">●</span>
+                    <span class="rule-summary-copy">
+                        <span class="rule-priority">Future</span>
+                        <strong>${escapeHTML(title)}</strong>
+                        <small>Organisation Growth</small>
+                    </span>
+                    <span class="expand-label">Expand ▼</span>
+                </summary>
+                <div class="rule-detail-block">
+                    <h4>Why this matters</h4>
+                    <p>${escapeHTML(getGrowthReason(title))}</p>
+                </div>
+                <div class="rule-detail-block two-column-detail">
+                    <div>
+                        <h4>Benefit</h4>
+                        <p>${escapeHTML(getGrowthBenefit(title))}</p>
+                    </div>
+                    <div>
+                        <h4>Timeline</h4>
+                        <p>${escapeHTML(getGrowthTimeline(title))}</p>
+                    </div>
+                </div>
+            </details>
         </article>
     `;
 }
