@@ -95,14 +95,740 @@
 <section id="assessment" class="assessment-section compact-section">
   <div class="container">
     <div class="assessment-panel">
-      <div class="section-heading left-heading"><div class="section-tag">ASSESSMENT</div><h2>Generate your advisory dashboard.</h2><p>Four inputs. One tailored view of compliance, governance and people readiness.</p></div>
-      <div class="assessment-wrapper"><div class="assessment-form">
-        <div class="form-group"><label for="stateSelect">State / Union Territory</label><input type="text" id="stateSelect" list="stateList" placeholder="Start typing a State or UT"><datalist id="stateList"></datalist></div>
-        <div class="form-group"><label for="entitySelect">Entity Type</label><select id="entitySelect"><option value="">Select</option></select></div>
-        <div class="form-group"><label for="industrySelect">Industry</label><select id="industrySelect"><option value="">Select</option></select></div>
-        <div class="form-group"><label for="employeeCount">Employee Count</label><select id="employeeCount"><option>1-5</option><option>6-9</option><option>10-19</option><option>20-49</option><option>50-99</option><option>100-249</option><option>250-499</option><option>500-999</option><option>1000-4999</option><option>5000-9999</option><option>10000-24999</option><option>25000-49999</option><option>50000-99999</option><option>100000+</option></select></div>
-        <button id="generateReport" class="primary-btn">Generate dashboard</button>
-      </div></div>
+      <div class="section-heading left-heading">
+
+    <div class="section-tag">
+
+        COMPANY DNA
+
+    </div>
+
+    <h2>
+
+        Understand Your Company
+
+    </h2>
+
+    <p>
+
+        Complete your Company DNA profile to receive personalised compliance,
+        people governance and growth recommendations tailored to your organisation.
+
+    </p>
+
+</div>
+     
+    <div class="assessment-wrapper">
+
+    <div class="assessment-form">
+
+        <!-- ==========================================
+        COMPANY INFORMATION
+        ========================================== -->
+
+        <div class="section-heading left-heading">
+
+            <div class="section-tag">
+
+                COMPANY DNA
+
+            </div>
+
+            <h2>
+
+                Tell us about your organisation
+
+            </h2>
+
+            <p>
+
+                The more we understand your organisation,
+                the better GrowWithHR can personalise compliance,
+                governance and people recommendations.
+
+            </p>
+
+        </div>
+
+        <div class="assessment-group">
+
+            <h3>
+
+                Company Information
+
+            </h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="companyName">
+
+                        Company Name
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="companyName"
+                        placeholder="ABC Technologies Pvt. Ltd.">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="entitySelect">
+
+                        Entity Type
+
+                    </label>
+
+                    <select id="entitySelect">
+
+                        <option value="">
+
+                            Select
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="industrySelect">
+
+                        Industry
+
+                    </label>
+
+                    <select id="industrySelect">
+
+                        <option value="">
+
+                            Select
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+              <div class="form-group">
+
+    <label for="businessNature">
+
+        Nature of Business
+
+    </label>
+
+    <select id="businessNature">
+
+        <option>
+
+            Select
+
+        </option>
+
+        <option>
+
+            SaaS
+
+        </option>
+
+        <option>
+
+            IT Services
+
+        </option>
+
+        <option>
+
+            Manufacturing
+
+        </option>
+
+        <option>
+
+            Retail
+
+        </option>
+
+        <option>
+
+            Healthcare
+
+        </option>
+
+        <option>
+
+            Financial Services
+
+        </option>
+
+        <option>
+
+            Consulting
+
+        </option>
+
+        <option>
+
+            Education
+
+        </option>
+
+        <option>
+
+            Logistics
+
+        </option>
+
+        <option>
+
+            Other
+
+        </option>
+
+    </select>
+
+</div>
+
+                <div class="form-group">
+
+                    <label for="yearFounded">
+
+                        Year Founded
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="yearFounded"
+                        placeholder="2022"
+                        min="1900"
+                        max="2100">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+        WORKFORCE
+        ========================================== -->
+
+        <div class="assessment-group">
+
+            <h3>
+
+                Workforce Profile
+
+            </h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="employeeCount">
+
+                        Employee Count
+
+                    </label>
+
+                    <select id="employeeCount">
+
+                        <option>1-5</option>
+                        <option>6-9</option>
+                        <option>10-19</option>
+                        <option>20-49</option>
+                        <option>50-99</option>
+                        <option>100-249</option>
+                        <option>250-499</option>
+                        <option>500-999</option>
+                        <option>1000-4999</option>
+                        <option>5000-9999</option>
+                        <option>10000-24999</option>
+                        <option>25000-49999</option>
+                        <option>50000-99999</option>
+                        <option>100000+</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="contractWorkers">
+
+                        Contract Workers
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="contractWorkers"
+                        value="0"
+                        min="0">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="interns">
+
+                        Interns
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="interns"
+                        value="0"
+                        min="0">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="apprentices">
+
+                        Apprentices
+
+                    </label>
+
+                    <input
+                        type="number"
+                        id="apprentices"
+                        value="0"
+                        min="0">
+
+                </div>
+              <div class="form-group">
+
+    <label for="remoteWorkforce">
+
+        Remote Workforce
+
+    </label>
+
+    <select id="remoteWorkforce">
+
+        <option>
+
+            0%
+
+        </option>
+
+        <option>
+
+            1–25%
+
+        </option>
+
+        <option>
+
+            26–50%
+
+        </option>
+
+        <option>
+
+            51–75%
+
+        </option>
+
+        <option>
+
+            76–100%
+
+        </option>
+
+    </select>
+
+</div>
+
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+        OPERATIONS
+        ========================================== -->
+
+        <div class="assessment-group">
+
+            <h3>
+
+                Operations
+
+            </h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="stateSelect">
+
+                        Primary State / Union Territory
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="stateSelect"
+                        list="stateList"
+                        placeholder="Start typing a State or UT">
+
+                    <datalist id="stateList"></datalist>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="workModel">
+
+                        Work Model
+
+                    </label>
+
+                    <select id="workModel">
+
+                        <option value="office">
+
+                            Office Based
+
+                        </option>
+
+                        <option value="hybrid">
+
+                            Hybrid
+
+                        </option>
+
+                        <option value="remote">
+
+                            Remote
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="additionalStates">
+
+                    Operating Locations
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="additionalStates"
+                        placeholder="e.g. Bihar, Karnataka">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="countries">
+
+                        Countries of Operation
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="countries"
+                        placeholder="India">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PART 2 CONTINUES -->
+              <!-- ==========================================
+        GROWTH OUTLOOK
+        ========================================== -->
+
+        <div class="assessment-group">
+
+            <h3>
+
+                Growth Outlook
+
+            </h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="plannedHiring">
+
+                        Planned Hiring (Next 12 Months)
+
+                    </label>
+
+                    <select id="plannedHiring">
+
+                        <option value="none">
+
+                            No Hiring Planned
+
+                        </option>
+
+                        <option value="1-10">
+
+                            1 – 10 Employees
+
+                        </option>
+
+                        <option value="11-25">
+
+                            11 – 25 Employees
+
+                        </option>
+
+                        <option value="26-50">
+
+                            26 – 50 Employees
+
+                        </option>
+
+                        <option value="50+">
+
+                            More than 50 Employees
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="fundingStage">
+
+                        Funding Stage
+
+                    </label>
+
+                    <select id="fundingStage">
+
+                        <option>
+
+                            Bootstrapped
+
+                        </option>
+
+                        <option>
+
+                            Pre-Seed
+
+                        </option>
+
+                        <option>
+
+                            Seed
+
+                        </option>
+
+                        <option>
+
+                            Series A
+
+                        </option>
+
+                        <option>
+
+                            Series B+
+
+                        </option>
+
+                        <option>
+
+                            Enterprise
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="expansionPlans">
+
+                        Expansion Plans
+
+                    </label>
+
+                    <select id="expansionPlans">
+
+                        <option>
+
+                            No Immediate Expansion
+
+                        </option>
+
+                        <option>
+
+                            New City
+
+                        </option>
+
+                        <option>
+
+                            New State
+
+                        </option>
+
+                        <option>
+
+                            International Expansion
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="hrOwner">
+
+                       Current People Function
+
+
+                    </label>
+
+                    <select id="hrOwner">
+
+    <option value="founder">
+
+        Founder manages HR
+
+    </option>
+
+    <option value="operations">
+
+        Operations manages HR
+
+    </option>
+
+    <option value="hr-executive">
+
+        HR Executive
+
+    </option>
+
+    <option value="hr-manager">
+
+        HR Manager
+
+    </option>
+
+    <option value="hrbp">
+
+        HR Business Partner
+
+    </option>
+
+    <option value="head-hr">
+
+        Head of HR / CHRO
+
+    </option>
+
+</select>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+        COMPANY DNA SUMMARY
+        ========================================== -->
+
+        <div class="assessment-group">
+
+            <h3>
+
+              Your Executive Advisory Will Include
+
+            </h3>
+
+            <div class="summary-card">
+
+              <ul class="action-list">
+
+    <li>
+
+        Applicable statutory compliance obligations based on your organisation profile
+
+    </li>
+
+    <li>
+
+        Immediate business and legal risks requiring executive attention
+
+    </li>
+
+    <li>
+
+        HR governance priorities aligned to your current growth stage
+
+    </li>
+
+    <li>
+
+        People practices recommended for your organisation today
+
+    </li>
+
+    <li>
+
+        Future compliance and organisational milestones as your business scales
+
+    </li>
+
+    <li>
+
+        Official government references supporting every recommendation
+
+    </li>
+
+</ul>
+
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+        GENERATE REPORT
+        ========================================== -->
+
+        <button
+
+            id="generateReport"
+
+            class="primary-btn">
+
+            Generate My Executive Advisory
+
+        </button>
+
+    </div>
+
+</div>
+    
     </div>
     <div id="reportContainer" class="report-container"></div>
   </div>
