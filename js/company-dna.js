@@ -9,7 +9,7 @@ export function collectCompanyDNA() {
     return {
 
         /* ======================================
-           COMPANY
+           COMPANY INFORMATION
         ====================================== */
 
         companyName:
@@ -44,7 +44,7 @@ export function collectCompanyDNA() {
             Number(document.getElementById("apprentices")?.value || 0),
 
         remoteWorkforce:
-            document.getElementById("remoteWorkforce")?.value || "0%",
+            document.getElementById("remoteWorkforce")?.value || "",
 
         /* ======================================
            OPERATIONS
