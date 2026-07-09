@@ -69,21 +69,31 @@ const sphereGeometry = new THREE.SphereGeometry(0.14,32,32);
 
 nodesData.forEach(node=>{
 
-    const material = new THREE.MeshPhongMaterial({
+ const material = new THREE.MeshPhysicalMaterial({
 
-        color:0xffb000,
+    color:0xffb347,
 
-        emissive:0xff8800,
+    emissive:0xff8800,
 
-        emissiveIntensity:.6,
+    emissiveIntensity:1,
 
-        shininess:120,
+    roughness:0.08,
 
-        transparent:true,
+    metalness:0.25,
 
-        opacity:.95
+    transmission:.55,
 
-    });
+    thickness:.7,
+
+    clearcoat:1,
+
+    clearcoatRoughness:0,
+
+    transparent:true,
+
+    opacity:.96
+
+});
 
     const sphere = new THREE.Mesh(
 
@@ -121,13 +131,47 @@ scene.add(ambient);
 
 const pointLight = new THREE.PointLight(
 
-    0xffb000,
+    0xffb347,
+
+    4,
+
+    60
+
+);
+
+pointLight.position.set(
+
+    0,
+
+    3,
+
+    8
+
+);
+
+scene.add(pointLight);
+
+const blueLight = new THREE.PointLight(
+
+    0x2563eb,
 
     2,
 
     40
 
 );
+
+blueLight.position.set(
+
+    -5,
+
+    -2,
+
+    6
+
+);
+
+scene.add(blueLight);
 
 pointLight.position.set(
 
@@ -173,11 +217,11 @@ const links=[
 
 const lineMaterial = new THREE.LineBasicMaterial({
 
-    color:0x2f80ff,
+    color:0x5aa8ff,
 
     transparent:true,
 
-    opacity:.55
+    opacity:.72
 
 });
 
@@ -242,6 +286,19 @@ nodes.forEach((node,index)=>{
 
 });
 
+        const t = Date.now()*0.001;
+
+pointLight.intensity =
+
+3.8 +
+
+Math.sin(t*2)*0.3;
+
+blueLight.intensity =
+
+2 +
+
+Math.cos(t*1.6)*0.2;
         renderer.render(scene, camera);
 
     }
