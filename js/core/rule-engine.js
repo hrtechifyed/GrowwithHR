@@ -59,11 +59,17 @@ class RuleEngine {
             rule: definition.name
         });
 
-        eventBus.emit(
-            EVENTS.RULE_ENGINE_READY,
-            cloneObject(definition)
-        );
-
+      eventBus.emit(
+    EVENTS.RULE_ENGINE_READY,
+    {
+        id: definition.id,
+        module: definition.module,
+        name: definition.name,
+        description: definition.description,
+        priority: definition.priority,
+        enabled: definition.enabled
+    }
+);
         return definition.id;
 
     }
