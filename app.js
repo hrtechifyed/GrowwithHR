@@ -1,17 +1,30 @@
-import bootstrap from "./js/bootstrap.js";
 document.addEventListener(
 "DOMContentLoaded",
 async () => {
+
 console.log(
-  "GrowItWithHR V9 Engine Initializing..."
+    "GrowItWithHR V7 Engine Initializing..."
 );
 
-const platform = bootstrap();
+let platform = null;
 
-console.log(
-    "GrowWithHR Platform Initialized",
-    platform
-);  
+try {
+
+    platform = bootstrap();
+
+    console.log(
+        "GrowWithHR Platform Initialized",
+        platform
+    );
+
+} catch (error) {
+
+    console.error(
+        "Platform Bootstrap Failed",
+        error
+    );
+
+}
 
 try {
 
