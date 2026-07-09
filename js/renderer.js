@@ -43,6 +43,35 @@ function renderEmptyState(message) {
     `;
 }
 
+function renderSourceCitation(item = {}) {
+
+    if (!item.source) {
+        return "";
+    }
+
+    return `
+        <div class="official-source">
+
+            <span class="source-label">
+
+                Official Source
+
+            </span>
+
+            <a
+                href="${escapeHTML(item.source.url)}"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                ${escapeHTML(item.source.name)}
+
+            </a>
+
+        </div>
+    `;
+
+}
+
 function renderSectionShell(id, title, subtitle, content, expanded) {
     return `
         <section class="dashboard-accordion" id="${escapeHTML(id)}">
