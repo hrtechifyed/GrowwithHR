@@ -1,5 +1,6 @@
 import bootstrap from "./js/bootstrap.js";
 import APP_CONFIG from "./js/config/app-config.js";
+
 document.addEventListener(
 "DOMContentLoaded",
 async () => {
@@ -25,15 +26,14 @@ try {
 
     platform = bootstrap();
 
-    console.log(
-        "GrowWithHR Platform Initialized",
-        platform
+    console.info(
+    `${APP_CONFIG.productName} ${APP_CONFIG.version} Initializing`
     );
 
 } catch (error) {
 
     console.error(
-        "Platform Bootstrap Failed",
+        `${APP_CONFIG.productName} Error`,
         error
     );
 
@@ -150,12 +150,6 @@ const liveUpdatesData =
 
   const engineData =
     await engineResponse.json();
-
- console.log(
-  "Source Registry",
-  sourceRegistryResponse.status,
-  sourceRegistryResponse.url
-);
 
 if (!sourceRegistryResponse.ok)
   throw new Error("source-registry.json not found");
@@ -297,38 +291,6 @@ if (response.ok) {
 );
   
 
-/* ==========================================
-     Debug
-  ========================================== */
-
-console.log(
-"Central Laws Loaded",
-Object.keys(
-  centralKnowledgeBase
-).length
-);
-
-console.log(
-centralKnowledgeBase
-);  
-
-console.log(
-
-"Resolver Test",
-
-resolveCentralRule("EPFO-001")
-
-);  
-
-/* ==========================================
-     Debug
-  ========================================== */
-  console.log(
-    `${APP_CONFIG.productName} ${APP_CONFIG.version} Loaded Successfully`
-  );
-
-  
-
   /* ==========================================
      DOM REFERENCES
   ========================================== */
@@ -379,19 +341,7 @@ resolveCentralRule("EPFO-001")
   /* ==========================================
      POPULATE STATES
   ========================================== */
-  /* ==========================================
-     Debug 2
-  ========================================== */
-
-console.log("stateSelect", stateSelect);
-
-console.log("entitySelect", entitySelect);
-
-console.log("industrySelect", industrySelect);
-  /* ==========================================
-     Debug 2
-  ========================================== */
-
+ 
   
   if (stateSelect) {
 
