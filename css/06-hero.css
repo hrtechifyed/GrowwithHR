@@ -295,37 +295,41 @@
 
     backdrop-filter:blur(24px);
 
+   transform-origin:center center;
+
     border:1px solid rgba(255,255,255,.08);
 
-    box-shadow:
+   box-shadow:
 
-        var(--shadow-lg),
+    0 40px 90px rgba(0,0,0,.35),
 
-        var(--glow-brand);
+    0 15px 40px rgba(255,122,0,.18),
 
-    transform:
+    inset 0 1px 0 rgba(255,255,255,.08);
 
-        perspective(1800px)
+transform:
 
-        rotateY(-10deg)
+    perspective(1800px)
 
-        rotateX(4deg);
+    rotateY(-3deg)
 
-    transition:.45s;
+    rotateX(1deg);
 
 }
 
 .workspace-window:hover{
 
-    transform:
+  transform:
 
-        perspective(1800px)
+    perspective(1800px)
 
-        rotateY(-5deg)
+    rotateY(-1deg)
 
-        rotateX(2deg)
+    rotateX(0deg)
 
-        translateY(-8px);
+    translateY(-10px)
+
+    scale(1.02);
 
 }
 
