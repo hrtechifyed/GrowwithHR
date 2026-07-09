@@ -1244,3 +1244,131 @@ recommended = [
 
 }
 );
+
+/* ==========================================================
+   CAPABILITY CAROUSEL
+========================================================== */
+
+const carouselTrack = document.querySelector(".carousel-track");
+
+const prevButton = document.querySelector(".carousel-arrow.prev");
+
+const nextButton = document.querySelector(".carousel-arrow.next");
+
+const slides = document.querySelectorAll(".capability-slide");
+
+if(carouselTrack){
+
+    const slideWidth = 384;
+
+    let currentIndex = 0;
+
+    function updateActiveSlide(){
+
+        slides.forEach(slide=>{
+
+            slide.classList.remove("active");
+
+        });
+
+        slides[currentIndex].classList.add("active");
+
+    }
+
+    nextButton.addEventListener("click",()=>{
+
+        if(currentIndex < slides.length-1){
+
+            currentIndex++;
+
+        }
+
+        carouselTrack.scrollTo({
+
+            left:currentIndex*slideWidth,
+
+            behavior:"smooth"
+
+        });
+
+        updateActiveSlide();
+
+    });
+
+    prevButton.addEventListener("click",()=>{
+
+        if(currentIndex>0){
+
+            currentIndex--;
+
+        }
+
+        carouselTrack.scrollTo({
+
+            left:currentIndex*slideWidth,
+
+            behavior:"smooth"
+
+        });
+
+        updateActiveSlide();
+
+    });
+
+    let autoRotate = setInterval(()=>{
+
+        currentIndex++;
+
+        if(currentIndex>=slides.length){
+
+            currentIndex=0;
+
+        }
+
+        carouselTrack.scrollTo({
+
+            left:currentIndex*slideWidth,
+
+            behavior:"smooth"
+
+        });
+
+        updateActiveSlide();
+
+    },5000);
+
+    carouselTrack.addEventListener("mouseenter",()=>{
+
+        clearInterval(autoRotate);
+
+    });
+
+    carouselTrack.addEventListener("mouseleave",()=>{
+
+        autoRotate = setInterval(()=>{
+
+            currentIndex++;
+
+            if(currentIndex>=slides.length){
+
+                currentIndex=0;
+
+            }
+
+            carouselTrack.scrollTo({
+
+                left:currentIndex*slideWidth,
+
+                behavior:"smooth"
+
+            });
+
+            updateActiveSlide();
+
+        },5000);
+
+    });
+
+    updateActiveSlide();
+
+}
