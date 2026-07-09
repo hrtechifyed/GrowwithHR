@@ -1,0 +1,290 @@
+/* ==========================================================
+   HRTECHIFY DESIGN SYSTEM
+   Module 11
+   Responsive
+   Version : v0.10.0-beta
+========================================================== */
+
+/* ==========================================
+   LARGE TABLETS
+========================================== */
+
+@media (max-width:1200px){
+
+    .hero-layout{
+
+        grid-template-columns:1fr;
+
+        gap:70px;
+
+        text-align:center;
+
+    }
+
+    .hero-content{
+
+        margin:0 auto;
+
+    }
+
+    .hero-description{
+
+        margin-left:auto;
+
+        margin-right:auto;
+
+    }
+
+    .hero-actions{
+
+        justify-content:center;
+
+    }
+
+    .trust-strip{
+
+        justify-content:center;
+
+    }
+
+    .hero-workspace{
+
+        order:2;
+
+    }
+
+}
+
+/* ==========================================
+   TABLETS
+========================================== */
+
+@media (max-width:992px){
+
+    .grid-4{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .grid-3{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .grid-2{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .how-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .capability-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .assessment-form{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .company-dna{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .dashboard-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .workspace-window{
+
+        width:100%;
+
+        max-width:520px;
+
+    }
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width:768px){
+
+    .compact-section{
+
+        padding:80px 0;
+
+    }
+
+    .section{
+
+        padding:80px 0;
+
+    }
+
+    h1{
+
+        font-size:2.6rem;
+
+    }
+
+    h2{
+
+        font-size:2rem;
+
+    }
+
+    .hero{
+
+        min-height:auto;
+
+        padding-top:120px;
+
+        padding-bottom:70px;
+
+    }
+
+    .hero-actions{
+
+        flex-direction:column;
+
+        width:100%;
+
+    }
+
+    .primary-btn,
+
+    .secondary-btn{
+
+        width:100%;
+
+    }
+
+    .assessment-panel{
+
+        padding:32px 24px;
+
+    }
+
+    .modal-content{
+
+        padding:28px;
+
+    }
+
+    .company-dna{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .dashboard-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:16px;
+
+    }
+
+    .dashboard-actions{
+
+        flex-direction:column;
+
+    }
+
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width:480px){
+
+    .container{
+
+        width:94%;
+
+    }
+
+    h1{
+
+        font-size:2.2rem;
+
+    }
+
+    h2{
+
+        font-size:1.7rem;
+
+    }
+
+    .hero-badge{
+
+        font-size:.78rem;
+
+    }
+
+    .workspace-body{
+
+        padding:18px;
+
+    }
+
+    .workspace-card{
+
+        padding:16px;
+
+    }
+
+    .section-heading{
+
+        margin-bottom:40px;
+
+    }
+
+    .capability-card,
+
+    .how-card{
+
+        padding:28px;
+
+    }
+
+    .assessment-panel{
+
+        border-radius:22px;
+
+    }
+
+}
+
+/* ==========================================
+   VERY LARGE SCREENS
+========================================== */
+
+@media (min-width:1600px){
+
+    .container{
+
+        max-width:1440px;
+
+    }
+
+}
