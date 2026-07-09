@@ -44,6 +44,18 @@ export { RecommendationEngine } from "./recommendation-engine.js";
 export { default as reportEngine } from "./report-engine.js";
 export { ReportEngine } from "./report-engine.js";
 
+export { default as intelligenceGraph } from "./intelligence-graph.js";
+export { IntelligenceGraph } from "./intelligence-graph.js";
+
+export { default as peopleIntelligenceReport } from "./people-intelligence-report.js";
+export { PeopleIntelligenceReport } from "./people-intelligence-report.js";
+
+export { default as recommendationPrioritizer } from "./recommendation-prioritizer.js";
+export { RecommendationPrioritizer } from "./recommendation-prioritizer.js";
+
+export { default as executiveDashboard } from "./executive-dashboard.js";
+export { ExecutiveDashboard } from "./executive-dashboard.js";
+
 export { default as notificationEngine } from "./notification-engine.js";
 export { NotificationEngine } from "./notification-engine.js";
 
