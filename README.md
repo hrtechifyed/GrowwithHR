@@ -1,14 +1,12 @@
-# GrowItWithHR V2
+AI-powered People Intelligence Platform for founders, helping growing businesses understand compliance, people risks and the next HR decisions as they scale.
 
-Planned sections:
-
-- Hero
-- Problem
-- Interactive Tool
-- Example Company
-- Trust
-- Founder
-- Demo Request
-- Citations
-- Freshness
-- Change Alertsv
+hr
+people-analytics
+compliance
+startup
+artificial-intelligence
+javascript
+saas
+hrtech
+founders
+people-intelligence
