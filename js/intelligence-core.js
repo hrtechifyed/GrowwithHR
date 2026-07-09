@@ -4,6 +4,10 @@ const container = document.getElementById("dnaCoreCanvas");
 
 if (container) {
 
+    /* ==========================================================
+       SCENE
+    ========================================================== */
+
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(
@@ -13,7 +17,7 @@ if (container) {
         1000
     );
 
-    camera.position.z = 9;
+    camera.position.z = 11;
 
     const renderer = new THREE.WebGLRenderer({
         alpha: true,
@@ -29,287 +33,318 @@ if (container) {
 
     container.appendChild(renderer.domElement);
 
+    /* ==========================================================
+       GROUP
+    ========================================================== */
+
     const group = new THREE.Group();
 
     scene.add(group);
 
-    const geometry = new THREE.SphereGeometry(0.10, 24, 24);
+    /* ==========================================================
+       COMPANY DNA NODES
+    ========================================================== */
 
-    const material = new THREE.MeshBasicMaterial({
-        color: 0xffb000
-    });
+    const nodesData = [
 
- const nodesData = [
+        { name:"Growth",             x: 0.0,  y: 3.2 },
 
-    { name:"Growth", x:0, y:2.7 },
+        { name:"Leadership",         x:-2.2,  y: 2.0 },
 
-    { name:"Leadership", x:-2.1, y:1.5 },
+        { name:"Organization",       x: 2.2,  y: 2.0 },
 
-    { name:"Organization", x:2.1, y:1.5 },
+        { name:"Culture",            x:-3.2,  y: 0.2 },
 
-    { name:"Culture", x:-3.0, y:0 },
+        { name:"Workforce",          x: 3.2,  y: 0.2 },
 
-    { name:"Workforce", x:3.0, y:0 },
+        { name:"Performance",        x:-2.3,  y:-2.0 },
 
-    { name:"Performance", x:-2.0, y:-1.9 },
+        { name:"Learning",           x: 2.3,  y:-2.0 },
 
-    { name:"Learning", x:2.0, y:-1.9 },
+        { name:"Rewards",            x:-1.2,  y:-3.8 },
 
-    { name:"Rewards", x:-1.0, y:-3.3 },
+        { name:"Compliance",         x: 1.2,  y:-3.8 },
 
-    { name:"Compliance", x:1.0, y:-3.3 },
-
-    { name:"Customer Success", x:0, y:-4.6 }
-
-];
-
-const nodes = [];
-
-const sphereGeometry = new THREE.SphereGeometry(0.14,32,32);
-
-nodesData.forEach(node=>{
-
- const material = new THREE.MeshPhysicalMaterial({
-
-    color:0xffb347,
-
-    emissive:0xff8800,
-
-    emissiveIntensity:1,
-
-    roughness:0.08,
-
-    metalness:0.25,
-
-    transmission:.55,
-
-    thickness:.7,
-
-    clearcoat:1,
-
-    clearcoatRoughness:0,
-
-    transparent:true,
-
-    opacity:.96
-
-});
-
-    const sphere = new THREE.Mesh(
-
-        sphereGeometry,
-
-        material
-
-    );
-
-    sphere.position.set(
-
-        node.x,
-
-        node.y,
-
-        0
-
-    );
-
-    group.add(sphere);
-
-    nodes.push(sphere);
-
-});
-
-const ambient = new THREE.AmbientLight(
-
-    0xffffff,
-
-    .7
-
-);
-
-scene.add(ambient);
-
-const pointLight = new THREE.PointLight(
-
-    0xffb347,
-
-    4,
-
-    60
-
-);
-
-pointLight.position.set(
-
-    0,
-
-    3,
-
-    8
-
-);
-
-scene.add(pointLight);
-
-const blueLight = new THREE.PointLight(
-
-    0x2563eb,
-
-    2,
-
-    40
-
-);
-
-blueLight.position.set(
-
-    -5,
-
-    -2,
-
-    6
-
-);
-
-scene.add(blueLight);
-
-pointLight.position.set(
-
-    0,
-
-    2,
-
-    6
-
-);
-
-scene.add(pointLight);
-
-const links=[
-
-[0,1],[0,2],
-
-[1,3],[1,5],
-
-[2,4],[2,6],
-
-[3,5],
-
-[4,6],
-
-[5,7],
-
-[6,8],
-
-[7,9],
-
-[8,9],
-
-[1,2],
-
-[3,4],
-
-[5,6],
-
-[7,8]
-
-];
-
-const lineMaterial = new THREE.LineBasicMaterial({
-
-    color:0x5aa8ff,
-
-    transparent:true,
-
-    opacity:.72
-
-});
-
-links.forEach(link=>{
-
-    const points=[
-
-        nodes[link[0]].position,
-
-        nodes[link[1]].position
+        { name:"Customer Success",   x: 0.0,  y:-5.2 }
 
     ];
 
-    const geometry = new THREE.BufferGeometry()
+    const sphereGeometry = new THREE.SphereGeometry(
+        0.14,
+        32,
+        32
+    );
 
-        .setFromPoints(points);
+    const nodes = [];
 
-    group.add(
+    nodesData.forEach(node => {
 
-        new THREE.Line(
+        const material = new THREE.MeshPhysicalMaterial({
 
-            geometry,
+            color:0xffb347,
+
+            emissive:0xff8800,
+
+            emissiveIntensity:1,
+
+            roughness:0.08,
+
+            metalness:0.25,
+
+            transmission:0.55,
+
+            thickness:0.7,
+
+            clearcoat:1,
+
+            clearcoatRoughness:0,
+
+            transparent:true,
+
+            opacity:0.96
+
+        });
+
+        const sphere = new THREE.Mesh(
+
+            sphereGeometry,
+
+            material
+
+        );
+
+        sphere.position.set(
+
+            node.x,
+
+            node.y,
+
+            0
+
+        );
+
+        group.add(sphere);
+
+        nodes.push(sphere);
+
+    });
+
+    /* ==========================================================
+       LIGHTING
+    ========================================================== */
+
+    const ambient = new THREE.AmbientLight(
+
+        0xffffff,
+
+        0.70
+
+    );
+
+    scene.add(ambient);
+
+    const pointLight = new THREE.PointLight(
+
+        0xffb347,
+
+        4,
+
+        60
+
+    );
+
+    pointLight.position.set(
+
+        0,
+
+        3,
+
+        8
+
+    );
+
+    scene.add(pointLight);
+
+    const blueLight = new THREE.PointLight(
+
+        0x2563eb,
+
+        2,
+
+        40
+
+    );
+
+    blueLight.position.set(
+
+        -5,
+
+        -2,
+
+        6
+
+    );
+
+    scene.add(blueLight);
+
+    /* ==========================================================
+       COMPANY DNA CONNECTIONS
+    ========================================================== */
+
+    const links = [
+
+        [0,1],
+        [0,2],
+
+        [1,2],
+
+        [1,3],
+        [1,5],
+
+        [2,4],
+        [2,6],
+
+        [3,4],
+
+        [3,5],
+
+        [4,6],
+
+        [5,6],
+
+        [5,7],
+
+        [6,8],
+
+        [7,8],
+
+        [7,9],
+
+        [8,9],
+
+        [5,9],
+
+        [6,9]
+
+    ];
+
+    const lineMaterial = new THREE.LineBasicMaterial({
+
+        color:0x5aa8ff,
+
+        transparent:true,
+
+        opacity:0.72
+
+    });
+
+    links.forEach(link => {
+
+        const points = [
+
+            nodes[link[0]].position,
+
+            nodes[link[1]].position
+
+        ];
+
+        const lineGeometry = new THREE.BufferGeometry()
+
+            .setFromPoints(points);
+
+        const line = new THREE.Line(
+
+            lineGeometry,
 
             lineMaterial
 
-        )
+        );
 
-    );
+        group.add(line);
 
-});
-    
+    });
 
-    function animate() {
+    /* ==========================================================
+       ANIMATION
+    ========================================================== */
+
+    function animate(){
 
         requestAnimationFrame(animate);
 
-       group.rotation.y += 0.002;
+        group.rotation.set(
 
-group.rotation.x =
+            0,
 
-    Math.sin(
+            0,
 
-        Date.now()*0.0005
+            0
 
-    )*0.08;
+        );
 
-nodes.forEach((node,index)=>{
+        nodes.forEach((node,index)=>{
 
-    node.scale.setScalar(
+            const pulse =
 
-        1 +
+                1 +
 
-        Math.sin(
+                Math.sin(
 
-            Date.now()*0.002+
+                    Date.now()*0.002 +
 
-            index
+                    index
 
-        )*0.08
+                ) * 0.05;
 
-    );
+            node.scale.set(
 
-});
+                pulse,
+
+                pulse,
+
+                pulse
+
+            );
+
+        });
 
         const t = Date.now()*0.001;
 
-pointLight.intensity =
+        pointLight.intensity =
 
-3.8 +
+            3.8 +
 
-Math.sin(t*2)*0.3;
+            Math.sin(t*2) * 0.30;
 
-blueLight.intensity =
+        blueLight.intensity =
 
-2 +
+            2 +
 
-Math.cos(t*1.6)*0.2;
-        renderer.render(scene, camera);
+            Math.cos(t*1.6) * 0.20;
+
+        renderer.render(
+
+            scene,
+
+            camera
+
+        );
 
     }
 
     animate();
 
-    window.addEventListener("resize", () => {
+    /* ==========================================================
+       RESIZE
+    ========================================================== */
+
+    window.addEventListener("resize",()=>{
 
         camera.aspect =
 
-            container.clientWidth / container.clientHeight;
+            container.clientWidth /
+
+            container.clientHeight;
 
         camera.updateProjectionMatrix();
 
