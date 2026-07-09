@@ -1,0 +1,308 @@
+/* ==========================================================
+   HRTECHIFY DESIGN SYSTEM
+   Module 09
+   Executive Dashboard
+   Version : v0.10.0-beta
+========================================================== */
+
+/* ==========================================
+   DASHBOARD
+========================================== */
+
+.executive-dashboard{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:32px;
+
+    margin-top:60px;
+
+}
+
+/* ==========================================
+   SECTION
+========================================== */
+
+.dashboard-section{
+
+    background:var(--gradient-card);
+
+    border:1px solid var(--glass-border);
+
+    border-radius:28px;
+
+    padding:36px;
+
+    backdrop-filter:blur(24px);
+
+    box-shadow:var(--shadow-md);
+
+    transition:var(--transition-normal);
+
+}
+
+.dashboard-section:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+
+        var(--shadow-lg),
+
+        var(--glow-brand);
+
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:24px;
+
+}
+
+.dashboard-header h2{
+
+    font-size:1.6rem;
+
+    margin:0;
+
+}
+
+.dashboard-subtitle{
+
+    color:var(--text-muted);
+
+    font-size:.95rem;
+
+}
+
+/* ==========================================
+   GRID
+========================================== */
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:24px;
+
+}
+
+/* ==========================================
+   INSIGHT CARD
+========================================== */
+
+.insight-card{
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:24px;
+
+    transition:var(--transition-normal);
+
+}
+
+.insight-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:rgba(255,176,0,.25);
+
+}
+
+.insight-card h3{
+
+    margin-bottom:12px;
+
+}
+
+.insight-card p{
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================================
+   STATUS BADGES
+========================================== */
+
+.status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    font-size:.82rem;
+
+    font-weight:600;
+
+}
+
+.status.success{
+
+    background:rgba(34,197,94,.15);
+
+    color:var(--success);
+
+}
+
+.status.warning{
+
+    background:rgba(245,158,11,.15);
+
+    color:var(--warning);
+
+}
+
+.status.danger{
+
+    background:rgba(239,68,68,.15);
+
+    color:var(--danger);
+
+}
+
+/* ==========================================
+   LIST
+========================================== */
+
+.dashboard-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.dashboard-list-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+    padding:18px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.dashboard-list-item:last-child{
+
+    border-bottom:none;
+
+}
+
+/* ==========================================
+   COMPANY DNA
+========================================== */
+
+.company-dna{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+.dna-card{
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:22px;
+
+    text-align:center;
+
+}
+
+.dna-card h4{
+
+    margin-bottom:10px;
+
+    font-size:.95rem;
+
+    color:var(--text-muted);
+
+}
+
+.dna-card strong{
+
+    display:block;
+
+    font-size:1.2rem;
+
+}
+
+/* ==========================================
+   MATURITY
+========================================== */
+
+.maturity-stage{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 20px;
+
+    border-radius:999px;
+
+    background:var(--gradient-brand);
+
+    color:#fff;
+
+    font-weight:700;
+
+}
+
+/* ==========================================
+   ACTIONS
+========================================== */
+
+.dashboard-actions{
+
+    display:flex;
+
+    gap:16px;
+
+    flex-wrap:wrap;
+
+    margin-top:30px;
+
+}
