@@ -1,0 +1,264 @@
+/* ==========================================================
+   HRTECHIFY DESIGN SYSTEM
+   Module 10
+   Modal System
+   Version : v0.10.0-beta
+========================================================== */
+
+/* ==========================================
+   MODAL OVERLAY
+========================================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:40px;
+
+    background:rgba(5,7,11,.75);
+
+    backdrop-filter:blur(18px);
+
+    z-index:5000;
+
+    animation:fadeIn .30s ease;
+
+}
+
+.modal.active{
+
+    display:flex;
+
+}
+
+/* ==========================================
+   MODAL CARD
+========================================== */
+
+.modal-content{
+
+    width:min(720px,100%);
+
+    background:var(--gradient-card);
+
+    border:1px solid var(--glass-border);
+
+    border-radius:28px;
+
+    padding:40px;
+
+    backdrop-filter:blur(24px);
+
+    box-shadow:
+
+        var(--shadow-lg),
+
+        var(--glow-brand);
+
+    animation:slideUp .35s ease;
+
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:28px;
+
+}
+
+.modal-header h2{
+
+    margin:0;
+
+    font-size:1.8rem;
+
+}
+
+/* ==========================================
+   CLOSE BUTTON
+========================================== */
+
+.modal-close{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:var(--text-primary);
+
+    cursor:pointer;
+
+    transition:var(--transition-normal);
+
+}
+
+.modal-close:hover{
+
+    background:rgba(255,176,0,.15);
+
+    transform:rotate(90deg);
+
+}
+
+/* ==========================================
+   BODY
+========================================== */
+
+.modal-body{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.modal-body p{
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================================
+   INPUTS
+========================================== */
+
+.modal-body input{
+
+    width:100%;
+
+    padding:16px 18px;
+
+    border-radius:16px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.05);
+
+    color:var(--text-primary);
+
+}
+
+.modal-body input:focus{
+
+    border-color:var(--brand-orange);
+
+    box-shadow:
+
+        0 0 0 4px rgba(255,176,0,.12);
+
+}
+
+/* ==========================================
+   CHECKBOX
+========================================== */
+
+.checkbox-row{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+}
+
+.checkbox-row label{
+
+    color:var(--text-secondary);
+
+    line-height:1.6;
+
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.modal-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:16px;
+
+    margin-top:30px;
+
+}
+
+.modal-footer button{
+
+    min-width:160px;
+
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes slideUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(24px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
