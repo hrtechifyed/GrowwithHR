@@ -73,6 +73,8 @@
 
     box-shadow:var(--shadow-md);
 
+    cursor:default;
+
 }
 
 .how-card:hover{
@@ -141,31 +143,65 @@
 
 }
 
-.capability-grid{
+/* ==========================================
+   CAPABILITY CAROUSEL
+========================================== */
+
+.capability-carousel{
+
+    position:relative;
 
     display:grid;
 
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:70px 1fr 70px;
 
-    gap:30px;
+    gap:28px;
+
+    align-items:center;
 
     margin-top:70px;
 
 }
 
-.capability-card{
+.carousel-track{
 
-    position:relative;
+    display:grid;
 
-    overflow:hidden;
+    grid-template-columns:repeat(8,360px);
+
+    gap:24px;
+
+    overflow-x:auto;
+
+    scroll-behavior:smooth;
+
+    scroll-snap-type:x mandatory;
+
+    scrollbar-width:none;
+
+    padding:10px 0;
+
+}
+
+.carousel-track::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+.capability-slide{
+
+    scroll-snap-align:center;
+
+    min-height:340px;
+
+    padding:38px;
+
+    border-radius:28px;
 
     background:var(--gradient-card);
 
     border:1px solid var(--glass-border);
-
-    border-radius:24px;
-
-    padding:40px;
 
     backdrop-filter:blur(24px);
 
@@ -173,31 +209,11 @@
 
     box-shadow:var(--shadow-md);
 
-}
-
-.capability-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:-140px;
-
-    right:-140px;
-
-    width:260px;
-
-    height:260px;
-
-    border-radius:50%;
-
-    background:rgba(255,176,0,.08);
-
-    filter:blur(55px);
+    cursor:default;
 
 }
 
-.capability-card:hover{
+.capability-slide:hover{
 
     transform:translateY(-10px);
 
@@ -211,11 +227,17 @@
 
 }
 
+.capability-slide.active{
+
+    border-color:rgba(255,176,0,.45);
+
+}
+
 .capability-icon{
 
-    width:74px;
+    width:72px;
 
-    height:74px;
+    height:72px;
 
     display:flex;
 
@@ -227,7 +249,7 @@
 
     margin-bottom:24px;
 
-    font-size:1.9rem;
+    font-size:1.8rem;
 
     background:var(--gradient-brand);
 
@@ -239,17 +261,53 @@
 
 }
 
-.capability-card h3{
+.capability-slide h3{
 
-    margin-bottom:16px;
+    margin-bottom:18px;
 
 }
 
-.capability-card p{
+.capability-slide p{
 
     color:var(--text-secondary);
 
     line-height:1.8;
+
+}
+
+.carousel-arrow{
+
+    width:56px;
+
+    height:56px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:#fff;
+
+    font-size:1.4rem;
+
+    cursor:pointer;
+
+    transition:all .30s ease;
+
+}
+
+.carousel-arrow:hover{
+
+    background:var(--gradient-brand);
+
+    transform:scale(1.08);
 
 }
 
@@ -331,7 +389,7 @@
 
     font-weight:700;
 
-    transition:all .30s ease;
+    transition:.30s;
 
 }
 
@@ -353,8 +411,6 @@
 
     font-size:.82rem;
 
-    letter-spacing:.04em;
-
 }
 
 .wizard-step.active small{
@@ -374,7 +430,7 @@
 }
 
 /* ==========================================
-   WIZARD SUMMARY CARD
+   SUMMARY CARD
 ========================================== */
 
 .summary-card.glass{
@@ -434,17 +490,6 @@
 }
 
 /* ==========================================
-   COMMON
-========================================== */
-
-.how-card,
-.capability-card{
-
-    cursor:default;
-
-}
-
-/* ==========================================
    TABLET
 ========================================== */
 
@@ -456,9 +501,21 @@
 
     }
 
-    .capability-grid{
+    .capability-carousel{
 
         grid-template-columns:1fr;
+
+    }
+
+    .carousel-arrow{
+
+        display:none;
+
+    }
+
+    .carousel-track{
+
+        grid-template-columns:repeat(8,300px);
 
     }
 
@@ -487,6 +544,20 @@
     .wizard-line{
 
         display:none;
+
+    }
+
+    .carousel-track{
+
+        grid-template-columns:repeat(8,260px);
+
+    }
+
+    .capability-slide{
+
+        min-height:300px;
+
+        padding:28px;
 
     }
 
