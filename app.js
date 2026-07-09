@@ -679,18 +679,33 @@ function addCentralRule(targetArray, ruleId){
       "click",
       () => {
 
-        const state =
-          stateSelect.value;
+        /* ==========================================
+   COMPANY DNA
+========================================== */
 
-        const entity =
-          entitySelect.value;
+const companyProfile =
+    collectCompanyDNA();
 
-        const industry =
-          industrySelect.value;
+/* ==========================================
+   EXISTING ENGINE INPUTS
+========================================== */
 
-        const employeeBand =
-          employeeCountSelect.value;
+const state =
+    companyProfile.state;
 
+const entity =
+    companyProfile.entity;
+
+const industry =
+    companyProfile.industry;
+
+const employeeBand =
+    companyProfile.employeeBand;
+
+console.info(
+    "Company DNA",
+    companyProfile
+);
         if (
           !state ||
           !entity ||
@@ -1107,12 +1122,14 @@ recommended = [
            REPORT DATA OBJECT
         ========================================== */
 
-        const reportData = {
+      const reportData = {
 
           generatedDate:
 
             new Date()
               .toLocaleDateString(),
+
+          companyProfile,
 
           state,
 
@@ -1137,6 +1154,7 @@ recommended = [
             engineData.disclaimer || ""
 
         };
+          
         localStorage.setItem(
           "growitwithhrAssessment",
           JSON.stringify(reportData)
