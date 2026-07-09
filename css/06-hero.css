@@ -1,0 +1,476 @@
+/* ==========================================================
+   HRTECHIFY DESIGN SYSTEM
+   Module 06
+   Hero
+   Version : v0.10.0-beta
+========================================================== */
+
+/* ==========================================
+   HERO
+========================================== */
+
+.hero{
+
+    position:relative;
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background:var(--gradient-dark);
+
+    padding-top:110px;
+
+}
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(circle at 15% 20%,
+        rgba(255,176,0,.18),
+        transparent 30%),
+
+        radial-gradient(circle at 90% 25%,
+        rgba(37,99,235,.18),
+        transparent 35%),
+
+        radial-gradient(circle at 75% 85%,
+        rgba(255,122,0,.15),
+        transparent 35%);
+
+    pointer-events:none;
+
+}
+
+.hero-bg-grid{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
+    background-size:60px 60px;
+
+    mask-image:radial-gradient(circle, white 35%, transparent 90%);
+
+    opacity:.35;
+
+}
+
+/* ==========================================
+   LAYOUT
+========================================== */
+
+.hero-layout{
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:1.1fr .9fr;
+
+    align-items:center;
+
+    gap:80px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/* ==========================================
+   CONTENT
+========================================== */
+
+.hero-content{
+
+    max-width:700px;
+
+}
+
+.hero-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    background:rgba(255,176,0,.10);
+
+    border:1px solid rgba(255,176,0,.25);
+
+    color:var(--brand-gold);
+
+    font-weight:600;
+
+    margin-bottom:28px;
+
+}
+
+.hero-content h1{
+
+    margin-bottom:28px;
+
+}
+
+.hero-content h1 span{
+
+    background:var(--gradient-brand);
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    background-clip:text;
+
+}
+
+.hero-description{
+
+    font-size:1.15rem;
+
+    color:var(--text-secondary);
+
+    max-width:620px;
+
+    margin-bottom:42px;
+
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.hero-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-bottom:45px;
+
+}
+
+.primary-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:15px 30px;
+
+    border-radius:999px;
+
+    background:var(--gradient-brand);
+
+    color:#fff;
+
+    font-weight:600;
+
+    transition:var(--transition-normal);
+
+    box-shadow:var(--glow-brand);
+
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.secondary-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:15px 30px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    color:var(--text-primary);
+
+    backdrop-filter:blur(18px);
+
+    transition:var(--transition-normal);
+
+}
+
+.secondary-btn:hover{
+
+    background:rgba(255,255,255,.10);
+
+}
+
+/* ==========================================
+   TRUST STRIP
+========================================== */
+
+.trust-strip{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+}
+
+.trust-strip div{
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:var(--text-secondary);
+
+    font-size:.9rem;
+
+}
+
+/* ==========================================
+   WORKSPACE
+========================================== */
+
+.hero-workspace{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.workspace-window{
+
+    width:520px;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(24px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+
+        var(--shadow-lg),
+
+        var(--glow-brand);
+
+    transform:
+
+        perspective(1800px)
+
+        rotateY(-10deg)
+
+        rotateX(4deg);
+
+    transition:.45s;
+
+}
+
+.workspace-window:hover{
+
+    transform:
+
+        perspective(1800px)
+
+        rotateY(-5deg)
+
+        rotateX(2deg)
+
+        translateY(-8px);
+
+}
+
+.workspace-header{
+
+    display:flex;
+
+    align-items:center;
+
+    padding:18px 22px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.workspace-dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    margin-right:8px;
+
+}
+
+.workspace-dot.red{
+
+    background:#FF5F57;
+
+}
+
+.workspace-dot.yellow{
+
+    background:#FEBC2E;
+
+}
+
+.workspace-dot.green{
+
+    background:#28C840;
+
+}
+
+.workspace-title{
+
+    margin-left:12px;
+
+    color:var(--text-primary);
+
+    font-weight:600;
+
+}
+
+.workspace-body{
+
+    display:grid;
+
+    gap:18px;
+
+    padding:28px;
+
+}
+
+.workspace-card{
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:var(--transition-normal);
+
+}
+
+.workspace-card:hover{
+
+    transform:translateX(10px);
+
+    background:rgba(255,176,0,.08);
+
+}
+
+.workspace-card span{
+
+    display:block;
+
+    color:var(--text-muted);
+
+    font-size:.85rem;
+
+    margin-bottom:8px;
+
+}
+
+.workspace-card strong{
+
+    color:var(--text-primary);
+
+}
+
+/* ==========================================
+   HERO GLOW
+========================================== */
+
+.hero-glow{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.55;
+
+}
+
+.hero-glow-1{
+
+    width:380px;
+
+    height:380px;
+
+    background:rgba(255,176,0,.20);
+
+    top:-140px;
+
+    right:-120px;
+
+}
+
+.hero-glow-2{
+
+    width:320px;
+
+    height:320px;
+
+    background:rgba(37,99,235,.15);
+
+    bottom:-120px;
+
+    left:-100px;
+
+}
