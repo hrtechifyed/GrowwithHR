@@ -39,72 +39,208 @@ if (container) {
         color: 0xffb000
     });
 
-    const positions = [
-        [-2.2, 0, 0],
-        [-1.1, 1.6, 0],
-        [1.3, 1.8, 0],
-        [2.3, 0.1, 0],
-        [1.6, -1.7, 0],
-        [-0.6, -2.1, 0],
-        [-2.1, -1.0, 0],
-        [0, 0, 0],
-        [0.2, 2.8, 0],
-        [-0.3, -3, 0]
+ const nodesData = [
+
+    { name:"Growth", x:0, y:2.7 },
+
+    { name:"Leadership", x:-2.1, y:1.5 },
+
+    { name:"Organization", x:2.1, y:1.5 },
+
+    { name:"Culture", x:-3.0, y:0 },
+
+    { name:"Workforce", x:3.0, y:0 },
+
+    { name:"Performance", x:-2.0, y:-1.9 },
+
+    { name:"Learning", x:2.0, y:-1.9 },
+
+    { name:"Rewards", x:-1.0, y:-3.3 },
+
+    { name:"Compliance", x:1.0, y:-3.3 },
+
+    { name:"Customer Success", x:0, y:-4.6 }
+
+];
+
+const nodes = [];
+
+const sphereGeometry = new THREE.SphereGeometry(0.14,32,32);
+
+nodesData.forEach(node=>{
+
+    const material = new THREE.MeshPhongMaterial({
+
+        color:0xffb000,
+
+        emissive:0xff8800,
+
+        emissiveIntensity:.6,
+
+        shininess:120,
+
+        transparent:true,
+
+        opacity:.95
+
+    });
+
+    const sphere = new THREE.Mesh(
+
+        sphereGeometry,
+
+        material
+
+    );
+
+    sphere.position.set(
+
+        node.x,
+
+        node.y,
+
+        0
+
+    );
+
+    group.add(sphere);
+
+    nodes.push(sphere);
+
+});
+
+const ambient = new THREE.AmbientLight(
+
+    0xffffff,
+
+    .7
+
+);
+
+scene.add(ambient);
+
+const pointLight = new THREE.PointLight(
+
+    0xffb000,
+
+    2,
+
+    40
+
+);
+
+pointLight.position.set(
+
+    0,
+
+    2,
+
+    6
+
+);
+
+scene.add(pointLight);
+
+const links=[
+
+[0,1],[0,2],
+
+[1,3],[1,5],
+
+[2,4],[2,6],
+
+[3,5],
+
+[4,6],
+
+[5,7],
+
+[6,8],
+
+[7,9],
+
+[8,9],
+
+[1,2],
+
+[3,4],
+
+[5,6],
+
+[7,8]
+
+];
+
+const lineMaterial = new THREE.LineBasicMaterial({
+
+    color:0x2f80ff,
+
+    transparent:true,
+
+    opacity:.55
+
+});
+
+links.forEach(link=>{
+
+    const points=[
+
+        nodes[link[0]].position,
+
+        nodes[link[1]].position
+
     ];
 
-    const nodes = [];
+    const geometry = new THREE.BufferGeometry()
 
-    positions.forEach((p) => {
+        .setFromPoints(points);
 
-        const sphere = new THREE.Mesh(geometry, material);
+    group.add(
 
-        sphere.position.set(...p);
+        new THREE.Line(
 
-        group.add(sphere);
+            geometry,
 
-        nodes.push(sphere);
+            lineMaterial
 
-    });
+        )
 
-    const lineMaterial = new THREE.LineBasicMaterial({
+    );
 
-        color: 0x2563eb,
-
-        transparent: true,
-
-        opacity: 0.45
-
-    });
-
-    for (let i = 0; i < nodes.length; i++) {
-
-        for (let j = i + 1; j < nodes.length; j++) {
-
-            if (Math.random() > 0.72) continue;
-
-            const points = [
-
-                nodes[i].position,
-
-                nodes[j].position
-
-            ];
-
-            const geometry = new THREE.BufferGeometry().setFromPoints(points);
-
-            group.add(new THREE.Line(geometry, lineMaterial));
-
-        }
-
-    }
+});
+    
 
     function animate() {
 
         requestAnimationFrame(animate);
 
-        group.rotation.y += 0.003;
+       group.rotation.y += 0.002;
 
-        group.rotation.x += 0.0015;
+group.rotation.x =
+
+    Math.sin(
+
+        Date.now()*0.0005
+
+    )*0.08;
+
+nodes.forEach((node,index)=>{
+
+    node.scale.setScalar(
+
+        1 +
+
+        Math.sin(
+
+            Date.now()*0.002+
+
+            index
+
+        )*0.08
+
+    );
+
+});
 
         renderer.render(scene, camera);
 
