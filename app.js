@@ -131,13 +131,14 @@ fetch("./data/knowledge-base/laws/central/oshwc-code.json")
 
   const updatesData =
     await updatesResponse.json();
-    const liveUpdatesResponse =
+
+const officialResourcesResponse =
     await fetch(
-      "./data/live-updates.json"
+        "./data/official-resources.json"
     );
 
-const liveUpdatesData =
-  await liveUpdatesResponse.json();
+const officialResourcesData =
+    await officialResourcesResponse.json();
 
   const statesData =
     await statesResponse.json();
@@ -333,10 +334,12 @@ if (response.ok) {
     document.getElementById(
       "updatesContainer"
     );
-  const liveUpdatesContainer =
-  document.getElementById(
-    "liveUpdatesContainer"
-  );
+
+const officialResourcesContainer =
+    document.getElementById(
+        "officialResourcesContainer"
+    );
+    
 
   /* ==========================================
      POPULATE STATES
@@ -501,57 +504,59 @@ ${update.title}
 
   }
 
- if (
-  liveUpdatesContainer &&
-  liveUpdatesData.recentUpdates
+if (
+    officialResourcesContainer &&
+    officialResourcesData.resources
 ) {
 
-  liveUpdatesContainer.innerHTML = "";
+    officialResourcesContainer.innerHTML = "";
 
-  liveUpdatesData.recentUpdates.forEach(
-    update => {
+    officialResourcesData.resources.forEach(resource => {
 
-      const card =
-        document.createElement(
-          "div"
-        );
+        const card =
+            document.createElement("div");
 
-      card.className =
-        "update-card";
+        card.className =
+            "update-card";
 
-     card.innerHTML = `
+        card.innerHTML = `
 
-  <h3>
+            <h3>
 
-<a
-href="${update.url}"
-target="_blank"
-rel="noopener noreferrer"
-class="update-link">
+                ${resource.authority}
 
-${update.summary}
+            </h3>
 
-</a>
+            <p>
 
-</h3>
+                ${resource.type}
 
-  <p>
+            </p>
 
-    Source:
-    ${update.source}
+            <p>
 
-  </p>
+                Last Verified:
+                ${officialResourcesData.lastVerified}
 
-`;
-      liveUpdatesContainer.appendChild(
-        card
-      );
+            </p>
 
-    }
-  );
+            <a
+                href="${resource.website}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="update-link">
 
-} 
+                Visit Official Website →
 
+            </a>
+
+        `;
+
+        officialResourcesContainer.appendChild(card);
+
+    });
+
+}
 /* ==========================================
    CENTRAL RULE RESOLVER
 ========================================== */
