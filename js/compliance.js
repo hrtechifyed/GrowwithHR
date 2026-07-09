@@ -5,10 +5,15 @@
 ========================================== */
 
 function renderCompliance(reportData) {
+
     const rules = asArray(reportData.mandatory);
 
     if (!rules.length) {
-        return renderEmptyState("No mandatory compliance requirements were identified.");
+
+        return renderEmptyState(
+            "No mandatory compliance requirements were identified."
+        );
+
     }
 
     return `
@@ -16,6 +21,7 @@ function renderCompliance(reportData) {
             ${rules.map(renderComplianceRule).join("")}
         </div>
     `;
+
 }
 
 function renderComplianceRule(rule, index) {
@@ -29,11 +35,14 @@ function renderComplianceRule(rule, index) {
                 ? rule.source
                 : "LABOUR";
 
-    const authorityName = getAuthorityName(sourceId);
+    const authorityName =
+        getAuthorityName(sourceId);
 
-    const authorityURL = getAuthorityURL(sourceId);
+    const authorityURL =
+        getAuthorityURL(sourceId);
 
-    const actions = getNextActions(rule || {});
+    const actions =
+        getNextActions(rule || {});
 
     const category =
         rule && rule.category
@@ -96,7 +105,9 @@ function renderComplianceRule(rule, index) {
 
                     <p>
 
-                        ${escapeHTML(getRuleExplanation(rule || {}))}
+                        ${escapeHTML(
+                            getRuleExplanation(rule || {})
+                        )}
 
                     </p>
 
@@ -150,6 +161,44 @@ function renderComplianceRule(rule, index) {
 
                     <h4>
 
+                        Business Impact
+
+                    </h4>
+
+                    <p>
+
+                        Delayed implementation may affect operational consistency,
+                        increase governance risk, reduce investor confidence during
+                        due diligence, and create avoidable people management issues
+                        as the organisation grows.
+
+                    </p>
+
+                </div>
+
+                <div class="rule-detail-block">
+
+                    <h4>
+
+                        Legal Impact
+
+                    </h4>
+
+                    <p>
+
+                        Non-compliance may attract statutory penalties, inspections,
+                        notices, prosecution, or other regulatory action depending on
+                        the applicable legislation. Refer to the official authority
+                        for the complete legal requirements.
+
+                    </p>
+
+                </div>
+
+                <div class="rule-detail-block">
+
+                    <h4>
+
                         Next Actions
 
                     </h4>
@@ -157,7 +206,9 @@ function renderComplianceRule(rule, index) {
                     <ul class="action-list check-list">
 
                         ${actions
-                            .map(action => `<li>${escapeHTML(action)}</li>`)
+                            .map(action =>
+                                `<li>${escapeHTML(action)}</li>`
+                            )
                             .join("")}
 
                     </ul>
@@ -169,4 +220,5 @@ function renderComplianceRule(rule, index) {
         </article>
 
     `;
+
 }
