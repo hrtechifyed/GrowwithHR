@@ -1,10 +1,22 @@
 import bootstrap from "./js/bootstrap.js";
+import APP_CONFIG from "./js/config/app-config.js";
 document.addEventListener(
 "DOMContentLoaded",
 async () => {
+document.title = `${APP_CONFIG.productName} | ${APP_CONFIG.companyName}`;
+
+const productVersion =
+    document.getElementById("productVersion");
+
+if (productVersion) {
+
+    productVersion.textContent =
+        `${APP_CONFIG.productName} ${APP_CONFIG.releaseName} ${APP_CONFIG.version}`;
+
+}    
 
 console.log(
-    "GrowItWithHR V7 Engine Initializing..."
+   `${APP_CONFIG.productName} ${APP_CONFIG.version} Loaded Successfully`
 );
 
 let platform = null;
