@@ -2,142 +2,132 @@ import * as THREE from "three";
 
 const container = document.getElementById("dnaCoreCanvas");
 
-if (!container) return;
+if (container) {
 
-const scene = new THREE.Scene();
+    const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(
-    45,
-    container.clientWidth / container.clientHeight,
-    0.1,
-    1000
-);
+    const camera = new THREE.PerspectiveCamera(
+        45,
+        container.clientWidth / container.clientHeight,
+        0.1,
+        1000
+    );
 
-camera.position.z = 9;
+    camera.position.z = 9;
 
-const renderer = new THREE.WebGLRenderer({
+    const renderer = new THREE.WebGLRenderer({
+        alpha: true,
+        antialias: true
+    });
 
-    alpha:true,
+    renderer.setPixelRatio(window.devicePixelRatio);
 
-    antialias:true
+    renderer.setSize(
+        container.clientWidth,
+        container.clientHeight
+    );
 
-});
+    container.appendChild(renderer.domElement);
 
-renderer.setPixelRatio(window.devicePixelRatio);
+    const group = new THREE.Group();
 
-renderer.setSize(
+    scene.add(group);
 
-    container.clientWidth,
+    const geometry = new THREE.SphereGeometry(0.10, 24, 24);
 
-    container.clientHeight
+    const material = new THREE.MeshBasicMaterial({
+        color: 0xffb000
+    });
 
-);
+    const positions = [
+        [-2.2, 0, 0],
+        [-1.1, 1.6, 0],
+        [1.3, 1.8, 0],
+        [2.3, 0.1, 0],
+        [1.6, -1.7, 0],
+        [-0.6, -2.1, 0],
+        [-2.1, -1.0, 0],
+        [0, 0, 0],
+        [0.2, 2.8, 0],
+        [-0.3, -3, 0]
+    ];
 
-container.appendChild(renderer.domElement);
+    const nodes = [];
 
-const group = new THREE.Group();
+    positions.forEach((p) => {
 
-scene.add(group);
+        const sphere = new THREE.Mesh(geometry, material);
 
-const geometry = new THREE.SphereGeometry(.10,24,24);
+        sphere.position.set(...p);
 
-const material = new THREE.MeshBasicMaterial({
+        group.add(sphere);
 
-    color:0xffb000
+        nodes.push(sphere);
 
-});
+    });
 
-const positions=[
+    const lineMaterial = new THREE.LineBasicMaterial({
 
-[-2.2,0,0],
-[-1.1,1.6,0],
-[1.3,1.8,0],
-[2.3,.1,0],
-[1.6,-1.7,0],
-[-.6,-2.1,0],
-[-2.1,-1.0,0],
-[0,0,0],
-[.2,2.8,0],
-[-.3,-3,0]
+        color: 0x2563eb,
 
-];
+        transparent: true,
 
-const nodes=[];
+        opacity: 0.45
 
-positions.forEach(p=>{
+    });
 
-    const s=new THREE.Mesh(geometry,material);
+    for (let i = 0; i < nodes.length; i++) {
 
-    s.position.set(...p);
+        for (let j = i + 1; j < nodes.length; j++) {
 
-    group.add(s);
+            if (Math.random() > 0.72) continue;
 
-    nodes.push(s);
+            const points = [
 
-});
+                nodes[i].position,
 
-const lineMaterial=new THREE.LineBasicMaterial({
+                nodes[j].position
 
-    color:0x2563eb,
+            ];
 
-    transparent:true,
+            const geometry = new THREE.BufferGeometry().setFromPoints(points);
 
-    opacity:.45
+            group.add(new THREE.Line(geometry, lineMaterial));
 
-});
-
-for(let i=0;i<nodes.length;i++){
-
-    for(let j=i+1;j<nodes.length;j++){
-
-        if(Math.random()>.72) continue;
-
-        const points=[
-
-            nodes[i].position,
-
-            nodes[j].position
-
-        ];
-
-        const geo=new THREE.BufferGeometry().setFromPoints(points);
-
-        group.add(new THREE.Line(geo,lineMaterial));
+        }
 
     }
 
+    function animate() {
+
+        requestAnimationFrame(animate);
+
+        group.rotation.y += 0.003;
+
+        group.rotation.x += 0.0015;
+
+        renderer.render(scene, camera);
+
+    }
+
+    animate();
+
+    window.addEventListener("resize", () => {
+
+        camera.aspect =
+
+            container.clientWidth / container.clientHeight;
+
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(
+
+            container.clientWidth,
+
+            container.clientHeight
+
+        );
+
+    });
+
 }
-
-function animate(){
-
-    requestAnimationFrame(animate);
-
-    group.rotation.y+=0.003;
-
-    group.rotation.x+=0.0015;
-
-    renderer.render(scene,camera);
-
-}
-
-animate();
-
-window.addEventListener("resize",()=>{
-
-    camera.aspect=
-
-        container.clientWidth/
-
-        container.clientHeight;
-
-    camera.updateProjectionMatrix();
-
-    renderer.setSize(
-
-        container.clientWidth,
-
-        container.clientHeight
-
-    );
-
-});
