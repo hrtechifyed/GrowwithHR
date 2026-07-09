@@ -20,11 +20,40 @@ import persistence from "./persistence.js";
 import eventBus from "./event-bus.js";
 import logger from "./logger.js";
 
+import sharedFrameworkLibrary from "../shared/frameworks/index.js";
+import sharedBenchmarkLibrary from "../shared/benchmarks/index.js";
+import sharedPlaybookLibrary from "../shared/playbooks/index.js";
+import sharedTemplateLibrary from "../shared/templates/index.js";
+import sharedRuleRepository from "../shared/rules/index.js";
+import sharedReportLibrary from "../shared/reports/index.js";
+
 class KnowledgeLibrary {
 
     constructor() {
 
         this.library = this.load();
+
+        this.shared = Object.freeze({
+
+            frameworks:
+                sharedFrameworkLibrary,
+
+            benchmarks:
+                sharedBenchmarkLibrary,
+
+            playbooks:
+                sharedPlaybookLibrary,
+
+            templates:
+                sharedTemplateLibrary,
+
+            rules:
+                sharedRuleRepository,
+
+            reports:
+                sharedReportLibrary
+
+        });
 
     }
 
@@ -291,6 +320,59 @@ class KnowledgeLibrary {
 
     }
 
+    
+    sharedLibraries() {
+
+        return {
+
+            ...this.shared
+
+        };
+
+    }
+
+    shared(name) {
+
+        return this.shared[name] || null;
+
+    }
+
+    frameworks() {
+
+        return this.shared.frameworks;
+
+    }
+
+    benchmarks() {
+
+        return this.shared.benchmarks;
+
+    }
+
+    playbooks() {
+
+        return this.shared.playbooks;
+
+    }
+
+    templates() {
+
+        return this.shared.templates;
+
+    }
+
+    rules() {
+
+        return this.shared.rules;
+
+    }
+
+    reports() {
+
+        return this.shared.reports;
+
+    }
+
     clear() {
 
         this.library = this.defaultLibrary();
@@ -305,7 +387,8 @@ class KnowledgeLibrary {
 
 }
 
-const knowledgeLibrary = new KnowledgeLibrary();
+const knowledgeLibrary =
+    new KnowledgeLibrary();
 
 export { KnowledgeLibrary };
 
