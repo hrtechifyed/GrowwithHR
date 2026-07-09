@@ -49,4 +49,25 @@ const aiAdvisor =
 
 export { AIAdvisor };
 
+export { default as advisorEngine } from "./advisor.js";
+export { AdvisorEngine } from "./advisor.js";
+
+export { default as advisorService } from "./service.js";
+export { AdvisorService } from "./service.js";
+
+export { default as advisorRepository } from "./repository.js";
+export { AdvisorRepository } from "./repository.js";
+
+export { default as advisorMapper } from "./mapper.js";
+export { AdvisorMapper } from "./mapper.js";
+
+export { default as advisorReport } from "./report.js";
+export { AdvisorReport } from "./report.js";
+
+export { default as advisorTemplates } from "./templates.js";
+export { AdvisorTemplates } from "./templates.js";
+
+export { default as advisorPrompts } from "./prompts.js";
+export { AdvisorPrompts } from "./prompts.js";
+
 export default aiAdvisor;
