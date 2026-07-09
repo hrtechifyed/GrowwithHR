@@ -1,5 +1,6 @@
 import bootstrap from "./js/bootstrap.js";
 import APP_CONFIG from "./js/config/app-config.js";
+import { collectCompanyDNA } from "./js/company-dna.js";
 
 document.addEventListener(
 "DOMContentLoaded",
