@@ -1,196 +1,64 @@
 const fs = require("fs");
-const axios = require("axios");
-const cheerio = require("cheerio");
 
-console.log(
-  "GrowItWithHR Compliance Engine Started"
-);
-
-(async () => {
-
-  try {
-
-    const response =
-    await axios.get(
-      "https://www.epfindia.gov.in/site_en/Updates.php",
-      {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0 Safari/537.36"
-        },
-        timeout: 30000
-      }
-    );
-
-    console.log(
-      "EPFO page fetched successfully"
-    );
-
-    console.log(
-      response.data.substring(0, 1000)
-    );
-
-  } catch (error) {
-
-    console.error(
-      "EPFO fetch failed",
-    );
-    console.error(
-  error.toString()
-);
-  }
-
-})();
 const today =
-  new Date().toISOString().split("T")[0];
+    new Date()
+        .toISOString()
+        .split("T")[0];
 
-/* ==========================================
-   LOAD HISTORY
-========================================== */
+const resources = {
 
-const historyPath =
-  "data/update-history.json";
+    lastVerified: today,
 
-let history = {
-  knownUpdates: []
+    resources: [
+
+        {
+            authority: "Ministry of Labour & Employment",
+            type: "Central Government",
+            website: "https://labour.gov.in"
+        },
+
+        {
+            authority: "Employees' Provident Fund Organisation",
+            type: "Statutory Authority",
+            website: "https://www.epfindia.gov.in"
+        },
+
+        {
+            authority: "Employees' State Insurance Corporation",
+            type: "Statutory Authority",
+            website: "https://www.esic.gov.in"
+        },
+
+        {
+            authority: "India Code",
+            type: "Official Legal Repository",
+            website: "https://www.indiacode.nic.in"
+        },
+
+        {
+            authority: "Ministry of Corporate Affairs",
+            type: "Central Government",
+            website: "https://www.mca.gov.in"
+        }
+
+    ]
+
 };
 
-if (
-  fs.existsSync(historyPath)
-) {
+fs.writeFileSync(
 
-  history = JSON.parse(
-    fs.readFileSync(
-      historyPath,
-      "utf8"
+    "data/official-resources.json",
+
+    JSON.stringify(
+        resources,
+        null,
+        4
     )
-  );
-
-}
-
-/* ==========================================
-   TEST UPDATE
-========================================== */
-
-const latestUpdate = {
-
-  date: today,
-
-  source: "EPFO",
-
-  summary:
-    "Check out the latest EPFO notification regarding employer compliance requirements.",
-
-  url:
-    "https://www.epfindia.gov.in/site_en/"
-
-};
-
-const updateKey =
-  `${latestUpdate.source}|${latestUpdate.summary}`;
-
-const alreadyExists =
-  history.knownUpdates.includes(
-    updateKey
-  );
-
-let newUpdates = [];
-
-if (!alreadyExists) {
-
-  history.knownUpdates.push(
-    updateKey
-  );
-
-  newUpdates.push(
-    latestUpdate
-  );
-
-  console.log(
-    "New compliance update detected"
-  );
-
-} else {
-
-  console.log(
-    "No new updates detected"
-  );
-
-}
-
-/* ==========================================
-   SAVE LIVE UPDATES
-========================================== */
-
-const liveUpdatesPath =
-  "data/live-updates.json";
-
-let existingUpdates = [];
-
-if (
-  fs.existsSync(
-    liveUpdatesPath
-  )
-) {
-
-  const existingData =
-    JSON.parse(
-      fs.readFileSync(
-        liveUpdatesPath,
-        "utf8"
-      )
-    );
-
-  existingUpdates =
-    existingData.recentUpdates || [];
-
-}
-
-const liveUpdates = {
-
-  lastVerified: today,
-
-  recentUpdates:
-
-    newUpdates.length > 0
-
-      ? [
-          ...newUpdates,
-          ...existingUpdates
-        ].slice(0, 20)
-
-      : existingUpdates
-
-};
-
-fs.writeFileSync(
-
-  liveUpdatesPath,
-
-  JSON.stringify(
-    liveUpdates,
-    null,
-    2
-  )
-
-);
-
-/* ==========================================
-   SAVE HISTORY
-========================================== */
-
-fs.writeFileSync(
-
-  historyPath,
-
-  JSON.stringify(
-    history,
-    null,
-    2
-  )
 
 );
 
 console.log(
-  "Live updates and history saved successfully"
+
+    `Official resources verified on ${today}`
+
 );
