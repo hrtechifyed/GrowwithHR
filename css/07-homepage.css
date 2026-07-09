@@ -1,0 +1,289 @@
+/* ==========================================================
+   HRTECHIFY DESIGN SYSTEM
+   Module 07
+   Homepage
+   Version : v0.10.0-beta
+========================================================== */
+
+/* ==========================================
+   HOW IT WORKS
+========================================== */
+
+.how-section{
+
+    background:var(--bg-secondary);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.how-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(circle at top left,
+
+        rgba(255,176,0,.08),
+
+        transparent 35%),
+
+        radial-gradient(circle at bottom right,
+
+        rgba(37,99,235,.08),
+
+        transparent 40%);
+
+    pointer-events:none;
+
+}
+
+.how-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:32px;
+
+    margin-top:70px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.how-card{
+
+    background:var(--gradient-card);
+
+    border:1px solid var(--glass-border);
+
+    border-radius:var(--radius-lg);
+
+    backdrop-filter:blur(22px);
+
+    padding:42px;
+
+    transition:var(--transition-normal);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.how-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:rgba(255,176,0,.35);
+
+    box-shadow:
+
+        var(--shadow-lg),
+
+        var(--glow-brand);
+
+}
+
+.how-number{
+
+    width:64px;
+
+    height:64px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:28px;
+
+    font-weight:700;
+
+    font-size:1.1rem;
+
+    background:var(--gradient-brand);
+
+    color:#fff;
+
+}
+
+.how-card h3{
+
+    margin-bottom:16px;
+
+}
+
+.how-card p{
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================================
+   CAPABILITIES
+========================================== */
+
+.capabilities-section{
+
+    background:var(--bg-primary);
+
+    position:relative;
+
+}
+
+.capability-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:28px;
+
+    margin-top:70px;
+
+}
+
+.capability-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:38px;
+
+    border-radius:var(--radius-lg);
+
+    background:var(--gradient-card);
+
+    border:1px solid var(--glass-border);
+
+    backdrop-filter:blur(24px);
+
+    transition:var(--transition-normal);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.capability-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120px;
+
+    right:-120px;
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    background:rgba(255,176,0,.10);
+
+    filter:blur(50px);
+
+}
+
+.capability-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:rgba(255,176,0,.35);
+
+    box-shadow:
+
+        var(--shadow-lg),
+
+        var(--glow-brand);
+
+}
+
+.capability-icon{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:24px;
+
+    font-size:1.8rem;
+
+    background:var(--gradient-brand);
+
+    color:#fff;
+
+}
+
+.capability-card h3{
+
+    margin-bottom:16px;
+
+}
+
+.capability-card p{
+
+    color:var(--text-secondary);
+
+    margin-bottom:24px;
+
+}
+
+/* ==========================================
+   ASSESSMENT SECTION
+========================================== */
+
+.assessment-section{
+
+    background:var(--bg-secondary);
+
+}
+
+.assessment-panel{
+
+    background:var(--gradient-card);
+
+    border:1px solid var(--glass-border);
+
+    border-radius:32px;
+
+    padding:56px;
+
+    backdrop-filter:blur(24px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+/* ==========================================
+   COMMON CARD HOVER
+========================================== */
+
+.how-card,
+.capability-card{
+
+    cursor:default;
+
+}
