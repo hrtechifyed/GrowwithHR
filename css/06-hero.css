@@ -455,52 +455,155 @@
 
     justify-content:center;
 
-    text-align:center;
+}
 
-    padding:22px;
+.dna-core-wrapper{
 
-    border-radius:22px;
+    position:relative;
 
-    background:rgba(255,255,255,.03);
+    width:420px;
 
-    border:1px solid rgba(255,255,255,.08);
+    height:420px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
 
 }
 
 #dnaCoreCanvas{
 
-    width:260px;
+    position:absolute;
 
-    height:260px;
+    inset:0;
 
-    border-radius:50%;
+}
 
-    background:
+.dna-label{
 
-        radial-gradient(circle,rgba(255,176,0,.12),transparent 70%);
+    position:absolute;
+
+    color:#ffffff;
+
+    font-size:.82rem;
+
+    font-weight:600;
+
+    text-shadow:
+
+        0 0 10px rgba(0,0,0,.5);
+
+    pointer-events:none;
+
+}
+
+.growth{
+
+    top:8px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+}
+
+.leadership{
+
+    top:70px;
+
+    left:20px;
+
+}
+
+.organization{
+
+    top:70px;
+
+    right:20px;
+
+}
+
+.culture{
+
+    left:0;
+
+    top:170px;
+
+}
+
+.workforce{
+
+    right:0;
+
+    top:170px;
+
+}
+
+.performance{
+
+    left:35px;
+
+    bottom:120px;
+
+}
+
+.learning{
+
+    right:35px;
+
+    bottom:120px;
+
+}
+
+.rewards{
+
+    left:85px;
+
+    bottom:35px;
+
+}
+
+.compliance{
+
+    right:85px;
+
+    bottom:35px;
+
+}
+
+.customer{
+
+    bottom:0;
+
+    left:50%;
+
+    transform:translateX(-50%);
 
 }
 
 .core-title{
 
-    margin-top:22px;
+    margin-top:18px;
+
+    font-size:1.35rem;
 
     font-weight:700;
+
+    text-align:center;
 
 }
 
 .core-subtitle{
 
-    margin-top:14px;
+    margin-top:10px;
 
     color:var(--text-secondary);
 
-    font-size:.85rem;
-
-    line-height:1.7;
+    text-align:center;
 
 }
-
 /* ==========================================
    HERO GLOW
 ========================================== */
