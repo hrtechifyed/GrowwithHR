@@ -154,12 +154,15 @@ section{
 
 .container{
 
-    width:min(92%,var(--container-width));
+    width:min(86%,var(--container-width));
+
+    max-width:1320px;
 
     margin-inline:auto;
 
-}
+    padding-inline:24px;
 
+}
 /* ==========================================
    COMMON SPACING
 ========================================== */
