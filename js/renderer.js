@@ -1,5 +1,5 @@
 /* ==========================================
-   GrowItWithHR V8
+   GrowWithHR  0.9.0-beta
    renderer.js
    Executive Dashboard Renderer
 ========================================== */
