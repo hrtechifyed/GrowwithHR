@@ -1,5 +1,5 @@
 /* ==========================================
-HRTECHIFY | GROWITWITHHR V7
+HRTECHIFY | GROWITWITHHR V0.9.0-beta
 PREMIUM SAAS EDITION
 ========================================== */
 
@@ -3570,3 +3570,396 @@ body{background:#070b16;line-height:1.55;}
 .refined-grid,.preview-grid{gap:16px}.value-card,.preview-card,.founder-card,.contact-card,.update-card{background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.045));border-color:rgba(255,255,255,.11);box-shadow:0 24px 70px rgba(0,0,0,.28);padding:24px;text-align:left}.value-icon,.preview-icon{font-size:34px;margin-bottom:12px}.value-card h3,.preview-card h3{font-size:20px;margin-bottom:8px;color:#fff}.value-card p,.preview-card p{font-size:14px;line-height:1.5}.split-showcase,.assessment-panel,.founder-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:start}.assessment-form{padding:24px;border-radius:26px;background:rgba(255,255,255,.07);grid-template-columns:repeat(2,minmax(0,1fr));}.assessment-form button{grid-column:1/-1}.report-container{padding:28px 0 0}.founder-card p{font-size:1.05rem;line-height:1.65}.timeline-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.timeline-grid span{color:#fb923c;font-weight:900}.timeline-grid strong{display:block;font-size:24px;margin:8px 0;color:white}.timeline-grid p{color:#cbd5e1;margin:0}.contact-card{max-width:980px}.contact-email{font-size:16px;color:#fed7aa}.updates-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
 @media(max-width:992px){.hero-shell,.split-showcase,.assessment-panel,.founder-layout{grid-template-columns:1fr;min-height:auto}.hero-content,.left-heading{text-align:center;margin:auto}.left-heading p{margin:auto}.hero-badge{margin-left:auto;margin-right:auto}.hero-actions{justify-content:center}.trust-strip{justify-content:center}.metric-band,.timeline-grid{grid-template-columns:1fr}.assessment-form{grid-template-columns:1fr}.hero h1{letter-spacing:-2px}.signal-grid{grid-template-columns:1fr}}
 @media(max-width:640px){.hero h1{font-size:clamp(2.4rem,14vw,3.6rem)}.secondary-btn{width:100%}.pitch-dashboard{padding:20px}.compact-section .container{padding-top:38px;padding-bottom:38px}}
+
+
+/* ==========================================================
+   HOMEPAGE REDESIGN V2
+   Sprint 1
+========================================================== */
+
+/* ------------------------------
+   NAVBAR
+------------------------------ */
+
+.navbar{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(8,15,30,.72);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.nav-container{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 32px;
+
+}
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:28px;
+
+}
+
+.nav-links a{
+
+    color:#E5E7EB;
+
+    text-decoration:none;
+
+    font-size:.95rem;
+
+    transition:.25s;
+
+}
+
+.nav-links a:hover{
+
+    color:#4F8BFF;
+
+}
+
+.nav-cta{
+
+    background:#2563EB;
+
+    color:white !important;
+
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    font-weight:600;
+
+    box-shadow:0 12px 35px rgba(37,99,235,.30);
+
+}
+
+.nav-cta:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ------------------------------
+   HERO
+------------------------------ */
+
+.hero-v2{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:90px 0 110px;
+
+    background:
+    radial-gradient(circle at top right,#2E6BFF22 0%,transparent 45%),
+    radial-gradient(circle at bottom left,#7C3AED22 0%,transparent 40%),
+    #07111F;
+
+}
+
+.hero-layout{
+
+    display:grid;
+
+    grid-template-columns:1.05fr .95fr;
+
+    gap:70px;
+
+    align-items:center;
+
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:5;
+
+}
+
+.hero-badge{
+
+    display:inline-flex;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:#8FB5FF;
+
+    margin-bottom:24px;
+
+}
+
+.hero-content h1{
+
+    font-size:4rem;
+
+    line-height:1.05;
+
+    font-weight:800;
+
+    color:white;
+
+    margin-bottom:28px;
+
+}
+
+.hero-content h1 span{
+
+    color:#76A9FF;
+
+}
+
+.hero-description{
+
+    max-width:620px;
+
+    font-size:1.15rem;
+
+    color:#B9C4D5;
+
+    line-height:1.8;
+
+}
+
+.hero-actions{
+
+    display:flex;
+
+    gap:18px;
+
+    margin-top:40px;
+
+}
+
+.trust-strip{
+
+    display:flex;
+
+    gap:30px;
+
+    margin-top:45px;
+
+    color:#C7D2FE;
+
+    font-size:.95rem;
+
+    flex-wrap:wrap;
+
+}
+
+/* ------------------------------
+   FLOATING WORKSPACE
+------------------------------ */
+
+.hero-workspace{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.workspace-window{
+
+    width:520px;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    box-shadow:
+
+    0 40px 80px rgba(0,0,0,.35);
+
+    transform:
+
+    perspective(1600px)
+
+    rotateY(-8deg)
+
+    rotateX(4deg);
+
+}
+
+.workspace-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:18px 22px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.workspace-dot{
+
+    width:11px;
+
+    height:11px;
+
+    border-radius:50%;
+
+}
+
+.workspace-dot.red{
+
+    background:#FF5F57;
+
+}
+
+.workspace-dot.yellow{
+
+    background:#FEBC2E;
+
+}
+
+.workspace-dot.green{
+
+    background:#28C840;
+
+}
+
+.workspace-title{
+
+    margin-left:12px;
+
+    color:white;
+
+    font-weight:600;
+
+}
+
+.workspace-body{
+
+    padding:24px;
+
+    display:grid;
+
+    gap:18px;
+
+}
+
+.workspace-card{
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:18px 22px;
+
+    transition:.30s;
+
+}
+
+.workspace-card:hover{
+
+    transform:translateX(8px);
+
+    background:rgba(79,139,255,.12);
+
+}
+
+.workspace-card span{
+
+    display:block;
+
+    color:#AFC5F7;
+
+    font-size:.85rem;
+
+}
+
+.workspace-card strong{
+
+    display:block;
+
+    color:white;
+
+    margin-top:8px;
+
+}
+
+/* ------------------------------
+   HERO GLOW
+------------------------------ */
+
+.hero-glow{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+}
+
+.hero-glow-1{
+
+    width:320px;
+
+    height:320px;
+
+    background:#2563EB33;
+
+    top:-120px;
+
+    right:-80px;
+
+}
+
+.hero-glow-2{
+
+    width:260px;
+
+    height:260px;
+
+    background:#7C3AED33;
+
+    bottom:-120px;
+
+    left:-60px;
+
+}
