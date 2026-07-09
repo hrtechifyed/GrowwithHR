@@ -1,5 +1,5 @@
 /* ==========================================
-   GrowItWithHR V8
+   GrowWithHR  V0.9.0-beta
    compliance.js
    Compliance Rendering
 ========================================== */
