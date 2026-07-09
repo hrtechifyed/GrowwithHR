@@ -1,3 +1,4 @@
+import bootstrap from "./js/bootstrap.js";
 document.addEventListener(
 "DOMContentLoaded",
 async () => {
