@@ -228,6 +228,58 @@ if (container) {
 
     ];
 
+    /* ==========================================================
+   INTELLIGENCE FLOW
+========================================================== */
+
+const flowGeometry = new THREE.SphereGeometry(
+
+    0.045,
+
+    16,
+
+    16
+
+);
+
+const flowMaterial = new THREE.MeshBasicMaterial({
+
+    color:0xffffff,
+
+    transparent:true,
+
+    opacity:0.9
+
+});
+
+const flowParticles=[];
+
+links.forEach(link=>{
+
+    const particle = new THREE.Mesh(
+
+        flowGeometry,
+
+        flowMaterial
+
+    );
+
+    particle.userData={
+
+        start:nodes[link[0]].position.clone(),
+
+        end:nodes[link[1]].position.clone(),
+
+        offset:Math.random()
+
+    };
+
+   group.add(particle);
+
+    flowParticles.push(particle);
+
+});
+
     const lineMaterial = new THREE.LineBasicMaterial({
 
         color:0x5aa8ff,
@@ -307,6 +359,28 @@ if (container) {
             );
 
         });
+
+        flowParticles.forEach((particle,index)=>{
+
+  const progress = (
+
+    Date.now() * 0.00035 +
+
+    particle.userData.offset
+
+) % 1;
+
+   particle.position.lerpVectors(
+
+    particle.userData.start,
+
+    particle.userData.end,
+
+    progress
+
+);
+
+});
 
         const t = Date.now()*0.001;
 
