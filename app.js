@@ -324,7 +324,7 @@ resolveCentralRule("EPFO-001")
      Debug
   ========================================== */
   console.log(
-    "GrowItWithHR V7 Engine Loaded Successfully"
+    `${APP_CONFIG.productName} ${APP_CONFIG.version} Loaded Successfully`
   );
 
   
@@ -1239,7 +1239,7 @@ recommended = [
 } catch(error) {
 
   console.error(
-    "GrowItWithHR V6 Error:",
+    `${APP_CONFIG.productName} ${APP_CONFIG.version} Error`,
     error
   );
 
