@@ -1,9 +1,17 @@
+import bootstrap from "../js/bootstrap.js";
 document.addEventListener(
 "DOMContentLoaded",
 async () => {
 console.log(
-  "GrowItWithHR V7 Engine Initializing..."
+  "GrowItWithHR V9 Engine Initializing..."
 );
+
+const platform = bootstrap();
+
+console.log(
+    "GrowWithHR Platform Initialized",
+    platform
+);  
 
 try {
 
