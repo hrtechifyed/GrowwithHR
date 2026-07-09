@@ -5,9 +5,25 @@
    Version : v0.10.0-beta
 ========================================================== */
 
-/* ==========================================
+
+/* ==========================================================
+   DESKTOP
+========================================================== */
+
+@media (max-width:1400px){
+
+    .container{
+
+        width:min(90%,1280px);
+
+    }
+
+}
+
+
+/* ==========================================================
    LARGE TABLETS
-========================================== */
+========================================================== */
 
 @media (max-width:1200px){
 
@@ -23,15 +39,13 @@
 
     .hero-content{
 
-        margin:0 auto;
+        margin:auto;
 
     }
 
     .hero-description{
 
-        margin-left:auto;
-
-        margin-right:auto;
+        margin-inline:auto;
 
     }
 
@@ -53,13 +67,28 @@
 
     }
 
+    .workspace-window{
+
+        max-width:680px;
+
+        margin:auto;
+
+    }
+
 }
 
-/* ==========================================
+
+/* ==========================================================
    TABLETS
-========================================== */
+========================================================== */
 
 @media (max-width:992px){
+
+    .container{
+
+        width:92%;
+
+    }
 
     .grid-4{
 
@@ -91,7 +120,7 @@
 
     }
 
-    .assessment-form{
+    .dashboard-grid{
 
         grid-template-columns:1fr;
 
@@ -103,7 +132,7 @@
 
     }
 
-    .dashboard-grid{
+    .form-grid{
 
         grid-template-columns:1fr;
 
@@ -113,23 +142,16 @@
 
         width:100%;
 
-        max-width:520px;
-
     }
 
 }
 
-/* ==========================================
+
+/* ==========================================================
    MOBILE
-========================================== */
+========================================================== */
 
 @media (max-width:768px){
-
-    .compact-section{
-
-        padding:80px 0;
-
-    }
 
     .section{
 
@@ -137,15 +159,27 @@
 
     }
 
+    .compact-section{
+
+        padding:80px 0;
+
+    }
+
     h1{
 
-        font-size:2.6rem;
+        font-size:2.5rem;
 
     }
 
     h2{
 
         font-size:2rem;
+
+    }
+
+    h3{
+
+        font-size:1.35rem;
 
     }
 
@@ -156,6 +190,12 @@
         padding-top:120px;
 
         padding-bottom:70px;
+
+    }
+
+    .hero-badge{
+
+        margin:auto auto 24px;
 
     }
 
@@ -175,21 +215,29 @@
 
     }
 
+    .wizard-progress{
+
+        flex-wrap:wrap;
+
+        gap:14px;
+
+    }
+
+    .wizard-line{
+
+        display:none;
+
+    }
+
     .assessment-panel{
 
-        padding:32px 24px;
+        padding:30px 24px;
 
     }
 
-    .modal-content{
+    .assessment-group{
 
-        padding:28px;
-
-    }
-
-    .company-dna{
-
-        grid-template-columns:1fr;
+        padding:26px;
 
     }
 
@@ -209,11 +257,30 @@
 
     }
 
+    .dashboard-actions button{
+
+        width:100%;
+
+    }
+
+    .modal{
+
+        padding:18px;
+
+    }
+
+    .modal-content{
+
+        padding:28px 22px;
+
+    }
+
 }
 
-/* ==========================================
-   SMALL MOBILE
-========================================== */
+
+/* ==========================================================
+   SMALL PHONES
+========================================================== */
 
 @media (max-width:480px){
 
@@ -221,17 +288,25 @@
 
         width:94%;
 
+        padding-inline:10px;
+
     }
 
     h1{
 
-        font-size:2.2rem;
+        font-size:2.1rem;
 
     }
 
     h2{
 
-        font-size:1.7rem;
+        font-size:1.65rem;
+
+    }
+
+    p{
+
+        font-size:.95rem;
 
     }
 
@@ -249,21 +324,17 @@
 
     .workspace-card{
 
-        padding:16px;
-
-    }
-
-    .section-heading{
-
-        margin-bottom:40px;
+        padding:18px;
 
     }
 
     .capability-card,
 
-    .how-card{
+    .how-card,
 
-        padding:28px;
+    .assessment-group{
+
+        padding:24px;
 
     }
 
@@ -271,13 +342,28 @@
 
         border-radius:22px;
 
+        padding:24px 18px;
+
+    }
+
+    .dashboard-section{
+
+        padding:24px;
+
+    }
+
+    .summary-card{
+
+        padding:24px;
+
     }
 
 }
 
-/* ==========================================
-   VERY LARGE SCREENS
-========================================== */
+
+/* ==========================================================
+   ULTRA WIDE
+========================================================== */
 
 @media (min-width:1600px){
 
