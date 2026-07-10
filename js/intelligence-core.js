@@ -1,435 +1,947 @@
 import * as THREE from "three";
 
-const container = document.getElementById("dnaCoreCanvas");
-
-if (container) {
-
-    /* ==========================================================
-       SCENE
-    ========================================================== */
-
-    const scene = new THREE.Scene();
-
-    const camera = new THREE.PerspectiveCamera(
-        45,
-        container.clientWidth / container.clientHeight,
-        0.1,
-        1000
-    );
-
-    camera.position.z = 11;
-
-    const renderer = new THREE.WebGLRenderer({
-        alpha: true,
-        antialias: true
-    });
-
-    renderer.setPixelRatio(window.devicePixelRatio);
-
-    renderer.setSize(
-        container.clientWidth,
-        container.clientHeight
-    );
-
-    container.appendChild(renderer.domElement);
-
-    /* ==========================================================
-       GROUP
-    ========================================================== */
-
-    const group = new THREE.Group();
-
-    scene.add(group);
-
-    /* ==========================================================
-       COMPANY DNA NODES
-    ========================================================== */
-
-    const nodesData = [
-
-        { name:"Growth",             x: 0.0,  y: 3.2 },
-
-        { name:"Leadership",         x:-2.2,  y: 2.0 },
-
-        { name:"Organization",       x: 2.2,  y: 2.0 },
-
-        { name:"Culture",            x:-3.2,  y: 0.2 },
-
-        { name:"Workforce",          x: 3.2,  y: 0.2 },
-
-        { name:"Performance",        x:-2.3,  y:-2.0 },
-
-        { name:"Learning",           x: 2.3,  y:-2.0 },
-
-        { name:"Rewards",            x:-1.2,  y:-3.8 },
-
-        { name:"Compliance",         x: 1.2,  y:-3.8 },
-
-        { name:"Customer Success",   x: 0.0,  y:-5.2 }
-
-    ];
-
-    const sphereGeometry = new THREE.SphereGeometry(
-        0.14,
-        32,
-        32
-    );
-
-    const nodes = [];
-
-    nodesData.forEach(node => {
-
-        const material = new THREE.MeshPhysicalMaterial({
-
-            color:0xffb347,
-
-            emissive:0xff8800,
-
-            emissiveIntensity:1,
-
-            roughness:0.08,
-
-            metalness:0.25,
-
-            transmission:0.55,
-
-            thickness:0.7,
-
-            clearcoat:1,
-
-            clearcoatRoughness:0,
-
-            transparent:true,
-
-            opacity:0.96
-
-        });
-
-        const sphere = new THREE.Mesh(
-
-            sphereGeometry,
-
-            material
-
-        );
-
-        sphere.position.set(
-
-            node.x,
-
-            node.y,
-
-            0
-
-        );
-
-        group.add(sphere);
-
-        nodes.push(sphere);
-
-    });
-
-    /* ==========================================================
-       LIGHTING
-    ========================================================== */
-
-    const ambient = new THREE.AmbientLight(
-
-        0xffffff,
-
-        0.70
-
-    );
-
-    scene.add(ambient);
-
-    const pointLight = new THREE.PointLight(
-
-        0xffb347,
-
-        4,
-
-        60
-
-    );
-
-    pointLight.position.set(
-
-        0,
-
-        3,
-
-        8
-
-    );
-
-    scene.add(pointLight);
-
-    const blueLight = new THREE.PointLight(
-
-        0x2563eb,
-
-        2,
-
-        40
-
-    );
-
-    blueLight.position.set(
-
-        -5,
-
-        -2,
-
-        6
-
-    );
-
-    scene.add(blueLight);
-
-    /* ==========================================================
-       COMPANY DNA CONNECTIONS
-    ========================================================== */
-
-    const links = [
-
-        [0,1],
-        [0,2],
-
-        [1,2],
-
-        [1,3],
-        [1,5],
-
-        [2,4],
-        [2,6],
-
-        [3,4],
-
-        [3,5],
-
-        [4,6],
-
-        [5,6],
-
-        [5,7],
-
-        [6,8],
-
-        [7,8],
-
-        [7,9],
-
-        [8,9],
-
-        [5,9],
-
-        [6,9]
-
-    ];
-
-    /* ==========================================================
-   INTELLIGENCE FLOW
+/* ==========================================================
+   HRTECHIFY DESIGN SYSTEM
+   Intelligence Core
+   Version : v2.0.0
 ========================================================== */
 
-const flowGeometry = new THREE.SphereGeometry(
+const container = document.getElementById("dnaCoreCanvas");
 
-    0.045,
+if(container){
 
-    16,
+/* ==========================================================
+   SCENE
+========================================================== */
 
-    16
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+
+    45,
+
+    container.clientWidth /
+
+    container.clientHeight,
+
+    0.1,
+
+    1000
 
 );
 
-const flowMaterial = new THREE.MeshBasicMaterial({
+camera.position.z = 10;
 
-    color:0xffffff,
+/* ==========================================================
+   RENDERER
+========================================================== */
+
+const renderer = new THREE.WebGLRenderer({
+
+    alpha:true,
+
+    antialias:true
+
+});
+
+renderer.setPixelRatio(
+
+    window.devicePixelRatio
+
+);
+
+renderer.setSize(
+
+    container.clientWidth,
+
+    container.clientHeight
+
+);
+
+container.appendChild(
+
+    renderer.domElement
+
+);
+
+/* ==========================================================
+   GROUP
+========================================================== */
+
+const group = new THREE.Group();
+
+scene.add(group);
+
+/* ==========================================================
+   COMPANY DNA MODEL
+========================================================== */
+
+const nodesData=[
+
+{
+
+    id:"growth",
+
+    label:"Growth",
+
+    angle:-90
+
+},
+
+{
+
+    id:"leadership",
+
+    label:"Leadership",
+
+    angle:-54
+
+},
+
+{
+
+    id:"organization",
+
+    label:"Organization",
+
+    angle:-18
+
+},
+
+{
+
+    id:"culture",
+
+    label:"Culture",
+
+    angle:18
+
+},
+
+{
+
+    id:"workforce",
+
+    label:"Workforce",
+
+    angle:54
+
+},
+
+{
+
+    id:"performance",
+
+    label:"Performance",
+
+    angle:90
+
+},
+
+{
+
+    id:"learning",
+
+    label:"Learning",
+
+    angle:126
+
+},
+
+{
+
+    id:"rewards",
+
+    label:"Rewards",
+
+    angle:162
+
+},
+
+{
+
+    id:"compliance",
+
+    label:"Compliance",
+
+    angle:198
+
+},
+
+{
+
+    id:"customer",
+
+    label:"Customer Success",
+
+    angle:234
+
+}
+
+];
+
+/* ==========================================================
+   NODE GROUPS
+========================================================== */
+
+let activePillar="company";
+
+const pillarGroups={
+
+company:[0],
+
+people:[1,4,5,6,7],
+
+operations:[2,3,8,9],
+
+growth:[0,1,2,3,4,5,6,7,8,9]
+
+};
+
+/* ==========================================================
+   LABEL CONTAINER
+========================================================== */
+
+let labelContainer =
+
+document.getElementById(
+
+"dnaLabels"
+
+);
+
+if(!labelContainer){
+
+labelContainer=document.createElement("div");
+
+labelContainer.id="dnaLabels";
+
+labelContainer.style.position="absolute";
+
+labelContainer.style.inset="0";
+
+container.parentElement.appendChild(
+
+labelContainer
+
+);
+
+}
+
+/* ==========================================================
+   GEOMETRY
+========================================================== */
+
+const radius = 3.2;
+
+const sphereGeometry =
+
+new THREE.SphereGeometry(
+
+0.14,
+
+32,
+
+32
+
+);
+
+const nodes=[];
+
+const labels=[];
+
+/* ==========================================================
+   CREATE NODES
+========================================================== */
+
+nodesData.forEach((item,index)=>{
+
+const angle=
+
+THREE.MathUtils.degToRad(
+
+item.angle
+
+);
+
+const x=
+
+Math.cos(angle)*radius;
+
+const y=
+
+Math.sin(angle)*radius;
+
+const material=
+
+new THREE.MeshPhysicalMaterial({
+
+color:0xffb347,
+
+emissive:0xff8800,
+
+emissiveIntensity:1,
+
+roughness:.08,
+
+metalness:.25,
+
+transmission:.55,
+
+thickness:.7,
+
+clearcoat:1,
+
+clearcoatRoughness:0,
+
+transparent:true,
+
+opacity:.96
+
+});
+
+const sphere=
+
+new THREE.Mesh(
+
+sphereGeometry,
+
+material
+
+);
+
+sphere.position.set(
+
+x,
+
+y,
+
+0
+
+);
+
+group.add(sphere);
+
+nodes.push(sphere);
+
+/* ==========================================================
+   HTML LABEL
+========================================================== */
+
+const label=
+
+document.createElement("div");
+
+label.className="dna-label";
+
+label.innerText=item.label;
+
+label.style.position="absolute";
+
+label.style.pointerEvents="none";
+
+label.style.transform=
+
+"translate(-50%,-50%)";
+
+labelContainer.appendChild(label);
+
+labels.push(label);
+
+});
+
+/* ==========================================================
+   LIGHTS
+========================================================== */
+
+const ambient=
+
+new THREE.AmbientLight(
+
+0xffffff,
+
+0.75
+
+);
+
+scene.add(ambient);
+
+const orangeLight=
+
+new THREE.PointLight(
+
+0xffb347,
+
+4,
+
+50
+
+);
+
+orangeLight.position.set(
+
+0,
+
+0,
+
+6
+
+);
+
+scene.add(
+
+orangeLight
+
+);
+
+const blueLight=
+
+new THREE.PointLight(
+
+0x2563eb,
+
+2,
+
+50
+
+);
+
+blueLight.position.set(
+
+-4,
+
+2,
+
+5
+
+);
+
+scene.add(
+
+blueLight
+
+);
+
+/* ==========================================================
+   CONNECTION DATA
+========================================================== */
+
+const links=[];
+
+for(
+
+let i=0;
+
+i<nodes.length;
+
+i++
+
+){
+
+for(
+
+let j=i+1;
+
+j<nodes.length;
+
+j++
+
+){
+
+links.push([i,j]);
+
+}
+
+}
+    /* ==========================================================
+   CONNECTION LINES
+========================================================== */
+
+const lineMaterial = new THREE.LineBasicMaterial({
+
+    color:0x63b3ff,
 
     transparent:true,
 
-    opacity:0.9
+    opacity:.38
 
 });
 
-const flowParticles=[];
+const lines=[];
 
 links.forEach(link=>{
 
-    const particle = new THREE.Mesh(
+    const geometry=new THREE.BufferGeometry()
 
-        flowGeometry,
+    .setFromPoints([
 
-        flowMaterial
+        nodes[link[0]].position,
+
+        nodes[link[1]].position
+
+    ]);
+
+    const line=new THREE.Line(
+
+        geometry,
+
+        lineMaterial.clone()
 
     );
 
-    particle.userData={
+    group.add(line);
 
-        start:nodes[link[0]].position.clone(),
-
-        end:nodes[link[1]].position.clone(),
-
-        offset:Math.random()
-
-    };
-
-   group.add(particle);
-
-    flowParticles.push(particle);
+    lines.push(line);
 
 });
 
-    const lineMaterial = new THREE.LineBasicMaterial({
+/* ==========================================================
+   INTELLIGENCE FLOW
+========================================================== */
 
-        color:0x5aa8ff,
+const flowGeometry=
 
-        transparent:true,
+new THREE.SphereGeometry(
 
-        opacity:0.72
+0.045,
 
-    });
+16,
 
-    links.forEach(link => {
+16
 
-        const points = [
+);
 
-            nodes[link[0]].position,
+const flowParticles=[];
 
-            nodes[link[1]].position
+links.forEach((link,index)=>{
 
-        ];
+const particle=
 
-        const lineGeometry = new THREE.BufferGeometry()
+new THREE.Mesh(
 
-            .setFromPoints(points);
+flowGeometry,
 
-        const line = new THREE.Line(
+new THREE.MeshBasicMaterial({
 
-            lineGeometry,
+color:0xffffff,
 
-            lineMaterial
+transparent:true,
 
-        );
+opacity:.92
 
-        group.add(line);
+})
 
-    });
+);
 
-    /* ==========================================================
-       ANIMATION
-    ========================================================== */
+particle.userData={
 
-    function animate(){
+start:link[0],
 
-        requestAnimationFrame(animate);
+end:link[1],
 
-        group.rotation.set(
+offset:Math.random(),
 
-            0,
+speed:
 
-            0,
+0.15+
 
-            0
+Math.random()*0.18
 
-        );
+};
 
-        nodes.forEach((node,index)=>{
+group.add(particle);
 
-            const pulse =
+flowParticles.push(particle);
 
-                1 +
+});
 
-                Math.sin(
+/* ==========================================================
+   COMPANY DNA EVENTS
+========================================================== */
 
-                    Date.now()*0.002 +
+document.addEventListener(
 
-                    index
+"dnaChange",
 
-                ) * 0.05;
+event=>{
 
-            node.scale.set(
+activePillar=
 
-                pulse,
+event.detail.pillar;
 
-                pulse,
+}
 
-                pulse
+);
 
-            );
+/* ==========================================================
+   NODE HIGHLIGHT
+========================================================== */
 
-        });
+function updateNodeHighlight(){
 
-        flowParticles.forEach((particle,index)=>{
+const activeNodes=
 
-  const progress = (
+pillarGroups[activePillar];
 
-    Date.now() * 0.00035 +
+nodes.forEach((node,index)=>{
 
-    particle.userData.offset
+const material=node.material;
 
-) % 1;
+const target=
 
-   particle.position.lerpVectors(
+activeNodes.includes(index)
 
-    particle.userData.start,
+?2.2
 
-    particle.userData.end,
+:0.7;
 
-    progress
+material.emissiveIntensity=
+
+THREE.MathUtils.lerp(
+
+material.emissiveIntensity,
+
+target,
+
+0.08
 
 );
 
 });
 
-        const t = Date.now()*0.001;
+}
 
-        pointLight.intensity =
+/* ==========================================================
+   LINE HIGHLIGHT
+========================================================== */
 
-            3.8 +
+function updateLines(){
 
-            Math.sin(t*2) * 0.30;
+const activeNodes=
 
-        blueLight.intensity =
+pillarGroups[activePillar];
 
-            2 +
+lines.forEach((line,index)=>{
 
-            Math.cos(t*1.6) * 0.20;
+const a=links[index][0];
 
-        renderer.render(
+const b=links[index][1];
 
-            scene,
+const active=
 
-            camera
+activeNodes.includes(a)||
+
+activeNodes.includes(b);
+
+line.material.opacity=
+
+THREE.MathUtils.lerp(
+
+line.material.opacity,
+
+active?.95:.18,
+
+.08
+
+);
+
+line.material.color.set(
+
+active
+
+?0xffb347
+
+:0x63b3ff
+
+);
+
+});
+
+}
+
+/* ==========================================================
+   FLOW PARTICLES
+========================================================== */
+
+function updateParticles(time){
+
+const activeNodes=
+
+pillarGroups[activePillar];
+
+flowParticles.forEach(particle=>{
+
+const start=
+
+nodes[particle.userData.start];
+
+const end=
+
+nodes[particle.userData.end];
+
+const t=(
+
+time*
+
+particle.userData.speed+
+
+particle.userData.offset
+
+)%1;
+
+particle.position.lerpVectors(
+
+start.position,
+
+end.position,
+
+t
+
+);
+
+const active=
+
+activeNodes.includes(
+
+particle.userData.start
+
+)||
+
+activeNodes.includes(
+
+particle.userData.end
+
+);
+
+particle.material.color.set(
+
+active
+
+?0xffd27a
+
+:0xffffff
+
+);
+
+particle.material.opacity=
+
+active?.95:.45;
+
+});
+
+}
+
+/* ==========================================================
+   LABEL POSITIONING
+========================================================== */
+
+function updateLabels(){
+
+nodes.forEach((node,index)=>{
+
+const vector=
+
+node.position.clone();
+
+vector.project(camera);
+
+const x=(
+
+vector.x*.5+.5
+
+)*container.clientWidth;
+
+const y=(
+
+-vector.y*.5+.5
+
+)*container.clientHeight;
+
+labels[index].style.left=
+
+x+"px";
+
+labels[index].style.top=
+
+y+"px";
+
+});
+
+}
+    /* ==========================================================
+   GRAPH PULSE
+========================================================== */
+
+function updateNodes(time){
+
+    nodes.forEach((node,index)=>{
+
+        const pulse =
+
+            1 +
+
+            Math.sin(
+
+                time*2 +
+
+                index
+
+            ) * 0.05;
+
+        node.scale.set(
+
+            pulse,
+
+            pulse,
+
+            pulse
 
         );
 
-    }
+    });
 
-    animate();
+}
 
-    /* ==========================================================
-       RESIZE
-    ========================================================== */
+/* ==========================================================
+   LIGHT ANIMATION
+========================================================== */
 
-    window.addEventListener("resize",()=>{
+function updateLights(time){
+
+    orangeLight.intensity =
+
+        3.8 +
+
+        Math.sin(
+
+            time*2
+
+        ) * 0.35;
+
+    blueLight.intensity =
+
+        2 +
+
+        Math.cos(
+
+            time*1.6
+
+        ) * 0.25;
+
+}
+
+/* ==========================================================
+   GRAPH CENTERING
+========================================================== */
+
+const bounds = new THREE.Box3()
+
+.setFromObject(group);
+
+const center = bounds.getCenter(
+
+    new THREE.Vector3()
+
+);
+
+group.position.sub(center);
+
+/* ==========================================================
+   ANIMATION LOOP
+========================================================== */
+
+const clock = new THREE.Clock();
+
+function animate(){
+
+    requestAnimationFrame(
+
+        animate
+
+    );
+
+    const time =
+
+        clock.getElapsedTime();
+
+    updateNodes(
+
+        time
+
+    );
+
+    updateNodeHighlight();
+
+    updateLines();
+
+    updateParticles(
+
+        time
+
+    );
+
+    updateLights(
+
+        time
+
+    );
+
+    updateLabels();
+
+    renderer.render(
+
+        scene,
+
+        camera
+
+    );
+
+}
+
+animate();
+
+/* ==========================================================
+   RESIZE
+========================================================== */
+
+window.addEventListener(
+
+    "resize",
+
+    ()=>{
+
+        const width =
+
+            container.clientWidth;
+
+        const height =
+
+            container.clientHeight;
 
         camera.aspect =
 
-            container.clientWidth /
-
-            container.clientHeight;
+            width / height;
 
         camera.updateProjectionMatrix();
 
         renderer.setSize(
 
-            container.clientWidth,
+            width,
 
-            container.clientHeight
+            height
 
         );
 
-    });
+        updateLabels();
+
+    }
+
+);
+
+/* ==========================================================
+   INITIAL LABEL POSITION
+========================================================== */
+
+updateLabels();
 
 }
