@@ -1372,3 +1372,77 @@ if(carouselTrack){
     updateActiveSlide();
 
 }
+
+/* ==========================================================
+   COMPANY DNA INTELLIGENCE LOOP
+========================================================== */
+
+const dnaItems = document.querySelectorAll(".dna-item");
+
+if(dnaItems.length){
+
+    let activeIndex = 0;
+
+    function activateDna(index){
+
+        dnaItems.forEach(item=>{
+
+            item.classList.remove("active");
+
+        });
+
+        dnaItems[index].classList.add("active");
+
+        document.dispatchEvent(
+
+            new CustomEvent(
+
+                "dnaChange",
+
+                {
+
+                    detail:{
+
+                        pillar:dnaItems[index].dataset.pillar,
+
+                        index
+
+                    }
+
+                }
+
+            )
+
+        );
+
+    }
+
+    activateDna(activeIndex);
+
+    setInterval(()=>{
+
+        activeIndex++;
+
+        if(activeIndex>=dnaItems.length){
+
+            activeIndex=0;
+
+        }
+
+        activateDna(activeIndex);
+
+    },2000);
+
+    dnaItems.forEach((item,index)=>{
+
+        item.addEventListener("click",()=>{
+
+            activeIndex=index;
+
+            activateDna(activeIndex);
+
+        });
+
+    });
+
+}
