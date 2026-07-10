@@ -10,6 +10,11 @@ const container = document.getElementById("dnaCoreCanvas");
 
 if(container){
 
+if (getComputedStyle(container).position === "static") {
+    container.style.position = "relative";
+}
+container.style.overflow = "visible";
+
 /* ==========================================================
    SCENE
 ========================================================== */
@@ -123,32 +128,22 @@ growth:[0,1,2,3,4,5,6,7,8,9]
    LABEL CONTAINER
 ========================================================== */
 
-let labelContainer =
+let labelContainer = document.getElementById("dnaLabels");
 
-document.getElementById(
-
-"dnaLabels"
-
-);
-
-if(!labelContainer){
-
-labelContainer=document.createElement("div");
-
-labelContainer.id="dnaLabels";
-
-labelContainer.style.position="absolute";
-
-labelContainer.style.inset="0";
-
-container.parentElement.appendChild(
-
-labelContainer
-
-);
-
+if (labelContainer) {
+    labelContainer.remove();
 }
 
+labelContainer = document.createElement("div");
+labelContainer.id = "dnaLabels";
+labelContainer.style.position = "absolute";
+labelContainer.style.inset = "0";
+labelContainer.style.pointerEvents = "none";
+labelContainer.style.zIndex = "2";
+
+container.appendChild(labelContainer);
+
+   
 /* ==========================================================
    GEOMETRY
 ========================================================== */
