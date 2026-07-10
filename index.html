@@ -178,63 +178,96 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <div class="hero-dashboard-layout">
 
-    <!-- =======================================
-         LEFT COLUMN
-    ======================================== -->
-
-    <aside class="hero-sidebar">
+    <section class="hero-sidebar">
 
         <div class="company-dna-card">
 
-            <h3>Company DNA</h3>
+            <div class="dna-header">
 
-            <div class="dna-pillars">
-
-                <button class="dna-item active" data-pillar="company">
-
-                    <i class="fa-solid fa-building"></i>
-
-                    <span>Company</span>
-
-                </button>
-
-                <button class="dna-item" data-pillar="people">
-
-                    <i class="fa-solid fa-users"></i>
-
-                    <span>People</span>
-
-                </button>
-
-                <button class="dna-item" data-pillar="operations">
-
-                    <i class="fa-solid fa-gears"></i>
-
-                    <span>Operations</span>
-
-                </button>
-
-                <button class="dna-item" data-pillar="growth">
-
-                    <i class="fa-solid fa-chart-line"></i>
-
-                    <span>Growth</span>
-
-                </button>
+                <h3>Company DNA</h3>
 
             </div>
 
-            <div class="sidebar-divider"></div>
+            <div class="dna-pillars">
 
-            <div class="workspace-card">
+              <button class="dna-item active" data-pillar="company">...</button>
+              
+              <button class="dna-item" data-pillar="people">...</button>
+              
+              <button class="dna-item" data-pillar="operations">...</button>
+              
+              <button class="dna-item" data-pillar="growth">...</button>
+
+            </div>
+
+        </div>
+
+        <div class="workspace-card growth-stage">
+
+            <span>Growth Stage</span>
+
+            <strong>Scaling Business</strong>
+
+        </div>
+
+        <div class="workspace-card recommendation-card">
+
+            <span>Recommendation Basis</span>
+
+            <ul class="hero-checklist">
+
+                ...
+
+            </ul>
+
+        </div>
+
+    </section>
+
+    <section class="hero-graph">
+
+        <h3 class="graph-heading">
+
+            Intelligence Core
+
+        </h3>
+
+        <div class="dna-core-wrapper">
+
+            <div id="dnaCoreCanvas"></div>
+
+        </div>
+
+    </section>
+
+    <footer class="hero-footer">
+
+        <h3 class="core-title">
+
+            GrowWithHR Intelligence Core
+
+        </h3>
+
+        <p class="core-subtitle">
+
+            AI-powered People Intelligence
+
+        </p>
+
+    </footer>
+
+</div>
+
+    <!-- =======================================
+         LEFT COLUMN
+    ======================================== -->
+           <div class="workspace-card">
 
                 <span>Growth Stage</span>
 
                 <strong>Scaling Business</strong>
 
             </div>
-
-            <div class="sidebar-divider"></div>
 
             <div class="workspace-card">
 
@@ -253,9 +286,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
                 </ul>
 
             </div>
-
-        </div>
-
+      
     </aside>
 
     <!-- =======================================
