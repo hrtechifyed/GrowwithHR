@@ -36,7 +36,7 @@ const camera = new THREE.PerspectiveCamera(
 
 );
 
-camera.position.z = 10;
+camera.position.z = 11;
 
 /* ==========================================================
    RENDERER
@@ -779,6 +779,7 @@ const center = bounds.getCenter(
 );
 
 group.position.sub(center);
+group.position.y += 0.25;
 
 /* ==========================================================
    ANIMATION LOOP
