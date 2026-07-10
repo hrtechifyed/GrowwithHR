@@ -112,6 +112,8 @@ const nodesData = [
 ========================================================== */
 
 let activePillar="company";
+let activeStage = "startup";
+let activeRecommendation = "company";   
 
 const pillarGroups={
 
@@ -505,6 +507,19 @@ document.addEventListener(
     }
 
 );   
+
+document.addEventListener(
+
+    "recommendationChange",
+
+    event=>{
+
+        activeRecommendation = event.detail.value;
+
+    }
+
+);
+   
 /* ==========================================================
    NODE HIGHLIGHT
 ========================================================== */
