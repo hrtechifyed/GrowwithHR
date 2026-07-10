@@ -1374,75 +1374,131 @@ if(carouselTrack){
 }
 
 /* ==========================================================
-   COMPANY DNA INTELLIGENCE LOOP
+   GENERIC CARD ROTATOR
 ========================================================== */
 
-const dnaItems = document.querySelectorAll(".dna-item");
+function createCardRotator({
 
-if(dnaItems.length){
+    selector,
+
+    activeClass = "active",
+
+    dataAttribute,
+
+    eventName,
+
+    interval = 2000
+
+}){
+
+    const items = document.querySelectorAll(selector);
+
+    if(!items.length) return;
 
     let activeIndex = 0;
 
-    function activateDna(index){
+    function activate(index){
 
-        dnaItems.forEach(item=>{
+        items.forEach(item=>item.classList.remove(activeClass));
 
-            item.classList.remove("active");
+        items[index].classList.add(activeClass);
 
-        });
+        if(eventName && dataAttribute){
 
-        dnaItems[index].classList.add("active");
+            document.dispatchEvent(
 
-        document.dispatchEvent(
-
-            new CustomEvent(
-
-                "dnaChange",
-
-                {
+                new CustomEvent(eventName,{
 
                     detail:{
 
-                        pillar:dnaItems[index].dataset.pillar,
+                        value:items[index].dataset[dataAttribute],
 
                         index
 
                     }
 
-                }
+                })
 
-            )
+            );
 
-        );
+        }
 
     }
 
-    activateDna(activeIndex);
+    activate(activeIndex);
 
     setInterval(()=>{
 
         activeIndex++;
 
-        if(activeIndex>=dnaItems.length){
+        if(activeIndex>=items.length){
 
             activeIndex=0;
 
         }
 
-        activateDna(activeIndex);
+        activate(activeIndex);
 
-    },2000);
+    },interval);
 
-    dnaItems.forEach((item,index)=>{
+    items.forEach((item,index)=>{
 
         item.addEventListener("click",()=>{
 
             activeIndex=index;
 
-            activateDna(activeIndex);
+            activate(activeIndex);
 
         });
 
     });
 
 }
+
+/* ==========================================================
+   COMPANY DNA
+========================================================== */
+
+createCardRotator({
+
+    selector:".dna-item",
+
+    dataAttribute:"pillar",
+
+    eventName:"dnaChange",
+
+    interval:2000
+
+});
+
+/* ==========================================================
+   GROWTH STAGE
+========================================================== */
+
+createCardRotator({
+
+    selector:".stage-item",
+
+    dataAttribute:"stage",
+
+    eventName:"growthStageChange",
+
+    interval:2000
+
+});
+
+/* ==========================================================
+   RECOMMENDATION BASIS
+========================================================== */
+
+createCardRotator({
+
+    selector:".recommendation-item",
+
+    dataAttribute:"recommendation",
+
+    eventName:"recommendationChange",
+
+    interval:2000
+
+});
