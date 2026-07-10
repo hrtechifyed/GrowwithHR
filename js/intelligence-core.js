@@ -78,67 +78,29 @@ scene.add(group);
 
 const nodesData = [
 
-    {
-        id:"growth",
-        label:"Growth",
-        angle:-90
-    },
+    { id:"growth", label:"Growth" },
 
-    {
-        id:"leadership",
-        label:"Leadership",
-        angle:-54
-    },
+    { id:"leadership", label:"Leadership" },
 
-    {
-        id:"organization",
-        label:"Organization",
-        angle:-18
-    },
+    { id:"organization", label:"Organization" },
 
-    {
-        id:"workforce",
-        label:"Workforce",
-        angle:18
-    },
+    { id:"workforce", label:"Workforce" },
 
-    {
-        id:"learning",
-        label:"Learning",
-        angle:54
-    },
+    { id:"learning", label:"Learning" },
 
-    {
-        id:"compliance",
-        label:"Compliance",
-        angle:90
-    },
+    { id:"compliance", label:"Compliance" },
 
-    {
-        id:"customer",
-        label:"Customer Success",
-        angle:126
-    },
+    { id:"customer", label:"Customer Success" },
 
-    {
-        id:"rewards",
-        label:"Rewards",
-        angle:162
-    },
+    { id:"rewards", label:"Rewards" },
 
-    {
-        id:"performance",
-        label:"Performance",
-        angle:198
-    },
+    { id:"performance", label:"Performance" },
 
-    {
-        id:"culture",
-        label:"Culture",
-        angle:234
-    }
+    { id:"culture", label:"Culture" }
 
 ];
+   
+   
 /* ==========================================================
    NODE GROUPS
 ========================================================== */
@@ -191,9 +153,7 @@ labelContainer
    GEOMETRY
 ========================================================== */
 
-const NODE_RADIUS = 2.65;
-
-const LABEL_RADIUS = 3.45;
+const NODE_RADIUS = 2.35;
 
 const sphereGeometry =
 
@@ -217,19 +177,25 @@ const labels=[];
 
 nodesData.forEach((item,index)=>{
 
-const angle=
+const angle =
 
-THREE.MathUtils.degToRad(
+(-Math.PI / 2) +
 
-item.angle
+(index * Math.PI * 2) /
 
-);
+nodesData.length;
 
 const x =
-Math.cos(angle) * NODE_RADIUS;
+
+Math.cos(angle) *
+
+NODE_RADIUS;
 
 const y =
-Math.sin(angle) * NODE_RADIUS;
+
+Math.sin(angle) *
+
+NODE_RADIUS;
 
 const material=
 
@@ -698,49 +664,34 @@ function updateLabels(){
 
     nodes.forEach((node,index)=>{
 
-        const angle = THREE.MathUtils.degToRad(
+        const world = node.getWorldPosition(
 
-            nodesData[index].angle
-
-        );
-
-        const labelPosition = new THREE.Vector3(
-
-            Math.cos(angle) * LABEL_RADIUS,
-
-            Math.sin(angle) * LABEL_RADIUS,
-
-            0
+            new THREE.Vector3()
 
         );
 
-        labelPosition.add(group.position);
+        const direction = world.clone().normalize();
 
-        labelPosition.project(camera);
+        world.add(
 
-        const x =
+            direction.multiplyScalar(0.65)
 
-            (labelPosition.x * 0.5 + 0.5)
+        );
 
-            * container.clientWidth;
-
-        const y =
-
-            (-labelPosition.y * 0.5 + 0.5)
-
-            * container.clientHeight;
+        world.project(camera);
 
         labels[index].style.left =
 
-            `${x}px`;
+            ((world.x + 1) * 0.5 * container.clientWidth) + "px";
 
         labels[index].style.top =
 
-            `${y}px`;
+            ((-world.y + 1) * 0.5 * container.clientHeight) + "px";
 
     });
 
 }
+
    
 /* ==========================================================
    GRAPH PULSE
