@@ -269,9 +269,9 @@
 
 .workspace-window{
 
-   width:680px;
+   width:min(100%, 980px);
 
-   max-width:100%;
+   max-width:980px;
 
     border-radius:30px;
 
