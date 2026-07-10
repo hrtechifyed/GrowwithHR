@@ -396,9 +396,9 @@
 
     justify-content:space-between;
 
-   min-height:220px; 
+   min-height:240px; 
    
-   gap:18px;
+   gap:24px;
 
     padding:24px;
 
@@ -435,14 +435,15 @@
 
 }
 
-.growth-stage span,
-.recommendation-card span{
+.company-dna-card h3,
+.growth-stage h3,
+.recommendation-card h3{
 
-    font-size:2rem;
+    margin:0 0 20px;
 
-    font-weight:600;
+    font-size:1.75rem;
 
-    letter-spacing:.2px;
+    font-weight:700;
 
 }
 
@@ -458,41 +459,6 @@
 
 }
 
-.stage-item{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    width:100%;
-
-    padding:12px 14px;
-
-    border:none;
-
-    border-radius:14px;
-
-    background:transparent;
-
-    color:var(--text-secondary);
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-.stage-item.active{
-
-    background:rgba(255,176,0,.08);
-
-    color:var(--accent);
-
-    box-shadow:0 0 20px rgba(255,176,0,.15);
-
-}
 
 .sidebar-divider{
 
@@ -542,39 +508,24 @@
 /* ==========================================
    COMPANY DNA
 ========================================== */
-.dna-pillars{
+/* ==========================================
+   SHARED SELECTOR COMPONENT
+========================================== */
+
+.dna-pillars,
+.growth-stage-list,
+.recommendation-list{
 
     display:flex;
 
-    flex-direction:row;
-
-    justify-content:flex-start;
+    flex-direction:column;
 
     gap:12px;
 
-    flex-wrap:wrap;
+    width:100%;
 
 }
 
-.dna-item{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    padding:10px 14px;
-
-    border-radius:12px;
-
-    background:transparent;
-
-    color:var(--text-secondary);
-
-    transition:.35s;
-
-}
 
 .dna-item i{
 
@@ -618,13 +569,6 @@
 
 }
 
-.dna-item.active{
-
-    animation:dnaPulse 2s infinite;
-
-    border-color:rgba(255,176,0,.18);
-
-}
 
 .dna-item.active::before{
 
@@ -638,21 +582,13 @@
 
 }
 
-.dna-item.active i{
+.dna-item.active i,
+.stage-item.active i,
+.recommendation-item.active i{
 
     color:var(--brand-gold);
 
     transform:scale(1.15);
-
-}
-
-.dna-item:hover{
-
-    background:
-
-        rgba(255,255,255,.05);
-
-    color:white;
 
 }
 
@@ -678,11 +614,11 @@
 
 }
 
-.dna-item.active{
+.dna-item.active,
+.stage-item.active,
+.recommendation-item.active{
 
-    animation:
-
-        dnaPulse 2s infinite;
+    animation:dnaPulse 2s infinite;
 
 }
 
@@ -756,127 +692,91 @@
 
 
 /* ==========================================
-   GROWTH STAGE
+   SHARED CARD ITEMS
 ========================================== */
 
-.growth-stage-list{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:14px;
-
-    margin-top:18px;
-
-}
-
-.stage-item{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    width:100%;
-
-    padding:10px 14px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:transparent;
-
-    color:var(--text-secondary);
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-.stage-item i{
-
-    width:18px;
-
-    text-align:center;
-
-    font-size:1rem;
-
-}
-
-.stage-item span{
-
-    font-size:.9rem;
-
-    font-weight:600;
-
-}
-
-.stage-item.active{
-
-    background:rgba(255,176,0,.08);
-
-    color:var(--brand-gold);
-
-    box-shadow:0 0 18px rgba(255,176,0,.18);
-
-}
-
-/* ==========================================
-   RECOMMENDATION BASIS
-========================================== */
-
-.recommendation-list{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:14px;
-
-    margin-top:18px;
-
-}
-
+.dna-item,
+.stage-item,
 .recommendation-item{
 
     display:flex;
 
     align-items:center;
 
-    gap:10px;
+    gap:14px;
 
     width:100%;
 
-    padding:10px 14px;
+    padding:14px 18px;
 
     border:none;
 
-    border-radius:12px;
+    border-radius:16px;
 
     background:transparent;
 
+    color:var(--text-secondary);
+
     cursor:pointer;
 
-    transition:.3s;
+    transition:all .35s ease;
 
-    color:var(--text-secondary);
+    font-size:1rem;
+
+    font-weight:600;
+
+    text-align:left;
+
+    position:relative;
 
 }
 
+.dna-item i,
+.stage-item i,
+.recommendation-item i{
+
+    width:20px;
+
+    text-align:center;
+
+    flex-shrink:0;
+
+    font-size:1rem;
+
+}
+
+.dna-item span,
+.stage-item span,
+.recommendation-item span{
+
+    flex:1;
+
+}
+
+/* ==========================================
+   ACTIVE CARD ITEM
+========================================== */
+
+.dna-item.active,
+.stage-item.active,
 .recommendation-item.active{
 
     background:rgba(255,176,0,.08);
 
     color:var(--brand-gold);
 
-    box-shadow:0 0 18px rgba(255,176,0,.18);
+    box-shadow:0 0 22px rgba(255,176,0,.18);
 
 }
 
+
+.dna-item:hover,
+.stage-item:hover,
+.recommendation-item:hover{
+
+color:var(--brand-gold);
+
+}
 
 /* ==========================================
    INTELLIGENCE CORE
