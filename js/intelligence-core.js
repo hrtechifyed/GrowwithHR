@@ -114,13 +114,13 @@ let activePillar="company";
 
 const pillarGroups={
 
-company:[0],
+ company:[0,1,2],
 
-people:[1,4,5,6,7],
+    people:[3,4],
 
-operations:[2,3,8,9],
+    operations:[5,7],
 
-growth:[0,1,2,3,4,5,6,7,8,9]
+    growth:[6,8,9]
 
 };
 
@@ -148,7 +148,7 @@ container.appendChild(labelContainer);
    GEOMETRY
 ========================================================== */
 
-const NODE_RADIUS = 2.35;
+const NODE_RADIUS = 3.05;
 
 const sphereGeometry =
 
@@ -669,7 +669,7 @@ function updateLabels(){
 
         // push labels further out from the ring so they clear the lines/nodes
         world.add(
-            direction.multiplyScalar(0.85)
+            direction.multiplyScalar(1.05)
         );
 
         world.project(camera);
