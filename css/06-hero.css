@@ -355,7 +355,7 @@
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:0.85fr 1.15fr;
 
     align-items:center;
 
@@ -645,9 +645,9 @@
 
     position:relative;
 
-    width:360px;
+    width:270px;
 
-    height:360px;
+    height:270px;
 
     display:flex;
 
@@ -658,6 +658,7 @@
     margin:auto;
 
 }
+
 
 #dnaCoreCanvas{
 
