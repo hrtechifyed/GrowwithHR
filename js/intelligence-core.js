@@ -667,26 +667,39 @@ function updateLabels(){
 
         const direction = world.clone().normalize();
 
+        // push labels further out from the ring so they clear the lines/nodes
         world.add(
-
-            direction.multiplyScalar(0.65)
-
+            direction.multiplyScalar(1.15)
         );
 
         world.project(camera);
 
-        labels[index].style.left =
+        const left = (world.x + 1) * 0.5 * container.clientWidth;
+        const top  = (-world.y + 1) * 0.5 * container.clientHeight;
 
-            ((world.x + 1) * 0.5 * container.clientWidth) + "px";
+        labels[index].style.left = left + "px";
+        labels[index].style.top  = top + "px";
 
-        labels[index].style.top =
+        // anchor text away from the circle based on which side it's on,
+        // instead of always centering on the point
+        const dx = direction.x;
+        const dy = direction.y;
 
-            ((-world.y + 1) * 0.5 * container.clientHeight) + "px";
+        let translateX = "-50%";
+        let translateY = "-50%";
+
+        if (dx > 0.35) translateX = "0%";        // right side -> anchor left edge
+        else if (dx < -0.35) translateX = "-100%"; // left side -> anchor right edge
+
+        if (dy > 0.35) translateY = "-100%";      // top -> anchor bottom edge
+        else if (dy < -0.35) translateY = "0%";   // bottom -> anchor top edge
+
+        labels[index].style.transform =
+            `translate(${translateX}, ${translateY})`;
 
     });
 
 }
-
    
 /* ==========================================================
    GRAPH PULSE
