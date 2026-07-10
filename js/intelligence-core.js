@@ -670,7 +670,7 @@ function updateLabels(){
 
         // push labels further out from the ring so they clear the lines/nodes
         world.add(
-            direction.multiplyScalar(1.05)
+            direction.multiplyScalar(0.55)
         );
 
         world.project(camera);
