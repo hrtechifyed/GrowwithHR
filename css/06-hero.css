@@ -364,7 +364,7 @@
 
     padding:22px;
 
-    min-height:720px;
+    min-height:auto;
 
 }
 
@@ -398,7 +398,7 @@
 
     gap:18px;
 
-    padding:20px 20px 20px 28px;
+    padding:24px;
 
     border-radius:20px;
 
@@ -458,22 +458,9 @@
 }
 
 
-.graph-heading{
-
-    margin-bottom:18px;
-
-    font-size:1.6rem;
-
-    font-weight:700;
-
-    text-align:center;
-
-}
-
-
 .workspace-card{
 
-    padding:14px 16px;
+    padding:22px;
 
     border-radius:16px;
 
@@ -714,9 +701,9 @@
 
     width:100%;
 
-    max-width:560px;
+    max-width:620px;
 
-    height:360px;
+    height:390px;
 
     margin:0 auto;
 
