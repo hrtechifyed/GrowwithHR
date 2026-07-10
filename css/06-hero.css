@@ -378,11 +378,14 @@
 
     display:grid;
 
-    grid-template-columns:2fr 1fr 1fr;
+    grid-template-columns:repeat(3, 1fr);
 
-    gap:18px;
+    gap:20px;
 
     align-items:stretch;
+
+    width:100%;
+   
 }
 
 .company-dna-card{
