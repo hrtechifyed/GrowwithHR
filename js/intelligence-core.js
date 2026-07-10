@@ -494,6 +494,17 @@ event.detail.pillar;
 
 );
 
+document.addEventListener(
+
+    "growthStageChange",
+
+    event=>{
+
+        activeStage = event.detail.value;
+
+    }
+
+);   
 /* ==========================================================
    NODE HIGHLIGHT
 ========================================================== */
