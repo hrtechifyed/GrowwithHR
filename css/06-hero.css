@@ -390,15 +390,15 @@
 
 .company-dna-card{
 
-    display:flex;
+   display:flex;
 
-    flex-direction:column;
+   flex-direction:column;
 
-    justify-content:space-between;
+   justify-content:space-between;
 
-   min-height:240px; 
+    min-height:240px; 
    
-   gap:24px;
+    gap:24px;
 
     padding:24px;
 
@@ -419,9 +419,9 @@
 
     justify-content:flex-start;
 
-   gap:24px
+    gap:24px
 
-    min-height:220px;
+    min-height:240px;
 
     padding:24px;
 
@@ -439,11 +439,13 @@
 .growth-stage h3,
 .recommendation-card h3{
 
-    margin:0 0 20px;
+    margin:0 0 28px;
 
-    font-size:1.75rem;
+    font-size:1.65rem;
 
     font-weight:700;
+
+    line-height:1.1;
 
 }
 
@@ -520,9 +522,11 @@
 
     flex-direction:column;
 
-    gap:12px;
+    gap:16px;
 
     width:100%;
+
+    align-items:stretch;
 
 }
 
@@ -703,15 +707,19 @@
 
     align-items:center;
 
-    gap:14px;
+    justify-content:flex-start;
 
     width:100%;
 
-    padding:14px 18px;
+    min-height:64px;
+
+    padding:0 22px;
+
+    gap:18px;
 
     border:none;
 
-    border-radius:16px;
+    border-radius:18px;
 
     background:transparent;
 
@@ -727,21 +735,19 @@
 
     text-align:left;
 
-    position:relative;
-
 }
 
 .dna-item i,
 .stage-item i,
 .recommendation-item i{
 
-    width:20px;
+    width:24px;
+
+    min-width:24px;
 
     text-align:center;
 
-    flex-shrink:0;
-
-    font-size:1rem;
+    font-size:1.15rem;
 
 }
 
@@ -751,8 +757,9 @@
 
     flex:1;
 
-}
+    line-height:1.2;
 
+}
 /* ==========================================
    ACTIVE CARD ITEM
 ========================================== */
@@ -761,6 +768,8 @@
 .stage-item.active,
 .recommendation-item.active{
 
+    width:100%;
+   
     background:rgba(255,176,0,.08);
 
     color:var(--brand-gold);
