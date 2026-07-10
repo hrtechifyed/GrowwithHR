@@ -114,7 +114,8 @@ const nodesData = [
 let activePillar="company";
 let activeStage = "startup";
 let activeRecommendation = "company";   
-
+const DEFAULT_PILLAR = "company";
+   
 const pillarGroups={
 
  company:[0,1,2],
@@ -502,7 +503,7 @@ document.addEventListener(
 
     event=>{
 
-        activeStage = event.detail.value;
+        activeStage = event.detail.stage;
 
     }
 
@@ -514,7 +515,7 @@ document.addEventListener(
 
     event=>{
 
-        activeRecommendation = event.detail.value;
+        activeRecommendation = event.detail.recommendation;
 
     }
 
@@ -526,9 +527,11 @@ document.addEventListener(
 
 function updateNodeHighlight(){
 
-const activeNodes=
 
-pillarGroups[activePillar];
+const activeNodes =
+pillarGroups[activePillar] ??
+pillarGroups[DEFAULT_PILLAR];
+   
 
 nodes.forEach((node,index)=>{
 
@@ -564,9 +567,9 @@ target,
 
 function updateLines(){
 
-const activeNodes=
-
-pillarGroups[activePillar];
+const activeNodes =
+pillarGroups[activePillar] ??
+pillarGroups[DEFAULT_PILLAR];
 
 lines.forEach((line,index)=>{
 
@@ -612,9 +615,9 @@ active
 
 function updateParticles(time){
 
-const activeNodes=
-
-pillarGroups[activePillar];
+const activeNodes =
+pillarGroups[activePillar] ??
+pillarGroups[DEFAULT_PILLAR];
 
 flowParticles.forEach(particle=>{
 
