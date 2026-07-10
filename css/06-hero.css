@@ -13,7 +13,7 @@
 
     position:relative;
 
-    min-height:100vh;
+    min-height:820px;
 
     display:flex;
 
@@ -23,7 +23,7 @@
 
     background:var(--gradient-dark);
 
-    padding:120px 0 80px;
+    padding:90px 0 40px;
 
 }
 
@@ -358,9 +358,7 @@
 
     grid-template-rows:1fr 72px;
 
-    gap:24px;
-
-    grid-template-areas:
+   grid-template-areas:
 
         "sidebar graph"
 
@@ -370,7 +368,7 @@
 
     padding:28px;
 
-    min-height:620px;
+    min-height:520px;
 
 }
 
@@ -716,7 +714,7 @@
 
     height:100%;
 
-    min-height:430px;
+    min-height:480px;
 
     display:flex;
 
