@@ -265,13 +265,17 @@
 
     justify-content:center;
 
+    align-items:center;
+
+    width:100%;
+
 }
 
 .workspace-window{
 
-    width:100%;
+    width:560px;
 
-    max-width:720px;
+    max-width:100%;
 
     border-radius:30px;
 
@@ -279,15 +283,17 @@
 
     background:rgba(255,255,255,.05);
 
-    backdrop-filter:blur(22px);
+    backdrop-filter:blur(24px);
 
     border:1px solid rgba(255,255,255,.08);
 
     box-shadow:
 
-        0 35px 80px rgba(0,0,0,.35),
+        0 40px 90px rgba(0,0,0,.35),
 
-        0 12px 35px rgba(255,122,0,.15);
+        0 15px 40px rgba(255,122,0,.18),
+
+        inset 0 1px 0 rgba(255,255,255,.08);
 
 }
 
@@ -349,9 +355,11 @@
 
     display:grid;
 
-    grid-template-columns:1.1fr .9fr;
+    grid-template-columns:1fr 1fr;
 
-    gap:26px;
+    align-items:center;
+
+    gap:22px;
 
     padding:28px;
 
@@ -451,9 +459,13 @@
 
     flex-direction:column;
 
+    justify-content:center;
+
     align-items:center;
 
-    justify-content:center;
+    text-align:center;
+
+    height:100%;
 
 }
 
@@ -461,15 +473,17 @@
 
     position:relative;
 
-    width:420px;
+    width:360px;
 
-    height:420px;
+    height:360px;
 
     display:flex;
 
+    justify-content:center;
+
     align-items:center;
 
-    justify-content:center;
+    margin:auto;
 
 }
 
@@ -477,21 +491,29 @@
 
     position:absolute;
 
-    inset:0;
+    width:250px;
+
+    height:250px;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
 
     border-radius:50%;
 
     background:
 
-    radial-gradient(circle,
+        radial-gradient(
 
-    rgba(255,176,0,.10),
+            circle,
 
-    transparent 60%);
+            rgba(255,176,0,.10),
 
-    animation:
+            transparent 72%
 
-    dnaGlow 6s ease-in-out infinite;
+        );
 
 }
 
@@ -515,7 +537,7 @@
 
 .growth{
 
-    top:8px;
+    top:6px;
 
     left:50%;
 
@@ -525,71 +547,71 @@
 
 .leadership{
 
-    top:70px;
+    top:50px;
 
-    left:20px;
+    left:38px;
 
 }
 
 .organization{
 
-    top:70px;
+    top:50px;
 
-    right:20px;
+    right:38px;
 
 }
 
 .culture{
 
-    left:0;
+    top:145px;
 
-    top:170px;
+    left:8px;
 
 }
 
 .workforce{
 
-    right:0;
+    top:145px;
 
-    top:170px;
+    right:8px;
 
 }
 
 .performance{
 
-    left:35px;
+    bottom:110px;
 
-    bottom:120px;
+    left:38px;
 
 }
 
 .learning{
 
-    right:35px;
+    bottom:110px;
 
-    bottom:120px;
+    right:38px;
 
 }
 
 .rewards{
 
-    left:85px;
+    bottom:42px;
 
-    bottom:35px;
+    left:92px;
 
 }
 
 .compliance{
 
-    right:85px;
+    bottom:42px;
 
-    bottom:35px;
+    right:92px;
 
 }
 
 .customer{
 
-    bottom:0;
+    bottom:8px;
 
     left:50%;
 
@@ -599,13 +621,11 @@
 
 .core-title{
 
-    margin-top:18px;
+    margin-top:12px;
 
-    font-size:1.35rem;
+    font-size:1.45rem;
 
     font-weight:700;
-
-    text-align:center;
 
 }
 
@@ -613,9 +633,11 @@
 
     margin-top:10px;
 
+    max-width:300px;
+
     color:var(--text-secondary);
 
-    text-align:center;
+    line-height:1.6;
 
 }
 /* ==========================================
