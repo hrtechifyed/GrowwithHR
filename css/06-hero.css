@@ -13,7 +13,7 @@
 
     position:relative;
 
-    min-height:820px;
+    min-height:720px;
 
     display:flex;
 
@@ -85,7 +85,7 @@
 
     grid-template-columns:0.95fr 1.05fr;
 
-    gap:70px;
+    gap:48px;
 
     align-items:center;
 
@@ -97,7 +97,7 @@
 
 .hero-content{
 
-    max-width:680px;
+    max-width:600px;
 
 }
 
@@ -109,7 +109,7 @@
 
     gap:10px;
 
-    padding:12px 22px;
+    padding:10px 18px;
 
     border-radius:999px;
 
@@ -121,13 +121,13 @@
 
     font-weight:600;
 
-    margin-bottom:28px;
+    margin-bottom:20px;
 
 }
 
 .hero-content h1{
 
-    margin-bottom:28px;
+    margin-bottom:18px;
 
 }
 
@@ -143,15 +143,11 @@
 
 .hero-description{
 
-    max-width:620px;
+    margin-bottom:28px;
 
-    margin-bottom:42px;
+    font-size:1rem;
 
-    color:var(--text-secondary);
-
-    font-size:1.12rem;
-
-    line-height:1.8;
+    line-height:1.65;
 
 }
 
@@ -161,11 +157,9 @@
 
 .hero-actions{
 
-    display:flex;
+    gap:14px;
 
-    gap:18px;
-
-    margin-bottom:40px;
+    margin-bottom:24px;
 
 }
 
@@ -237,13 +231,15 @@
 
     flex-wrap:wrap;
 
-    gap:14px;
+    gap:10px;
 
 }
 
 .trust-strip div{
 
-    padding:10px 18px;
+   padding:8px 14px;
+
+    font-size:.82rem;
 
     border-radius:999px;
 
@@ -273,7 +269,7 @@
 
 .workspace-window{
 
-   width:720px;
+   width:680px;
 
    max-width:100%;
 
@@ -368,7 +364,7 @@
 
     padding:28px;
 
-    min-height:520px;
+    min-height:470px;
 
 }
 
