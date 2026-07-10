@@ -826,6 +826,59 @@
 }
 
 /* ==========================================
+   RECOMMENDATION BASIS
+========================================== */
+
+.recommendation-list{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:14px;
+
+    margin-top:18px;
+
+}
+
+.recommendation-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    width:100%;
+
+    padding:10px 14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:transparent;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    color:var(--text-secondary);
+
+}
+
+.recommendation-item.active{
+
+    background:rgba(255,176,0,.08);
+
+    color:var(--brand-gold);
+
+    box-shadow:0 0 18px rgba(255,176,0,.18);
+
+}
+
+
+/* ==========================================
    INTELLIGENCE CORE
 ========================================== */
 
