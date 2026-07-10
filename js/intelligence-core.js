@@ -76,110 +76,69 @@ scene.add(group);
    COMPANY DNA MODEL
 ========================================================== */
 
-const nodesData=[
+const nodesData = [
 
-{
+    {
+        id:"growth",
+        label:"Growth",
+        angle:-90
+    },
 
-    id:"growth",
+    {
+        id:"leadership",
+        label:"Leadership",
+        angle:-54
+    },
 
-    label:"Growth",
+    {
+        id:"organization",
+        label:"Organization",
+        angle:-18
+    },
 
-    angle:-90
+    {
+        id:"workforce",
+        label:"Workforce",
+        angle:18
+    },
 
-},
+    {
+        id:"learning",
+        label:"Learning",
+        angle:54
+    },
 
-{
+    {
+        id:"compliance",
+        label:"Compliance",
+        angle:90
+    },
 
-    id:"leadership",
+    {
+        id:"customer",
+        label:"Customer Success",
+        angle:126
+    },
 
-    label:"Leadership",
+    {
+        id:"rewards",
+        label:"Rewards",
+        angle:162
+    },
 
-    angle:-54
+    {
+        id:"performance",
+        label:"Performance",
+        angle:198
+    },
 
-},
-
-{
-
-    id:"organization",
-
-    label:"Organization",
-
-    angle:-18
-
-},
-
-{
-
-    id:"culture",
-
-    label:"Culture",
-
-    angle:18
-
-},
-
-{
-
-    id:"workforce",
-
-    label:"Workforce",
-
-    angle:54
-
-},
-
-{
-
-    id:"performance",
-
-    label:"Performance",
-
-    angle:90
-
-},
-
-{
-
-    id:"learning",
-
-    label:"Learning",
-
-    angle:126
-
-},
-
-{
-
-    id:"rewards",
-
-    label:"Rewards",
-
-    angle:162
-
-},
-
-{
-
-    id:"compliance",
-
-    label:"Compliance",
-
-    angle:198
-
-},
-
-{
-
-    id:"customer",
-
-    label:"Customer Success",
-
-    angle:234
-
-}
+    {
+        id:"culture",
+        label:"Culture",
+        angle:234
+    }
 
 ];
-
 /* ==========================================================
    NODE GROUPS
 ========================================================== */
@@ -232,7 +191,9 @@ labelContainer
    GEOMETRY
 ========================================================== */
 
-const radius = 3.2;
+const NODE_RADIUS = 2.65;
+
+const LABEL_RADIUS = 3.45;
 
 const sphereGeometry =
 
@@ -264,13 +225,11 @@ item.angle
 
 );
 
-const x=
+const x =
+Math.cos(angle) * NODE_RADIUS;
 
-Math.cos(angle)*radius;
-
-const y=
-
-Math.sin(angle)*radius;
+const y =
+Math.sin(angle) * NODE_RADIUS;
 
 const material=
 
@@ -737,38 +696,53 @@ active?.95:.45;
 
 function updateLabels(){
 
-nodes.forEach((node,index)=>{
+    nodes.forEach((node,index)=>{
 
-const vector=
+        const angle = THREE.MathUtils.degToRad(
 
-node.position.clone();
+            nodesData[index].angle
 
-vector.project(camera);
+        );
 
-const x=(
+        const labelPosition = new THREE.Vector3(
 
-vector.x*.5+.5
+            Math.cos(angle) * LABEL_RADIUS,
 
-)*container.clientWidth;
+            Math.sin(angle) * LABEL_RADIUS,
 
-const y=(
+            0
 
--vector.y*.5+.5
+        );
 
-)*container.clientHeight;
+        labelPosition.add(group.position);
 
-labels[index].style.left=
+        labelPosition.project(camera);
 
-x+"px";
+        const x =
 
-labels[index].style.top=
+            (labelPosition.x * 0.5 + 0.5)
 
-y+"px";
+            * container.clientWidth;
 
-});
+        const y =
+
+            (-labelPosition.y * 0.5 + 0.5)
+
+            * container.clientHeight;
+
+        labels[index].style.left =
+
+            `${x}px`;
+
+        labels[index].style.top =
+
+            `${y}px`;
+
+    });
 
 }
-    /* ==========================================================
+   
+/* ==========================================================
    GRAPH PULSE
 ========================================================== */
 
