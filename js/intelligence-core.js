@@ -7,6 +7,7 @@ import * as THREE from "three";
 ========================================================== */
 
 const container = document.getElementById("dnaCoreCanvas");
+console.log("HRTECHIFY Intelligence Core v2 Loaded");
 
 if(container){
 
