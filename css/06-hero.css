@@ -387,11 +387,183 @@
 
 }
 
+/* ==========================================
+   COMPANY DNA
+========================================== */
+
+.company-dna-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.dna-pillars{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-top:8px;
+
+}
+
+.dna-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    width:100%;
+
+    padding:12px 16px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:transparent;
+
+    color:var(--text-secondary);
+
+    cursor:pointer;
+
+    transition:all .35s ease;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.dna-item i{
+
+    width:18px;
+
+    text-align:center;
+
+    font-size:.95rem;
+
+    transition:.35s;
+
+}
+
+.dna-item span{
+
+    font-size:.92rem;
+
+    font-weight:600;
+
+}
+
+.dna-item::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:10px;
+
+    bottom:10px;
+
+    width:4px;
+
+    border-radius:999px;
+
+    background:transparent;
+
+    transition:.35s;
+
+}
+
+.dna-item.active{
+
+    animation:dnaPulse 2s infinite;
+
+    border-color:rgba(255,176,0,.18);
+
+}
+
+.dna-item.active::before{
+
+    background:
+
+        var(--gradient-brand);
+
+    box-shadow:
+
+        0 0 16px rgba(255,176,0,.45);
+
+}
+
+.dna-item.active i{
+
+    color:var(--brand-gold);
+
+    transform:scale(1.15);
+
+}
+
+.dna-item:hover{
+
+    background:
+
+        rgba(255,255,255,.05);
+
+    color:white;
+
+}
+
+@keyframes dnaPulse{
+
+    0%{
+
+        box-shadow:0 0 0 rgba(255,176,0,0);
+
+    }
+
+    50%{
+
+        box-shadow:0 0 22px rgba(255,176,0,.22);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 0 rgba(255,176,0,0);
+
+    }
+
+}
+
+.dna-item.active{
+
+    animation:
+
+        dnaPulse 2s infinite;
+
+}
+
 .workspace-card:hover{
 
     transform:translateY(-4px);
 
     border-color:rgba(255,176,0,.25);
+
+    box-shadow:
+
+        0 10px 28px rgba(0,0,0,.22),
+
+        0 0 18px rgba(255,176,0,.08);
 
 }
 
