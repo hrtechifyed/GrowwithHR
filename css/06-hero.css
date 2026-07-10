@@ -446,6 +446,54 @@
 
 }
 
+.growth-stages{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:14px 18px;
+
+    margin-top:18px;
+
+}
+
+.stage-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    width:100%;
+
+    padding:12px 14px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:transparent;
+
+    color:var(--text-secondary);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.stage-item.active{
+
+    background:rgba(255,176,0,.08);
+
+    color:var(--accent);
+
+    box-shadow:0 0 20px rgba(255,176,0,.15);
+
+}
+
 .sidebar-divider{
 
     height:1px;
