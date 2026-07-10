@@ -271,19 +271,65 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <div class="workspace-card recommendation-card">
 
-    <span>Recommendation Basis</span>
+    <h3>Recommendation Basis</h3>
 
-    <ul class="hero-checklist">
+    <div class="recommendation-list">
 
-        <li>Company DNA</li>
+        <button class="recommendation-item active"
+                data-recommendation="company">
 
-        <li>Business Context</li>
+            <i class="fa-solid fa-building"></i>
 
-        <li>Applicable Regulations</li>
+            <span>Company DNA</span>
 
-        <li>Growth Stage</li>
+        </button>
 
-    </ul>
+        <button class="recommendation-item"
+                data-recommendation="stage">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <span>Growth Stage</span>
+
+        </button>
+
+        <button class="recommendation-item"
+                data-recommendation="industry">
+
+            <i class="fa-solid fa-industry"></i>
+
+            <span>Industry</span>
+
+        </button>
+
+        <button class="recommendation-item"
+                data-recommendation="workforce">
+
+            <i class="fa-solid fa-users"></i>
+
+            <span>Workforce Size</span>
+
+        </button>
+
+        <button class="recommendation-item"
+                data-recommendation="laws">
+
+            <i class="fa-solid fa-scale-balanced"></i>
+
+            <span>Applicable Laws</span>
+
+        </button>
+
+        <button class="recommendation-item"
+                data-recommendation="updates">
+
+            <i class="fa-solid fa-bell"></i>
+
+            <span>Regulatory Updates</span>
+
+        </button>
+
+    </div>
 
 </div>
 
