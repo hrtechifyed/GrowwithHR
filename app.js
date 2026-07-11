@@ -1259,7 +1259,23 @@ const slides = document.querySelectorAll(".capability-slide");
 
 if(carouselTrack){
 
-    const slideWidth = 384;
+    const getSlideWidth = () => {
+
+        const firstSlide = slides[0];
+
+        if(!firstSlide){
+
+            return 0;
+
+        }
+
+        const trackStyles = window.getComputedStyle(carouselTrack);
+
+        const gap = parseFloat(trackStyles.columnGap || trackStyles.gap) || 0;
+
+        return firstSlide.getBoundingClientRect().width + gap;
+
+    };
 
     let currentIndex = 0;
 
@@ -1285,7 +1301,7 @@ if(carouselTrack){
 
         carouselTrack.scrollTo({
 
-            left:currentIndex*slideWidth,
+            left:currentIndex*getSlideWidth(),
 
             behavior:"smooth"
 
@@ -1305,7 +1321,7 @@ if(carouselTrack){
 
         carouselTrack.scrollTo({
 
-            left:currentIndex*slideWidth,
+            left:currentIndex*getSlideWidth(),
 
             behavior:"smooth"
 
@@ -1327,7 +1343,7 @@ if(carouselTrack){
 
         carouselTrack.scrollTo({
 
-            left:currentIndex*slideWidth,
+            left:currentIndex*getSlideWidth(),
 
             behavior:"smooth"
 
@@ -1335,7 +1351,7 @@ if(carouselTrack){
 
         updateActiveSlide();
 
-    },5000);
+    },7000);
 
     carouselTrack.addEventListener("mouseenter",()=>{
 
@@ -1357,7 +1373,7 @@ if(carouselTrack){
 
             carouselTrack.scrollTo({
 
-                left:currentIndex*slideWidth,
+                left:currentIndex*getSlideWidth(),
 
                 behavior:"smooth"
 
@@ -1365,7 +1381,7 @@ if(carouselTrack){
 
             updateActiveSlide();
 
-        },5000);
+        },7000);
 
     });
 

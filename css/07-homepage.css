@@ -584,3 +584,94 @@
     }
 
 }
+
+/* ==========================================
+   SPRINT 4 UI REFINEMENTS
+========================================== */
+
+.compact-section{
+    padding-top:88px;
+    padding-bottom:88px;
+}
+
+.hero-home{
+    text-align:center;
+}
+
+.hero-actions,
+.trust-strip{
+    display:flex;
+    justify-content:center;
+}
+
+.hero-content h1{
+    font-size:clamp(2.75rem,5vw,4.6rem);
+}
+
+.section-heading h2,
+.contact-card h2{
+    font-size:clamp(2rem,3.4vw,3rem);
+}
+
+.how-card,
+.capability-slide,
+.value-card,
+.update-card,
+.summary-card,
+.wizard-card,
+.contact-card{
+    border-radius:24px;
+    border:1px solid var(--glass-border);
+    box-shadow:var(--shadow-md);
+}
+
+.capability-carousel{
+    width:100%;
+}
+
+.carousel-track{
+    display:flex;
+    width:100%;
+    padding:12px 2px 20px;
+}
+
+.capability-slide{
+    flex:0 0 clamp(280px,32vw,380px);
+    width:clamp(280px,32vw,380px);
+}
+
+.wizard-step span{
+    animation:wizardPulse 8s infinite;
+}
+
+.wizard-step:nth-child(1) span{ animation-delay:0s; }
+.wizard-step:nth-child(3) span{ animation-delay:2s; }
+.wizard-step:nth-child(5) span{ animation-delay:4s; }
+.wizard-step:nth-child(7) span{ animation-delay:6s; }
+
+@keyframes wizardPulse{
+    0%,22%{
+        background:var(--gradient-brand);
+        color:#fff;
+        transform:scale(1.08);
+        box-shadow:var(--glow-brand);
+    }
+    28%,100%{
+        background:rgba(255,255,255,.05);
+        color:var(--text-secondary);
+        transform:scale(1);
+        box-shadow:none;
+    }
+}
+
+@media(max-width:992px){
+    .compact-section{
+        padding-top:72px;
+        padding-bottom:72px;
+    }
+
+    .capability-slide{
+        flex-basis:min(320px, calc(100vw - 48px));
+        width:min(320px, calc(100vw - 48px));
+    }
+}

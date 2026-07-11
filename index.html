@@ -94,22 +94,22 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     }
 
     .capability-carousel{
-      grid-template-columns:56px minmax(0,360px) 56px;
-      justify-content:center;
+      grid-template-columns:56px minmax(0,1fr) 56px;
       gap:18px;
+      width:100%;
     }
 
     .carousel-track{
       display:flex;
       gap:24px;
-      width:360px;
+      width:100%;
       max-width:100%;
-      margin:0 auto;
+      margin:0;
     }
 
     .capability-slide{
-      flex:0 0 360px;
-      width:360px;
+      flex:0 0 clamp(280px, 32vw, 380px);
+      width:clamp(280px, 32vw, 380px);
       min-height:320px;
       box-sizing:border-box;
     }
@@ -129,12 +129,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       }
 
       .carousel-track{
-        width:min(360px, calc(100vw - 132px));
+        width:100%;
       }
 
       .capability-slide{
-        flex-basis:min(360px, calc(100vw - 132px));
-        width:min(360px, calc(100vw - 132px));
+        flex-basis:min(320px, calc(100vw - 132px));
+        width:min(320px, calc(100vw - 132px));
       }
     }
   </style>
@@ -178,15 +178,23 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
             class="nav-links"
             id="navLinks">
 
-            <a href="#platform">Platform</a>
+            <a href="#home">Home</a>
 
-            <a href="#capabilities">Capabilities</a>
+            <a href="#platform">Platform</a>
 
             <a href="#assessment">Assessment</a>
 
             <a href="sample-advisory-report.html">
-                Sample Report
+                Sample Advisory
             </a>
+
+            <a href="#officialResources">Resources</a>
+
+            <a href="#privacy">Privacy</a>
+
+            <a href="#about">About</a>
+
+            <a href="#contact">Contact</a>
 
             <a
                 href="#assessment"
@@ -214,7 +222,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
             <div class="hero-badge">
 
-                AI-powered People Intelligence Platform
+                AI-powered company advisory platform
 
             </div>
 
@@ -230,9 +238,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
             <p class="hero-description">
 
-                GrowWithHR transforms your Company DNA into
-                explainable compliance, people and growth intelligence—
-                helping founders make better people decisions with confidence.
+                GrowWithHR turns your Company DNA into clear compliance,
+                people and growth guidance for confident executive decisions.
 
             </p>
 
@@ -404,7 +411,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
                         <p class="core-subtitle">
 
-                            AI-powered People Intelligence
+                            Executive Advisory Preview
 
                         </p>
 
@@ -434,7 +441,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
             <h2>
 
-                Three simple steps to understand what your business needs.
+                A focused path from company context to executive action.
 
             </h2>
 
@@ -528,7 +535,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
             <h2>
 
-                Intelligence modules available today.
+                Flagship capabilities available today.
 
             </h2>
 
@@ -708,13 +715,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
             <h3>
 
-                AI Company Coach
+                Company Coach
 
             </h3>
 
             <p>
 
-                Ask founder questions and receive company-specific recommendations powered by your Company DNA.
+                Ask founder questions and receive company-specific recommendations based on your Company DNA.
 
             </p>
 
@@ -806,9 +813,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
             <p>
 
-                The more we understand your organisation,
-                the better GrowWithHR can personalise compliance,
-                governance and people recommendations.
+                Share a few organisation basics to receive a focused executive advisory.
 
             </p>
 
@@ -1516,8 +1521,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
             <p>
 
-                GrowWithHR uses these official government sources to validate compliance guidance.
-                Resource availability is verified periodically.
+                Official sources used to validate compliance guidance.
 
             </p>
 
@@ -1565,8 +1569,7 @@ PRIVACY & DATA HANDLING
 
             <p>
 
-                GrowWithHR is designed to provide practical people and compliance guidance while
-                respecting your organisation's information.
+                Practical guidance with minimal data and session-based report generation.
 
             </p>
 
@@ -1580,24 +1583,19 @@ PRIVACY & DATA HANDLING
 
     <p>
 
-        GrowWithHR does not permanently store your assessment,
-        organisation profile or generated advisory reports.
+        GrowWithHR does not permanently store your assessment or generated reports.
 
     </p>
 
     <p>
 
-        Reports are generated only during your current assessment session.
-        Please download your advisory report for future reference before leaving the application.
+        Download your report before leaving the application.
 
     </p>
 
     <p>
 
-        Whenever your organisation grows,
-        expands into new locations,
-        or your workforce changes,
-        simply run a new assessment to receive updated recommendations.
+        Run a new assessment whenever your organisation changes.
 
     </p>
 
@@ -1623,11 +1621,7 @@ PRIVACY & DATA HANDLING
 
                 <p>
 
-                  Company profile details entered during the assessment and,
-    if you choose to download the report,
-    your email address.
-
-    Assessment information is used only during the current session and is not retained after report generation.
+                  Company profile details entered during the assessment and, if you download the report, your email address.
 
                 </p>
 
@@ -1691,15 +1685,13 @@ PRIVACY & DATA HANDLING
 
                 <h3>
 
-                    AI Advisory
+                    Advisory Logic
 
                 </h3>
 
                 <p>
 
-                    Reports are generated using AI-assisted advisory logic
-                    combined with publicly available statutory sources.
-                    Final implementation decisions should always be independently reviewed.
+                    Reports combine advisory logic with public statutory sources. Final decisions should be independently reviewed.
 
                 </p>
 
@@ -1711,7 +1703,31 @@ PRIVACY & DATA HANDLING
 
 </section>
 
-<section id="contact" class="contact-section compact-section"><div class="container"><div class="contact-card"><div class="section-tag">EARLY ACCESS</div><h2>Shape the future of HR compliance intelligence.</h2><p>Calling founders, HR leaders, advisors who envision to build a scalable people systems.</p><a href="mailto:hrtechifyed@gmail.com?subject=GrowWithHR%20Early%20Access" class="primary-btn">Join early access</a><div class="contact-email">hrtechifyed@gmail.com</div></div></div></section>
+<section id="about" class="value-section compact-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="section-tag">ABOUT</div>
+
+            <h2>Built for practical people decisions.</h2>
+
+            <p>GrowWithHR combines structured Company DNA, official compliance references and executive-ready recommendations to support founders, HR leaders and advisors.</p>
+
+        </div>
+
+        <div class="value-grid refined-grid">
+            <article class="value-card"><div class="value-icon">🎯</div><h3>Vision</h3><p>Make credible HR guidance accessible before teams become complex.</p></article>
+            <article class="value-card"><div class="value-icon">🧭</div><h3>Methodology</h3><p>Connect organisation context with compliance triggers, governance needs and growth readiness.</p></article>
+            <article class="value-card"><div class="value-icon">🚀</div><h3>Roadmap</h3><p>Expand modules, resources and advisory depth while keeping the experience simple.</p></article>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="contact" class="contact-section compact-section"><div class="container"><div class="contact-card"><div class="section-tag">EARLY ACCESS</div><h2>Build scalable people systems.</h2><p>Founders, HR leaders and advisors can request early access.</p><a href="mailto:hrtechifyed@gmail.com?subject=GrowWithHR%20Early%20Access" class="primary-btn">Join early access</a><div class="contact-email">hrtechifyed@gmail.com</div></div></div></section>
 
 <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-brand"><img src="assets/hrtechify-logo.png" alt="HRTechify Logo" class="footer-logo"><div><div class="brand-name">HRTechify</div><div class="product-name" id="productVersion">GrowWithHR Public </div></div></div><p>© 2026 HRTechify. All Rights Reserved.</p><p>Smart People Strategy. More business momentum.</p></div></div></footer>
 
