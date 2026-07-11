@@ -72,6 +72,8 @@
 
     display:flex;
 
+    flex-shrink:0;
+   
     align-items:center;
 
     gap:16px;
@@ -108,7 +110,7 @@
 
     align-items:center;
 
-    gap:34px;
+    gap:10px;
 
 }
 
@@ -122,7 +124,7 @@
 
     gap:8px;
 
-    padding:10px 18px;
+    padding:8px 12px;
 
     font-size:.85rem;
 
@@ -133,6 +135,11 @@
     color:var(--text-secondary);
 
     transition:all .3s ease;
+
+   flex-wrap:nowrap;
+justify-content:flex-end;
+flex:1;
+min-width:0;
 
 }
 
@@ -250,7 +257,7 @@
 
     color:var(--text-primary);
 
-    font-size:1.8rem;
+    font-size:.85rem;
 
     cursor:pointer;
 
