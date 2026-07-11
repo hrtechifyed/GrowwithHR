@@ -1,344 +1,1926 @@
+/* ==========================================================
+   HRTECHIFY DESIGN SYSTEM
+   Module 12
+   Executive Assessment
+   JavaScript Engine
+   Version : v1.0.0
+========================================================== */
+
 class ExecutiveAssessment {
+
     constructor() {
-        this.state = {
-            stepIndex: 0,
-            mode: 'landing',
-            data: {
-                company: {
-                    companyName: '',
-                    entity: '',
-                    industry: '',
-                    natureOfBusiness: '',
-                    founded: ''
-                },
-                workforce: {
-                    employees: '',
-                    contractWorkers: '',
-                    interns: '',
-                    apprentices: '',
-                    remoteWorkforce: ''
-                },
-                operations: {
-                    primaryState: '',
-                    workModel: '',
-                    operatingLocations: '',
-                    countries: ''
-                },
-                growth: {
-                    hiringPlans: '',
-                    fundingStage: '',
-                    expansionPlans: '',
-                    peopleFunction: ''
-                }
-            }
-        };
+
+        /* ==========================================
+           APPLICATION
+        ========================================== */
+
+        this.application = "GrowWithHR";
+
+        this.version = "1.0.0";
+
+        this.coach = "Coach HRTechify";
+
+
+        /* ==========================================
+           STEP STATE
+        ========================================== */
+
+        this.currentStep = 0;
+
+        this.currentQuestion = 0;
+
+        this.started = false;
+
+        this.completed = false;
+
+
+        /* ==========================================
+           STEP DEFINITIONS
+        ========================================== */
 
         this.steps = [
-            {
-                id: 'company',
-                title: 'Company',
-                subtitle: "Let's begin with a few questions about your organisation.",
-                icon: 'fa-building',
-                coachMessage: "We'll start with the basics so we can understand the organisation you lead.",
-                introduction: 'Please share the organisation details you are comfortable providing.',
-                fields: [
-                    { key: 'companyName', label: 'Company Name', type: 'text', placeholder: 'Enter company name', help: 'The name your organisation uses publicly or internally.' },
-                    { key: 'entity', label: 'Entity', type: 'text', placeholder: 'Enter legal or operating entity', help: 'For example, the registered entity or business unit name.' },
-                    { key: 'industry', label: 'Industry', type: 'text', placeholder: 'Enter industry', help: 'For example, technology, manufacturing, healthcare, education.' },
-                    { key: 'natureOfBusiness', label: 'Nature of Business', type: 'textarea', placeholder: 'Describe the nature of your business', help: 'A brief description of what the organisation does and how it creates value.' },
-                    { key: 'founded', label: 'Founded', type: 'text', placeholder: 'Founded year or date', help: 'If you are unsure, share the best available estimate.' }
-                ]
-            },
-            {
-                id: 'workforce',
-                title: 'Workforce',
-                subtitle: 'Next, we would like to understand the scale and shape of your workforce.',
-                icon: 'fa-people-group',
-                coachMessage: 'This helps us understand how the organisation is staffed today.',
-                introduction: 'You may answer approximately if exact numbers are not readily available.',
-                fields: [
-                    { key: 'employees', label: 'Employees', type: 'number', placeholder: 'Number of employees', help: 'Approximate headcount is perfectly fine.' },
-                    { key: 'contractWorkers', label: 'Contract Workers', type: 'number', placeholder: 'Number of contract workers', help: 'Include contractors, freelancers or contingent workers if relevant.' },
-                    { key: 'interns', label: 'Interns', type: 'number', placeholder: 'Number of interns', help: 'If none, you may enter 0.' },
-                    { key: 'apprentices', label: 'Apprentices', type: 'number', placeholder: 'Number of apprentices', help: 'If none, you may enter 0.' },
-                    { key: 'remoteWorkforce', label: 'Remote Workforce', type: 'text', placeholder: 'Describe remote workforce setup', help: 'For example, fully remote, hybrid, distributed, or mostly on-site.' }
-                ]
-            },
-            {
-                id: 'operations',
-                title: 'Operations',
-                subtitle: 'Now we would like to understand how and where your organisation operates.',
-                icon: 'fa-location-dot',
-                coachMessage: 'Operating context often shapes people strategy, so we take a careful look here.',
-                introduction: 'A simple, practical description is enough.',
-                fields: [
-                    { key: 'primaryState', label: 'Primary State', type: 'text', placeholder: 'Enter primary state / region', help: 'Share the main state, province or region where operations are anchored.' },
-                    { key: 'workModel', label: 'Work Model', type: 'text', placeholder: 'Enter work model', help: 'For example, on-site, hybrid, remote-first, or a mixed model.' },
-                    { key: 'operatingLocations', label: 'Operating Locations', type: 'textarea', placeholder: 'Describe operating locations', help: 'List offices, plants, branches or other locations as needed.' },
-                    { key: 'countries', label: 'Countries', type: 'text', placeholder: 'Enter countries of operation', help: 'If you operate in one country only, you may simply name that country.' }
-                ]
-            },
-            {
-                id: 'growth',
-                title: 'Growth',
-                subtitle: 'Finally, we would like to understand what growth may look like for your organisation.',
-                icon: 'fa-chart-line',
-                coachMessage: 'This gives us a sense of where the organisation may be heading.',
-                introduction: 'If plans are still evolving, answer based on the current direction of travel.',
-                fields: [
-                    { key: 'hiringPlans', label: 'Hiring Plans', type: 'textarea', placeholder: 'Describe hiring plans', help: 'For example, planned hiring areas, scale or timeline.' },
-                    { key: 'fundingStage', label: 'Funding Stage', type: 'text', placeholder: 'Enter funding stage', help: 'For example, bootstrapped, seed, Series A, private, listed, or not applicable.' },
-                    { key: 'expansionPlans', label: 'Expansion Plans', type: 'textarea', placeholder: 'Describe expansion plans', help: 'For example, geographies, business lines or capability expansion.' },
-                    { key: 'peopleFunction', label: 'People Function', type: 'text', placeholder: 'Describe HR / People function', help: 'For example, lean, developing, established, or fully built out.' }
-                ]
-            }
+
+            "Company",
+
+            "Workforce",
+
+            "Operations",
+
+            "Growth"
+
         ];
 
+
+        /* ==========================================
+           USER RESPONSES
+        ========================================== */
+
+        this.responses = {};
+
+
+        /* ==========================================
+           DOM CACHE
+        ========================================== */
+
         this.cacheElements();
+
+
+        /* ==========================================
+           EVENTS
+        ========================================== */
+
         this.bindEvents();
-        this.renderCurrentStep();
-        this.updateProgress();
-        this.updateFooter();
+
+
+        /* ==========================================
+           INITIAL STATE
+        ========================================== */
+
+        this.showLanding();
+
     }
+
+
+
+    /* ==========================================================
+       CACHE DOM
+    ========================================================== */
 
     cacheElements() {
-        this.landingScreen = document.getElementById('landingScreen');
-        this.workspace = document.getElementById('conversationWorkspace');
-        this.reviewScreen = document.getElementById('reviewScreen');
-        this.loadingScreen = document.getElementById('loadingScreen');
-        this.successScreen = document.getElementById('successScreen');
-        this.startButton = document.getElementById('startAssessment');
-        this.container = document.getElementById('conversationContainer');
-        this.template = document.getElementById('conversationTemplate');
-        this.stepIndicator = document.getElementById('stepIndicator');
-        this.stepTitle = document.getElementById('stepTitle');
-        this.stepSubtitle = document.getElementById('stepSubtitle');
-        this.progressBar = document.getElementById('progressBar');
-        this.coachMessage = document.getElementById('coachMessage');
-        this.footerMessage = document.getElementById('footerMessage');
-        this.backButton = document.getElementById('backButton');
-        this.nextButton = document.getElementById('nextButton');
-        this.reviewContent = document.getElementById('reviewContent');
-        this.reviewBackButton = document.getElementById('reviewBackButton');
-        this.generateButton = document.getElementById('generateAdvisory');
-        this.successContinueButton = document.getElementById('successContinue');
+
+        this.shell =
+            document.getElementById("assessmentShell");
+
+        this.landingScreen =
+            document.getElementById("landingScreen");
+
+        this.workspace =
+            document.getElementById("conversationWorkspace");
+
+        this.reviewScreen =
+            document.getElementById("reviewScreen");
+
+        this.loadingScreen =
+            document.getElementById("loadingScreen");
+
+        this.successScreen =
+            document.getElementById("successScreen");
+
+
+        this.startButton =
+            document.getElementById("startAssessment");
+
+        this.backButton =
+            document.getElementById("backButton");
+
+        this.nextButton =
+            document.getElementById("nextButton");
+
+        this.reviewBackButton =
+            document.getElementById("reviewBackButton");
+
+        this.generateButton =
+            document.getElementById("generateReportButton");
+
+        this.viewReportButton =
+            document.getElementById("viewReportButton");
+
+
+        this.progressBar =
+            document.getElementById("progressBar");
+
+        this.stepIndicator =
+            document.getElementById("stepIndicator");
+
+        this.stepTitle =
+            document.getElementById("stepTitle");
+
+        this.stepDescription =
+            document.getElementById("stepDescription");
+
+        this.coachMessage =
+            document.getElementById("coachMessage");
+
+        this.footerMessage =
+            document.getElementById("footerMessage");
+
+        this.conversationContainer =
+            document.getElementById("conversationContainer");
+
+        this.reviewContainer =
+            document.getElementById("reviewContainer");
+
+        this.loadingMessage =
+            document.getElementById("loadingMessage");
+
     }
+
+
+
+    /* ==========================================================
+       EVENT LISTENERS
+    ========================================================== */
 
     bindEvents() {
-        this.startButton?.addEventListener('click', () => this.startAssessment());
-        this.backButton?.addEventListener('click', () => this.previousStep());
-        this.nextButton?.addEventListener('click', () => this.nextStep());
-        this.reviewBackButton?.addEventListener('click', () => this.showWorkspace());
-        this.generateButton?.addEventListener('click', () => this.generateAdvisory());
-        this.successContinueButton?.addEventListener('click', () => this.resetToStart());
-        document.addEventListener('input', (event) => {
-            if (event.target && event.target.closest('.exec-response-container')) {
-                this.syncStateFromInputs();
-                this.updateFooter();
-            }
-        });
-    }
 
-    startAssessment() {
-        this.state.mode = 'conversation';
-        this.landingScreen.hidden = true;
-        this.reviewScreen.hidden = true;
-        this.workspace.hidden = false;
-        this.successScreen && (this.successScreen.hidden = true);
-        this.renderCurrentStep();
-        this.updateProgress();
-        this.updateFooter();
-    }
+        if (this.startButton) {
 
-    renderCurrentStep() {
-        const step = this.steps[this.state.stepIndex];
-        if (!step || !this.template || !this.container) return;
-        const node = this.template.content.cloneNode(true);
-        const card = node.querySelector('.exec-conversation-card');
-        const icon = node.getElementById('questionIcon');
-        const heading = node.getElementById('questionHeading');
-        const coachThought = node.getElementById('coachThought');
-        const questionText = node.getElementById('questionText');
-        const questionHint = node.getElementById('questionHint');
-        const responseContainer = node.getElementById('responseContainer');
+            this.startButton.addEventListener(
 
-        if (icon) icon.className = `fa-solid ${step.icon}`;
-        if (heading) heading.textContent = step.title;
-        if (coachThought) coachThought.textContent = step.coachMessage;
-        if (questionText) questionText.textContent = step.introduction;
-        if (questionHint) questionHint.textContent = step.subtitle;
-        if (responseContainer) {
-            responseContainer.innerHTML = '';
-            step.fields.forEach((field) => {
-                const wrapper = document.createElement('div');
-                wrapper.className = 'exec-field';
-                const label = document.createElement('label');
-                label.className = 'exec-field-label';
-                label.textContent = field.label;
-                label.setAttribute('for', `${step.id}-${field.key}`);
-                const input = field.type === 'textarea' ? document.createElement('textarea') : document.createElement('input');
-                input.className = 'exec-field-input';
-                input.id = `${step.id}-${field.key}`;
-                input.name = field.key;
-                input.placeholder = field.placeholder;
-                input.value = this.state.data[step.id][field.key] || '';
-                if (field.type !== 'textarea') input.type = field.type;
-                if (field.type === 'number') input.inputMode = 'numeric';
-                const help = document.createElement('div');
-                help.className = 'exec-field-help';
-                help.textContent = field.help;
-                wrapper.append(label, input, help);
-                responseContainer.appendChild(wrapper);
-            });
+                "click",
+
+                () => this.startAssessment()
+
+            );
+
         }
-        this.container.innerHTML = '';
-        this.container.appendChild(node);
-    }
 
-    syncStateFromInputs() {
-        const step = this.steps[this.state.stepIndex];
-        if (!step) return;
-        step.fields.forEach((field) => {
-            const input = document.getElementById(`${step.id}-${field.key}`);
-            if (input) this.state.data[step.id][field.key] = input.value.trim();
-        });
-    }
+        if (this.nextButton) {
 
-    validateStep() {
-        this.syncStateFromInputs();
-        const step = this.steps[this.state.stepIndex];
-        const values = this.state.data[step.id];
-        const filled = Object.values(values).some((value) => String(value || '').trim().length > 0);
-        return filled;
-    }
+            this.nextButton.addEventListener(
 
-    nextStep() {
-        if (!this.validateStep()) {
-            this.setCoachMessage('Please share a little detail so we can continue the conversation. If you are unsure, answer to the best of your current knowledge.');
-            return;
+                "click",
+
+                () => this.next()
+
+            );
+
         }
-        if (this.state.stepIndex < this.steps.length - 1) {
-            this.state.stepIndex += 1;
-            this.renderCurrentStep();
-            this.updateProgress();
-            this.updateFooter();
-            this.setCoachMessage(this.steps[this.state.stepIndex].coachMessage);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-            this.showReview();
+
+        if (this.backButton) {
+
+            this.backButton.addEventListener(
+
+                "click",
+
+                () => this.previous()
+
+            );
+
         }
-    }
 
-    previousStep() {
-        if (this.state.stepIndex > 0) {
-            this.syncStateFromInputs();
-            this.state.stepIndex -= 1;
-            this.renderCurrentStep();
-            this.updateProgress();
-            this.updateFooter();
-            this.setCoachMessage(this.steps[this.state.stepIndex].coachMessage);
+        if (this.reviewBackButton) {
+
+            this.reviewBackButton.addEventListener(
+
+                "click",
+
+                () => this.backToAssessment()
+
+            );
+
         }
+
+        if (this.generateButton) {
+
+            this.generateButton.addEventListener(
+
+                "click",
+
+                () => this.generateReport()
+
+            );
+
+        }
+
+        if (this.viewReportButton) {
+
+            this.viewReportButton.addEventListener(
+
+                "click",
+
+                () => this.openReport()
+
+            );
+
+        }
+
     }
 
-    updateProgress() {
-        const total = this.steps.length;
-        const current = this.state.stepIndex + 1;
-        if (this.stepIndicator) this.stepIndicator.textContent = `Step ${current} of ${total}`;
-        if (this.stepTitle) this.stepTitle.textContent = this.steps[this.state.stepIndex].title;
-        if (this.stepSubtitle) this.stepSubtitle.textContent = this.steps[this.state.stepIndex].subtitle;
-        if (this.progressBar) this.progressBar.style.width = `${(current / total) * 100}%`;
-    }
 
-    updateFooter() {
-        if (this.footerMessage) this.footerMessage.textContent = `${this.steps[this.state.stepIndex].title} Conversation`;
-        if (this.backButton) this.backButton.disabled = this.state.stepIndex === 0;
-        if (this.nextButton) this.nextButton.textContent = this.state.stepIndex === this.steps.length - 1 ? 'Review Responses' : 'Continue';
-    }
 
-    setCoachMessage(message) {
-        if (this.coachMessage) this.coachMessage.textContent = message;
-    }
+    /* ==========================================================
+       INITIAL VIEW
+    ========================================================== */
 
-    showReview() {
-        this.syncStateFromInputs();
-        this.workspace.hidden = true;
-        this.reviewScreen.hidden = false;
-        this.reviewContent.innerHTML = '';
-        this.steps.forEach((step) => {
-            const section = document.createElement('section');
-            section.className = 'exec-review-section';
-            const title = document.createElement('h3');
-            title.textContent = step.title;
-            const list = document.createElement('div');
-            list.className = 'exec-review-list';
-            step.fields.forEach((field) => {
-                const row = document.createElement('div');
-                row.className = 'exec-review-row';
-                const label = document.createElement('span');
-                label.className = 'exec-review-label';
-                label.textContent = field.label;
-                const value = document.createElement('span');
-                value.className = 'exec-review-value';
-                const raw = this.state.data[step.id][field.key];
-                value.textContent = raw && String(raw).trim().length ? raw : 'Not shared';
-                row.append(label, value);
-                list.appendChild(row);
-            });
-            const edit = document.createElement('button');
-            edit.type = 'button';
-            edit.className = 'exec-review-edit';
-            edit.textContent = `Edit ${step.title}`;
-            edit.addEventListener('click', () => {
-                this.reviewScreen.hidden = true;
-                this.workspace.hidden = false;
-                this.state.stepIndex = this.steps.findIndex((s) => s.id === step.id);
-                this.renderCurrentStep();
-                this.updateProgress();
-                this.updateFooter();
-            });
-            section.append(title, list, edit);
-            this.reviewContent.appendChild(section);
-        });
-    }
+    showLanding() {
 
-    showWorkspace() {
-        this.reviewScreen.hidden = true;
-        this.workspace.hidden = false;
-    }
+        this.hideAll();
 
-    generateAdvisory() {
-        this.reviewScreen.hidden = true;
-        this.loadingScreen.hidden = false;
-        const totalSteps = 6;
-        let current = 0;
-        const timer = setInterval(() => {
-            current += 1;
-            const bar = this.loadingScreen?.querySelector('.exec-loading-fill');
-            const label = this.loadingScreen?.querySelector('.exec-loading-text');
-            if (bar) bar.style.width = `${Math.min((current / totalSteps) * 100, 100)}%`;
-            if (label) label.textContent = current < totalSteps ? 'Preparing your Executive Advisory…' : 'Almost there…';
-            if (current >= totalSteps) {
-                clearInterval(timer);
-                this.loadingScreen.hidden = true;
-                this.successScreen.hidden = false;
-            }
-        }, 500);
-    }
-
-    resetToStart() {
-        this.state.stepIndex = 0;
-        this.state.mode = 'landing';
-        this.reviewScreen.hidden = true;
-        this.successScreen.hidden = true;
-        this.workspace.hidden = true;
         this.landingScreen.hidden = false;
-        this.setCoachMessage('Welcome. Thank you for taking the time to have this conversation. Before we begin, I would like to understand a little about your organisation. There are no right or wrong answers here. Simply answer each question to the best of your current knowledge. We will move one conversation at a time.');
-        this.renderCurrentStep();
-        this.updateProgress();
-        this.updateFooter();
+
     }
+
+
+
+    /* ==========================================================
+       HIDE ALL SCREENS
+    ========================================================== */
+
+    hideAll() {
+
+        this.landingScreen.hidden = true;
+
+        this.workspace.hidden = true;
+
+        this.reviewScreen.hidden = true;
+
+        this.loadingScreen.hidden = true;
+
+        this.successScreen.hidden = true;
+
+    }
+
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    window.executiveAssessment = new ExecutiveAssessment();
-});
+/* ==========================================================
+   STEP DATA
+========================================================== */
+
+initializeQuestions() {
+
+    this.questionBank = [
+
+        /* ==========================================
+           STEP 1
+           COMPANY
+        ========================================== */
+
+        {
+
+            step: 0,
+
+            title: "Company",
+
+            description:
+                "Let's begin by understanding your organisation.",
+
+            coach:
+                "Every organisation has its own identity. We'll begin with a few foundational questions that help us understand the environment in which your people and business operate.",
+
+            questions: [
+
+                {
+                    id: "companyName",
+
+                    type: "text",
+
+                    icon: "fa-building",
+
+                    label: "What is your organisation called?",
+
+                    helper:
+                        "Use the commonly recognised name of your organisation.",
+
+                    placeholder:
+                        "Company Name"
+
+                },
+
+                {
+
+                    id: "entity",
+
+                    type: "select",
+
+                    icon: "fa-scale-balanced",
+
+                    label: "How is your organisation legally structured?",
+
+                    helper:
+                        "Select the option that most closely reflects your organisation today.",
+
+                    options: [
+
+                        "Private Limited",
+
+                        "Public Limited",
+
+                        "LLP",
+
+                        "Partnership",
+
+                        "Proprietorship",
+
+                        "Trust",
+
+                        "Society",
+
+                        "Government",
+
+                        "PSU",
+
+                        "Other"
+
+                    ]
+
+                },
+
+                {
+
+                    id: "industry",
+
+                    type: "text",
+
+                    icon: "fa-industry",
+
+                    label: "Which industry best represents your organisation?",
+
+                    helper:
+                        "Examples include Manufacturing, IT Services, Healthcare or Retail.",
+
+                    placeholder:
+                        "Industry"
+
+                },
+
+                {
+
+                    id: "nature",
+
+                    type: "text",
+
+                    icon: "fa-briefcase",
+
+                    label: "How would you describe your primary business?",
+
+                    helper:
+                        "A short description is sufficient.",
+
+                    placeholder:
+                        "Nature of Business"
+
+                },
+
+                {
+
+                    id: "founded",
+
+                    type: "number",
+
+                    icon: "fa-calendar",
+
+                    label: "In which year was your organisation established?",
+
+                    helper:
+                        "An approximate year is perfectly acceptable if you're unsure.(but this is one year you won't like to forget 😜)",
+
+                    placeholder:
+                        "Year"
+
+                }
+
+            ]
+
+        },
+
+
+
+        /* ==========================================
+           STEP 2
+           WORKFORCE
+        ========================================== */
+
+        {
+
+            step: 1,
+
+            title: "Workforce",
+
+            description:
+                "Let's understand the people who contribute to your organisation.",
+
+            coach:
+                "People are central to every organisation. These questions help us appreciate the scale and composition of your workforce rather than evaluate individuals.",
+
+            questions: [
+
+                {
+
+                    id: "employees",
+
+                    type: "number",
+
+                    icon: "fa-users",
+
+                    label: "Approximately how many employees work with your organisation?",
+
+                    helper:
+                        "An approximate figure is sufficient."
+
+                },
+
+                {
+
+                    id: "contractWorkers",
+
+                    type: "number",
+
+                    icon: "fa-user-tie",
+
+                    label: "Approximately how many contract workers support your operations?",
+
+                    helper:
+                        "Include outsourced manpower if applicable."
+
+                },
+
+                {
+
+                    id: "interns",
+
+                    type: "number",
+
+                    icon: "fa-user-graduate",
+
+                    label: "How many interns are currently engaged?",
+
+                    helper:
+                        "Don't worry if you don't know the exact numbers. Reasonable approximations are also acceptable."
+
+                },
+
+                {
+
+                    id: "apprentices",
+
+                    type: "number",
+
+                    icon: "fa-user-gear",
+
+                    label: "Would you know how many apprentices work with your organisation?",
+
+                    helper:
+                        "In case you are not aware just leave it blank."
+
+                },
+
+                {
+
+                    id: "remoteWorkforce",
+
+                    type: "number",
+
+                    icon: "fa-laptop-house",
+
+                    label: "Approximately what percentage of your workforce works remotely?",
+
+                    helper:
+                        "Enter any value between 0 and 100 which you think would be the right number."
+
+                }
+
+            ]
+
+        }
+
+    ];
+
+}
+
+
+/* ==========================================================
+   STEP DATA (CONTINUED)
+========================================================== */
+
+this.questionBank.push(
+
+    /* ==========================================
+       STEP 3
+       OPERATIONS
+    ========================================== */
+
+    {
+
+        step: 2,
+
+        title: "Operations",
+
+        description:
+            "Let's understand how your organisation operates.",
+
+        coach:
+            "Every organisation functions differently. These questions help us appreciate the environment in which your teams collaborate and deliver value.",
+
+        questions: [
+
+            {
+
+                id: "primaryState",
+
+                type: "text",
+
+                icon: "fa-location-dot",
+
+                label: "Which is your primary operating state?",
+
+                helper:
+                    "If you operate in multiple locations, enter the state where your headquarters or principal office is located.",
+
+                placeholder:
+                    "Primary State"
+
+            },
+
+            {
+
+                id: "workModel",
+
+                type: "select",
+
+                icon: "fa-building-user",
+
+                label: "Which work model best describes your organisation?",
+
+                helper:
+                    "Select the option that most closely reflects current practice.",
+
+                options: [
+
+                    "Office Based",
+
+                    "Hybrid",
+
+                    "Remote",
+
+                    "Field Workforce",
+
+                    "Manufacturing / Plant",
+
+                    "Mixed"
+
+                ]
+
+            },
+
+            {
+
+                id: "locations",
+
+                type: "number",
+
+                icon: "fa-map-location-dot",
+
+                label: "Approximately how many operating locations do you have?",
+
+                helper:
+                    "Include offices, plants, branches and other permanent locations."
+
+            },
+
+            {
+
+                id: "countries",
+
+                type: "number",
+
+                icon: "fa-earth-asia",
+
+                label: "In how many countries does your organisation currently operate?",
+
+                helper:
+                    "Enter 1 if your organisation operates only within one country."
+
+            }
+
+        ]
+
+    },
+
+
+
+    /* ==========================================
+       STEP 4
+       GROWTH
+    ========================================== */
+
+    {
+
+        step: 3,
+
+        title: "Growth",
+
+        description:
+            "Finally, let's understand where your organisation is heading.",
+
+        coach:
+            "Understanding future direction helps us place today's decisions into tomorrow's context. There are no right or wrong answers—only your current plans and expectations.",
+
+        questions: [
+
+            {
+
+                id: "hiringPlans",
+
+                type: "select",
+
+                icon: "fa-user-plus",
+
+                label: "What best describes your hiring plans over the next 12 months?",
+
+                helper:
+                    "Choose the option that best reflects your current expectations.",
+
+                options: [
+
+                    "Significant Growth",
+
+                    "Moderate Growth",
+
+                    "Selective Hiring",
+
+                    "Maintain Current Size",
+
+                    "Unsure; Market drives hiring needs"
+
+                ]
+
+            },
+
+            {
+
+                id: "fundingStage",
+
+                type: "select",
+
+                icon: "fa-chart-line",
+
+                label: "Which funding stage best describes your organisation?",
+
+                helper:
+                    "Choose the closest available option.",
+
+                options: [
+
+                    "Bootstrapped",
+
+                    "Seed",
+
+                    "Series A",
+
+                    "Series B",
+
+                    "Series C+",
+
+                    "Public",
+
+                    "Not Applicable"
+
+                ]
+
+            },
+
+            {
+
+                id: "expansionPlans",
+
+                type: "textarea",
+
+                icon: "fa-arrow-trend-up",
+
+                label: "Are there any expansion plans you would like us to understand?",
+
+                helper:
+                    "A few sentences are sufficient."
+
+            },
+
+            {
+
+                id: "peopleFunction",
+
+                type: "select",
+
+                icon: "fa-users-gear",
+
+                label: "How is your People / HR function currently structured?",
+
+                helper:
+                    "Select the option closest to your organisation today.",
+
+                options: [
+
+                    "Dedicated HR Team",
+
+                    "Single HR/People Professional",
+
+                    "Founder Led",
+
+                    "Shared Admin Function",
+
+                    "External Consultant",
+
+                    "No Formal HR/People Function"
+
+                ]
+
+            }
+
+        ]
+
+    }
+
+);
+
+
+/* ==========================================================
+   START ASSESSMENT
+========================================================== */
+
+startAssessment() {
+
+    this.started = true;
+
+    this.currentStep = 0;
+
+    this.currentQuestion = 0;
+
+    this.hideAll();
+
+    this.workspace.hidden = false;
+
+    this.updateProgress();
+
+    this.renderCurrentQuestion();
+
+}
+
+
+
+/* ==========================================================
+   RENDER CURRENT QUESTION
+========================================================== */
+
+renderCurrentQuestion() {
+
+    const step = this.questionBank[this.currentStep];
+
+    const question = step.questions[this.currentQuestion];
+
+    this.stepIndicator.textContent =
+        `Step ${this.currentStep + 1} of ${this.steps.length}`;
+
+    this.stepTitle.textContent =
+        step.title;
+
+    this.stepDescription.textContent =
+        step.description;
+
+    this.coachMessage.textContent =
+        step.coach;
+
+    this.footerMessage.textContent =
+        `${step.title} Conversation`;
+
+    const template =
+        document.getElementById("conversationTemplate");
+
+    const card =
+        template.content.cloneNode(true);
+
+    card.getElementById("questionCategory").textContent =
+        step.title;
+
+    card.getElementById("questionTitle").textContent =
+        question.label;
+
+    card.getElementById("questionIcon").className =
+        `fa-solid ${question.icon}`;
+
+    card.getElementById("coachContext").textContent =
+        "Take your time. Thoughtful responses may help us better understand your organisation.";
+
+    card.getElementById("questionText").textContent =
+        question.label;
+
+    card.getElementById("questionExplanation").textContent =
+        question.helper;
+
+    const responseContainer =
+        card.getElementById("questionResponse");
+
+    responseContainer.appendChild(
+
+        this.createInput(question)
+
+    );
+
+    this.conversationContainer.innerHTML = "";
+
+    this.conversationContainer.appendChild(card);
+
+}
+
+
+
+/* ==========================================================
+   CREATE INPUT
+========================================================== */
+
+createInput(question) {
+
+    let element;
+
+    switch(question.type){
+
+        case "text":
+
+            element =
+                document
+                .getElementById("textInputTemplate")
+                .content
+                .firstElementChild
+                .cloneNode(true);
+
+            element.placeholder =
+                question.placeholder || "";
+
+            break;
+
+        case "number":
+
+            element =
+                document
+                .getElementById("numberInputTemplate")
+                .content
+                .firstElementChild
+                .cloneNode(true);
+
+            element.placeholder =
+                question.placeholder || "";
+
+            break;
+
+        case "textarea":
+
+            element =
+                document
+                .getElementById("textareaTemplate")
+                .content
+                .firstElementChild
+                .cloneNode(true);
+
+            break;
+
+        case "select":
+
+            element =
+                document
+                .getElementById("selectTemplate")
+                .content
+                .firstElementChild
+                .cloneNode(true);
+
+            const placeholder =
+                document.createElement("option");
+
+            placeholder.textContent =
+                "Please Select";
+
+            placeholder.value = "";
+
+            element.appendChild(placeholder);
+
+            question.options.forEach(option=>{
+
+                const item =
+                    document.createElement("option");
+
+                item.value = option;
+
+                item.textContent = option;
+
+                element.appendChild(item);
+
+            });
+
+            break;
+
+    }
+
+    element.id = question.id;
+
+    if(this.responses[question.id] !== undefined){
+
+        element.value =
+            this.responses[question.id];
+
+    }
+
+    return element;
+
+}
+
+/* ==========================================================
+   NEXT
+========================================================== */
+
+next() {
+
+    if (!this.saveCurrentAnswer()) {
+
+        return;
+
+    }
+
+    const step =
+        this.questionBank[this.currentStep];
+
+    if (this.currentQuestion < step.questions.length - 1) {
+
+        this.currentQuestion++;
+
+        this.renderCurrentQuestion();
+
+        return;
+
+    }
+
+    if (this.currentStep < this.questionBank.length - 1) {
+
+        this.currentStep++;
+
+        this.currentQuestion = 0;
+
+        this.updateProgress();
+
+        this.renderCurrentQuestion();
+
+        return;
+
+    }
+
+    this.showReview();
+
+}
+
+
+
+/* ==========================================================
+   PREVIOUS
+========================================================== */
+
+previous() {
+
+    if (this.currentQuestion > 0) {
+
+        this.currentQuestion--;
+
+        this.renderCurrentQuestion();
+
+        return;
+
+    }
+
+    if (this.currentStep > 0) {
+
+        this.currentStep--;
+
+        const previousStep =
+            this.questionBank[this.currentStep];
+
+        this.currentQuestion =
+            previousStep.questions.length - 1;
+
+        this.updateProgress();
+
+        this.renderCurrentQuestion();
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   SAVE ANSWER
+========================================================== */
+
+saveCurrentAnswer() {
+
+    const step =
+        this.questionBank[this.currentStep];
+
+    const question =
+        step.questions[this.currentQuestion];
+
+    const field =
+        document.getElementById(question.id);
+
+    if (!field) {
+
+        return false;
+
+    }
+
+    const value =
+        field.value.trim();
+
+    if (value === "") {
+
+        field.focus();
+
+        alert(
+            "Please answer this question before continuing."
+        );
+
+        return false;
+
+    }
+
+    this.responses[question.id] = value;
+
+    return true;
+
+}
+
+
+
+/* ==========================================================
+   UPDATE PROGRESS
+========================================================== */
+
+updateProgress() {
+
+    const percentage =
+        ((this.currentStep + 1) / this.steps.length) * 100;
+
+    this.progressBar.style.width =
+        `${percentage}%`;
+
+    this.stepIndicator.textContent =
+        `Step ${this.currentStep + 1} of ${this.steps.length}`;
+
+    this.stepTitle.textContent =
+        this.questionBank[this.currentStep].title;
+
+    this.stepDescription.textContent =
+        this.questionBank[this.currentStep].description;
+
+}
+
+
+
+/* ==========================================================
+   BACK TO ASSESSMENT
+========================================================== */
+
+backToAssessment() {
+
+    this.hideAll();
+
+    this.workspace.hidden = false;
+
+    this.renderCurrentQuestion();
+
+}
+
+/* ==========================================================
+   REVIEW SCREEN
+========================================================== */
+
+showReview() {
+
+    this.hideAll();
+
+    this.reviewScreen.hidden = false;
+
+    this.reviewContainer.innerHTML = "";
+
+    this.questionBank.forEach(step => {
+
+        const section = document.createElement("div");
+
+        section.className = "exec-review-item";
+
+        const heading = document.createElement("h3");
+
+        heading.textContent = step.title;
+
+        section.appendChild(heading);
+
+        step.questions.forEach(question => {
+
+            const row = document.createElement("p");
+
+            const value =
+                this.responses[question.id] || "Not Answered";
+
+            row.innerHTML =
+                `<strong>${question.label}</strong><br>${value}`;
+
+            section.appendChild(row);
+
+        });
+
+        this.reviewContainer.appendChild(section);
+
+    });
+
+}
+
+
+
+/* ==========================================================
+   GENERATE REPORT
+========================================================== */
+
+generateReport() {
+
+    this.hideAll();
+
+    this.loadingScreen.hidden = false;
+
+    this.runLoadingSequence();
+
+}
+
+
+
+/* ==========================================================
+   LOADING SEQUENCE
+========================================================== */
+
+runLoadingSequence() {
+
+    const messages = [
+
+        "Understanding your organisation...",
+
+        "Reviewing organisational context...",
+
+        "Identifying people priorities...",
+
+        "Connecting organisational insights...",
+
+        "Preparing Executive Advisory..."
+
+    ];
+
+    let index = 0;
+
+    this.loadingMessage.textContent = messages[index];
+
+    const timer = setInterval(() => {
+
+        index++;
+
+        if (index >= messages.length) {
+
+            clearInterval(timer);
+
+            this.showSuccess();
+
+            return;
+
+        }
+
+        this.loadingMessage.textContent = messages[index];
+
+    }, 1400);
+
+}
+
+
+
+/* ==========================================================
+   SUCCESS
+========================================================== */
+
+showSuccess() {
+
+    this.hideAll();
+
+    this.successScreen.hidden = false;
+
+}
+
+
+
+/* ==========================================================
+   OPEN REPORT
+========================================================== */
+
+openReport() {
+
+    window.location.href =
+        "sample-advisory-report.html";
+
+}
+
+/* ==========================================================
+   COACH ACKNOWLEDGEMENT
+========================================================== */
+
+getCoachAcknowledgement(value) {
+
+    if (!value || value.trim() === "") {
+
+        return "";
+
+    }
+
+    const responses = [
+
+        "Thank you. That gives us a little more context about your organisation.",
+
+        "That's helpful. Every organisation has its own journey and context.",
+
+        "Appreciated. We'll keep this in mind as we continue our conversation.",
+
+        "Thank you for sharing that. Let's continue building our understanding together.",
+
+        "That's useful context. We'll now move to the next part of our conversation."
+
+    ];
+
+    return responses[
+        Math.floor(Math.random() * responses.length)
+    ];
+
+}
+
+
+
+/* ==========================================================
+   UPDATE COACH MESSAGE
+========================================================== */
+
+updateCoachMessage(message = "") {
+
+    if (!this.coachMessage) {
+
+        return;
+
+    }
+
+    this.coachMessage.textContent =
+
+        message ||
+
+        this.questionBank[this.currentStep].coach;
+
+}
+
+
+
+/* ==========================================================
+   MOVE TO NEXT QUESTION
+========================================================== */
+
+goToNextQuestion() {
+
+    const step =
+        this.questionBank[this.currentStep];
+
+    if (this.currentQuestion < step.questions.length - 1) {
+
+        this.currentQuestion++;
+
+        this.renderCurrentQuestion();
+
+        return;
+
+    }
+
+    if (this.currentStep < this.questionBank.length - 1) {
+
+        this.currentStep++;
+
+        this.currentQuestion = 0;
+
+        this.updateProgress();
+
+        this.renderCurrentQuestion();
+
+        return;
+
+    }
+
+    this.showReview();
+
+}
+
+
+
+/* ==========================================================
+   NEXT (UPDATED)
+========================================================== */
+
+next() {
+
+    if (!this.saveCurrentAnswer()) {
+
+        return;
+
+    }
+
+    const step =
+        this.questionBank[this.currentStep];
+
+    const question =
+        step.questions[this.currentQuestion];
+
+    const acknowledgement =
+        this.getCoachAcknowledgement(
+
+            this.responses[question.id]
+
+        );
+
+    this.updateCoachMessage(
+
+        acknowledgement
+
+    );
+
+    setTimeout(() => {
+
+        this.goToNextQuestion();
+
+    }, 900);
+
+}
+
+
+
+/* ==========================================================
+   PREVIOUS (UPDATED)
+========================================================== */
+
+previous() {
+
+    if (this.currentQuestion > 0) {
+
+        this.currentQuestion--;
+
+        this.renderCurrentQuestion();
+
+        return;
+
+    }
+
+    if (this.currentStep > 0) {
+
+        this.currentStep--;
+
+        this.currentQuestion =
+
+            this.questionBank[this.currentStep]
+                .questions.length - 1;
+
+        this.updateProgress();
+
+        this.renderCurrentQuestion();
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   STEP TRANSITION MESSAGE
+========================================================== */
+
+showStepIntroduction() {
+
+    const introductions = [
+
+        "Thank you. We now have a better understanding of your organisation. Let's now talk about your people.",
+
+        "Thank you for sharing that. I'd now love to learn more about how your organisation works and creates value... In simple terms how do you operate?",
+
+        "Excellent. Looking ahead, where do you see your organisation heading in the future?"
+
+    ];
+
+    if (
+
+        this.currentStep > 0 &&
+
+        this.currentStep <= introductions.length
+
+    ) {
+
+        this.updateCoachMessage(
+
+            introductions[this.currentStep - 1]
+
+        );
+
+    }
+
+}
+
+/* ==========================================================
+   AUTO SAVE
+========================================================== */
+
+autoSave() {
+
+    try {
+
+        localStorage.setItem(
+
+            "growwithhr-assessment",
+
+            JSON.stringify(this.responses)
+
+        );
+
+    }
+
+    catch (error) {
+
+        console.warn(
+
+            "Unable to save assessment progress.",
+
+            error
+
+        );
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   RESTORE SAVED SESSION
+========================================================== */
+
+restoreSession() {
+
+    try {
+
+        const savedData = localStorage.getItem(
+
+            "growwithhr-assessment"
+
+        );
+
+        if (!savedData) {
+
+            return;
+
+        }
+
+        this.responses = JSON.parse(savedData);
+
+    }
+
+    catch (error) {
+
+        console.warn(
+
+            "Unable to restore saved assessment.",
+
+            error
+
+        );
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   RESET ASSESSMENT
+========================================================== */
+
+resetAssessment() {
+
+    this.currentStep = 0;
+
+    this.currentQuestion = 0;
+
+    this.started = false;
+
+    this.completed = false;
+
+    this.responses = {};
+
+    localStorage.removeItem(
+
+        "growwithhr-assessment"
+
+    );
+
+    this.showLanding();
+
+}
+
+
+
+/* ==========================================================
+   UPDATE FOOTER MESSAGE
+========================================================== */
+
+updateFooterMessage() {
+
+    const step = this.questionBank[this.currentStep];
+
+    const totalQuestions = step.questions.length;
+
+    this.footerMessage.textContent =
+
+        `Question ${this.currentQuestion + 1} of ${totalQuestions}`;
+
+}
+
+
+
+/* ==========================================================
+   UPDATE PROGRESS BAR
+========================================================== */
+
+updateProgressBar() {
+
+    const totalQuestions =
+
+        this.questionBank.reduce(
+
+            (count, section) =>
+
+                count + section.questions.length,
+
+            0
+
+        );
+
+    let completedQuestions = 0;
+
+    for (
+
+        let i = 0;
+
+        i < this.currentStep;
+
+        i++
+
+    ) {
+
+        completedQuestions +=
+
+            this.questionBank[i].questions.length;
+
+    }
+
+    completedQuestions +=
+
+        this.currentQuestion;
+
+    const percentage =
+
+        (completedQuestions / totalQuestions) * 100;
+
+    this.progressBar.style.width =
+
+        `${percentage}%`;
+
+}
+
+
+
+/* ==========================================================
+   REFRESH UI
+========================================================== */
+
+refreshUI() {
+
+    this.updateProgress();
+
+    this.updateProgressBar();
+
+    this.updateFooterMessage();
+
+}
+
+
+
+/* ==========================================================
+   START (UPDATED)
+========================================================== */
+
+startAssessment() {
+
+    this.started = true;
+
+    this.restoreSession();
+
+    this.currentStep = 0;
+
+    this.currentQuestion = 0;
+
+    this.hideAll();
+
+    this.workspace.hidden = false;
+
+    this.refreshUI();
+
+    this.renderCurrentQuestion();
+
+}
+
+/* ==========================================================
+   KEYBOARD NAVIGATION
+========================================================== */
+
+bindKeyboardShortcuts() {
+
+    document.addEventListener("keydown", (event) => {
+
+        if (this.loadingScreen.hidden === false) {
+
+            return;
+
+        }
+
+        switch (event.key) {
+
+            case "Enter":
+
+                if (
+
+                    document.activeElement.tagName !== "TEXTAREA"
+
+                ) {
+
+                    event.preventDefault();
+
+                    this.next();
+
+                }
+
+                break;
+
+            case "ArrowRight":
+
+                event.preventDefault();
+
+                this.next();
+
+                break;
+
+            case "ArrowLeft":
+
+                event.preventDefault();
+
+                this.previous();
+
+                break;
+
+            case "Escape":
+
+                this.showExitDialog();
+
+                break;
+
+        }
+
+    });
+
+}
+
+
+
+/* ==========================================================
+   EXIT DIALOG
+========================================================== */
+
+showExitDialog() {
+
+    const modal = document.getElementById("exitModal");
+
+    if (!modal) {
+
+        return;
+
+    }
+
+    modal.hidden = false;
+
+}
+
+
+
+hideExitDialog() {
+
+    const modal = document.getElementById("exitModal");
+
+    if (!modal) {
+
+        return;
+
+    }
+
+    modal.hidden = true;
+
+}
+
+
+
+/* ==========================================================
+   BIND EXIT EVENTS
+========================================================== */
+
+bindExitEvents() {
+
+    const leaveButton =
+        document.getElementById("confirmExitButton");
+
+    const stayButton =
+        document.getElementById("cancelExitButton");
+
+    if (leaveButton) {
+
+        leaveButton.addEventListener("click", () => {
+
+            this.resetAssessment();
+
+        });
+
+    }
+
+    if (stayButton) {
+
+        stayButton.addEventListener("click", () => {
+
+            this.hideExitDialog();
+
+        });
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   BEFORE UNLOAD WARNING
+========================================================== */
+
+bindBeforeUnload() {
+
+    window.addEventListener("beforeunload", (event) => {
+
+        if (
+
+            this.started &&
+
+            !this.completed
+
+        ) {
+
+            event.preventDefault();
+
+            event.returnValue = "";
+
+        }
+
+    });
+
+}
+
+
+
+/* ==========================================================
+   SESSION COMPLETE
+========================================================== */
+
+completeAssessment() {
+
+    this.completed = true;
+
+    this.autoSave();
+
+}
+
+
+
+/* ==========================================================
+   INITIALIZATION
+========================================================== */
+
+initialize() {
+
+    this.initializeQuestions();
+
+    this.restoreSession();
+
+    this.bindKeyboardShortcuts();
+
+    this.bindExitEvents();
+
+    this.bindBeforeUnload();
+
+    this.showLanding();
+
+}
+
+/* ==========================================================
+   FINAL INITIALIZATION
+========================================================== */
+
+destroy() {
+
+    this.responses = {};
+
+    this.currentStep = 0;
+
+    this.currentQuestion = 0;
+
+    this.started = false;
+
+    this.completed = false;
+
+}
+
+
+
+/* ==========================================================
+   APPLICATION STARTUP
+========================================================== */
+
+init() {
+
+    this.initializeQuestions();
+
+    this.restoreSession();
+
+    this.bindEvents();
+
+    this.bindKeyboardShortcuts();
+
+    this.bindExitEvents();
+
+    this.bindBeforeUnload();
+
+    this.showLanding();
+
+}
+
+
+
+/* ==========================================================
+   SAFE EVENT BINDING
+========================================================== */
+
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    () => {
+
+        window.executiveAssessment =
+
+            new ExecutiveAssessment();
+
+        window.executiveAssessment.init();
+
+    }
+
+);
