@@ -10,6 +10,134 @@
 rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="icon" href="assets/favicon.ico">
+
+  <style>
+    .hero{
+      min-height:auto;
+      padding-bottom:44px;
+    }
+
+    .hero-layout{
+      gap:22px;
+    }
+
+    .hero-description{
+      margin-bottom:26px;
+    }
+
+    .hero-dashboard-layout{
+      gap:16px;
+      padding:18px;
+    }
+
+    .hero-sidebar{
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+    }
+
+    .hero-sidebar .workspace-card{
+      display:flex;
+      flex-direction:column;
+      min-height:0;
+      height:100%;
+      padding:20px;
+      gap:16px;
+      border-radius:20px;
+      box-sizing:border-box;
+    }
+
+    .hero-sidebar .card-header h3{
+      margin:0;
+      font-size:1.2rem;
+      line-height:1.2;
+    }
+
+    .dna-pillars,
+    .growth-stage-list,
+    .recommendation-list{
+      flex:1;
+      gap:10px;
+      justify-content:space-between;
+      box-shadow:none;
+    }
+
+    .dna-item,
+    .stage-item,
+    .recommendation-item{
+      min-height:52px;
+      padding:0 16px;
+      gap:12px;
+      border-radius:14px;
+    }
+
+    .hero-graph{
+      min-height:390px;
+    }
+
+    .hero-footer{
+      text-align:center;
+      margin-top:-8px;
+    }
+
+    .compact-section{
+      padding-top:64px;
+      padding-bottom:64px;
+    }
+
+    .how-grid,
+    .capability-carousel{
+      margin-top:44px;
+    }
+
+    .how-card{
+      min-height:100%;
+    }
+
+    .capability-carousel{
+      grid-template-columns:56px minmax(0,360px) 56px;
+      justify-content:center;
+      gap:18px;
+    }
+
+    .carousel-track{
+      display:flex;
+      gap:24px;
+      width:360px;
+      max-width:100%;
+      margin:0 auto;
+    }
+
+    .capability-slide{
+      flex:0 0 360px;
+      width:360px;
+      min-height:320px;
+      box-sizing:border-box;
+    }
+
+    @media (max-width: 900px){
+      .hero-sidebar{
+        grid-template-columns:1fr;
+      }
+
+      .hero-sidebar .workspace-card{
+        height:auto;
+      }
+
+      .capability-carousel{
+        grid-template-columns:44px minmax(0,1fr) 44px;
+        gap:10px;
+      }
+
+      .carousel-track{
+        width:min(360px, calc(100vw - 132px));
+      }
+
+      .capability-slide{
+        flex-basis:min(360px, calc(100vw - 132px));
+        width:min(360px, calc(100vw - 132px));
+      }
+    }
+  </style>
 </head>
 <body>
 <nav class="navbar">
@@ -82,9 +210,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
     <div class="container hero-layout">
 
-        <!-- LEFT -->
-
-       <div class="hero-content hero-home">
+        <div class="hero-content hero-home">
 
             <div class="hero-badge">
 
@@ -112,17 +238,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
             <div class="hero-actions">
 
-                <a
-                    href="#assessment"
-                    class="primary-btn">
+                <a href="#assessment" class="primary-btn">
 
                     Analyze My Company
 
                 </a>
 
-                <a
-                    href="sample-advisory-report.html"
-                    class="secondary-btn">
+                <a href="sample-advisory-report.html" class="secondary-btn">
 
                     View Sample Advisory
 
@@ -132,21 +254,161 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
             <div class="trust-strip">
 
-                <div>
+                <div>✓ Official Sources</div>
 
-                    ✓ Official Sources
+                <div>✓ Explainable Recommendations</div>
+
+                <div>✓ Privacy First</div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-workspace">
+
+            <div class="workspace-window">
+
+                <div class="workspace-header">
+
+                    <div class="workspace-dot red"></div>
+                    <div class="workspace-dot yellow"></div>
+                    <div class="workspace-dot green"></div>
+
+                    <div class="workspace-title">
+
+                        Executive Intelligence
+
+                    </div>
 
                 </div>
 
-                <div>
+                <div class="hero-dashboard-layout">
 
-                    ✓ Explainable Recommendations
+                    <section class="hero-sidebar" aria-label="Executive intelligence controls">
 
-                </div>
+                        <div class="workspace-card company-dna-card">
 
-                <div>
+                            <div class="card-header">
+                                <h3>Company DNA</h3>
+                            </div>
 
-                    ✓ Privacy First
+                            <div class="dna-pillars">
+
+                                <button class="selector-item dna-item active" data-pillar="company">
+                                    <i class="fa-solid fa-building"></i>
+                                    <span>Company</span>
+                                </button>
+
+                                <button class="selector-item dna-item" data-pillar="people">
+                                    <i class="fa-solid fa-users"></i>
+                                    <span>People</span>
+                                </button>
+
+                                <button class="selector-item dna-item" data-pillar="operations">
+                                    <i class="fa-solid fa-gears"></i>
+                                    <span>Operations</span>
+                                </button>
+
+                                <button class="selector-item dna-item" data-pillar="growth">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <span>Maturity</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="workspace-card growth-stage">
+
+                            <div class="card-header">
+                                <h3>Growth Stage</h3>
+                            </div>
+
+                            <div class="growth-stage-list">
+
+                                <button class="selector-item stage-item active" data-stage="startup">
+                                    <i class="fa-solid fa-seedling"></i>
+                                    <span>Startup</span>
+                                </button>
+
+                                <button class="selector-item stage-item" data-stage="growth">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <span>Growth</span>
+                                </button>
+
+                                <button class="selector-item stage-item" data-stage="scaling">
+                                    <i class="fa-solid fa-arrow-trend-up"></i>
+                                    <span>Scaling</span>
+                                </button>
+
+                                <button class="selector-item stage-item" data-stage="enterprise">
+                                    <i class="fa-solid fa-building"></i>
+                                    <span>Enterprise</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="workspace-card recommendation-card">
+
+                            <div class="card-header">
+                                <h3>Recommendation Basis</h3>
+                            </div>
+
+                            <div class="recommendation-list">
+
+                                <button class="selector-item recommendation-item active" data-recommendation="company">
+                                    <i class="fa-solid fa-building"></i>
+                                    <span>Organization Profile</span>
+                                </button>
+
+                                <button class="selector-item recommendation-item" data-recommendation="stage">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <span>Maturity Stage</span>
+                                </button>
+
+                                <button class="selector-item recommendation-item" data-recommendation="laws">
+                                    <i class="fa-solid fa-scale-balanced"></i>
+                                    <span>Applicable Laws</span>
+                                </button>
+
+                                <button class="selector-item recommendation-item" data-recommendation="updates">
+                                    <i class="fa-solid fa-bell"></i>
+                                    <span>Regulatory Updates</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <section class="hero-graph">
+
+                        <div class="dna-core-wrapper">
+
+                            <div id="dnaCoreCanvas"></div>
+
+                        </div>
+
+                    </section>
+
+                    <footer class="hero-footer">
+
+                        <h3 class="core-title">
+
+                            GrowWithHR Intelligence Core
+
+                        </h3>
+
+                        <p class="core-subtitle">
+
+                            AI-powered People Intelligence
+
+                        </p>
+
+                    </footer>
 
                 </div>
 
@@ -154,275 +416,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
         </div>
 
-        <!-- RIGHT -->
-
-     <div class="hero-workspace">
-
-    <div class="workspace-window">
-
-    <div class="workspace-header">
-
-    <div class="workspace-dot red"></div>
-
-    <div class="workspace-dot yellow"></div>
-
-    <div class="workspace-dot green"></div>
-
-    <div class="workspace-title">
-
-        Executive Intelligence
-
     </div>
-
-</div>
-
-<div class="hero-dashboard-layout">
-
-    <section class="hero-sidebar">
-
-        <div class="company-dna-card">
-     <section class="hero-sidebar">
-
-            <div class="dna-header">
-    <!-- Company DNA -->
-
-                <h3>Company DNA</h3>
-    <div class="workspace-card company-dna-card">
-
-            </div>
-          
-
-            <div class="dna-pillars">
-
-              <button class="selector-item dna-item active" data-pillar="company">
-
-    <i class="fa-solid fa-building"></i>
-
-    <span>Company</span>
-
-</button>
-              
-             <button class="selector-item dna-item" data-pillar="people">
-
-    <i class="fa-solid fa-users"></i>
-
-    <span>People</span>
-
-</button>
-        <div class="card-header">
-            <h3>Company DNA</h3>
-        </div>
-
-<button class="selector-item dna-item" data-pillar="operations">
-        <div class="dna-pillars">
-
-    <i class="fa-solid fa-gears"></i>
-            <button class="selector-item dna-item active" data-pillar="company">
-                <i class="fa-solid fa-building"></i>
-                <span>Company</span>
-            </button>
-
-    <span>Operations</span>
-            <button class="selector-item dna-item" data-pillar="people">
-                <i class="fa-solid fa-users"></i>
-                <span>People</span>
-            </button>
-
-</button>
-            <button class="selector-item dna-item" data-pillar="operations">
-                <i class="fa-solid fa-gears"></i>
-                <span>Operations</span>
-            </button>
-
-<button class="selector-item dna-item" data-pillar="growth">
-            <button class="selector-item dna-item" data-pillar="growth">
-                <i class="fa-solid fa-chart-line"></i>
-                <span>Maturity</span>
-            </button>
-
-    <i class="fa-solid fa-chart-line"></i>
-        </div>
-
-    <span>Maturity</span>
-    </div>
-
-</button>
-    <!-- Growth Stage -->
-
-            </div>
-    <div class="workspace-card growth-stage">
-
-        <div class="card-header">
-            <h3>Growth Stage</h3>
-        </div>
-
-<div class="workspace-card growth-stage">
-        <div class="growth-stage-list">
-
-    <div class="card-header">
-        <h3>Growth Stage</h3>
-    </div>
-            <button class="selector-item stage-item active" data-stage="startup">
-                <i class="fa-solid fa-seedling"></i>
-                <span>Startup</span>
-            </button>
-
-    <div class="growth-stage-list">
-            <button class="selector-item stage-item" data-stage="growth">
-                <i class="fa-solid fa-chart-line"></i>
-                <span>Growth</span>
-            </button>
-
-        <button class="selector-item stage-item active" data-stage="startup">
-            <i class="fa-solid fa-seedling"></i>
-            <span>Startup</span>
-        </button>
-
-        <button class="selector-item stage-item" data-stage="growth">
-            <i class="fa-solid fa-chart-line"></i>
-            <span>Growth</span>
-        </button>
-            <button class="selector-item stage-item" data-stage="scaling">
-                <i class="fa-solid fa-arrow-trend-up"></i>
-                <span>Scaling</span>
-            </button>
-
-        <button class="selector-item stage-item" data-stage="scaling">
-            <i class="fa-solid fa-arrow-trend-up"></i>
-            <span>Scaling</span>
-        </button>
-            <button class="selector-item stage-item" data-stage="enterprise">
-                <i class="fa-solid fa-building"></i>
-                <span>Enterprise</span>
-            </button>
-
-        <button class="selector-item stage-item" data-stage="enterprise">
-            <i class="fa-solid fa-building"></i>
-            <span>Enterprise</span>
-        </button>
-        </div>
-
-    </div>
-
-</div>
-
-      
-    <!-- Recommendation -->
-
-<div class="workspace-card recommendation-card">
-    <div class="workspace-card recommendation-card">
-
-   <div class="card-header">
-    <h3>Recommendation Basis</h3>
-   </div>
-    <div class="recommendation-list">
-
-      <button class="selector-item recommendation-item active"
-                data-recommendation="company">
-
-            <i class="fa-solid fa-building"></i>
-        <div class="card-header">
-            <h3>Recommendation Basis</h3>
-        </div>
-
-            <span>Organization Profile</span>
-        <div class="recommendation-list">
-
-        </button>
-            <button class="selector-item recommendation-item active"
-                    data-recommendation="company">
-
-      <button class="selector-item recommendation-item"
-                data-recommendation="stage">
-                <i class="fa-solid fa-building"></i>
-                <span>Organization Profile</span>
-
-            <i class="fa-solid fa-chart-line"></i>
-            </button>
-
-            <span>Maturity Stage</span>
-            <button class="selector-item recommendation-item"
-                    data-recommendation="stage">
-
-        </button>
-                <i class="fa-solid fa-chart-line"></i>
-                <span>Maturity Stage</span>
-
-       <button class="selector-item recommendation-item"
-                data-recommendation="laws">
-            </button>
-
-            <i class="fa-solid fa-scale-balanced"></i>
-            <button class="selector-item recommendation-item"
-                    data-recommendation="laws">
-
-            <span>Applicable Laws</span>
-                <i class="fa-solid fa-scale-balanced"></i>
-                <span>Applicable Laws</span>
-
-        </button>
-            </button>
-
-        <button class="selector-item recommendation-item"
-                data-recommendation="updates">
-            <button class="selector-item recommendation-item"
-                    data-recommendation="updates">
-
-            <i class="fa-solid fa-bell"></i>
-                <i class="fa-solid fa-bell"></i>
-                <span>Regulatory Updates</span>
-
-            <span>Regulatory Updates</span>
-            </button>
-
-        </button>
-        </div>
-
-    </div>
-
-</div>
-
-    </section>
-</section>
-
-    <section class="hero-graph">
-      
-      <section class="hero-graph">
-
-             <div class="dna-core-wrapper">
-
-            <div id="dnaCoreCanvas"></div>
-
-        </div>
-
-    </section>
-
-    <footer class="hero-footer">
-
-        <h3 class="core-title">
-
-            GrowWithHR Intelligence Core
-
-        </h3>
-
-        <p class="core-subtitle">
-
-            AI-powered People Intelligence
-
-        </p>
-
-    </footer>
-
-</div>
-
-
-</div>
-        </div>
-
-    </div>
-
-</div>
-
 
 </header>
 
