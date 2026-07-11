@@ -1351,7 +1351,7 @@ if(carouselTrack){
 
         updateActiveSlide();
 
-    },7000);
+    },3000);
 
     carouselTrack.addEventListener("mouseenter",()=>{
 
