@@ -5,13 +5,15 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Executive Assessment | GrowWithHR</title>
 
-    <meta name="description"
-          content="Executive HR Assessment powered by HRTechify">
+    <meta
+        name="description"
+        content="GrowWithHR Executive Assessment">
 
     <!-- ==========================================
          DESIGN SYSTEM
@@ -27,8 +29,9 @@
          FONT AWESOME
     ========================================== -->
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
@@ -42,8 +45,9 @@
 
     <div class="nav-container">
 
-        <a href="index.html#home"
-           class="brand">
+        <a
+            href="index.html"
+            class="brand">
 
             <img
                 src="assets/hrtechify-logo.png"
@@ -137,8 +141,9 @@
 
         </div>
 
-        <a href="index.html"
-           class="nav-cta">
+        <a
+            href="index.html"
+            class="nav-cta">
 
             Back to Home
 
@@ -149,12 +154,18 @@
 </nav>
 
 <!-- ==========================================================
-     EXECUTIVE ASSESSMENT
+     MAIN
 ========================================================== -->
 
-<main class="exec-assessment">
+<main class="exec-main">
 
-<!-- ==========================================================
+    <div class="exec-container">
+
+        <section
+            class="exec-shell"
+            id="assessmentShell">
+
+          <!-- ==========================================================
      LANDING SCREEN
 ========================================================== -->
 
@@ -162,11 +173,11 @@
     id="landingScreen"
     class="exec-landing">
 
-    <div class="exec-landing-container">
+    <div class="exec-landing-card">
 
         <div class="exec-badge">
 
-            Executive Assessment
+            Executive Assessment Experience
 
         </div>
 
@@ -176,57 +187,55 @@
 
         </h1>
 
-        <p class="exec-lead">
+        <p class="exec-introduction">
 
             Every organisation has its own journey,
-            ambitions and way of working.
+            ambitions and unique way of working.
 
-            Before meaningful guidance can be offered,
-            we'd like to understand yours.
+            Before we are ready to offer any meaningful guidance to you,
+            we'd like to understand your organization.
 
         </p>
 
-        <div class="exec-summary-strip">
+        <div class="exec-highlights">
 
-            <div class="exec-summary-item">
+            <div class="exec-highlight">
 
                 <i class="fa-solid fa-clock"></i>
 
                 <div>
 
-                    <strong>
+                    <strong>3–5 Minutes</strong>
 
-                        3–5 Minutes
-
-                    </strong>
-
-                    <span>
-
-                        Approximate completion time
-
-                    </span>
+                    <span>Approximate completion time</span>
 
                 </div>
 
             </div>
 
-            <div class="exec-summary-item">
+            <div class="exec-highlight">
 
                 <i class="fa-solid fa-comments"></i>
 
                 <div>
 
-                    <strong>
+                    <strong>4 Guided Conversations</strong>
 
-                        4 Guided Conversations
+                    <span>One topic at a time</span>
 
-                    </strong>
+                </div>
 
-                    <span>
+            </div>
 
-                        Company • Workforce • Operations • Growth
+            <div class="exec-highlight">
 
-                    </span>
+                <i class="fa-solid fa-user-group"></i>
+
+                <div>
+
+                    <strong>Executive Coach</strong>
+
+                    <span>Coach HRTechify will guide you</span>
 
                 </div>
 
@@ -240,48 +249,23 @@
 
                 <i class="fa-solid fa-brain"></i>
 
-                <div>
+                <span>
 
-                    <h3>
+                    Human Intelligence First
 
-                        Human Intelligence First
-
-                    </h3>
-
-                    <p>
-
-                        Artificial Intelligence can analyse information
-                        rapidly. We believe its greatest value lies in
-                        supporting thoughtful human judgement rather than
-                        replacing it.
-
-                    </p>
-
-                </div>
+                </span>
 
             </div>
 
             <div class="exec-principle">
 
-                <i class="fa-solid fa-people-group"></i>
+                <i class="fa-solid fa-heart"></i>
 
-                <div>
+                <span>
 
-                    <h3>
+                    People Are Not Being Assessed
 
-                        People Are Not Being Assessed
-
-                    </h3>
-
-                    <p>
-
-                        This conversation is intended to understand your
-                        organisation's context. Your people remain your
-                        greatest strength.
-
-                    </p>
-
-                </div>
+                </span>
 
             </div>
 
@@ -289,23 +273,11 @@
 
                 <i class="fa-solid fa-lightbulb"></i>
 
-                <div>
+                <span>
 
-                    <h3>
+                    Good Advice Begins with Good Understanding
 
-                        Good Advice Begins with Good Understanding
-
-                    </h3>
-
-                    <p>
-
-                        The more we understand your organisation,
-                        the more relevant and contextual our guidance
-                        may become.
-
-                    </p>
-
-                </div>
+                </span>
 
             </div>
 
@@ -324,9 +296,8 @@
     </div>
 
 </section>
-
-<!-- ==========================================================
-     EXECUTIVE CONVERSATION WORKSPACE
+            <!-- ==========================================================
+     CONVERSATION WORKSPACE
 ========================================================== -->
 
 <section
@@ -335,36 +306,38 @@
     hidden>
 
     <!-- ==========================================
-         PROGRESS HEADER
+         PROGRESS
     ========================================== -->
 
     <header class="exec-progress-header">
 
-        <div class="exec-progress-left">
+        <div class="exec-progress-info">
 
             <span
                 id="stepIndicator"
-                class="exec-step-indicator">
+                class="exec-step">
 
                 Step 1 of 4
 
             </span>
 
-            <h2 id="stepTitle">
+            <h2
+                id="stepTitle">
 
                 Company
 
             </h2>
 
-            <p id="stepSubtitle">
+            <p
+                id="stepDescription">
 
-                Let's begin with a few questions about your organisation.
+                Let's begin by understanding your organisation.
 
             </p>
 
         </div>
 
-        <div class="exec-progress-right">
+        <div class="exec-progress-wrapper">
 
             <div class="exec-progress-track">
 
@@ -381,15 +354,16 @@
     </header>
 
 
+
     <!-- ==========================================
          COACH PANEL
     ========================================== -->
 
-    <section class="exec-coach-panel">
+    <section class="exec-coach">
 
         <div class="exec-coach-avatar">
 
-            <div class="exec-coach-badge">
+            <div class="exec-coach-initials">
 
                 GH
 
@@ -397,37 +371,35 @@
 
         </div>
 
-        <div class="exec-coach-content">
+        <div class="exec-coach-card">
 
-            <div class="exec-coach-name">
+            <div class="exec-coach-header">
 
                 Coach HRTechify
 
             </div>
 
-            <div
-                id="coachMessage"
-                class="exec-coach-message">
+            <p
+                id="coachMessage">
 
                 Welcome.
 
                 Thank you for taking the time to have this conversation.
 
-                Before we begin, I'd like to understand a little about
+                Before we begin, we would like to understand a little about
                 your organisation.
 
-                There are no right or wrong answers here.
+                There are no right or wrong answers.
 
                 Simply answer each question to the best of your current
                 knowledge.
 
-                We'll move one conversation at a time.
-
-            </div>
+            </p>
 
         </div>
 
     </section>
+
 
 
     <!-- ==========================================
@@ -438,21 +410,15 @@
         id="conversationContainer"
         class="exec-conversation-container">
 
-        <!--
-            JavaScript renders one conversation
-            card here at a time.
-        -->
-
     </section>
 
 
+
     <!-- ==========================================
-         STICKY NAVIGATION
+         STICKY FOOTER
     ========================================== -->
 
-    <footer
-        id="conversationFooter"
-        class="exec-footer">
+    <footer class="exec-footer">
 
         <button
             id="backButton"
@@ -486,8 +452,7 @@
 
 </section>
 
-
-<!-- ==========================================================
+            <!-- ==========================================================
      CONVERSATION TEMPLATE
 ========================================================== -->
 
@@ -495,21 +460,30 @@
 
     <article class="exec-conversation-card">
 
-        <div class="exec-question-header">
+        <div class="exec-question-top">
 
             <div class="exec-question-icon">
 
-                <i id="questionIcon"
-                   class="fa-solid fa-building">
+                <i
+                    id="questionIcon"
+                    class="fa-solid fa-building">
 
                 </i>
 
             </div>
 
-            <div>
+            <div class="exec-question-title-group">
+
+                <span
+                    id="questionCategory"
+                    class="exec-question-category">
+
+                    Company
+
+                </span>
 
                 <h2
-                    id="questionHeading">
+                    id="questionTitle">
 
                 </h2>
 
@@ -518,8 +492,8 @@
         </div>
 
         <div
-            id="coachThought"
-            class="exec-coach-thought">
+            id="coachContext"
+            class="exec-coach-context">
 
         </div>
 
@@ -530,14 +504,18 @@
         </div>
 
         <div
-            id="questionHint"
-            class="exec-question-hint">
+            id="questionExplanation"
+            class="exec-question-explanation">
 
         </div>
 
         <div
-            id="responseContainer"
-            class="exec-response-container">
+            id="questionResponse"
+            class="exec-question-response">
+
+            <!--
+                JavaScript injects controls here.
+            -->
 
         </div>
 
@@ -545,7 +523,77 @@
 
 </template>
 
+
+
 <!-- ==========================================================
+     INPUT TEMPLATES
+========================================================== -->
+
+<template id="textInputTemplate">
+
+    <input
+        type="text"
+        class="exec-input"
+        autocomplete="off">
+
+</template>
+
+
+
+<template id="numberInputTemplate">
+
+    <input
+        type="number"
+        class="exec-input">
+
+</template>
+
+
+
+<template id="selectTemplate">
+
+    <select
+        class="exec-select">
+
+    </select>
+
+</template>
+
+
+
+<template id="textareaTemplate">
+
+    <textarea
+        class="exec-textarea"
+        rows="5">
+
+    </textarea>
+
+</template>
+
+
+
+<template id="radioTemplate">
+
+    <div
+        class="exec-radio-group">
+
+    </div>
+
+</template>
+
+
+
+<template id="checkboxTemplate">
+
+    <div
+        class="exec-checkbox-group">
+
+    </div>
+
+</template>
+
+            <!-- ==========================================================
      REVIEW SCREEN
 ========================================================== -->
 
@@ -554,39 +602,37 @@
     class="exec-review-screen"
     hidden>
 
-    <div class="exec-review-container">
+    <div class="exec-review-card">
 
         <div class="exec-badge">
 
-            Review Your Responses
+            Review
 
         </div>
 
-        <h1>
+        <h2>
 
             Before we prepare your Executive Advisory
 
-        </h1>
+        </h2>
 
         <p class="exec-review-intro">
 
-            We've now completed our conversation.
+            We would like to Thank you for this conversation. 
 
-            Before preparing your Executive Advisory,
-            let's quickly review what you've shared.
-
-            You may update any response before
-            continuing.
+            Please take a moment to review the information
+            you've shared. You can still make changes before
+            generating your advisory.
 
         </p>
 
         <div
-            id="reviewContent"
-            class="exec-review-content">
+            id="reviewContainer"
+            class="exec-review-container">
 
             <!--
-                Generated dynamically
-                by executive-assessment.js
+                JavaScript renders
+                review cards here.
             -->
 
         </div>
@@ -599,17 +645,17 @@
 
                 <i class="fa-solid fa-arrow-left"></i>
 
-                Back to Assessment
+                Back
 
             </button>
 
             <button
-                id="generateAdvisoryButton"
+                id="generateReportButton"
                 class="exec-primary-btn">
 
                 Generate Executive Advisory
 
-                <i class="fa-solid fa-arrow-right"></i>
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
 
             </button>
 
@@ -646,19 +692,11 @@
 
         </h2>
 
-        <div
-            id="loadingStatus"
-            class="exec-loading-status">
+        <p
+            id="loadingMessage"
+            class="exec-loading-message">
 
             Understanding your organisation...
-
-        </div>
-
-        <p>
-
-            Please stay with us for a few moments while
-            we organise the information you've chosen
-            to share into a structured Executive Advisory.
 
         </p>
 
@@ -693,22 +731,21 @@
 
         <p>
 
-            We now have a clearer understanding of
-            your organisation and the context you've
-            chosen to share with us.
+            Thank you, we think, we now have a clearer understanding of
+            your organisation.
 
         </p>
 
         <p>
 
             Your Executive Advisory has been prepared
-            based on this conversation and is now
-            ready for you to explore.
+            based on the information you've chosen to
+            share with us.
 
         </p>
 
         <button
-            id="viewExecutiveAdvisory"
+            id="viewReportButton"
             class="exec-primary-btn">
 
             View Executive Advisory
@@ -721,358 +758,108 @@
 
 </section>
 
-    <!-- ==========================================================
-     DYNAMIC INPUT TEMPLATES
-     (Used by executive-assessment.js)
+            <!-- ==========================================================
+     EXIT CONFIRMATION MODAL
 ========================================================== -->
 
-<template id="textInputTemplate">
-
-    <div class="exec-field">
-
-        <label
-            class="exec-label"
-            id="fieldLabel">
-
-        </label>
-
-        <input
-            type="text"
-            id="fieldInput"
-            class="exec-input"
-            autocomplete="off">
-
-    </div>
-
-</template>
-
-
-
-<template id="numberInputTemplate">
-
-    <div class="exec-field">
-
-        <label
-            class="exec-label"
-            id="numberLabel">
-
-        </label>
-
-        <input
-            type="number"
-            id="numberInput"
-            class="exec-input">
-
-    </div>
-
-</template>
-
-
-
-<template id="selectInputTemplate">
-
-    <div class="exec-field">
-
-        <label
-            class="exec-label"
-            id="selectLabel">
-
-        </label>
-
-        <select
-            id="selectInput"
-            class="exec-select">
-
-        </select>
-
-    </div>
-
-</template>
-
-
-
-<template id="textareaTemplate">
-
-    <div class="exec-field">
-
-        <label
-            class="exec-label"
-            id="textareaLabel">
-
-        </label>
-
-        <textarea
-            id="textareaInput"
-            class="exec-textarea"
-            rows="5">
-
-        </textarea>
-
-    </div>
-
-</template>
-
-
-
-<!-- ==========================================================
-     OPTION CARD TEMPLATE
-========================================================== -->
-
-<template id="optionCardTemplate">
-
-    <button
-        type="button"
-        class="exec-option-card">
-
-        <div class="exec-option-icon">
-
-            <i class="fa-solid fa-circle"></i>
-
-        </div>
-
-        <div class="exec-option-content">
-
-            <div class="exec-option-title">
-
-            </div>
-
-            <div class="exec-option-description">
-
-            </div>
-
-        </div>
-
-    </button>
-
-</template>
-
-
-
-<!-- ==========================================================
-     QUESTION HEADER TEMPLATE
-========================================================== -->
-
-<template id="questionHeaderTemplate">
-
-    <header class="exec-question-header">
-
-        <div class="exec-question-number">
-
-            <span id="questionCounter">
-
-                Question 1
-
-            </span>
-
-        </div>
-
-        <h2 id="dynamicQuestionHeading">
-
-        </h2>
-
-        <p id="dynamicQuestionDescription">
-
-        </p>
-
-    </header>
-
-</template>
-
-
-
-<!-- ==========================================================
-     COACH MESSAGE TEMPLATE
-========================================================== -->
-
-<template id="coachMessageTemplate">
-
-    <section class="exec-coach-note">
-
-        <div class="exec-coach-note-badge">
-
-            Coach HRTechify
-
-        </div>
-
-        <p id="coachConversationText">
-
-        </p>
-
-    </section>
-
-</template>
-
-
-
-<!-- ==========================================================
-     VALIDATION MESSAGE TEMPLATE
-========================================================== -->
-
-<template id="validationTemplate">
-
-    <div
-        class="exec-validation-message">
-
-        <i class="fa-solid fa-circle-info"></i>
-
-        <span id="validationText">
-
-        </span>
-
-    </div>
-
-</template>
-
-    <!-- ==========================================================
-     CONVERSATION PLACEHOLDER STATES
-========================================================== -->
-
-<section
-    id="conversationEmptyState"
-    class="exec-empty-state"
+<div
+    id="exitModal"
+    class="exec-modal"
     hidden>
 
-    <div class="exec-empty-icon">
+    <div class="exec-modal-card">
 
-        <i class="fa-solid fa-comments"></i>
+        <div class="exec-modal-icon">
 
-    </div>
-
-    <h2>
-
-        Your conversation will begin here.
-
-    </h2>
-
-    <p>
-
-        Coach HRTechify will guide you through one
-        question at a time. There is no need to rush.
-
-        Simply answer each question to the best of your
-        current knowledge.
-
-    </p>
-
-</section>
-
-
-
-<!-- ==========================================================
-     TRANSITION PANEL
-========================================================== -->
-
-<section
-    id="transitionPanel"
-    class="exec-transition-panel"
-    hidden>
-
-    <div class="exec-transition-card">
-
-        <div class="exec-transition-icon">
-
-            <i
-                id="transitionIcon"
-                class="fa-solid fa-arrow-right">
-
-            </i>
-
-        </div>
-
-        <h2
-            id="transitionHeading">
-
-        </h2>
-
-        <p
-            id="transitionMessage">
-
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==========================================================
-     STEP COMPLETE PANEL
-========================================================== -->
-
-<section
-    id="stepCompletePanel"
-    class="exec-step-complete"
-    hidden>
-
-    <div class="exec-step-complete-card">
-
-        <div class="exec-step-complete-icon">
-
-            <i class="fa-solid fa-circle-check"></i>
+            <i class="fa-solid fa-door-open"></i>
 
         </div>
 
         <h2>
 
-            This brings us to the end of our conversation today. It was lovely chatting with you
+            Leave Assessment?
 
         </h2>
 
-        <p
-            id="stepCompletionMessage">
+        <p>
+
+            If you leave now, this assessment session
+            will end.
+
+            You're welcome to begin a new conversation
+            whenever you're ready next.
 
         </p>
 
-        <button
-            id="continueJourney"
-            class="exec-primary-btn">
+        <div class="exec-modal-actions">
 
-            Continue
+            <button
+                id="cancelExitButton"
+                class="exec-secondary-btn">
 
-            <i class="fa-solid fa-arrow-right"></i>
+                Continue Assessment
 
-        </button>
+            </button>
+
+            <button
+                id="confirmExitButton"
+                class="exec-primary-btn">
+
+                Leave
+
+            </button>
+
+        </div>
 
     </div>
 
-</section>
+</div>
 
 
 
 <!-- ==========================================================
-     ASSESSMENT DATA STORE
+     HELP DRAWER
 ========================================================== -->
 
-<script
-    id="assessmentConfig"
-    type="application/json">
+<aside
+    id="helpDrawer"
+    class="exec-help-drawer"
+    hidden>
 
-{
+    <div class="exec-help-card">
 
-    "steps":[
+        <div class="exec-help-header">
 
-        "company",
+            <h3>
 
-        "workforce",
+                Need a little guidance?
 
-        "operations",
+            </h3>
 
-        "growth"
+            <button
+                id="closeHelpButton"
+                class="exec-help-close">
 
-    ],
+                <i class="fa-solid fa-xmark"></i>
 
-    "coach":"Coach HRTechify",
+            </button>
 
-    "version":"1.0.0"
+        </div>
 
-}
+        <div
+            id="helpContent"
+            class="exec-help-content">
 
-</script>
+        </div>
+
+    </div>
+
+</aside>
 
 
 
 <!-- ==========================================================
-     ACCESSIBILITY HELPERS
+     ACCESSIBILITY
 ========================================================== -->
 
 <div
@@ -1093,687 +880,32 @@
 
 </div>
 
-    <!-- ==========================================================
-     HELP & GUIDANCE DRAWER
-========================================================== -->
-
-<aside
-    id="helpDrawer"
-    class="exec-help-drawer"
-    hidden>
-
-    <div class="exec-help-card">
-
-        <div class="exec-help-header">
-
-            <div class="exec-help-title">
-
-                <i class="fa-solid fa-circle-info"></i>
-
-                Need a little guidance?
-
-            </div>
-
-            <button
-                id="closeHelpDrawer"
-                type="button"
-                class="exec-help-close">
-
-                <i class="fa-solid fa-xmark"></i>
-
-            </button>
-
-        </div>
-
-        <div
-            id="helpDrawerContent"
-            class="exec-help-content">
-
-        </div>
-
-    </div>
-
-</aside>
-
 
 
 <!-- ==========================================================
-     SAVE PROGRESS NOTICE
-========================================================== -->
-
-<section
-    id="saveNotice"
-    class="exec-save-notice"
-    hidden>
-
-    <i class="fa-solid fa-floppy-disk"></i>
-
-    <span>
-
-        Your progress has been updated for this session.
-
-    </span>
-
-</section>
-
-
-
-<!-- ==========================================================
-     EXIT CONFIRMATION
-========================================================== -->
-
-<div
-    id="exitDialog"
-    class="exec-modal"
-    hidden>
-
-    <div class="exec-modal-card">
-
-        <div class="exec-modal-icon">
-
-            <i class="fa-solid fa-door-open"></i>
-
-        </div>
-
-        <h2>
-
-           You want to leave Assessment?
-
-        </h2>
-
-        <p>
-
-            If you leave now,
-            your current conversation will end and no data will be stored.
-
-            You can always begin a new assessment
-            whenever you're ready.
-
-        </p>
-
-        <div class="exec-modal-actions">
-
-            <button
-                id="stayButton"
-                class="exec-secondary-btn">
-
-                Stay Here
-
-            </button>
-
-            <button
-                id="leaveButton"
-                class="exec-primary-btn">
-
-                Time to End Assessment
-
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- ==========================================================
-     SESSION COMPLETE BANNER
-========================================================== -->
-
-<section
-    id="sessionBanner"
-    class="exec-session-banner"
-    hidden>
-
-    <div class="exec-session-banner-content">
-
-        <i class="fa-solid fa-star"></i>
-
-        <span>
-
-            Thank you for taking the time to complete
-            the GrowWithHR Executive Assessment for your organization.
-
-        </span>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==========================================================
-     GLOBAL OVERLAY
-========================================================== -->
-
-<div
-    id="overlay"
-    class="exec-overlay"
-    hidden>
-
-</div>
-
-    <!-- ==========================================================
-     KEYBOARD SHORTCUTS
-========================================================== -->
-
-<div
-    id="keyboardShortcuts"
-    class="exec-shortcuts"
-    hidden>
-
-    <div class="exec-shortcuts-card">
-
-        <h2>
-
-            Keyboard Shortcuts
-
-        </h2>
-
-        <ul>
-
-            <li>
-
-                <kbd>Enter</kbd>
-
-                Continue
-
-            </li>
-
-            <li>
-
-                <kbd>Shift + Enter</kbd>
-
-                New Line (Text Areas)
-
-            </li>
-
-            <li>
-
-                <kbd>←</kbd>
-
-                Previous Question
-
-            </li>
-
-            <li>
-
-                <kbd>→</kbd>
-
-                Next Question
-
-            </li>
-
-            <li>
-
-                <kbd>Esc</kbd>
-
-                Close Dialog
-
-            </li>
-
-        </ul>
-
-        <button
-            id="closeShortcuts"
-            class="exec-secondary-btn">
-
-            Close
-
-        </button>
-
-    </div>
-
-</div>
-
-
-
-<!-- ==========================================================
-     ADVISORY PREPARATION PANEL
-========================================================== -->
-
-<section
-    id="advisoryPreparation"
-    class="exec-advisory-preparation"
-    hidden>
-
-    <div class="exec-advisory-card">
-
-        <div class="exec-advisory-icon">
-
-            <i class="fa-solid fa-lightbulb"></i>
-
-        </div>
-
-        <h2>
-
-            Preparing Your Executive Advisory
-
-        </h2>
-
-        <p>
-
-            We are now bringing together the
-            organisational context you've shared
-            to prepare your Executive Advisory.
-
-        </p>
-
-        <div class="exec-advisory-steps">
-
-            <div
-                class="exec-advisory-step"
-                id="prepStep1">
-
-                Understanding organisation profile
-
-            </div>
-
-            <div
-                class="exec-advisory-step"
-                id="prepStep2">
-
-                Reviewing workforce context
-
-            </div>
-
-            <div
-                class="exec-advisory-step"
-                id="prepStep3">
-
-                Analysing operational maturity
-
-            </div>
-
-            <div
-                class="exec-advisory-step"
-                id="prepStep4">
-
-                Identifying people priorities
-
-            </div>
-
-            <div
-                class="exec-advisory-step"
-                id="prepStep5">
-
-                Building Executive Advisory
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==========================================================
-     REPORT HANDOFF
-========================================================== -->
-
-<section
-    id="reportHandoff"
-    class="exec-report-handoff"
-    hidden>
-
-    <div class="exec-report-card">
-
-        <div class="exec-report-icon">
-
-            <i class="fa-solid fa-file-lines"></i>
-
-        </div>
-
-        <h2>
-
-            Executive Advisory Ready
-
-        </h2>
-
-        <p>
-
-            Your Executive Advisory has been
-            prepared and is ready to review.
-
-        </p>
-
-        <div class="exec-report-actions">
-
-            <button
-                id="openExecutiveReport"
-                class="exec-primary-btn">
-
-                Open Executive Advisory
-
-            </button>
-
-            <button
-                id="returnHome"
-                class="exec-secondary-btn">
-
-                Back to Home
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-    <!-- ==========================================================
-     DEVELOPER CONFIGURATION
+     CONFIGURATION
 ========================================================== -->
 
 <script
-    id="execAssessmentSettings"
+    id="assessmentConfig"
     type="application/json">
 
 {
     "application":"GrowWithHR",
-    "module":"Executive Assessment",
     "coach":"Coach HRTechify",
     "version":"1.0.0",
     "steps":4,
-    "conversationMode":true,
-    "reviewEnabled":true,
-    "loadingAnimation":true,
-    "reportPage":"sample-advisory-report.html"
+    "mode":"conversation",
+    "report":"sample-advisory-report.html"
 }
 
 </script>
 
-
-
-<!-- ==========================================================
-     HIDDEN DATA CONTAINERS
-========================================================== -->
-
-<input
-    type="hidden"
-    id="currentStep"
-    value="1">
-
-<input
-    type="hidden"
-    id="currentQuestion"
-    value="0">
-
-<input
-    type="hidden"
-    id="assessmentCompleted"
-    value="false">
-
-<input
-    type="hidden"
-    id="assessmentStarted"
-    value="false">
-
-
-
-<!-- ==========================================================
-     CONVERSATION MEMORY
-========================================================== -->
-
-<section
-    id="conversationMemory"
-    hidden>
-
-</section>
-
-
-
-<!-- ==========================================================
-     COACH CONTEXT
-========================================================== -->
-
-<section
-    id="coachContext"
-    hidden>
-
-</section>
-
-
-
-<!-- ==========================================================
-     RESPONSE STORE
-========================================================== -->
-
-<section
-    id="responseStore"
-    hidden>
-
-</section>
-
-
-
-<!-- ==========================================================
-     ORGANISATION PROFILE
-========================================================== -->
-
-<section
-    id="organisationProfile"
-    hidden>
-
-</section>
-
-
-
-<!-- ==========================================================
-     GROWTH PROFILE
-========================================================== -->
-
-<section
-    id="growthProfile"
-    hidden>
-
-</section>
-
-
-
-<!-- ==========================================================
-     RISK PROFILE
-========================================================== -->
-
-<section
-    id="riskProfile"
-    hidden>
-
-</section>
-
-
-
-<!-- ==========================================================
-     HR MATURITY PROFILE
-========================================================== -->
-
-<section
-    id="maturityProfile"
-    hidden>
-
-</section>
-
-
-
-<!-- ==========================================================
-     FUTURE EXTENSION POINTS
-
-     Reserved for future modules:
-
-     • AI Coach
-     • Save Progress
-     • Resume Assessment
-     • Multi-language Support
-     • Voice Conversation
-     • Live HR Guidance
-========================================================== -->
-
-<section
-    id="futureModules"
-    hidden>
-
-</section>
-<!-- ==========================================================
-     APPLICATION STATE
-========================================================== -->
-
-<div id="execApplicationState" hidden>
-
-    <input
-        type="hidden"
-        id="assessmentVersion"
-        value="1.0.0">
-
-    <input
-        type="hidden"
-        id="assessmentMode"
-        value="conversation">
-
-    <input
-        type="hidden"
-        id="coachName"
-        value="Coach HRTechify">
-
-    <input
-        type="hidden"
-        id="currentConversation"
-        value="company">
-
-    <input
-        type="hidden"
-        id="currentConversationIndex"
-        value="0">
-
-</div>
-
-
-
-<!-- ==========================================================
-     CONVERSATION TRANSCRIPT
-========================================================== -->
-
-<section
-    id="conversationTranscript"
-    hidden>
-
-    <!--
-
-        ExecutiveAssessment.js maintains an
-        internal transcript here.
-
-    -->
-
-</section>
-
-
-
-<!-- ==========================================================
-     ANALYTICS PLACEHOLDER
-========================================================== -->
-
-<section
-    id="assessmentAnalytics"
-    hidden>
-
-    <!-- Reserved for future analytics -->
-
-</section>
-
-
-
-<!-- ==========================================================
-     FUTURE AI MEMORY
-========================================================== -->
-
-<section
-    id="coachMemory"
-    hidden>
-
-    <!-- Reserved for future contextual coaching -->
-
-</section>
-
-
-
-<!-- ==========================================================
-     FUTURE RECOMMENDATION ENGINE
-========================================================== -->
-
-<section
-    id="recommendationEngine"
-    hidden>
-
-</section>
-
-
-
-<!-- ==========================================================
-     FUTURE RISK ENGINE
-========================================================== -->
-
-<section
-    id="riskEngine"
-    hidden>
-
-</section>
-
-
-
-<!-- ==========================================================
-     FUTURE COMPLIANCE ENGINE
-========================================================== -->
-
-<section
-    id="complianceEngine"
-    hidden>
-
-</section>
-
-
-
-<!-- ==========================================================
-     FUTURE PEOPLE MATURITY ENGINE
-========================================================== -->
-
-<section
-    id="peopleMaturityEngine"
-    hidden>
-
-</section>
-
-
-
-<!-- ==========================================================
-     FUTURE GOVERNANCE ENGINE
-========================================================== -->
-
-<section
-    id="governanceEngine"
-    hidden>
-
-</section>
-
-
-
-<!-- ==========================================================
-     END OF APPLICATION CONTENT
-
-     JavaScript files are intentionally loaded
-     at the end of the document for performance.
-========================================================== -->
-
-    <!-- ==========================================================
+            <!-- ==========================================================
      JAVASCRIPT
 ========================================================== -->
 
 <script src="js/executive-assessment.js"></script>
-
-<!-- ==========================================================
-     APPLICATION BOOTSTRAP
-========================================================== -->
 
 <script>
 
@@ -1790,8 +922,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </script>
 
+        </section>
 
+    </div>
 
+</main>
 <!-- ==========================================================
      NOSCRIPT FALLBACK
 ========================================================== -->
@@ -1810,9 +945,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             <p>
 
-                The GrowWithHR Executive Assessment
-                requires JavaScript to provide the
-                guided conversational experience.
+                The GrowWithHR Executive Assessment uses
+                JavaScript to deliver a guided conversational
+                experience.
+
+                Please enable JavaScript in your browser
+                and reload this page.
 
             </p>
 
@@ -1830,77 +968,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </noscript>
 
-    <!-- ==========================================================
-     DOCUMENT CLOSING
-========================================================== -->
-
-</main>
-
-<footer class="exec-page-footer">
-
-    <div class="exec-footer-container">
-
-        <p>
-
-            © 2026 HRTechify. All Rights Reserved.
-
-        </p>
-
-        <nav class="exec-footer-links">
-
-            <a href="index.html#privacy">
-
-                Privacy
-
-            </a>
-
-            <a href="index.html#about">
-
-                About
-
-            </a>
-
-            <a href="index.html#contact">
-
-                Contact
-
-            </a>
-
-        </nav>
-
-    </div>
-
-</footer>
-<!-- ==========================================================
-     JAVASCRIPT
-========================================================== -->
-
-<script src="js/executive-assessment.js"></script>
-
-<!-- ==========================================================
-     APPLICATION INITIALIZATION
-========================================================== -->
-
-<script>
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    if (typeof ExecutiveAssessment === "function") {
-
-        window.executiveAssessment = new ExecutiveAssessment();
-
-    } else {
-
-        console.error(
-            "ExecutiveAssessment class could not be found."
-        );
-
-    }
-
-});
-
-</script>
-
 </body>
 
-</html> 
+</html>
