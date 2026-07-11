@@ -1,41 +1,71 @@
 # Changelog
 
-## v0.9.0-beta
-Released: July 2026
+All notable changes to GrowWithHR are documented here.
+
+---
+
+## [v0.10.0-beta] - Executive Intelligence
+
+Release Date:
+YYYY-MM-DD
 
 ### Added
 
-- Modular intelligence architecture
-- Company DNA
-- Knowledge Library
-- Executive Dashboard
-- AI Advisor foundation
-- Shared repositories
-- Recommendation engine
-- Organization Intelligence
-- Talent Intelligence
-- Performance Intelligence
-- Leadership Intelligence
-- Culture Intelligence
-- Rewards Intelligence
-- Learning Intelligence
+- Executive Intelligence landing page
+- Company DNA intelligence cards
+- Growth Stage intelligence
+- Recommendation Basis intelligence
+- Interactive Intelligence Core visualization
+- Executive advisory preview
+- Platform capabilities carousel
+- Executive assessment framework
+- Official government resources section
+- Privacy section
+- About section
+- Contact section
+- Premium glass navigation
+- Responsive navigation
+- Advisory preview page
 
 ### Improved
 
-- Dashboard UI
-- Knowledge structure
-- Source registry
-- Executive reporting
+- Hero layout redesigned
+- Intelligence graph centering
+- Card spacing and alignment
+- Dynamic recommendation rotation
+- Dynamic growth stage rotation
+- Dynamic Company DNA rotation
+- Executive styling throughout homepage
+- Improved typography
+- Glassmorphism components
+- Executive dashboard presentation
 
 ### Fixed
 
-- Runtime initialization
-- Module imports
-- Rule engine cloning
-- ES module loading
+- Intelligence graph alignment
+- Hero content spacing
+- Company DNA card symmetry
+- Growth Stage synchronization
+- Recommendation animation consistency
+- Card layout refinements
+- Navigation structure
+- Hero responsiveness
 
 ### Known Issues
 
-- AI Advisor not yet connected
-- Growth Intelligence under development
-- Shareable reports not available
+- Assessment experience is still a long-form layout
+- Navigation dropdown requires final UX polish
+- Navigation active indicator requires refinement
+- Capability carousel will be redesigned
+- Mobile optimization is ongoing
+
+---
+
+## Upcoming (v0.11.0)
+
+- Multi-step executive assessment
+- Progressive disclosure
+- Guided assessment wizard
+- Reduced homepage clutter
+- Interactive advisory experience
+- Dedicated platform pages
