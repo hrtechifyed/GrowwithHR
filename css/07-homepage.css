@@ -633,11 +633,13 @@
     display:flex;
     width:100%;
     padding:12px 2px 20px;
+    overflow:hidden;
+    gap:0;
 }
 
 .capability-slide{
-    flex:0 0 clamp(280px,32vw,380px);
-    width:clamp(280px,32vw,380px);
+    flex:0 0 100%;
+    width:100%;
 }
 
 .wizard-step span{
