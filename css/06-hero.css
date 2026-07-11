@@ -394,7 +394,7 @@
 
    flex-direction:column;
 
-   justify-content:space-between;
+   justify-content:flex-start;
 
     min-height:240px; 
    
@@ -425,13 +425,10 @@
 
     padding:24px;
 
-}
+     background:rgba(255,255,255,.04);
 
-.company-dna-card h3{
-
-   margin:0 0 20px;
-
-    font-size:2rem;
+    border:1px solid rgba(255,255,255,.08);
+   
 
 }
 
