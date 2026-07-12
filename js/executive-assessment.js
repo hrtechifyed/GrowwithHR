@@ -269,8 +269,6 @@ class ExecutiveAssessment {
 
         this.successScreen.hidden = true;
 
-    }
-
 }
 
 /* ==========================================================
