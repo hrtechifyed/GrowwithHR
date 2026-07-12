@@ -143,6 +143,9 @@ class ExecutiveAssessment {
         this.coachMessage =
             document.getElementById("coachMessage");
 
+        this.coachSection =
+            document.querySelector(".exec-coach");
+
         this.footerMessage =
             document.getElementById("footerMessage");
 
@@ -154,6 +157,64 @@ class ExecutiveAssessment {
 
         this.loadingMessage =
             document.getElementById("loadingMessage");
+
+    }
+
+
+
+    /* ==========================================================
+       ANIMATE TEXT CHANGE
+       Retriggers a fade-in whenever a message updates, so new
+       lines feel like they're arriving in conversation rather
+       than snapping into place.
+    ========================================================== */
+
+    animateTextChange(element, text) {
+
+        if (!element) {
+
+            return;
+
+        }
+
+        element.textContent = text;
+
+        element.classList.remove("exec-fade-in");
+
+        void element.offsetWidth;
+
+        element.classList.add("exec-fade-in");
+
+    }
+
+
+
+    /* ==========================================================
+       SET COACH MESSAGE
+       Updates the coach's line and decides whether the avatar
+       and "Coach HRTechify" label should be shown. They only
+       reappear when the coach is opening a new topic (welcome,
+       or the first question of a step) — not on every single
+       question, which read as robotic and repetitive.
+    ========================================================== */
+
+    setCoachMessage(text, isNewTopic) {
+
+        this.animateTextChange(this.coachMessage, text);
+
+        if (!this.coachSection) {
+
+            return;
+
+        }
+
+        this.coachSection.classList.toggle(
+
+            "exec-coach--compact",
+
+            !isNewTopic
+
+        );
 
     }
 
@@ -781,11 +842,15 @@ class ExecutiveAssessment {
         this.stepDescription.textContent =
             step.description;
 
-        this.coachMessage.textContent =
-            step.coach;
+        this.setCoachMessage(
 
-        this.footerMessage.textContent =
-            `${step.title} Conversation`;
+            step.coach,
+
+            this.currentQuestion === 0
+
+        );
+
+        this.updateFooterMessage();
 
         const template =
             document.getElementById("conversationTemplate");
@@ -1293,11 +1358,15 @@ class ExecutiveAssessment {
 
         }
 
-        this.coachMessage.textContent =
+        this.setCoachMessage(
 
             message ||
 
-            this.questionBank[this.currentStep].coach;
+            this.questionBank[this.currentStep].coach,
+
+            !message
+
+        );
 
     }
 
@@ -1488,9 +1557,13 @@ class ExecutiveAssessment {
 
         const totalQuestions = step.questions.length;
 
-        this.footerMessage.textContent =
+        this.animateTextChange(
 
-            `Question ${this.currentQuestion + 1} of ${totalQuestions}`;
+            this.footerMessage,
+
+            `Question ${this.currentQuestion + 1} of ${totalQuestions}`
+
+        );
 
     }
 
@@ -1605,19 +1678,28 @@ class ExecutiveAssessment {
         this.stepDescription.textContent =
             "";
 
-        this.footerMessage.textContent =
-            "Welcome";
+        this.animateTextChange(
+
+            this.footerMessage,
+
+            "Welcome"
+
+        );
 
         this.progressBar.style.width =
             "0%";
 
-        this.coachMessage.textContent =
+        this.setCoachMessage(
 
             "Welcome, and thank you for taking the time to have this conversation. " +
             "Every organisation has its own journey, ambitions and unique way of working, " +
             "and before we're ready to offer any meaningful guidance, we'd like to understand " +
             "yours a little better. There are no right or wrong answers here \u2014 simply answer " +
-            "each question to the best of your current knowledge, and we'll take it one step at a time.";
+            "each question to the best of your current knowledge, and we'll take it one step at a time.",
+
+            true
+
+        );
 
         this.conversationContainer.innerHTML =
             "";
