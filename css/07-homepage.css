@@ -677,3 +677,92 @@
         width:min(320px, calc(100vw - 48px));
     }
 }
+
+
+/* ==========================================
+   TRUST SECTION
+========================================== */
+
+.trust-section{
+    text-align:center;
+}
+
+.trust-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:28px;
+    margin-top:56px;
+}
+
+.trust-card{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    padding:36px 30px;
+    transition:.35s ease;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.trust-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(95,180,255,.25);
+    box-shadow:0 24px 60px rgba(0,0,0,.18);
+}
+
+.trust-icon{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    margin-bottom:22px;
+    background:var(--gradient-brand);
+    color:white;
+    box-shadow:var(--glow-brand);
+}
+
+.trust-card h3{
+    margin-bottom:14px;
+}
+
+.trust-card p{
+    opacity:.85;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+.trust-features{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin-top:auto;
+}
+
+.trust-features span{
+    background:rgba(255,255,255,.06);
+    border-radius:999px;
+    padding:8px 14px;
+    font-size:.85rem;
+}
+
+.trust-card ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.trust-card li{
+    margin:10px 0;
+    opacity:.9;
+}
+
+.contact-email{
+    margin-top:18px;
+    font-weight:600;
+    opacity:.8;
+}
