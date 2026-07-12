@@ -33,6 +33,8 @@ class ExecutiveAssessment {
 
         this.completed = false;
 
+        this.onWelcome = false;
+
 
         /* ==========================================
            STEP DEFINITIONS
@@ -930,6 +932,24 @@ class ExecutiveAssessment {
 
     next() {
 
+        if (this.onWelcome) {
+
+            this.onWelcome = false;
+
+            this.backButton.hidden = false;
+
+            this.nextButton.innerHTML =
+
+                `Continue <i class="fa-solid fa-arrow-right"></i>`;
+
+            this.refreshUI();
+
+            this.renderCurrentQuestion();
+
+            return;
+
+        }
+
         if (!this.saveCurrentAnswer()) {
 
             return;
@@ -971,6 +991,12 @@ class ExecutiveAssessment {
 
     previous() {
 
+        if (this.onWelcome) {
+
+            return;
+
+        }
+
         if (this.currentQuestion > 0) {
 
             this.currentQuestion--;
@@ -995,7 +1021,11 @@ class ExecutiveAssessment {
 
             this.renderCurrentQuestion();
 
+            return;
+
         }
+
+        this.showWelcomeMessage();
 
     }
 
@@ -1552,9 +1582,52 @@ class ExecutiveAssessment {
 
         this.workspace.hidden = false;
 
-        this.refreshUI();
+        this.showWelcomeMessage();
 
-        this.renderCurrentQuestion();
+    }
+
+
+
+    /* ==========================================================
+       WELCOME MESSAGE
+    ========================================================== */
+
+    showWelcomeMessage() {
+
+        this.onWelcome = true;
+
+        this.stepIndicator.textContent =
+            "Welcome";
+
+        this.stepTitle.textContent =
+            "Let's begin by understanding your organisation.";
+
+        this.stepDescription.textContent =
+            "";
+
+        this.footerMessage.textContent =
+            "Welcome";
+
+        this.progressBar.style.width =
+            "0%";
+
+        this.coachMessage.textContent =
+
+            "Welcome, and thank you for taking the time to have this conversation. " +
+            "Every organisation has its own journey, ambitions and unique way of working, " +
+            "and before we're ready to offer any meaningful guidance, we'd like to understand " +
+            "yours a little better. There are no right or wrong answers here \u2014 simply answer " +
+            "each question to the best of your current knowledge, and we'll take it one step at a time.";
+
+        this.conversationContainer.innerHTML =
+            "";
+
+        this.backButton.hidden =
+            true;
+
+        this.nextButton.innerHTML =
+
+            `Begin <i class="fa-solid fa-arrow-right"></i>`;
 
     }
 
