@@ -169,6 +169,9 @@
 
           <!-- ==========================================================
      LANDING SCREEN
+     (Kept intentionally light — just the entry point.
+     Everything else is delivered by Coach HRTechify
+     once the conversation begins.)
 ========================================================== -->
 
 <section
@@ -176,114 +179,6 @@
     class="exec-landing">
 
     <div class="exec-landing-card">
-
-        <div class="exec-badge">
-
-            Executive Assessment Experience
-
-        </div>
-
-        <h1>
-
-            Let's begin by understanding your organisation.
-
-        </h1>
-
-        <p class="exec-introduction">
-
-            Every organisation has its own journey,
-            ambitions and unique way of working.
-
-            Before we are ready to offer any meaningful guidance to you,
-            we'd like to understand your organization.
-
-        </p>
-
-        <div class="exec-highlights">
-
-            <div class="exec-highlight">
-
-                <i class="fa-solid fa-clock"></i>
-
-                <div>
-
-                    <strong>3–5 Minutes</strong>
-
-                    <span>Approximate completion time</span>
-
-                </div>
-
-            </div>
-
-            <div class="exec-highlight">
-
-                <i class="fa-solid fa-comments"></i>
-
-                <div>
-
-                    <strong>4 Guided Conversations</strong>
-
-                    <span>One topic at a time</span>
-
-                </div>
-
-            </div>
-
-            <div class="exec-highlight">
-
-                <i class="fa-solid fa-user-group"></i>
-
-                <div>
-
-                    <strong>Executive Coach</strong>
-
-                    <span>Coach HRTechify will guide you</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="exec-principles">
-
-            <div class="exec-principle">
-
-                <i class="fa-solid fa-brain"></i>
-
-                <span>
-
-                    Human Intelligence First
-
-                </span>
-
-            </div>
-
-            <div class="exec-principle">
-
-                <i class="fa-solid fa-heart"></i>
-
-                <span>
-
-                    People Are Not Being Assessed
-
-                </span>
-
-            </div>
-
-            <div class="exec-principle">
-
-                <i class="fa-solid fa-lightbulb"></i>
-
-                <span>
-
-                    Good Advice Begins with Good Understanding
-
-                </span>
-
-            </div>
-
-        </div>
 
         <button
             id="startAssessment"
@@ -319,21 +214,19 @@
                 id="stepIndicator"
                 class="exec-step">
 
-                Step 1 of 4
+                Welcome
 
             </span>
 
             <h2
                 id="stepTitle">
 
-                Company
+                Let's begin by understanding your organisation.
 
             </h2>
 
             <p
                 id="stepDescription">
-
-                Let's begin by understanding your organisation.
 
             </p>
 
@@ -384,17 +277,14 @@
             <p
                 id="coachMessage">
 
-                Welcome.
-
-                Thank you for taking the time to have this conversation.
-
-                Before we begin, we would like to understand a little about
-                your organisation.
-
-                There are no right or wrong answers.
-
-                Simply answer each question to the best of your current
-                knowledge.
+                Welcome, and thank you for taking the time to have this
+                conversation. Every organisation has its own journey,
+                ambitions and unique way of working, and before we're
+                ready to offer any meaningful guidance, we'd like to
+                understand yours a little better. There are no right or
+                wrong answers here — simply answer each question to the
+                best of your current knowledge, and we'll take it one
+                step at a time.
 
             </p>
 
@@ -424,7 +314,8 @@
 
         <button
             id="backButton"
-            class="exec-secondary-btn">
+            class="exec-secondary-btn"
+            hidden>
 
             <i class="fa-solid fa-arrow-left"></i>
 
@@ -436,7 +327,7 @@
             id="footerMessage"
             class="exec-footer-message">
 
-            Company Conversation
+            Welcome
 
         </div>
 
@@ -444,7 +335,7 @@
             id="nextButton"
             class="exec-primary-btn">
 
-            Continue
+            Begin
 
             <i class="fa-solid fa-arrow-right"></i>
 
@@ -909,20 +800,12 @@
 
 <script src="js/executive-assessment.js"></script>
 
-<script>
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    if (typeof ExecutiveAssessment === "function") {
-
-        window.executiveAssessment =
-            new ExecutiveAssessment();
-
-    }
-
-});
-
-</script>
+<!--
+    executive-assessment.js already instantiates and
+    initializes ExecutiveAssessment on DOMContentLoaded.
+    No inline duplicate instantiation here — that would
+    create a second instance and double-bind every button.
+-->
 
         </section>
 
